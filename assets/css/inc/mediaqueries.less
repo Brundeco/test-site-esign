@@ -1,0 +1,81 @@
+/* TABLET */
+@media screen and (min-width:767px) {
+		
+	/* GRID */	
+	.row { 
+		margin: 0 0 40px -20px;
+	}
+	
+	.one_half, .two_third, .one_third, .three_fourth, .one_fourth { padding-left: 20px; }
+	.one_half { width: 50%; }
+	.two_third { width: 66.66%; }
+	.one_third { width: 33.33%; }
+	.three_fourth { width: 75%; }
+	.one_fourth { width: 25%; }
+	
+	/* TYPE */
+	
+	ul {
+		&.people {
+			margin-left: -20px;
+			li { width: 50%; padding-left: 20px; margin-bottom: 20px;
+				&:nth-child(3n+3) { clear: left; } 
+			}
+		}
+	}
+	
+	blockquote { .fs(30); .lh(36); }
+	
+	/* ELEMENTS */
+
+	
+	/* HEADER */
+	.main-nav { display: block; 
+		li { float: left; margin: 0 0 0 20px; }
+	}
+	#nav-title { display: none; }
+	
+	
+	/* FOOTER */
+	a.esign { float: right; }
+	
+	/* PAGES */
+	
+}
+
+@media screen and (min-width: 767px) and (max-width:1024px) {
+	
+	
+	
+}
+
+/* TABLET LANDSCAPE */
+@media screen and (min-width:980px) {
+	
+
+
+}
+
+/* DESKTOP */
+@media screen and (min-width:1024px) {
+	
+	.container { width: 0px + @siteWidth; }
+	
+	/* TYPE */
+	ul {
+		&.people {
+			li { width: 25%; margin-bottom: 0; 
+				&:nth-child(3n+3) { clear: none; }
+				&:nth-child(5n+5) { clear: left; }
+			}
+		}
+	}
+	
+}
+
+/* DESKTOP WIDE */
+@media screen and (min-width:1355px) {
+	
+	
+	
+}

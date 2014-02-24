@@ -2,8 +2,8 @@
 #font {
 	.default(@size: 14, @weight: 500, @lineHeight: 20) {
 	    font-family: Arial, Helvetica, Verdana, sans-serif;
-	    .fs(14);
-	    .lh(20);
+	    .fs(@size);
+	    .lh(@lineHeight);
 	    font-weight: @weight;
 	}
 }

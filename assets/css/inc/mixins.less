@@ -162,8 +162,7 @@
 	-webkit-transform : translateZ(0);
 	transform : translateZ(0);
 	
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+	.backface-visibility;
 	
 	-webkit-perspective: @perspective;
 	perspective: @perspective;
@@ -177,6 +176,7 @@
 .backface-visibility(@visibility:hidden) {
 	-webkit-backface-visibility: @visibility;
 	-moz-backface-visibility: @visibility;
+	-ms-backface-visibility: @visibility;
 	backface-visibility: @visibility;
 }
 .perspective(@perspective) {
@@ -277,7 +277,7 @@
 	  -moz-opacity: @opacity / 100;
 	       opacity: @opacity / 100;
 
-	-webkit-backface-visibility: hidden;
+	.backface-visibility;
 }
 
 // Optimize font
@@ -359,6 +359,3 @@
 	animation-iteration-count: @count;
 	-webkit-animation-iteration-count: @count;
 }
-	
-
-	

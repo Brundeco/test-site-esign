@@ -39,11 +39,10 @@ $(function() {
 	}
 	
 	/* NAVIGATION */
-	$nav = $('.main-nav');
-	$nav.before('<a href="#" id="nav-title"><i class="icon-hamburger"></i><span>Menu</span></a>');
-	$('#nav-title').click(function(e) {
+	$nav = $('.nav-wrap');
+	$('.main-nav .trigger').click(function(e) {
 		e.preventDefault();
-		$nav.slideToggle('fast');
+		$(this).next('.nav-wrap').slideToggle('fast');
 	});
 	
 	

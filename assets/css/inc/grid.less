@@ -2,6 +2,12 @@
 .container {
 	max-width: 0px + @siteWidth; *width: 0px + @siteWidth; margin: 0 auto; position: relative; 
 	.clearfix; z-index: 5; .content-box; padding: 0 5%;
+	
+	&.showgrid {
+		.one_half, .two_third, .one_third, .three_fourth, .one_fourth {
+			min-height: 100px; background: #efefef;
+		}
+	}
 }
 
 .row { .clearfix; margin: 0 0 20px; }

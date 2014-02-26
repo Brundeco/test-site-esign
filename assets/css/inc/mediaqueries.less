@@ -1,7 +1,16 @@
 /* TABLET */
 @media screen and (min-width:767px) {
-		
+	
+	html, body { height: 100%; }
+	
 	/* GRID */	
+	.container {
+		&.showgrid {
+			.one_half, .two_third, .one_third, .three_fourth, .one_fourth {
+				border-left: 20px solid #fff; padding-left: 0;
+			}
+		}
+	}
 	.row { 
 		margin: 0 0 40px -20px;
 	}
@@ -14,6 +23,7 @@
 	.one_fourth { width: 25%; }
 	
 	/* TYPE */
+	h1, .h1 { .fs(35); .lh(42);  .mb(40); }
 	
 	ul {
 		&.people {
@@ -30,14 +40,22 @@
 
 	
 	/* HEADER */
-	.main-nav { display: block; 
+	.main-nav { 
+		.trigger { display: none; }
+		.nav-wrap { margin: 0 0 0 -20px; }
 		li { float: left; margin: 0 0 0 20px; }
 	}
-	#nav-title { display: none; }
 	
+	/* MAIN */
+	#main { padding: 50px 0 150px; }
 	
 	/* FOOTER */
+	#page-footer {
+		height: 60px; margin: -60px 0 0; 
+	}
+	
 	a.esign { float: right; }
+	
 	
 	/* PAGES */
 	
@@ -52,15 +70,14 @@
 /* TABLET LANDSCAPE */
 @media screen and (min-width:980px) {
 	
-
+	/* GRID */
+	.container { width: 980px; padding: 0; }
 
 }
 
 /* DESKTOP */
 @media screen and (min-width:1024px) {
-	
-	.container { width: 0px + @siteWidth; padding: 0; }
-	
+		
 	/* TYPE */
 	ul {
 		&.people {

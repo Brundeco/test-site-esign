@@ -19,7 +19,21 @@ $(function() {
 		        overlay : {
 		            locked : false
 		        }
-		    }
+		    },
+			afterShow: function() {
+                if ('ontouchstart' in document.documentElement){
+                    $('.fancybox-nav').css('display','none');
+                    $('.fancybox-wrap').swipe({
+                        swipe : function(event, direction) {
+                            if (direction === 'left' || direction === 'up') {
+		                        $.fancybox.prev();
+                            } else {
+                                $.fancybox.next();
+                            }
+                        }
+                    });
+                }
+            }
 		});
 	}
 	

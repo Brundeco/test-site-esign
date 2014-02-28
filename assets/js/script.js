@@ -26,9 +26,9 @@ $(function() {
                     $('.fancybox-wrap').swipe({
                         swipe : function(event, direction) {
                             if (direction === 'left' || direction === 'up') {
-		                        $.fancybox.prev();
+		                        $.fancybox.next();
                             } else {
-                                $.fancybox.next();
+                            	$.fancybox.prev();
                             }
                         }
                     });

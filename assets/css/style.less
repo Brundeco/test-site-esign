@@ -97,6 +97,16 @@ article {
 	.button { float: none; display: inline-block; }	
 }
 
+/* responsive video */
+iframe { max-width: 100%; height: auto; }
+.video-container {  
+	position: relative; padding: 0 0 56.25%; height: 0; overflow: hidden; margin: 0 0 15px;
+    
+	iframe {
+		position: absolute; top:0; left: 0; width: 100%; height: 100%;
+	}   
+}
+
 /* =============================================================================
    HEADER
    ========================================================================== */

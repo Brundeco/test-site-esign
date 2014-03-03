@@ -205,6 +205,25 @@
     background-size: @value;
 }
 
+// Alpha colors
+.background-color-with-alpha (@color, @alpha) {
+  @rgba: rgba(red(@color), green(@color), blue(@color), @alpha);
+  /* background-color-with-alpha *///
+  background-color: @color;
+  background-color: @rgba;
+  // No longer using MS filters because they break border radius in IE9
+  // @argb: argb(@rgba);
+  // filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+  // -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+}
+
+.border-color-with-alpha (@color, @alpha) {
+  @rgba: rgba(red(@color), green(@color), blue(@color), @alpha);
+  /* border-color-with-alpha *///
+  border-color: @color;
+  border-color: @rgba;
+}
+
 // Gradients
 #gradient {
   .horizontal (@startColor: #555, @endColor: #333) {

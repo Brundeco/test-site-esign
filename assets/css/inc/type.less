@@ -1,9 +1,9 @@
 // Font Stacks
 #font {
-	.default(@size: 14, @weight: 400, @lineHeight: 20) {
+	.default(@size: 14, @weight: 400, @lineHeight: 1.5em) {
 	    font-family: Helvetica, Arial, Verdana, sans-serif;
 	    .fs(@size);
-	    .lh(@lineHeight);
+	    line-height: @lineHeight;
 	    font-weight: @weight;
 	}
 }
@@ -38,7 +38,7 @@ a[href^=tel]{
 }
 
 img { 
-	max-width: 100%; height: auto;
+	max-width: 100%; height: auto; display: inline-block; vertical-align: middle;
 }
 
 

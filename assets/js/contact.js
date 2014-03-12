@@ -1,5 +1,11 @@
 $(function() {
-
+	
+	if(!Modernizr.touch) {
+		$('.validate').validationEngine();
+	} else {
+		$('.validate').validationEngine({scroll:false});
+	}
+	
     var map = addContactGoogleMaps("map", 51.016635, 3.734258);
    		addContactGoogleMapsMarker(map, 51.016635, 3.734258, "GooseBumps", "https://maps.google.be/maps?daddr=51.016405,3.736007&hl=nl&ll=51.016405,3.736007&spn=0.00773,0.016426&sll=51.007191,3.712097&sspn=0.00773,0.016426&mra=ls&t=m&z=17&iwloc=ddw1");
 

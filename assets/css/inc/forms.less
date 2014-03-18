@@ -37,7 +37,7 @@ select { width: 260px; height: 30px; }
 button, input[type="reset"], input[type="submit"], .button, a.button {
 	float: left; display: block; clear: both; .transition(0.2s); outline: none;
 	
-	.h(40); .lh(38); .fs(17); padding: 0 18px; margin: 15px 0 0; 
+	.h(40); .fs(17); padding: 0 18px; margin: 15px 0 0; 
 	background: @accent; border: 2px solid #E9F4F6; .border-radius(5px); 
 	text-decoration: none; color: #fff; text-transform: uppercase; 
 
@@ -48,9 +48,7 @@ button, input[type="reset"], input[type="submit"], .button, a.button {
 	&:active {
 		.box-shadow(inset 0 1px 2px rgba(0,0,0,0.2));
 	}
-	
-	&.large { .h(50); .lh(48); .fs(22); padding: 0 25px; }
-	
+		
 	&::-moz-focus-inner { border: 0; }
 }
 

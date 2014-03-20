@@ -74,6 +74,8 @@ ul ul, ul ol, ol ol, ol ul {
 }
 
 ul {
+	list-style: disc;
+	ul { list-style: circle; }
 	
 	&.social, &.people {
 		.unstyled; .clearfix;
@@ -131,6 +133,7 @@ ol {
 
 .unstyled, nav ul {
 	margin: 0; padding: 0; list-style: none;
+	ul { list-style: none; }
 	li { list-style: none; list-style-image: none; padding: 0; background: none; }
 }
 nav ul { .clearfix; }

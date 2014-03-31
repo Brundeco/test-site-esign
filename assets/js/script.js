@@ -1,4 +1,4 @@
-var $nav, UP = 'up', DOWN = 'down';
+var $nav;
 
 $(function() {
 	

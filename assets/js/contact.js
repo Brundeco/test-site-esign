@@ -62,7 +62,7 @@ function addContactGoogleMaps(container, latitude, longitude) {
 
 function addContactGoogleMapsMarker(map, latitude, longitude, title, extern_url) {
 	var myLatlng = new google.maps.LatLng(latitude, longitude),
-		marker_image = new google.maps.MarkerImage(url + "assets/images/marker.png",
+		marker_image = new google.maps.MarkerImage(base_url + "assets/images/marker.png",
 			new google.maps.Size(51,68),
 			new google.maps.Point(0,0),
 			new google.maps.Point(22, 60)),

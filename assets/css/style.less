@@ -90,7 +90,7 @@ article {
 }
 
 /* CONTENT */
-.intro { .fs(16); }
+.large { .fs(16); }
 
 .center-block { 
 	text-align: center; .clearfix; margin: 20px 0;
@@ -129,12 +129,12 @@ iframe { max-width: 100%; height: auto; }
 .main-nav { 
 	text-transform: uppercase; .optimize-font; color: @black;
 	li { }
-	a { text-decoration: none; color: @grayDark; } 
+	a { text-decoration: none; color: @grayDark; padding: 9px 0; display: block; } 
 	a:hover, a:focus, li.active a { color: @black; }
 	
 	.trigger {
 		display: block; position: relative; cursor: pointer;
-		.h(40); padding: 0 0 0 45px; font-weight: 500;
+		padding: 9px 0 9px 45px; font-weight: 500;
 		white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 		.icon-hamburger { position: absolute; left: 0; top: 12px; }
 	}

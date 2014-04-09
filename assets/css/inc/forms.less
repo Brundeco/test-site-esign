@@ -85,6 +85,10 @@ fieldset {
 	width: auto;
 	p, ul, li { .clearfix; }
 	ul { .unstyled; }
-	li { margin: 0 0 10px; }
+	li { margin: 0 0 10px; 
+		&.error { 
+			input { border-color: @error; }
+		}
+	}
 }
 

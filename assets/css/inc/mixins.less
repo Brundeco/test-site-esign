@@ -148,6 +148,14 @@
 	        transition: @transition;
 }
 
+.transition-delay(@delay:0.2s) {
+	-webkit-transition-delay: @delay;
+	   -moz-transition-delay: @delay;
+	    -ms-transition-delay: @delay;
+	   	 -o-transition-delay: @delay;
+	        transition-delay: @delay;
+}
+
 .transitionprop(@prop: all, @time: 1s, @ease: linear) {
     -webkit-transition: @prop @time @ease;
     -moz-transition: @prop @time @ease;

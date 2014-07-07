@@ -14,7 +14,6 @@
 // Styled patterns and elements
 @import "inc/type.less";
 @import "inc/tables.less";
-@import "inc/grid.less";
 @import "inc/forms.less";
 
 // Plugins
@@ -24,9 +23,6 @@
 /* =============================================================================
    LAYOUT
    ========================================================================== */
-*, *:before, *:after {
-	.border-box;
-}
 
 html { font-size: 62.5%; }
 body {
@@ -39,6 +35,17 @@ body {
 @selection: @accentHover;
 .selection(rgba(red(@selection), green(@selection), blue(@selection), 0.7), @white);
 
+
+/* =============================================================================
+   GRID
+   ========================================================================== */
+  
+.container { margin: 0 10px; position: relative; z-index: 5; .clearfix; }
+.row { .clearfix; margin: 0 0 20px; }
+
+.one-half, .two-third, .one-third, .three-fourth, .one-fourth { 
+	float: left; display: block; width: 100%;
+}
 
 /* =============================================================================
    ELEMENTS

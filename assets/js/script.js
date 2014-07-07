@@ -10,33 +10,6 @@ $(function() {
 	});
 	
 	/* ELEMENTS */
-	if ( typeof $.fancybox == 'function') {
-		$(".fancybox").fancybox({
-			openEffect : 'elastic',
-			closeEffect : 'none',
-			loop : false,
-			helpers : {
-		        overlay : {
-		            locked : false
-		        }
-		    },
-			afterShow: function() {
-                if ('ontouchstart' in document.documentElement){
-                    $('.fancybox-nav').css('display','none');
-                    $('.fancybox-wrap').swipe({
-                        swipe : function(event, direction) {
-                            if (direction === 'left' || direction === 'up') {
-		                        $.fancybox.next();
-                            } else {
-                            	$.fancybox.prev();
-                            }
-                        }
-                    });
-                }
-            }
-		});
-	}
-	
 	if(Modernizr.touch) {
 		$('.cycle-slideshow').each(function(index){
 			$(this)
@@ -58,7 +31,6 @@ $(function() {
 		e.preventDefault();
 		$(this).next('.nav-wrap').slideToggle('fast');
 	});
-	
 	
 });
 

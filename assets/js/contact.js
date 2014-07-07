@@ -7,7 +7,7 @@ $(function() {
 	}
 	
     var map = addContactGoogleMaps("map", 51.016635, 3.734258);
-   		addContactGoogleMapsMarker(map, 51.016635, 3.734258, "GooseBumps", "https://maps.google.be/maps?daddr=51.016405,3.736007&hl=nl&ll=51.016405,3.736007&spn=0.00773,0.016426&sll=51.007191,3.712097&sspn=0.00773,0.016426&mra=ls&t=m&z=17&iwloc=ddw1");
+   		addContactGoogleMapsMarker(map, 51.016635, 3.734258, "Template", "https://www.google.com/maps/place/Technologiepark-Zwijnaarde+1/@51.0071914,3.7120968,17z/data=!3m1!4b1!4m2!3m1!1s0x47c373970d0273e1:0x75c897695400ec00");
 
 });
 

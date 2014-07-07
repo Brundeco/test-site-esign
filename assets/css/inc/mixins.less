@@ -9,14 +9,9 @@
 
 // Clearfix for clearing floats like a boss h5bp.com/q
 .clearfix {
-  zoom: 1;
-	&:before, &:after {
-    display: table;
-    content: "";
-	}
-	&:after {
-    clear: both;
-	}
+	zoom: 1;
+	&:before, &:after { display: table; content: ""; }
+	&:after { clear: both; }
 }
 
 /* Image replacement */
@@ -37,12 +32,8 @@
 
 // Input placeholder text
 .placeholder(@color: @grayLight) {
-  :-moz-placeholder {
-    color: @color;
-  }
-  ::-webkit-input-placeholder {
-    color: @color;
-  }
+	:-moz-placeholder { color: @color; }
+	::-webkit-input-placeholder { color: @color; }
 }
 
 // Border Radius
@@ -60,11 +51,11 @@
 }
 
 // Box
-.box() {
+.box(@box: box) {
 	display: block;
 	display: -webkit-box;
     display: -moz-box;
-    display: box;
+    display: @box;
 }
 
 // Ordinal group
@@ -81,18 +72,18 @@
     box-orient: @orient;
 }
 
-/*
+
 
 // Flex Box
-.flex-box() {
+.flex-box(@flex: flex) {
 	display: -webkit-box;     
 	display: -moz-box;        
 	display: -ms-flexbox;     
 	display: -webkit-flex;    
-	display: flex;            
+	display: @flex;            
 }
 
-.flexbox-flex(@width) {
+.flexbox-flex(@width: 1) {
 	-webkit-box-flex: 1;
 	-moz-box-flex: 1;
 	width: @width;
@@ -117,7 +108,7 @@
     box-orient: @orient;
     flex-direction: row;
 }
-*/
+
 
 // Box sizing
 .border-box(@sizing: border-box){

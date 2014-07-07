@@ -2,11 +2,11 @@ var $nav;
 
 $(function() {
 	
-	$(window).setBreakpoints({
-	    distinct: true, 
-	    breakpoints: [
-	        767
-	    ] 
+	Response.create({
+	    prop: "width", 
+	    prefix: "min-width- r src", 
+	    breakpoints: [767,0], 
+	    lazy: true
 	});
 	
 	/* ELEMENTS */
@@ -32,12 +32,15 @@ $(function() {
 		$(this).next('.nav-wrap').slideToggle('fast');
 	});
 	
-});
-
-$(window).bind('enterBreakpoint767',function() {
-	$nav.css('display', 'block');
-});
-
-$(window).bind('exitBreakpoint767',function() {
-	$nav.css('display', 'none');
+	/* RESPONSIVE */
+	Response.crossover('width', function() {
+		
+		if(Response.band(767)) {
+			$nav.css('display', 'block');
+		} else {
+			$nav.css('display', 'none');
+		}
+		
+	});
+	
 });

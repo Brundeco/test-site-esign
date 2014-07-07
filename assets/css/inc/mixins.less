@@ -72,8 +72,6 @@
     box-orient: @orient;
 }
 
-
-
 // Flex Box
 .flex-box(@flex: flex) {
 	display: -webkit-box;     
@@ -377,4 +375,84 @@
 .animation-iteration-count(@count: infinite) {
 	animation-iteration-count: @count;
 	-webkit-animation-iteration-count: @count;
+}
+
+
+// Pseudo element
+.pseudo-element(@top:0, @left:0) {
+	position: absolute; 
+	content: "";
+	top: @top;
+	left: @left;
+}
+
+/* ------------------------ */
+/* LESS mixin for CSS arrow */
+/* ------------------------ */
+
+/* Usage
+ * .arrow(size, color, direction, offset, border-size, border-color); 
+ */
+
+/* Where
+ * Size is the with of the arrow
+ * Color is the color of the arrow (plain color required)
+ * Direction is the orientation of the arrow (top, right, bottom, left)
+ * Offset is the position of the arrow on its axis (px / em)
+ * Border-size is the width of the border if there is one (optional; default "0")
+ * Border-color is the color of the border if there is one (optional; default "inherit"); 
+ */
+
+/* Extra
+ * Drop-shadows can be used on the element to create a shadow on the arrow as well 
+ */
+
+.arrow(@size, @color, @direction, @offset) {
+	position: absolute; content: ""; width: 0; height: 0;
+}
+
+.arrow(@size, @color, @direction, @offset) when (@direction = top) {
+	
+	left: @offset;
+	margin-left: -@size;
+	
+	border-left: @size solid transparent;
+	border-right: @size solid transparent;
+	border-bottom: @size solid @color;
+
+}
+
+.arrow(@size, @color, @direction, @offset) when (@direction = bottom) {
+
+    left: @offset;
+    margin-left: -@size;
+
+    border-left: @size solid transparent;
+    border-right: @size solid transparent;
+    border-top: @size solid @color;
+
+}
+
+.arrow(@size, @color, @direction, @offset) when (@direction = right) {
+
+    left: 100%;
+    top: @offset;
+    margin-top: -@size;
+
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-left: @size solid @color;
+
+}
+
+.arrow(@size, @color, @direction, @offset) when (@direction = left) {
+
+    right: 100%;
+    top: @offset;
+    margin-top: -@size;
+
+    border-top: @size solid transparent;
+    border-bottom: @size solid transparent;
+    border-right: @size solid @color;
+    
 }

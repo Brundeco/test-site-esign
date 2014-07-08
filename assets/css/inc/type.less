@@ -30,6 +30,10 @@ a {
 	-webkit-tap-highlight-color: #999; tap-highlight-color: #999;
 	font-weight: inherit; font-style: inherit;
 	&:hover, &:focus { color: @linkColorHover; }
+	
+	&.tdn { text-decoration: none; 
+		&:hover, &:focus { text-decoration: underline; }
+	}
 }
 
 a[href^=tel]{

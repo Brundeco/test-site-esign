@@ -323,6 +323,23 @@ table tfoot {
 .invisible {
   visibility: hidden;
 }
+/* ------------------------ */
+/* LESS mixin for CSS arrow */
+/* ------------------------ */
+/* Usage
+ * .arrow(size, color, direction, offset, border-size, border-color); 
+ */
+/* Where
+ * Size is the with of the arrow
+ * Color is the color of the arrow (plain color required)
+ * Direction is the orientation of the arrow (top, right, bottom, left)
+ * Offset is the position of the arrow on its axis (px / em)
+ * Border-size is the width of the border if there is one (optional; default "0")
+ * Border-color is the color of the border if there is one (optional; default "inherit"); 
+ */
+/* Extra
+ * Drop-shadows can be used on the element to create a shadow on the arrow as well 
+ */
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
  * ---------------------------------------------------------------------------------------- */
@@ -359,6 +376,13 @@ a {
 a:hover,
 a:focus {
   color: #777777;
+}
+a.tdn {
+  text-decoration: none;
+}
+a.tdn:hover,
+a.tdn:focus {
+  text-decoration: underline;
 }
 a[href^=tel] {
   text-decoration: none;
@@ -1719,16 +1743,6 @@ a.esign:hover {
     float: right;
   }
   /* PAGES */
-  /* IE */
-  html.lt-ie8 {
-    /* box model ie7 clear fix */
-  
-  }
-  html.lt-ie8 .row {
-    float: left;
-    width: 100%;
-    clear: both;
-  }
 }
 @media screen and (min-width: 767px) and (max-width: 1024px) {
   
@@ -1752,6 +1766,18 @@ a.esign:hover {
 /* =============================================================================
    HOOKS
    ========================================================================== */
+.lt-ie9 #logo img {
+  max-width: inherit;
+}
+.lt-ie8 {
+  /* box model ie7 clear fix */
+
+}
+.lt-ie8 .row {
+  float: left;
+  width: 100%;
+  clear: both;
+}
 /* =============================================================================
    PRINT
    Inlined to avoid required HTTP connection: h5bp.com/r

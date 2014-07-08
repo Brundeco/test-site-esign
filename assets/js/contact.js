@@ -6,8 +6,8 @@ $(function() {
 		$('.validate').validationEngine({scroll:false});
 	}
 	
-    var map = addContactGoogleMaps("map", 51.016635, 3.734258);
-   		addContactGoogleMapsMarker(map, 51.016635, 3.734258, "Template", "https://www.google.com/maps/place/Technologiepark-Zwijnaarde+1/@51.0071914,3.7120968,17z/data=!3m1!4b1!4m2!3m1!1s0x47c373970d0273e1:0x75c897695400ec00");
+    var map = addContactGoogleMaps("map", 51.0071914,3.7120968);
+   		addContactGoogleMapsMarker(map, 51.0071914,3.7120968, "Template", "https://www.google.com/maps/place/Technologiepark-Zwijnaarde+1/@51.0071914,3.7120968,17z/data=!3m1!4b1!4m2!3m1!1s0x47c373970d0273e1:0x75c897695400ec00");
 
 });
 

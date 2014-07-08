@@ -35,6 +35,8 @@ body {
 @selection: @accentHover;
 .selection(rgba(red(@selection), green(@selection), blue(@selection), 0.7), @white);
 
+/* typekit async loading (all elements using @ typekit font) */
+.wf-loading body { visibility: hidden; }
 
 /* =============================================================================
    GRID

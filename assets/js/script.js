@@ -8,29 +8,17 @@ $(function() {
 	    breakpoints: [767,0], 
 	    lazy: true
 	});
-	
-	/* ELEMENTS */
-	if(Modernizr.touch) {
-		$('.cycle-slideshow').each(function(index){
-			$(this)
-				.swipe({
-	                swipe : function(event, direction) {
-	                    if (direction === 'left' || direction === 'up') {
-	                        $(this).cycle('next');
-	                    } else {
-	                        $(this).cycle('prev');
-	                    }
-	                }, allowPageScroll:"vertical"
-	            });
-		});
-	}
-	
+
 	/* NAVIGATION */
 	$nav = $('.nav-wrap');
 	$('.main-nav .trigger').click(function(e) {
 		e.preventDefault();
 		$(this).next('.nav-wrap').slideToggle('fast');
 	});
+	
+	/* ELEMENTS */
+	
+	
 	
 	/* RESPONSIVE */
 	Response.crossover('width', function() {

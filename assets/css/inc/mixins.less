@@ -39,6 +39,13 @@
     user-select:            @val;
 }
 
+/* Zoom, for scaling image sprite */
+.zoom(@ratio: 1) {
+    zoom: @ratio;
+    -moz-transform: scale(@ratio);
+    -moz-transform-origin: 0 0;
+}
+
 // Input placeholder text
 .placeholder(@color: @grayLight) {
 	:-moz-placeholder { color: @color; }

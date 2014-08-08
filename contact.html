@@ -93,13 +93,22 @@
 					<div class="one-half">
 						<h2>Contacteer ons</h2>
 						<form action="" method="post" class="validate">
+							<div class="box error">
+								<ul>
+									<li id="error_email">Naam is verplicht</li>
+									<li id="error_email">Geldig emailadres is verplicht</li>
+								</ul>
+							</div>
+							<div class="box success">
+								<p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
+							</div>
 							<fieldset>
 								<ul>
-									<li>
+									<li class="error">
 		                                <label for="name">Naam</label>
 		                                <input type="text" name="name" id="name" class="validate[required]" />
 		                            </li>
-		                            <li>
+		                            <li class="error">
                                         <label for="email">E-mail</label>
                                         <input type="email" name="email" id="email" class="validate[required,custom[email]]" />
                                     </li>

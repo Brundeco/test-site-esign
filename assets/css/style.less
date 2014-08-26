@@ -141,9 +141,11 @@ html.no-flexbox {
 	.equal-h { height: 100%; }	
 }
 
-/* vertical middle */
-.vm-wrap, .vm { display: table; width: 100%; height: 100%; vertical-align: middle; }
-.vm { display: table-cell; }
+/* vertical align */
+.va-wrap, .va-m, .va-b { display: table; width: 100%; height: 100%; }
+.va-m, .va-b { display: table-cell; }
+.va-m { vertical-align: middle; }
+.va-b { vertical-align: bottom; }
 
 
 /* =============================================================================

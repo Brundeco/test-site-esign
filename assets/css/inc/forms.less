@@ -21,7 +21,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] { -
 input[type=checkbox], input[type=radio] { cursor: pointer; }
 
 input[type=text], input[type=search], input[type=password], input[type=email], input[type=tel], textarea, select {
-	padding: 6px; margin-bottom: 2px;
+	padding: 6px; margin-bottom: 2px; display: block;
 	background: #fff; height: 35px; line-height: inherit; width: 100%; border: 1px solid @gray;	
 	&:focus { outline: none; border-color: @black; }
 }
@@ -31,8 +31,6 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 input[type=checkbox], input[type=radio] { box-sizing: border-box; width: auto; height: auto; padding: 0; margin: 3px 0; *margin-top: 0; *height: 13px; *width: 13px; line-height: normal; border: none; }
 input[type=file] { background-color: #fff; padding: initial; border: initial; line-height: initial; }
 input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
-
-select { width: 260px; height: 30px; }
 
 button, input[type="reset"], input[type="submit"], .button, a.button {
 	float: left; display: block; clear: both; .transition; outline: none;

@@ -4,18 +4,13 @@
 
 form { margin: 0; }
 
-
 legend { border: 0; padding: 0; white-space: normal; *margin-left: -7px; color: #fff; font-size: 18px;  }
 button, input, select, textarea, .button { margin: 0; vertical-align: baseline; *vertical-align: middle; }
 button, input { line-height: normal; }
 button, select { text-transform: none; }
 
 label, .label, input, select, textarea { #font > .default; vertical-align: middle; color: @black; }
-
-label, .label { 
-	display: block; margin-bottom: 8px;
-	
-}
+label, .label { display: block; margin-bottom: 8px; }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance: button;  cursor: pointer; *overflow: visible; border: none; }
 input[type=checkbox], input[type=radio] { cursor: pointer; }
@@ -25,6 +20,7 @@ input[type=text], input[type=search], input[type=password], input[type=email], i
 	background: #fff; height: 35px; line-height: inherit; width: 100%; border: 1px solid @gray;	
 	&:focus { outline: none; border-color: @black; }
 }
+
 input[type="email"] { display: block; }
 textarea { overflow: auto; vertical-align: top; resize: vertical; width: 100%; height: 185px; }
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
@@ -33,20 +29,13 @@ input[type=file] { background-color: #fff; padding: initial; border: initial; li
 input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
 
 button, input[type="reset"], input[type="submit"], .button, a.button {
-	float: left; display: block; clear: both; .transition; outline: none;
-	
-	.fs(15); padding: 13px 30px; margin: 10px 0 0; 
-	background: @accent; border: 2px solid #E9F4F6; .border-radius(5px); 
-	text-decoration: none; color: #fff; text-transform: uppercase; 
-	/* buttons default on one line */ white-space: nowrap;
+	float: left; display: block; clear: both; .transition; outline: none; .fs(15); padding: 13px 30px; margin: 10px 0 0; background: @accent;
+    .border-radius(5px); text-decoration: none; color: #fff; text-transform: uppercase; white-space: nowrap;
 
 	i { margin: -5px 6px 0 5px; }
-	&:hover, &:focus, &:active {
-		background: @accentHover;
-	}
-	&:active {
-		.box-shadow(inset 0 1px 2px rgba(0,0,0,0.2));
-	}
+	
+	&:hover, &:focus, &:active { background: @accentHover; }
+	&:active { .box-shadow(inset 0 1px 2px rgba(0,0,0,0.2)); }
 		
 	&::-moz-focus-inner { border: 0; }
 }
@@ -73,7 +62,6 @@ input[type=search] { -webkit-appearance: none; } /* Remove the rounded corners *
 ::-webkit-outer-spin-button { -webkit-appearance: none; }
 
 ::-ms-browse, ::-webkit-file-upload-button { } /* Style file upload button */
-
 
 /* forms */
 form {

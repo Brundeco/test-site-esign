@@ -30,7 +30,7 @@ body {
 	-webkit-tap-highlight-color: rgba(0,0,0,0); tap-highlight-color: rgba(0,0,0,0);
 }
 
-.page-wrap { position: relative; z-index: 2; }
+.page-wrap { position: relative; }
 
 @selection: @accentHover;
 .selection(rgba(red(@selection), green(@selection), blue(@selection), 0.7), @white);
@@ -188,6 +188,7 @@ html.no-flexbox {
    FOOTER
    ========================================================================== */
 .page-footer {
+	position: relative;
 	.row { margin-bottom: 0; }
 }
 

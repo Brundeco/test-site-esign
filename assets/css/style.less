@@ -164,7 +164,10 @@ html.no-flexbox {
 .main-nav { 
 	text-transform: uppercase; .optimize-font; color: @black;
 	li { }
-	a { text-decoration: none; color: @grayDark; padding: 9px 0; display: block; } 
+	a { 
+		text-decoration: none; color: @grayDark; padding: 9px 0 9px 45px; 
+		display: block; border-top: 1px solid @grayLight; 
+	} 
 	a:hover, a:focus, li.active a { color: @black; }
 	
 	.trigger {
@@ -174,7 +177,7 @@ html.no-flexbox {
 		.icon-hamburger { position: absolute; left: 0; top: 12px; }
 	}
 	
-	.nav-wrap { display: none; margin: 0 0 15px 45px; }
+	.nav-wrap { display: none; margin: 0 0 15px; }
 }
 
 

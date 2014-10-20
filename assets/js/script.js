@@ -17,8 +17,14 @@ $(function() {
 	});
 	
 	/* ELEMENTS */
-	
-	
+	$(".blocklink").click(function(){
+		var $target = $(this).find("a.target");
+		if($target.length && $target.attr('href') !== '#')
+		{
+			window.location=$target.attr("href");
+		}
+		return false;
+	});
 	
 	/* RESPONSIVE */
 	Response.crossover('width', function() {

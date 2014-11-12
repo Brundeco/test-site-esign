@@ -12,9 +12,6 @@ html {
 }
 html, body { 
 	margin: 0; padding: 0; 
-	-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
-  	-moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
-  	font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, q, s, samp, small, strike, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td { 
@@ -38,11 +35,6 @@ audio, canvas, video {
 audio:not([controls]) { display: none; }
 
 /* TYPE */
-h1, h2, h3, h4, h5, h6 {
-	-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
-	-moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
-	font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
-}
 
 a:focus { outline: thin dotted; }
 
@@ -59,9 +51,6 @@ sub, sup {
  */
 sup { 
 	top: -0.5em; 
-	-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
-	-moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
-	font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
 }
 
 /**
@@ -69,9 +58,6 @@ sup {
  */
 sub {
 	bottom: -0.25em;
-	-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "subs" 1;
-	-moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "subs" 1;
-	font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0, "subs" 1;
 }
 
 figure { margin: 0; }
@@ -83,16 +69,10 @@ svg:not(:root) { overflow: hidden; }
  */
 abbr {
 	text-transform: uppercase;
-	-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
-	-moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
-	font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
 }
 
 time {
-	display: block;
-	-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0;
-	-moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0;
-	font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0; 
+	display: block; 
 }
 
 /* FORMS */
@@ -115,11 +95,6 @@ input[type="search"] { // Appearance in Safari/Chrome
 input[type="search"]::-webkit-search-decoration {
 	-webkit-appearance: none; // Inner-padding issues in Chrome OSX, Safari 5
 }
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="numer"], input[type="range"], input[type="tel"], input[type="week"] {
-	-webkit-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 0, "onum" 0, "lnum" 1, "zero" 1;
-	-moz-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 0, "onum" 0, "lnum" 1, "zero" 1;
-	font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 0, "onum" 0, "lnum" 1, "zero" 1;
-}
 textarea {
 	overflow: auto; // Remove vertical scrollbar in IE6-9
 	vertical-align: top; // Readability and alignment cross-browser
@@ -128,13 +103,4 @@ textarea {
 /* TABLE */
 table {
 	border-collapse: collapse; border-spacing: 0;
-	-webkit-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
-	-moz-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
-	font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
-}
-
-table thead, table tfoot {
-	-webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
-	-moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
-	font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }

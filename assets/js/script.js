@@ -19,8 +19,7 @@ $(function() {
 	/* ELEMENTS */
 	$(".blocklink").click(function(){
 		var $target = $(this).find("a.target");
-		if($target.length && $target.attr('href') !== '#')
-		{
+		if($target.length && $target.attr('href') !== '#') {
 			window.location=$target.attr("href");
 		}
 		return false;
@@ -28,13 +27,11 @@ $(function() {
 	
 	/* RESPONSIVE */
 	Response.crossover('width', function() {
-		
 		if(Response.band(767)) {
 			$nav.css('display', 'block');
 		} else {
 			$nav.css('display', 'none');
 		}
-		
 	});
 	
 });

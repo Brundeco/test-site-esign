@@ -1,22 +1,37 @@
+/**
+ **** Overview ****
+ ** - Imports (reset, core, paterns, plugins)
+ ** - Layout
+ **   Grid / Elements (icons, slideshow, other, ...)
+ ** - Header / Main / Footer
+ ** - Content elements (no overrides from main)
+ ** - Pages (page overrides)
+ ** - Hooks (IE, ...)
+ ** - Print
+ ** 
+ **** Mediaqueries ****
+ ** use @media @tabletMini, @tablet, @desktop, @desktopSmall, @mobile, @wide ...
+ */
+
 /* =============================================================================
    IMPORTS
    ========================================================================== */
 
-// CSS Reset
+/* CSS Reset */
 @import "inc/reset.less";
 
-// Core
+/* Core */
 @import "inc/vars.less";
 @import "inc/mixins.less";
 //@import "inc/animations.less";
 //@import "inc/custom-animations.less";
 
-// Styled patterns and elements
+/* Styled patterns and elements */
 @import "inc/type.less";
 @import "inc/tables.less";
 @import "inc/forms.less";
 
-// Plugins
+/* Plugins */
 @import "inc/plugins.less";
 
 
@@ -24,30 +39,74 @@
    LAYOUT
    ========================================================================== */
 
+html, body {
+	@media @tablet { height: 100%; }
+}
 html { font-size: 62.5%; }
 body {
 	#font > .default; color: @black; 
 	-webkit-tap-highlight-color: rgba(0,0,0,0); tap-highlight-color: rgba(0,0,0,0);
 }
 
-.page-wrap { position: relative; }
+.page-wrap { 
+	position: relative; 
+	
+	@media @tablet { height: auto; min-height: 100%; z-index: 2; }
+}
+
+/* typekit async loading (all elements using @ typekit font) */
+.wf-loading body { visibility: hidden; }
+
 
 @selection: @accentHover;
 .selection(rgba(red(@selection), green(@selection), blue(@selection), 0.2), inherit);
 
-/* typekit async loading (all elements using @ typekit font) */
-.wf-loading body { visibility: hidden; }
 
 
 /* =============================================================================
    GRID
    ========================================================================== */
   
-.container { margin: 0 10px; position: relative; z-index: 5; .clearfix; }
-.row { .clearfix; margin: 0 0 20px; }
+.container { 
+	margin: 0 10px; position: relative; z-index: 5; .clearfix; 
+	
+	@media @tablet { margin: 0 20px; }
+	@media @desktop { width: 980px; margin: 0 auto; }
+}
+
+.row { 
+	.clearfix; margin: 0 0 20px -20px; 
+	
+	@media @tablet {  }
+	
+	@media @desktop {
+		&.g80 { 
+			margin-left: -80px; 
+			.one-half, .two-third, .one-third, .three-fourth, .one-fourth { padding-left: 80px; }
+		}
+	}
+}
 
 .one-half, .two-third, .one-third, .three-fourth, .one-fourth { 
-	float: left; display: block; width: 100%;
+	float: left; display: block; width: 100%; padding-left: 20px;
+}
+
+.one-half { 
+	@media @tablet { width: 50%; }
+}
+.two-third { 
+	@media @tablet { width: 66.66%; } 
+}
+.one-third { 
+	@media @tablet { width: 33.33%; } 
+}
+.three-fourth { 
+	@media @tabletMini { width: 50%; }
+	@media @tablet { width: 75%; } 
+}
+.one-fourth { 
+	@media @tabletMini { width: 50%; }
+	@media @tablet { width: 25%; } 
 }
 
 
@@ -64,25 +123,12 @@ body {
 .icon-hamburger, .icon-hamburger:before, .icon-hamburger:after {
 	width: 24px; position: absolute; height: 1px; border-top: 3px solid @accent; .transition(0.2s);
 }
+
 .icon-hamburger {
 	position: relative;
 	&:before, &:after { content: ""; margin-left: 0; }
 	&:before { margin-top: 3px; }
 	&:after { margin-top: 9px; }
-}
-
-/* ARTICLES */
-section { position: relative; }
-
-article {
-	.clearfix; margin: 0 0 20px;
-	
-	a {
-		img { display: block; .transition(0.2s); .opacity(100); }
-		&:hover, &:focus {  
-			img { .opacity(80); }
-		}
-	}
 }
 
 /* SLIDESHOW */
@@ -99,21 +145,6 @@ article {
 	}
 	span:hover, span:focus, .cycle-pager-active { text-indent: 0; }
 }
-
-/* CONTENT */
-.large { .fs(16); }
-
-.center-block { 
-	text-align: center; .clearfix; margin: 20px 0;
-	.button { float: none; display: inline-block; }	
-}
-
-.box { margin: 0 0 20px; padding: 15px 15px 5px; .clearfix; background: #E7E4DB;
-	ul, p { margin-bottom: 1em; }
-	&.error { background: @error; color: #fff; }
-	&.success { background: @succes; }
-}
-
 
 /* OTHER */
 
@@ -151,6 +182,7 @@ html.no-flexbox {
 /* blocklink */
 .blocklink { cursor: pointer; }
 
+
 /* =============================================================================
    HEADER
    ========================================================================== */
@@ -164,58 +196,110 @@ html.no-flexbox {
 	&:hover, &:focus { .opacity(80); }
 }
 
-.main-nav { 
+.main-nav {
 	text-transform: uppercase; .optimize-font; color: @black;
-	li { }
+	
+	li { 
+		@media @tablet { float: left; margin: 0 0 0 20px; }
+	}
+	
 	a { 
 		text-decoration: none; color: @grayDark; padding: 9px 0 9px 45px; 
 		display: block; border-top: 1px solid @grayLight; 
+		
+		@media @tablet { border-top: 0; padding: 0; }
 	} 
-	a:hover, a:focus, li.active a { color: @black; }
+	a:hover, a:focus, li.active a { color: @black; }	
 	
 	.trigger {
 		display: block; position: relative; cursor: pointer;
 		padding: 9px 0 9px 45px; font-weight: 500;
 		white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 		.icon-hamburger { position: absolute; left: 0; top: 12px; }
+		
+		@media @tablet { display: none; }
 	}
 	
-	.nav-wrap { display: none; margin: 0 0 15px; }
+	.nav-wrap { 
+		display: none; margin: 0 0 15px; 
+		
+		@media @tablet { margin: 0 0 0 -20px; display: block; }	
+	}
 }
 
 
 /* =============================================================================
    MAIN
    ========================================================================== */
-.main { padding: 40px 0; }
+
+.main { 
+	padding: 40px 0; 
+	
+	@media @tablet { padding: 50px 0 150px; }
+}
 
 
 /* =============================================================================
    FOOTER
    ========================================================================== */
+
 .page-footer {
 	position: relative;
 	.row { margin-bottom: 0; }
+	
+	@media @tablet {  
+		height: 60px; margin: -60px 0 0; z-index: 5;
+	}
 }
 
 a.esign { 
 	width: 104px; height: 20px; .at2x('../images/logo-esign.png', '../images/logo-esign@2x.png', 104px, 20px);
 	text-indent: -9999px; .opacity(60); .transition(1s); display: block; outline: none;
     &:hover { .opacity(100); } 
+    
+    @media @tablet { float: right; }
 }
+
+
+/* =============================================================================
+   CONTENT
+   ========================================================================== */
+  
+.large { .fs(16); }
+
+.center-block { 
+	text-align: center; .clearfix; margin: 20px 0;
+	.button { float: none; display: inline-block; }	
+}
+
+.box { margin: 0 0 20px; padding: 15px 15px 5px; .clearfix; background: #E7E4DB;
+	ul, p { margin-bottom: 1em; }
+	&.error { background: @error; color: #fff; }
+	&.success { background: @succes; }
+}
+
+
+section { position: relative; }
+
+article {
+	.clearfix; margin: 0 0 20px;
+	
+	a {
+		img { display: block; .transition(0.2s); .opacity(100); }
+		&:hover, &:focus {  
+			img { .opacity(80); }
+		}
+	}
+}
+
+.map { width: 100%; height: 350px; background: #efefef; margin: 0 0 40px; }
+
 
 /* =============================================================================
    PAGES
    ========================================================================== */
 
-/* CONTACT */
-.map { width: 100%; height: 350px; background: #efefef; margin: 0 0 40px; }
 
-
-/* =============================================================================
-   MEDIAQUERIES
-   ========================================================================== */
-@import "inc/mediaqueries.less";
 
 
 /* =============================================================================
@@ -242,6 +326,5 @@ a.esign {
     a, a:visited { text-decoration: underline; }
     tr, img { page-break-inside: avoid; }
     img { max-width: 100% !important; }
-    @page { margin: 2cm 0.5cm 1cm; }
-    
+    @page { margin: 2cm 0.5cm 1cm; } 
 }

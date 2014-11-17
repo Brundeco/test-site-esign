@@ -50,16 +50,34 @@ img {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	.optimize-font; color: @accent; line-height: 1.2em; margin: 0 0 0.8em;
-	a { text-decoration: none; outline: none; font-weight: inherit; }
+	a { 
+		text-decoration: none; outline: none; font-weight: inherit; 
+		color: @accent; 
+		&:hover, &:focus { color: @accentHover; }
+	}
 }
 
-h1, .h1 { .fs(24); }
+h1, .h1 { 
+	.fs(24); 
+	
+	@media @tablet { .fs(35); }
+}
 
-h2, .h2 { .fs(18); }
+h2, .h2 { 
+	.fs(18); 
+	
+	@media @tablet { .fs(24); }
+}
 
-h3, .h3 {  }
+h3, .h3 {  
+	.fs(16); 
+	
+	@media @tablet { .fs(20); }	
+}
 
-h4, .h4 {  }
+h4, .h4 {  
+	@media @tablet { .fs(16); }		
+}
 
 h5, .h5 {  }
 

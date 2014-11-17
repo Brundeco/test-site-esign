@@ -199,15 +199,9 @@ html.no-flexbox {
 .main-nav {
 	text-transform: uppercase; .optimize-font; color: @black;
 	
-	li { 
-		@media @tablet { float: left; margin: 0 0 0 20px; }
-	}
-	
 	a { 
 		text-decoration: none; color: @grayDark; padding: 9px 0 9px 45px; 
 		display: block; border-top: 1px solid @grayLight; 
-		
-		@media @tablet { border-top: 0; padding: 0; }
 	} 
 	a:hover, a:focus, li.active a { color: @black; }	
 	
@@ -216,14 +210,15 @@ html.no-flexbox {
 		padding: 9px 0 9px 45px; font-weight: 500;
 		white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 		.icon-hamburger { position: absolute; left: 0; top: 12px; }
-		
-		@media @tablet { display: none; }
 	}
 	
-	.nav-wrap { 
-		display: none; margin: 0 0 15px; 
-		
-		@media @tablet { margin: 0 0 0 -20px; display: block; }	
+	.nav-wrap {  display: none; margin: 0 0 15px; }
+	
+	@media @tablet { 
+		li { float: left; margin: 0 0 0 20px; }
+		a { border-top: 0; padding: 0; }
+		.trigger { display: none; }
+		.nav-wrap { margin: 0 0 0 -20px; display: block; }
 	}
 }
 

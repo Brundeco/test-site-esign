@@ -29,11 +29,13 @@
 @succes: 			@accent;
 
 @siteWidth:         960;
-@doc-font-size: 	10;
 
-@tabletMini: ~"only screen and (min-width: 600px)";
-@tablet:   ~"only screen and (min-width: 767px)";
-@mobile:   ~"only screen and (max-width: 767px)";
-@desktop:   ~"only screen and (min-width: 980px)";
-@desktopSmall:   ~"only screen and (min-width: 1024px)";
-@wide:   ~"only screen and (min-width: 1350px)";
+@doc-font-size: 	10;
+@body-font-size: 	14;
+
+@tabletMini: e(%("only screen and (min-width: %A)", 0em + floor(600 / @body-font-size))); /* 600px */
+@tablet:   e(%("only screen and (min-width: %A)", 0em + floor(767 / @body-font-size))); /* 767px */
+@mobile:   e(%("only screen and (max-width: %A)", 0em + floor(767 / @body-font-size))); /* 767px */
+@desktop:	e(%("only screen and (min-width: %A)", 0em + floor(980 / @body-font-size))); /* 980px */
+@desktopSmall: e(%("only screen and (min-width: %A)", 0em + floor(1024 / @body-font-size))); /* 1024px */
+@wide:  e(%("only screen and (min-width: %A)", 0em + floor(1350 / @body-font-size))); /* 1350px */

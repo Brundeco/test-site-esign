@@ -29,6 +29,7 @@ a {
 	color: @linkColor; text-decoration: underline; .transition(0.2s);
 	font-weight: inherit; font-style: inherit;
 	&:hover, &:focus { color: @linkColorHover; }
+	&:focus, &:active { outline: 0; }
 	
 	&.tdn { text-decoration: none; 
 		&:hover, &:focus { text-decoration: underline; }

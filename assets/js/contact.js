@@ -30,6 +30,11 @@ function addContactGoogleMaps(container, latitude, longitude) {
 						{ lightness: 150 },
 			        	{ visibility: "simplified" }
 		        	]
+				},{
+					featureType: "poi",
+					stylers: [
+						{"visibility":"off"}
+					]
 				}
 			], 
 			{name: "Styled Map"}

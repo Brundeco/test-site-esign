@@ -193,7 +193,10 @@ iframe { max-width: 100%; height: auto; }
 }
 
 html.no-flexbox {
-	.equal-h { height: 100%; }	
+	.equal-h { 
+		height: 100%;
+		> div { float: left; }
+	}
 }
 
 /* vertical align */

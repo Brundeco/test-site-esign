@@ -343,10 +343,19 @@ article {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
+	html { font-size: 10px; }
     * { background-color: transparent !important; color: #000 !important; box-shadow: none !important; text-shadow: none !important; }
     .ir { text-indent: 0; overflow: visible; direction: inherit; }
     a, a:visited { text-decoration: underline; }
     tr, img { page-break-inside: avoid; }
     img { max-width: 100% !important; }
     @page { margin: 2cm 0.5cm 1cm; } 
+    
+    .page-footer, .main-nav { display: none; }
+    
+    .one-half { width: 50%; }
+	.two-third { width: 66.66%; }
+	.one-third { width: 33.33%; } 
+	.three-fourth { width: 75%; } 
+	.one-fourth { width: 25%; } 
 }

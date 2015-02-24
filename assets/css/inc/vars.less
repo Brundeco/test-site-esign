@@ -33,9 +33,9 @@
 @doc-font-size: 	10;
 @size: 	16;
 
-@tabletMini: e(%("only screen and (min-width: %A)", 0em + floor(600 / @size))); /* 600px */
-@tablet:   e(%("only screen and (min-width: %A)", 0em + floor(767 / @size))); /* 767px */
-@mobile:   e(%("only screen and (max-width: %A)", 0em + floor(767 / @size))); /* 767px */
-@desktop:	e(%("only screen and (min-width: %A)", 0em + floor(980 / @size))); /* 980px */
-@desktopSmall: e(%("only screen and (min-width: %A)", 0em + floor(1024 / @size))); /* 1024px */
-@wide:  e(%("only screen and (min-width: %A)", 0em + floor(1350 / @size))); /* 1350px */
+@tabletMini: ~"(min-width: 37em)"; /* 600px */
+@tablet:   ~"(min-width: 47em)"; /* 767px */
+@mobile:   ~"(max-width: 47em)"; /* 767px */
+@desktop:   ~"(min-width: 61em)"; /* 980px */
+@desktopSmall:   ~"(min-width: 64em)"; /* 1024px */
+@wide:   ~"(min-width: 84em)"; /* 1350px */

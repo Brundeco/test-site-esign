@@ -2,7 +2,7 @@
 window.viewportUnitsBuggyfill.init();
 
 /*!
- * viewport-units-buggyfill v0.5.0
+ * viewport-units-buggyfill v0.5.2
  * @web: https://github.com/rodneyrehm/viewport-units-buggyfill/
  * @author: Rodney Rehm - http://rodneyrehm.de/en/
  */
@@ -33,7 +33,8 @@ window.viewportUnitsBuggyfill.init();
   var dimensions;
   var declarations;
   var styleNode;
-  var isOldInternetExplorer = false;
+  var isBuggyIE = false;
+  var isOldIE = false;
   var isOperaMini = userAgent.indexOf('Opera Mini') > -1;
 
   var isMobileSafari = /(iPhone|iPod|iPad).+AppleWebKit/i.test(userAgent) && (function() {
@@ -45,9 +46,8 @@ window.viewportUnitsBuggyfill.init();
     // * Safari iOS8: "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4"
     // * Safari iOS7: "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A4449d Safari/9537.53"
     var iOSversion = userAgent.match(/OS (\d)/);
-    // viewport units work fine in mobile Safari and webView on iOS 8+ 
-    // 	Edit: currently not > changed version from 8 to 200
-    return iOSversion && iOSversion.length>1 && parseInt(iOSversion[1]) < 200;
+    // viewport units work fine in mobile Safari and webView on iOS 8+
+    return iOSversion && iOSversion.length>1 && parseInt(iOSversion[1]) < 8;
   })();
 
   var isBadStockAndroid = (function() {
@@ -75,15 +75,20 @@ window.viewportUnitsBuggyfill.init();
 
   /*@cc_on
 
-  @if (@_jscript_version <= 10)
-    isOldInternetExplorer = true;
+  @if (9 <= @_jscript_version && @_jscript_version <= 10)
+    isBuggyIE = true;
   @end
-
+  
+  @if (@_jscript_version < 9) {
+    isOldIE = true;
+  }
+  @end
+  
   @*/
 
   // added check for IE11, since it *still* doesn't understand vmax!!!
-  if (!isOldInternetExplorer) {
-    isOldInternetExplorer = !!navigator.userAgent.match(/Trident.*rv[ :]*11\./);
+  if (!isBuggyIE) {
+    isBuggyIE = !!navigator.userAgent.match(/Trident.*rv[ :]*11\./);
   }
   function debounce(func, wait) {
     var timeout;
@@ -123,9 +128,15 @@ window.viewportUnitsBuggyfill.init();
     options.isMobileSafari = isMobileSafari;
     options.isBadStockAndroid = isBadStockAndroid;
 
-    if (!options.force && !isMobileSafari && !isOldInternetExplorer && !isBadStockAndroid && !isOperaMini && (!options.hacks || !options.hacks.required(options))) {
+    if (isOldIE || (!options.force && !isMobileSafari && !isBuggyIE && !isBadStockAndroid && !isOperaMini && (!options.hacks || !options.hacks.required(options)))) {
       // this buggyfill only applies to mobile safari, IE9-10 and the Stock Android Browser.
-      return;
+      if (window.console && isOldIE) {
+        console.info('viewport-units-buggyfill requires a proper CSSOM and basic viewport unit support, which are not available in IE8 and below');
+      }
+
+      return {
+        init: function () {}
+      };
     }
 
     options.hacks && options.hacks.initialize(options);
@@ -145,7 +156,7 @@ window.viewportUnitsBuggyfill.init();
       // orientationchange might have happened while in a different window
       window.addEventListener('pageshow', _refresh, true);
 
-      if (options.force || isOldInternetExplorer || inIframe()) {
+      if (options.force || isBuggyIE || inIframe()) {
         window.addEventListener('resize', _refresh, true);
         options._listeningToResize = true;
       }
@@ -234,6 +245,11 @@ window.viewportUnitsBuggyfill.init();
 
     forEach.call(rule.style, function(name) {
       var value = rule.style.getPropertyValue(name);
+      // preserve those !important rules
+      if (rule.style.getPropertyPriority(name)) {
+        value += ' !important';
+      }
+
       viewportUnitExpression.lastIndex = 0;
       if (viewportUnitExpression.test(value)) {
         declarations.push([rule, name, value]);
@@ -401,7 +417,7 @@ window.viewportUnitsBuggyfill.init();
   }
 
   return {
-    version: '0.5.0',
+    version: '0.5.2',
     findProperties: findProperties,
     getCss: getReplacedViewportUnits,
     init: initialize,

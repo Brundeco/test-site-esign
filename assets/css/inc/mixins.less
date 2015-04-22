@@ -11,10 +11,10 @@
 
 .tt { text-transform: uppercase; }
 
-/* Clearfix for clearing floats like a boss - h5bp.com/q */ 
+/* Micro clearfix hack for clearing floats - h5bp.com/q */
 .clearfix {
-	zoom: 1;
-	&:before, &:after { display: table; content: ""; }
+	*zoom: 1;
+	&:before, &:after { display: table; content: " "; }
 	&:after { clear: both; }
 }
 

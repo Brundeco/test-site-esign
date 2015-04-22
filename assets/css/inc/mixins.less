@@ -11,7 +11,7 @@
 
 .tt { text-transform: uppercase; }
 
-// Clearfix for clearing floats like a boss h5bp.com/q
+/* Clearfix for clearing floats like a boss - h5bp.com/q */ 
 .clearfix {
 	zoom: 1;
 	&:before, &:after { display: table; content: ""; }
@@ -121,31 +121,24 @@
     box-orient: @orient;
 }
 
-// Flex Box
+/* Flexbox */
 .flex-box(@flex: flex) {
-	display: -webkit-box;     
-	display: -moz-box;        
-	display: -ms-flexbox;     
-	display: -webkit-flex;    
-	display: @flex;            
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: @flex;
 }
 
-.flex-box-wrap(@wrap: wrap) {
-	-webkit-flex-wrap: @wrap;
-	-ms-flex-wrap: @wrap;
-	flex-wrap: @wrap;
+/* Direction of the elements inside a flexbox */
+/* row | row-reverse | column | column-reverse */
+.flex-direction(@direction: column) {
+	-webkit-flex-direction: column;
+	flex-direction: column;  
 }
 
-.flexbox-flex(@width: 1) {
-	-webkit-box-flex: 1;
-	-moz-box-flex: 1;
-	width: @width;
-	-webkit-flex: 1;
-	-ms-flex: 1;
-	flex: 1;
-}
-
-// Ordinal group
+/* Order elements (int) inside a flexbox */
 .flexbox-order(@order) {
 	-webkit-box-ordinal-group: @order;  
 	-moz-box-ordinal-group: @order;     
@@ -153,6 +146,23 @@
 	-webkit-order: @order;  
 	order: @order;
 }
+
+/* Single line or multiple lines inside a flexbox */
+/* nowrap | wrap | wrap-reverse */
+.flex-box-wrap(@wrap: wrap) {
+	-webkit-flex-wrap: @wrap;
+	-ms-flex-wrap: @wrap;
+	flex-wrap: @wrap;
+}
+
+/* Length of the item relative to the rest of the flexible items */
+.flexbox-flex(@width: 1) {
+	-webkit-flex: 1;
+    -ms-flex: 1; 
+    flex: 1;
+}
+
+
 
 // Box orient
 .box-orient(@orient: vertical) {

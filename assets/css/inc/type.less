@@ -41,6 +41,11 @@ a[href^=tel]{
     &:hover, &:focus { text-decoration: underline; }
 }
 
+a:not([href]) {
+	color: @black; text-decoration: none;
+	&:hover, &:focus {  }
+}
+
 img { 
 	max-width: 100%; height: auto; display: inline-block; vertical-align: middle;
 }

@@ -31,7 +31,7 @@ function addContactGoogleMaps(container, latitude, longitude) {
 			        	{ visibility: "simplified" }
 		        	]
 				},{
-					featureType: "poi",
+					featureType: "poi.business",
 					stylers: [
 						{"visibility":"off"}
 					]

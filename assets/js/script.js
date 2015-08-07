@@ -19,8 +19,13 @@ $(function() {
 	/* ELEMENTS */
 	$(".blocklink").click(function(){
 		var $target = $(this).find("a.target");
+		var new_window = ( $target.attr('target') === '_blank' );
 		if($target.length && $target.attr('href') !== '#') {
-			window.location=$target.attr("href");
+			if(new_window){
+				window.open($target.attr("href"),'_blank');
+			}else{
+				window.location=$target.attr("href");
+			}
 		}
 		return false;
 	});

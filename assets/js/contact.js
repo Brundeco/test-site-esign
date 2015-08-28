@@ -78,7 +78,7 @@ function addContactGoogleMapsMarker(map, latitude, longitude, title, extern_url)
 	    });
 
     google.maps.event.addListener(marker, "click", function() {
-	    window.location = extern_url;
+	    window.open(extern_url, '_blank');
 	});
 
     return marker;

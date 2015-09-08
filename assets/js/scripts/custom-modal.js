@@ -1,3 +1,8 @@
+/* Custom modal 
+ * Basic custom modal for custom css effects & layout
+ * based on: http://tympanus.net/Development/ModalWindowEffects/
+ */
+
 $(function() {
 	$('.modal-button').click(function(e) {
 		e.preventDefault();

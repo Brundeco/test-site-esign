@@ -18,13 +18,7 @@ $(function() {
 /* HTML */
 /*
 <a href="#equipment-specialists" class="modal-button">Equipment specialists</a>
-<div id="lang" class="md-modal md-cover md-lang">
-	<div class="md-content">
-		<h2>Covers full width & height</h2>
-		<button class="md-close"><i class="icon-close"></i></button>
-	</div>
-</div>
-
+<!-- md-modal / md-modal md-cover-->
 <div id="equipment-specialists" class="md-modal">
 	<div class="md-content">
 		<h2>Centered</h2>
@@ -38,9 +32,9 @@ $(function() {
 /* CSS */
 /*
 .md-modal {
-	position: fixed; top: 50%; left: 50%; width: 50%; z-index: 10;
+	position: fixed; top: 50%; left: 50%; width: 50%; z-index: 2000;
     min-width: 320px; height: auto; visibility: hidden; .backface-visibility; 
-	.transform(translateX(-50%) translateY(-50%));
+	.transform(translateX(-50%) translateY(-50%)); pointer-events: none;
 	text-align: left; .fs(18);
 	
 	@media @desktop {
@@ -54,10 +48,6 @@ $(function() {
 	
 	.md-content {
 		min-height: 100%; min-height: 100vh; .transform(scale(0.9));
-	}
-	
-	&.md-show {
-		
 	}
 }
 
@@ -100,7 +90,7 @@ $(function() {
 }
 
 .md-show {
-	visibility: visible; z-index: 2000;
+	visibility: visible; pointer-events: auto;
 	
 	.md-content {  
 		opacity: 1; .transform(translateY(0));	

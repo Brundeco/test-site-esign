@@ -12,6 +12,18 @@ $(function() {
 	$('.md-close, .md-overlay').click(function(e) {
 		$('.md-show').removeClass('md-show');
 	});
+	
+	$(document).on('keydown', function(e) {
+	    var tag = e.target.tagName.toLowerCase();
+	        
+	    if (tag != 'input' && tag != 'textarea') {
+	    	// hide modal on escape
+	    	if(e.which === 27 && $('.md-show').length) {
+	    		$('.md-show').removeClass('md-show');
+	    	}
+	    	
+	    }
+	});
 });
 
 

@@ -6,11 +6,18 @@
 $(function() {
 	$('.modal-button').click(function(e) {
 		e.preventDefault();
-		$($(this).attr('href')).toggleClass('md-show');
+		var $modal = $($(this).attr('href'));
+
+		$modal.toggleClass('md-show');
+		if($modal.hasClass('md-cover')) {
+			$('html').addClass('noscroll');
+		}
 	});
 	
 	$('.md-close, .md-overlay').click(function(e) {
 		$('.md-show').removeClass('md-show');
+		$('html').removeClass('noscroll');
+		
 	});
 	
 	$(document).on('keydown', function(e) {
@@ -20,6 +27,7 @@ $(function() {
 	    	// hide modal on escape
 	    	if(e.which === 27 && $('.md-show').length) {
 	    		$('.md-show').removeClass('md-show');
+	    		$('html').removeClass('noscroll');
 	    	}
 	    	
 	    }
@@ -59,7 +67,8 @@ $(function() {
 	.transform(none);
 	
 	.md-content {
-		min-height: 100%; min-height: 100vh; .transform(scale(0.9));
+		height: 100%; height: 100vh; overflow-y: scroll; 
+		.transform(scale(0.9)); 
 	}
 }
 
@@ -122,4 +131,6 @@ $(function() {
 	position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1000;
     visibility: hidden; .opacity(0); background: rgba(0,0,0,0.2); .transition;
 }
+
+.noscroll { overflow: hidden; } 
 */

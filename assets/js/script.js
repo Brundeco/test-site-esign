@@ -39,6 +39,26 @@ $(function() {
 		}
 	});
 	
+	
+	/*
+	 * newsletter subscribe via js/json
+	 */
+	$('.form-newsletter').submit(function(e){
+		$form = $(this);
+		
+		$.post($form.attr('action'),$form.serializeArray(),function(data){
+			if(data.errors === false){
+				$form.html(data.result);
+			}else{
+				$form.find('.result').html(data.result);
+				
+			}
+		});
+		
+		e.preventDefault();
+		return false;
+	});
+	
 	/* responsive video */
 	$('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"], iframe[src*="player.vimeo"]').wrap('<div class="video-container"></div>');
 

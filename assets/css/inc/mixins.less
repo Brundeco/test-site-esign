@@ -58,32 +58,34 @@
 
 // Border Radius
 .border-radius(@radius: 5px) {
-  -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
-          border-radius: @radius;
+	border-radius: @radius;
 }
-.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
-    -webkit-border-top-right-radius:    @topright;
-    -webkit-border-bottom-right-radius: @bottomright;
-    -webkit-border-bottom-left-radius:  @bottomleft;
-    -webkit-border-top-left-radius:     @topleft;
 
-    -moz-border-radius-topright:        @topright;
-    -moz-border-radius-bottomright:     @bottomright;
-    -moz-border-radius-bottomleft:      @bottomleft;
-    -moz-border-radius-topleft:         @topleft;
-
-    border-top-right-radius:            @topright;
-    border-bottom-right-radius:         @bottomright;
-    border-bottom-left-radius:          @bottomleft;
-    border-top-left-radius:             @topleft;
+.border-top-radius(@radius) {
+	border-top-right-radius: @radius;
+	border-top-left-radius: @radius;
 }
+
+.border-right-radius(@radius) {
+	border-bottom-right-radius: @radius;
+	border-top-right-radius: @radius;
+}
+
+.border-bottom-radius(@radius) {
+	border-bottom-right-radius: @radius;
+	border-bottom-left-radius: @radius;
+}
+
+.border-left-radius(@radius) {
+	border-bottom-left-radius: @radius;
+	border-top-left-radius: @radius;
+}
+
 
 // Drop shadows
 .box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
-  -webkit-box-shadow: @shadow;
-     -moz-box-shadow: @shadow;
-          box-shadow: @shadow;
+	-webkit-box-shadow: @shadow;
+	box-shadow: @shadow;
 }
 
 // Box
@@ -184,7 +186,6 @@
 .transition(@transition:0.3s) {
 	-webkit-transition: @transition;
 	   -moz-transition: @transition;
-	    -ms-transition: @transition;
 	   	 -o-transition: @transition;
 	        transition: @transition;
 }
@@ -192,7 +193,6 @@
 .transition-delay(@delay:0.2s) {
 	-webkit-transition-delay: @delay;
 	   -moz-transition-delay: @delay;
-	    -ms-transition-delay: @delay;
 	   	 -o-transition-delay: @delay;
 	        transition-delay: @delay;
 }
@@ -201,7 +201,6 @@
     -webkit-transition: @prop @time @ease;
     -moz-transition: @prop @time @ease;
     -o-transition: @prop @time @ease;
-    -ms-transition: @prop @time @ease;
     transition: @prop @time @ease;
 }
 
@@ -225,7 +224,6 @@
 .backface-visibility(@visibility:hidden) {
 	-webkit-backface-visibility: @visibility;
 	-moz-backface-visibility: @visibility;
-	-ms-backface-visibility: @visibility;
 	backface-visibility: @visibility;
 }
 .perspective(@perspective) {
@@ -348,10 +346,8 @@
 
 // Opacity
 .opacity(@opacity: 100) {
-	-khtml-opacity: @opacity / 100;
-	  -moz-opacity: @opacity / 100;
-	       opacity: @opacity / 100;
-
+	filter: alpha(opacity=@opacity);
+	opacity: @opacity / 100;
 	.backface-visibility;
 }
 

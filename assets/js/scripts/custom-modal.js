@@ -78,31 +78,7 @@ $(function() {
 
 .md-content {
 	position: relative; margin: 0 auto; padding: 20px 25px;
-	background: @accent; color: #fff;
-	.transform(translateY(20%)); opacity: 0; .transition;
-	
-	a {
-		color: #fff;
-		&:hover, &:focus { color: #efefef; }
-	}
-	
-	h2, h3, h4, h5, h6 {
-		color: #fff;
-		a {
-			color: #fff;
-			&:hover, &:focus { color: #efefef; }
-		}
-	}
-	
-	h2 { .fs(20); font-weight: 600; text-transform: uppercase; margin-bottom: 1em; }
-	
-	ul {
-		li:before { border-color: #fff; }
-		
-		&.arrows {
-			li:before { color: #fff; }
-		}
-	}
+	background: @accent; .transform(translateY(20%)); opacity: 0; .transition;
 	
 	.md-close {
 		position: absolute; top: 8px; right: 15px;

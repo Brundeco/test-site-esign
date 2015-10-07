@@ -68,7 +68,7 @@ $(function() {
 	
 	.md-content {
 		height: 100%; height: 100vh; overflow-y: scroll; 
-		.transform(scale(0.9)); 
+		.transform(scale(0.9)); .backface-visibility;
 	}
 	
 	@media @desktop {

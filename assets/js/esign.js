@@ -2,10 +2,10 @@ window.esign = window.esign || {};
 
 esign.cacheSelectors = function () {
 	esign.cache = {
-		// General
+		// general
 		$html: $('html'),
 
-		// Navigation
+		// navigation
 		$nav: $('.nav-wrap')
 
 	};
@@ -43,8 +43,7 @@ esign.navigation = function () {
 };
 
 esign.responsiveVideos = function () {
-	$('iframe[src*="youtube.com/embed"]').wrap('<div class="video-wrapper"></div>');
-	$('iframe[src*="player.vimeo"]').wrap('<div class="video-wrapper"></div>');
+	$('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"], iframe[src*="player.vimeo"]').wrap('<div class="video-container"></div>');
 };
 
 esign.blockLink = function () {
@@ -55,8 +54,8 @@ esign.blockLink = function () {
 	});
 };
 
+/* ajax newsletter subscribe */
 esign.newsletter = function () {
-	/* newsletter subscribe via ajax */
 	$('.form-newsletter').submit(function(e){
 		$form = $(this);
 		

@@ -56,15 +56,14 @@ esign.blockLink = function () {
 
 /* ajax newsletter subscribe */
 esign.newsletter = function () {
-	$('.form-newsletter').submit(function(e){
+	$('.form-newsletter').submit(function(e) {
 		$form = $(this);
 		
-		$.post($form.attr('action'),$form.serializeArray(),function(data){
-			if(data.errors === false){
+		$.post($form.attr('action'), $form.serializeArray(), function(data) {
+			if(data.errors === false) {
 				$form.html(data.result);
-			}else{
+			} else {
 				$form.find('.result').html(data.result);
-				
 			}
 		});
 		

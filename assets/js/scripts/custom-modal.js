@@ -57,6 +57,10 @@ $(function() {
 	.transform(translateX(-50%) translateY(-50%)); pointer-events: none;
 	text-align: left; .fs(18);
 	
+	@media @mobile {
+		display: none;
+	}
+	
 	@media @desktop {
 		width: 940px;
 	}
@@ -99,6 +103,10 @@ $(function() {
 	
 	~ .md-overlay {
 		.opacity(100); visibility: visible;
+	}
+	
+	@media @mobile {
+		display: block;
 	}
 }
 

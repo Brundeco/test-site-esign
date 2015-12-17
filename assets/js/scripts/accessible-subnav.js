@@ -1,4 +1,4 @@
-/* Sub nav accesible with tabs */
+/* Sub nav accessible with tabs */
 /* CSS
  * 
 .sub-nav {
@@ -30,6 +30,24 @@ $(function() {
 				
 				$(this).find('ul').addClass('cache');
 			
+			}).on('touchstart', function (e) {
+
+		    	'use strict';
+		    	var $this = $(this);
+		    	if ($this.hasClass('hover')) {
+		    		$this.removeClass('hover');
+		        	return true;
+		    	} else {
+		        	e.preventDefault();
+		        	
+		        	$('.main-nav .sub-nav').addClass('cache');
+		        	
+		        	$this
+		        		.addClass('hover')
+		        		.find('ul').removeClass('cache');
+		        	
+		        	return false;
+		    	}
 			});
 	}
 });

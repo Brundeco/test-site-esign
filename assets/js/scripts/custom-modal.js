@@ -1,23 +1,49 @@
 /* Custom modal 
  * Basic custom modal for custom css effects & layout
  * based on: http://tympanus.net/Development/ModalWindowEffects/
+ * 
+ * requires: isMobile script
+ *
+ * 2 possibilties:
+ * - cover: width & height from window
+ * - fixed width & height: 
+ *   when height is greater then window height it converts to the cover layout 
  */
-
+    
 $(function() {
+	var isMobile = setIsMobile();
+	
 	$('.modal-button').click(function(e) {
 		e.preventDefault();
 		var $modal = $($(this).attr('href'));
-
+		
+		/* convert to md-cover if height > window height or device is mobile */
+		if($modal.height() > $(window).height() || isMobile) {
+			var $close = $modal.find('.md-close');
+			
+			if(!$modal.hasClass('md-cover')) {				
+				$modal
+					.addClass('md-cover')
+					.find('.md-content')
+					.wrapInner('<div class="container ultrabook"></div>')
+					.after($close);
+			}
+			
+		}
+		
+		// show modal
 		$modal.toggleClass('md-show');
+		
+		// stop scrolling on cover
 		if($modal.hasClass('md-cover')) {
 			$('html').addClass('noscroll');
 		}
 	});
 	
+	// close modal	
 	$('.md-close, .md-overlay').click(function(e) {
 		$('.md-show').removeClass('md-show');
 		$('html').removeClass('noscroll');
-		
 	});
 	
 	$(document).on('keydown', function(e) {
@@ -32,24 +58,66 @@ $(function() {
 	    	
 	    }
 	});
+
 });
+
+function setIsMobile() {
+	var deviceAgent = navigator.userAgent.toLowerCase(),
+		isMobile = (deviceAgent.match(/(iphone|ipod|ipad)/) ||
+					deviceAgent.match(/(android)/)  || 
+					deviceAgent.match(/(iemobile)/) || 
+					deviceAgent.match(/blackberry/i) || 
+					deviceAgent.match(/bada/i)) ||
+					(/OS [1-4]_[0-9_]+ like Mac OS X/i.test(navigator.userAgent));
+					
+	if(isMobile) {
+		$('html').addClass('mobile');
+	} else {
+		$('html').addClass('no-mobile');
+	}
+	
+	return isMobile;
+}
 
 
 /* HTML */
 /*
-<a href="#equipment-specialists" class="modal-button">Equipment specialists</a>
-<!-- md-modal / md-modal md-cover-->
-<div id="equipment-specialists" class="md-modal">
+<!-- md-modal (fixed width height) /  -->
+<div id="modal1" class="md-modal">
 	<div class="md-content">
 		<h2>Centered</h2>
-		<button class="md-close"><i class="icon-close"></i></button>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum orci elit, eu pulvinar lacus cursus eget. Nulla mattis nisi ac vestibulum mattis. In sed dolor vel mauris auctor venenatis. Nunc pulvinar, metus sit amet tristique luctus, justo turpis euismod velit, in accumsan nisi augue et nisi. Ut efficitur sollicitudin molestie. Nam eget nisi et sem pharetra blandit. Duis cursus lorem at urna imperdiet iaculis. Duis lectus purus, suscipit ut venenatis ut, tincidunt vitae augue. Proin pharetra sem a gravida malesuada. Suspendisse id nisi ut tortor aliquet faucibus. In id metus sed tellus pellentesque pretium.</p>
+		<p>Etiam semper aliquam pellentesque. Vestibulum efficitur id dui nec aliquam.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum orci elit, eu pulvinar lacus cursus eget. Nulla mattis nisi ac vestibulum mattis. In sed dolor vel mauris auctor venenatis. Nunc pulvinar, metus sit amet tristique luctus, justo turpis euismod velit, in accumsan nisi augue et nisi. Ut efficitur sollicitudin molestie. Nam eget nisi et sem pharetra blandit. Duis cursus lorem at urna imperdiet iaculis. Duis lectus purus, suscipit ut venenatis ut, tincidunt vitae augue. Proin pharetra sem a gravida malesuada. Suspendisse id nisi ut tortor aliquet faucibus. In id metus sed tellus pellentesque pretium.</p>
+		<button class="md-close"><i class="icon-close"></i></button>			
 	</div>
+</div>
+
+<!-- md-modal md-cover (window width height) -->
+<div id="modal2" class="md-modal md-cover">
+	<div class="md-content">
+		<h2>Centered</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum orci elit, eu pulvinar lacus cursus eget. Nulla mattis nisi ac vestibulum mattis. In sed dolor vel mauris auctor venenatis. Nunc pulvinar, metus sit amet tristique luctus, justo turpis euismod velit, in accumsan nisi augue et nisi. Ut efficitur sollicitudin molestie. Nam eget nisi et sem pharetra blandit. Duis cursus lorem at urna imperdiet iaculis. Duis lectus purus, suscipit ut venenatis ut, tincidunt vitae augue. Proin pharetra sem a gravida malesuada. Suspendisse id nisi ut tortor aliquet faucibus. In id metus sed tellus pellentesque pretium.</p>
+		<p>Etiam semper aliquam pellentesque. Vestibulum efficitur id dui nec aliquam.</p>
+		<p>Fusce imperdiet varius augue. Cras leo nulla, venenatis nec libero eget, tincidunt blandit orci. Cras hendrerit leo at enim lacinia commodo. Aliquam ut augue viverra, interdum lacus a, placerat erat. Nunc et diam nibh. Quisque iaculis augue sit amet lectus tincidunt, non aliquet turpis molestie. Vivamus blandit libero nec purus vulputate, non eleifend nisl semper. Nullam nec hendrerit velit. Vivamus libero nulla, tempus quis dolor non, aliquet faucibus felis. Donec vitae turpis dui. Aliquam nec elit ac dui lacinia feugiat pulvinar eget lectus. Integer efficitur erat vitae orci varius, ut luctus risus maximus. Aenean id cursus risus, et scelerisque massa. Suspendisse non facilisis lorem. Etiam ultrices mauris gravida, vestibulum nulla molestie, bibendum justo. Quisque ut elit sit amet velit malesuada dapibus varius quis leo.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum orci elit, eu pulvinar lacus cursus eget. Nulla mattis nisi ac vestibulum mattis. In sed dolor vel mauris auctor venenatis. Nunc pulvinar, metus sit amet tristique luctus, justo turpis euismod velit, in accumsan nisi augue et nisi. Ut efficitur sollicitudin molestie. Nam eget nisi et sem pharetra blandit. Duis cursus lorem at urna imperdiet iaculis. Duis lectus purus, suscipit ut venenatis ut, tincidunt vitae augue. Proin pharetra sem a gravida malesuada. Suspendisse id nisi ut tortor aliquet faucibus. In id metus sed tellus pellentesque pretium.</p>
+		<p>Etiam semper aliquam pellentesque. Vestibulum efficitur id dui nec aliquam.</p>
+		<p>Fusce imperdiet varius augue. Cras leo nulla, venenatis nec libero eget, tincidunt blandit orci. Cras hendrerit leo at enim lacinia commodo. Aliquam ut augue viverra, interdum lacus a, placerat erat. Nunc et diam nibh. Quisque iaculis augue sit amet lectus tincidunt, non aliquet turpis molestie. Vivamus blandit libero nec purus vulputate, non eleifend nisl semper. Nullam nec hendrerit velit. Vivamus libero nulla, tempus quis dolor non, aliquet faucibus felis. Donec vitae turpis dui. Aliquam nec elit ac dui lacinia feugiat pulvinar eget lectus. Integer efficitur erat vitae orci varius, ut luctus risus maximus. Aenean id cursus risus, et scelerisque massa. Suspendisse non facilisis lorem. Etiam ultrices mauris gravida, vestibulum nulla molestie, bibendum justo. Quisque ut elit sit amet velit malesuada dapibus varius quis leo.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum orci elit, eu pulvinar lacus cursus eget. Nulla mattis nisi ac vestibulum mattis. In sed dolor vel mauris auctor venenatis. Nunc pulvinar, metus sit amet tristique luctus, justo turpis euismod velit, in accumsan nisi augue et nisi. Ut efficitur sollicitudin molestie. Nam eget nisi et sem pharetra blandit. Duis cursus lorem at urna imperdiet iaculis. Duis lectus purus, suscipit ut venenatis ut, tincidunt vitae augue. Proin pharetra sem a gravida malesuada. Suspendisse id nisi ut tortor aliquet faucibus. In id metus sed tellus pellentesque pretium.</p>
+		<p>Etiam semper aliquam pellentesque. Vestibulum efficitur id dui nec aliquam.</p>
+		<p>Fusce imperdiet varius augue. Cras leo nulla, venenatis nec libero eget, tincidunt blandit orci. Cras hendrerit leo at enim lacinia commodo. Aliquam ut augue viverra, interdum lacus a, placerat erat. Nunc et diam nibh. Quisque iaculis augue sit amet lectus tincidunt, non aliquet turpis molestie. Vivamus blandit libero nec purus vulputate, non eleifend nisl semper. Nullam nec hendrerit velit. Vivamus libero nulla, tempus quis dolor non, aliquet faucibus felis. Donec vitae turpis dui. Aliquam nec elit ac dui lacinia feugiat pulvinar eget lectus. Integer efficitur erat vitae orci varius, ut luctus risus maximus. Aenean id cursus risus, et scelerisque massa. Suspendisse non facilisis lorem. Etiam ultrices mauris gravida, vestibulum nulla molestie, bibendum justo. Quisque ut elit sit amet velit malesuada dapibus varius quis leo.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>		
+	</div>
+	<button class="md-close"><i class="icon-close"></i></button>
 </div>
 
 <div class="md-overlay"></div>
 */
 
 /* CSS */
+/* modals */
 /*
 .md-modal {
 	position: fixed; top: 50%; left: 50%; width: 50%; z-index: 2000;
@@ -75,19 +143,41 @@ $(function() {
 		.transform(scale(0.9)); .backface-visibility;
 	}
 	
-	@media @desktop {
-		width: 100%;
+	.md-close {
+		position: fixed; z-index: 1000; top: -5px; right: 10px;
+		.transform(translateY(20%) scale(0.8)); opacity: 0;
+	}
+	
+	&.md-show {
+		.md-close {
+			opacity: 1; .transform(translateY(0));
+		}
+	}
+	
+	@media @tablet {
+		.md-close {
+			top: 4px; right: 28px;
+		}
 	}
 }
 
-.md-content {
-	position: relative; margin: 0 auto; padding: 20px 25px;
+.md-content.md-content {
+	.clearfix; position: relative; margin: 0 auto; padding: 20px 25px;
 	background: @accent; .transform(translateY(20%)); opacity: 0; .transition;
+	color: #fff;
 	
-	.md-close {
-		position: absolute; top: 8px; right: 15px;
+	h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+		color: #fff;	
 	}
 	
+	a {
+		color: #fff;
+		&:hover, &:focus { color: #efefef; }
+	}
+	
+	.md-close, .md-close-holder {
+		position: absolute; top: 4px; right: 12px;
+	}
 	
 	@media @tablet {
 		 padding: 40px 45px;
@@ -110,8 +200,9 @@ $(function() {
 	}
 }
 
+// add close icon
 .md-close {
-	width: 35px; height: 35px; line-height: 35px; 
+	width: 35px; height: 35px; line-height: 35px; background: @accentHover;
 	text-align: center; padding: 0; .fs(20);
 }
 
@@ -120,5 +211,4 @@ $(function() {
     visibility: hidden; .opacity(0); background: rgba(0,0,0,0.2); .transition;
 }
 
-.noscroll { overflow: hidden; } 
-*/
+.noscroll { overflow: hidden; }*/

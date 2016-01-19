@@ -4,7 +4,7 @@
  * 
  * requires: isMobile script
  *
- * 2 possibilties:
+ * 2 possibilities:
  * - cover: width & height from window
  * - fixed width & height: 
  *   when height is greater then window height it converts to the cover layout 

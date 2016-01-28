@@ -1,0 +1,47 @@
+.skrollr {
+  position: relative; z-index: 5;
+  
+  &.fadeIn {
+    opacity: 0; transition: 1.0s;
+  }
+
+  &.show {
+    opacity: 1;
+  }
+
+}
+
+.overflow-wrap {
+  overflow: hidden;
+}
+
+.boxOut {
+  opacity: 0; transition: 1.0s;
+
+  &.show {
+    opacity: 1;
+  }
+
+}
+
+.boxOut-wrap {
+  position: relative;
+  width: 100%;
+  transition: 3.0s;
+
+  &.boxOut-move {
+    .boxOut-slider {
+      width: 0%;
+    }
+  }
+
+  .boxOut-slider {
+    position: absolute;
+    top: 0;
+    width: 25%;
+    right: 0;
+    height: 100%;
+    background: #fff;
+    transition: width 10.0s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+}

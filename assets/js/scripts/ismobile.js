@@ -1,6 +1,12 @@
-var isMobile = setIsMobile();
+// edit cacheSelectors function with IS_MOBILE const
+esign.cacheSelectors = function () {
+	esign.cache = {
+		// const
+		IS_MOBILE: esign.isMobile()
+	};
+};
 
-function setIsMobile() {
+esign.isMobile = function () {
 	var deviceAgent = navigator.userAgent.toLowerCase(),
 		isMobile = (deviceAgent.match(/(iphone|ipod|ipad)/) ||
 					deviceAgent.match(/(android)/)  || 
@@ -16,4 +22,4 @@ function setIsMobile() {
 	}
 	
 	return isMobile;
-}
+};

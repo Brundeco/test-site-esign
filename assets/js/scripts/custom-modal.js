@@ -2,82 +2,101 @@
  * Basic custom modal for custom css effects & layout
  * based on: http://tympanus.net/Development/ModalWindowEffects/
  * 
- * requires: isMobile script
+ * requires: esign.cache.IS_MOBILE
  *
  * 2 possibilities:
  * - cover: width & height from window
  * - fixed width & height: 
  *   when height is greater then window height it converts to the cover layout 
  */
-    
-$(function() {
-	var isMobile = setIsMobile();
+
+esign.modals = function () {
 	
-	$('.modal-button').click(function(e) {
+	// btns
+	$('.modal-button, .main-modal-trigger').click(function(e) {
 		e.preventDefault();
-		var $modal = $($(this).attr('href'));
+		var $modal;
+		
+		if($(this).hasClass('main-modal-trigger')) {
+			$modal = $('#main-modal');
+		} else {							  
+			$modal = $($(this).attr('href'));
+		}
 		
 		/* convert to md-cover if height > window height or device is mobile */
-		if($modal.height() > $(window).height() || isMobile) {
-			var $close = $modal.find('.md-close');
+		if($modal.height() > $(window).height() || esign.cache.IS_MOBILE) {
 			
-			if(!$modal.hasClass('md-cover')) {				
+			if(!$modal.hasClass('md-cover')) {
+				
+				var $close = $modal.find('.md-close');
+							
 				$modal
 					.addClass('md-cover')
 					.find('.md-content')
-					.wrapInner('<div class="container ultrabook"></div>')
+					.wrapInner('<div class="md-center"><div class="container small"></div></div>')
 					.after($close);
+					
+				$close.wrap('<div class="md-topbar"></div>');
+				
 			}
 			
 		}
 		
-		// show modal
-		$modal.toggleClass('md-show');
+		if($modal) {
+			// remove current modal
+			$('.md-show').removeClass('md-show');
+			esign.cache.$html.removeClass('noscroll');
+			
+			// show modal
+			$modal.toggleClass('md-show');
+			if($modal.hasClass('md-cover')) {
+				esign.cache.$html.addClass('noscroll');
+			}
+			
+			location.hash = '#open-' + $modal.attr('id');
+		}
 		
-		// stop scrolling on cover
-		if($modal.hasClass('md-cover')) {
-			$('html').addClass('noscroll');
+	});
+	
+	// open modal from hash
+	var hash = window.location.hash;
+	if(hash.indexOf('#open-') >= 0) {
+		var itemId = hash.replace('open-',''),
+			$modal = $(itemId);
+		
+		if($modal.length) {
+			$modal.addClass('md-show');
+			if($modal.hasClass('md-cover')) {
+				esign.cache.$html.addClass('noscroll');
+			}
+		}
+	} 
+	
+	// close modal
+	$('.md-close-trigger, .md-overlay').click(function(e) {
+		$('.md-show').removeClass('md-show');
+		esign.cache.$html.removeClass('noscroll');
+	});
+	
+	// handle keyboard events
+	$(document).on('keydown', function(e) {
+		var tag = e.target.tagName.toLowerCase();
+
+		if (tag != 'input' && tag != 'textarea') {
+			// hide modal on escape
+			if(e.which === 27 && $('.md-show').length) {
+				$('.md-show').removeClass('md-show');
+				esign.cache.$html.removeClass('noscroll');
+			}
+			
+			if(e.which === 77) {
+				$('.main-modal-trigger').trigger('click');
+			}
+
 		}
 	});
 	
-	// close modal	
-	$('.md-close, .md-overlay').click(function(e) {
-		$('.md-show').removeClass('md-show');
-		$('html').removeClass('noscroll');
-	});
-	
-	$(document).on('keydown', function(e) {
-	    var tag = e.target.tagName.toLowerCase();
-	        
-	    if (tag != 'input' && tag != 'textarea') {
-	    	// hide modal on escape
-	    	if(e.which === 27 && $('.md-show').length) {
-	    		$('.md-show').removeClass('md-show');
-	    		$('html').removeClass('noscroll');
-	    	}
-	    	
-	    }
-	});
-
-});
-
-function setIsMobile() {
-	var deviceAgent = navigator.userAgent.toLowerCase(),
-		isMobile = (deviceAgent.match(/(iphone|ipod|ipad)/) ||
-					deviceAgent.match(/(android)/)  || 
-					deviceAgent.match(/(iemobile)/) || 
-					deviceAgent.match(/blackberry/i) || 
-					deviceAgent.match(/bada/i)) ||
-					(/OS [1-4]_[0-9_]+ like Mac OS X/i.test(navigator.userAgent));
-					
-	if(isMobile) {
-		$('html').addClass('mobile');
-	} else {
-		$('html').addClass('no-mobile');
-	}
-	
-	return isMobile;
-}
+};
 
 
 /* HTML */

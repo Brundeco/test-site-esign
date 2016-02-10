@@ -108,7 +108,7 @@ esign.modals = function () {
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum orci elit, eu pulvinar lacus cursus eget. Nulla mattis nisi ac vestibulum mattis. In sed dolor vel mauris auctor venenatis. Nunc pulvinar, metus sit amet tristique luctus, justo turpis euismod velit, in accumsan nisi augue et nisi. Ut efficitur sollicitudin molestie. Nam eget nisi et sem pharetra blandit. Duis cursus lorem at urna imperdiet iaculis. Duis lectus purus, suscipit ut venenatis ut, tincidunt vitae augue. Proin pharetra sem a gravida malesuada. Suspendisse id nisi ut tortor aliquet faucibus. In id metus sed tellus pellentesque pretium.</p>
 		<p>Etiam semper aliquam pellentesque. Vestibulum efficitur id dui nec aliquam.</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum orci elit, eu pulvinar lacus cursus eget. Nulla mattis nisi ac vestibulum mattis. In sed dolor vel mauris auctor venenatis. Nunc pulvinar, metus sit amet tristique luctus, justo turpis euismod velit, in accumsan nisi augue et nisi. Ut efficitur sollicitudin molestie. Nam eget nisi et sem pharetra blandit. Duis cursus lorem at urna imperdiet iaculis. Duis lectus purus, suscipit ut venenatis ut, tincidunt vitae augue. Proin pharetra sem a gravida malesuada. Suspendisse id nisi ut tortor aliquet faucibus. In id metus sed tellus pellentesque pretium.</p>
-		<button class="md-close"><i class="icon-close"></i></button>			
+		<button class="md-close md-close-trigger"><i class="icon-close"></i></button>			
 	</div>
 </div>
 
@@ -129,7 +129,7 @@ esign.modals = function () {
 		<p>Fusce imperdiet varius augue. Cras leo nulla, venenatis nec libero eget, tincidunt blandit orci. Cras hendrerit leo at enim lacinia commodo. Aliquam ut augue viverra, interdum lacus a, placerat erat. Nunc et diam nibh. Quisque iaculis augue sit amet lectus tincidunt, non aliquet turpis molestie. Vivamus blandit libero nec purus vulputate, non eleifend nisl semper. Nullam nec hendrerit velit. Vivamus libero nulla, tempus quis dolor non, aliquet faucibus felis. Donec vitae turpis dui. Aliquam nec elit ac dui lacinia feugiat pulvinar eget lectus. Integer efficitur erat vitae orci varius, ut luctus risus maximus. Aenean id cursus risus, et scelerisque massa. Suspendisse non facilisis lorem. Etiam ultrices mauris gravida, vestibulum nulla molestie, bibendum justo. Quisque ut elit sit amet velit malesuada dapibus varius quis leo.</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>		
 	</div>
-	<button class="md-close"><i class="icon-close"></i></button>
+	<button class="md-close md-close-trigger"><i class="icon-close"></i></button>
 </div>
 
 <div class="md-overlay"></div>

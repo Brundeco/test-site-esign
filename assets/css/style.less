@@ -92,10 +92,14 @@ body {
    ========================================================================== */
   
 .container { 
-	margin: 0 10px; position: relative; z-index: 5; .clearfix; 
+	margin: 0 30px; position: relative; z-index: 5; .clearfix; 
 	
 	@media @tablet { margin: 0 20px; }
-	@media @desktop { width: 980px; margin: 0 auto; }
+	@media @desktop {
+		width: 980px; margin: 0 auto;
+		&.small { width: 680px; }
+	}
+	@media @wide { width: 1300px; }
 }
 
 .row { 

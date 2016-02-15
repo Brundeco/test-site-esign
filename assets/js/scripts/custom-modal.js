@@ -76,6 +76,8 @@ esign.modals = function () {
 	$('.md-close-trigger, .md-overlay').click(function(e) {
 		$('.md-show').removeClass('md-show');
 		esign.cache.$html.removeClass('noscroll');
+		
+		location.hash = '';
 	});
 	
 	// handle keyboard events

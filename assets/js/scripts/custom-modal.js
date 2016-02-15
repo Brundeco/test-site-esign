@@ -89,6 +89,8 @@ esign.modals = function () {
 			if(e.which === 27 && $('.md-show').length) {
 				$('.md-show').removeClass('md-show');
 				esign.cache.$html.removeClass('noscroll');
+				
+				location.hash = '';
 			}
 			
 			if(e.which === 77) {

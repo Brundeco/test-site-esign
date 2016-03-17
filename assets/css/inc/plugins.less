@@ -29,7 +29,14 @@
 }
 
 .formError .formErrorArrow {
-	width: 15px; margin: -2px 0 0 13px; position:relative;
+	/*width: 15px; margin: -2px 0 0 13px;*/ 
+	position:relative; margin: -2px 0 0 145px; height: 10px;
+	
+	&:after {
+		content: ""; display: block;
+		position: absolute; bottom: 0; left: 0;
+		border: 8px solid transparent; border-bottom: 0; border-top-color: @accent;
+	}
 }
 
 .formError .formErrorArrowBottom {
@@ -37,11 +44,13 @@
 }
 
 .formError .formErrorArrow div {
-	font-size: 0px; height: 1px; background: @accent; margin: 0 auto; line-height: 0; font-size: 0; display: block;
-	border-left: 1px solid @accent; border-right: 1px solid @accent;
-	.box-shadow(0 0 1px 1px rgba(200,200,200,0.2));
+	display: none;
+	/*font-size: 0px; height: 1px; background: @accent; margin: 0 auto; line-height: 0; font-size: 0; display: block;
+	border-left: 1px solid @accent; border-right: 1px solid @accent; 
+	.box-shadow(0 0 1px 1px rgba(200,200,200,0.2));*/
 }
 
+/*
 .formError .formErrorArrowBottom div {
 	.box-shadow(none);
 }
@@ -92,6 +101,7 @@
 	border: none;
 	background: @accent;
 }
+*/
 
 /*! fancyBox v2.1.4 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-wrap,

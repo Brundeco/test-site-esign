@@ -67,14 +67,17 @@ function addContactGoogleMaps(container, latitude, longitude) {
 
 function addContactGoogleMapsMarker(map, latitude, longitude, title, extern_url) {
 	var myLatlng = new google.maps.LatLng(latitude, longitude),
-		marker_image = new google.maps.MarkerImage(base_url + "assets/images/marker.png",
-			new google.maps.Size(51,68),
-			new google.maps.Point(0,0),
-			new google.maps.Point(22, 60)),
+		markerIcon = {
+	        url: base_url + 'assets/images/marker.png',
+	        size: new google.maps.Size(121,130),
+	        origin: new google.maps.Point(0, 0),
+	        anchor: new google.maps.Point(1, 65),
+	    	scaledSize: new google.maps.Size(61,65)
+	    },
 		marker = new google.maps.Marker({
 	    	position: myLatlng,
 	    	map: map,
-	    	icon: marker_image
+	    	icon: markerIcon
 	    });
 
     google.maps.event.addListener(marker, "click", function() {

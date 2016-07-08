@@ -184,7 +184,7 @@ social.addItem = function (data) {
 			if ($photo.prop('tagName').toLowerCase() == 'img') {
 				$photo.attr('src', data.photo);	
 			} else {
-				$photo.css('background-image', 'url(/' + data.photo + ')');
+				$photo.css('background-image', 'url(' + data.photo + ')');
 			}
 			
 		} else {

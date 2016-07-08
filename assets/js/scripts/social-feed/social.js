@@ -170,7 +170,16 @@ social.addItem = function (data) {
 	var $text = $item.find('.text');
 	if ($text.length) {
 		if (data.text) {
-			$text.html(data.text);
+			var text = data.text;
+				wordsLimit = $text.data('words-limit'),
+				wordsArray = text.split(' ');
+
+			if(wordsLimit && wordsLimit > 0 && wordsLimit < wordsArray.length) {
+				text = wordsArray.splice(0, wordsLimit).join(' ') + '...';
+			}
+			
+			$text.html(text);
+			
 		} else {
 			$text.remove();
 		}

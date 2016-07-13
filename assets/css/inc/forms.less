@@ -9,6 +9,13 @@ button, input, select, textarea, .button { margin: 0; vertical-align: baseline; 
 button, input { line-height: normal; }
 button, select { text-transform: none; }
 
+/* Prevent zoom on touch devices in active inputs */
+@media @mobile {
+	input, textarea {
+		font-size: 16px;
+	}
+}
+
 label, .label, input, select, textarea { #font > .default; vertical-align: middle; color: @black; }
 label, .label { display: block; margin-bottom: 8px; }
 

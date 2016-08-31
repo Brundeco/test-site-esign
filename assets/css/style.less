@@ -103,40 +103,82 @@ body {
 }
 
 .row { 
-	.clearfix; margin: 0 0 20px -20px; 
-	
-	@media @tablet {  }
-	
-	@media @desktop {
-		&.g80 { 
-			margin-left: -80px; 
-			> .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth { 
-				padding-left: 80px; 
-			}
-		}
-	}
+    .clearfix; margin: 0 0 20px -20px; 
+    
+    &.g0 { 
+        margin-left: 0px; 
+        > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one {
+            padding-left: 0px; 
+        }
+    }
+    
+    @media @tablet {
+        &.g20 { 
+            margin-left: -20px; 
+            > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one {
+                padding-left: 20px; 
+            }
+        }
+        &.g40 { 
+            margin-left: -40px; 
+            > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one {
+                padding-left: 40px; 
+            }
+        }
+        &.g50 { 
+            margin-left: -50px; 
+            > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one {
+                padding-left: 50px; 
+            }
+        }
+        &.g60 { 
+            margin-left: -60px; 
+            > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one {
+                padding-left: 60px; 
+            }
+        }
+    }
+    
+    @media @desktop {
+        &.g80 { 
+            margin-left: -80px; 
+            > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one {
+                padding-left: 80px; 
+            }
+        }
+    }
 }
 
-.one-half, .two-third, .one-third, .three-fourth, .one-fourth { 
-	float: left; display: block; width: 100%; padding-left: 20px;
+.row > .left { padding-left: 20px; }
+
+.one-half, .two-third, .one-third, .three-fourth, .one-fourth, .two-fifth, .three-fifth, .one { 
+    float: left; display: block; width: 100%; padding-left: 20px;
 }
 
 .one-half { 
-	@media @tablet { width: 50%; }
+    @media @tablet { width: 50%; }
 }
 .two-third { 
-	@media @tablet { width: 66.66%; } 
+    @media @tablet { width: 66.66%; } 
 }
 .one-third { 
-	@media @tablet { width: 33.33%; } 
+    @media @tablet { width: 33.33%; } 
 }
 .three-fourth { 
-	@media @tabletMini { width: 50%; }
-	@media @tablet { width: 75%; } 
+    @media @tablet { width: 50%; }
+    @media @desktop { width: 75%; } 
 }
 .one-fourth { 
-	@media @tabletMini { width: 50%; }
-	@media @tablet { width: 25%; } 
+    @media @tablet { width: 50%; }
+    @media @desktop { width: 25%; } 
+}
+.two-fifth { 
+    @media @tablet { width: 50%; }
+    @media @desktop { width: 40%; } 
+}
+.three-fifth { 
+    @media @tablet { width: 50%; }
+    @media @desktop { width: 60%; } 
 }
 
 

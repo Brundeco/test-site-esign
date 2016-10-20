@@ -1,0 +1,52 @@
+<?php $title = 'Nieuws' ?>
+<?php $description = '' ?>
+<?php $menuitem = 'news' ?>
+
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+
+	<section>
+		<h1>News</h1>
+
+		<ul class="articles-list">
+			<li>
+				<div class="article-teaser">
+					<h2><a href="news-article.html">Lorem ipsum</a></h2>
+					<p>03/02/2014</p>
+
+					<div class="intro">
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+					</div>
+
+					<p><a href="news-article.html" class="button-more">Read more</a></p>
+				</div>
+			</li>
+			<li>
+				<div class="article-teaser">
+					<h2><a href="news-article.html">Lorem ipsum</a></h2>
+					<p>03/02/2014</p>
+
+					<div class="intro">
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+					</div>
+
+					<p><a href="news-article.html" class="button-more">Read more</a></p>
+				</div>
+			</li>
+		</ul>
+
+		<div class="pagination">
+			<p>
+				<span class="prev arrow"><a href="news.html" class="pagination-pager">&laquo;</a></span>
+				<a href="news.html" class="pagination-pager">1</a>
+				<span class="pagination-pager active">2</span>
+				<a href="news.html" class="pagination-pager">3</a>
+				<span class="next arrow"><a href="news.html" class="pagination-pager">&raquo;</a></span>
+			</p>
+		</div>
+	</section>
+
+</div>
+@endsection

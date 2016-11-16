@@ -19,6 +19,7 @@ esign.init = function () {
 	    lazy: true
 	});
 	
+	esign.gaDevelopment();
 	esign.cacheSelectors();
 	
 	esign.navigation();
@@ -70,6 +71,22 @@ esign.newsletter = function () {
 		e.preventDefault();
 		return false;
 	});
+};
+
+/* log ga calls in development */
+esign.gaDevelopment = function() {
+	if (typeof ga === typeof undefined) {
+		window.ga = function() {
+			var argumentsArray = [];
+			for (var key in arguments) {
+				if (arguments.hasOwnProperty(key)) {
+					argumentsArray.push(arguments[key]);
+				}
+			}
+			var msg = '[GA DEV] Call with arguments [' + argumentsArray.join(',') + ']';
+			console.log('%c' + msg, 'background: #ff9800; color: #fff;');
+		};
+	}
 };
 
 // initialize on docready

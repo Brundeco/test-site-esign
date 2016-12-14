@@ -1,9 +1,12 @@
 // Load plugins
 var gulp = require('gulp'),
+    elixir = require('laravel-elixir'),
     blade2nunjucks = require('gulp-blade2nunjucks'),
     nunjucks = require('gulp-nunjucks'),
     notify = require('gulp-notify'),
     del = require('del');
+
+elixir.config.css.autoprefix.options.browsers = ['> 1%', 'Last 2 versions', 'IE 9', 'IE 8'];
 
 // Styles
 gulp.task('styles', function() {
@@ -49,10 +52,11 @@ gulp.task('default', ['clean'], function() {
 });
 
 // Watch
-gulp.task('watch', function() {
+
+  //gulp.task('watch', function() {
 
   // Watch templates
-  gulp.watch('resources/templates/**/*.blade.html', ['templates']);
+    //gulp.watch('resources/templates/**/*.blade.html', ['templates']);
 
   // Watch .less files
   //gulp.watch('src/assets/css/**/*.less', ['styles']);
@@ -63,4 +67,14 @@ gulp.task('watch', function() {
   // Watch image files
   //gulp.watch('src/assets/img/**/*', ['images']);
 
+  //});
+
+elixir(function(mix) {
+  mix.less('style.less', 'public/assets/css/style.css');
+
+  mix.browserSync({
+    // If you are developing locally point this to your local url
+    proxy: 'http://localhost:8888/public',
+    notify: false
+  });
 });

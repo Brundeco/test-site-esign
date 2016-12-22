@@ -54,7 +54,9 @@
 }
 
 // Text Overflow
-.text-truncate { text-overflow: ellipsis; vertical-align: top; white-space: nowrap; overflow: hidden; display: inline-block; }
+.text-truncate {
+	text-overflow: ellipsis; vertical-align: top; white-space: nowrap; overflow: hidden; display: inline-block;
+}
 
 // Border Radius
 .border-radius(@radius: 5px) {
@@ -124,15 +126,15 @@
 /* row | row-reverse | column | column-reverse */
 .flex-direction(@direction: column) {
 	-webkit-flex-direction: column;
-	flex-direction: column;  
+	flex-direction: column;
 }
 
 /* Order elements (int) inside a flexbox */
 .flexbox-order(@order) {
-	-webkit-box-ordinal-group: @order;  
-	-moz-box-ordinal-group: @order;     
-	-ms-flex-order: @order;     
-	-webkit-order: @order;  
+	-webkit-box-ordinal-group: @order;
+	-moz-box-ordinal-group: @order;
+	-ms-flex-order: @order;
+	-webkit-order: @order;
 	order: @order;
 }
 
@@ -147,7 +149,7 @@
 /* Length of the item relative to the rest of the flexible items */
 .flexbox-flex(@width: 1) {
 	-webkit-flex: 1;
-    -ms-flex: 1; 
+    -ms-flex: 1;
     flex: 1;
 }
 
@@ -164,7 +166,7 @@
 
 // Box sizing
 .border-box(@sizing: border-box){
-	-moz-box-sizing: @sizing; -webkit-box-sizing: @sizing; box-sizing: @sizing; 
+	-moz-box-sizing: @sizing; -webkit-box-sizing: @sizing; box-sizing: @sizing;
 	*behavior: url('../js/polyfills/boxsizing.htc');
 }
 
@@ -209,9 +211,9 @@
 	/* enable gpu rendering (ios hack) */
 	-webkit-transform : translateZ(0);
 	transform : translateZ(0);
-	
+
 	.backface-visibility;
-	
+
 	-webkit-perspective: @perspective;
 	perspective: @perspective;
 }
@@ -370,6 +372,31 @@
 	line-height: 0rem + @lh / @doc-font-size;
 }
 
+// Responsive font size
+.fluid-font-size(@min-vw, @max-vw, @min-size, @max-size) {
+	font-size: @min-size;
+	
+	@media screen and (min-width: @min-vw) {
+		font-size: calc( @min-size ~" + " unit(@max-size - @min-size) ~" * ((100vw - " @min-vw ~") /" unit(@max-vw - @min-vw) ~")" );
+	}
+
+	@media screen and (min-width: @max-vw) {
+		font-size: @max-size;
+	}
+}
+
+.fluid-line-height(@min-vw, @max-vw, @min-size, @max-size) {
+	line-height: @min-size;
+	
+	@media screen and (min-width: @min-vw) {
+		line-height: calc( @min-size ~" + " unit(@max-size - @min-size) ~" * ((100vw - " @min-vw ~") /" unit(@max-vw - @min-vw) ~")" );
+	}
+
+	@media screen and (min-width: @max-vw) {
+		line-height: @max-size;
+	}
+}
+
 // Height
 .h(@h) {
 	height: 0px + @h;
@@ -420,11 +447,11 @@
 	animation-name: @name;
 	-webkit-animation-name: @name;
 }
-	
+
 .animation-duration(@duration: 2s) {
-	animation-duration: @duration;	
+	animation-duration: @duration;
 	-webkit-animation-duration: @duration;
-}	
+}
 
 .animation-iteration-count(@count: infinite) {
 	animation-iteration-count: @count;
@@ -434,13 +461,13 @@
 
 // Pseudo element
 .pseudo-element(@top:0, @left:0) {
-	position: absolute; 
+	position: absolute;
 	content: "";
 	top: @top;
 	left: @left;
 }
 
-// Columns 
+// Columns
 .column-count(@count:2) {
 	 -webkit-column-count: @count; /* Chrome, Safari, Opera */
     -moz-column-count: @count; /* Firefox */
@@ -464,7 +491,7 @@
 /* ------------------------ */
 
 /* Usage
- * .arrow(size, color, direction, offset, border-size, border-color); 
+ * .arrow(size, color, direction, offset, border-size, border-color);
  */
 
 /* Where
@@ -473,11 +500,11 @@
  * Direction is the orientation of the arrow (top, right, bottom, left)
  * Offset is the position of the arrow on its axis (px / em)
  * Border-size is the width of the border if there is one (optional; default "0")
- * Border-color is the color of the border if there is one (optional; default "inherit"); 
+ * Border-color is the color of the border if there is one (optional; default "inherit");
  */
 
 /* Extra
- * Drop-shadows can be used on the element to create a shadow on the arrow as well 
+ * Drop-shadows can be used on the element to create a shadow on the arrow as well
  */
 
 .arrow(@size, @color, @direction, @offset) {
@@ -485,10 +512,10 @@
 }
 
 .arrow(@size, @color, @direction, @offset) when (@direction = top) {
-	
+
 	left: @offset;
 	margin-left: -@size;
-	
+
 	border-left: @size solid transparent;
 	border-right: @size solid transparent;
 	border-bottom: @size solid @color;
@@ -527,5 +554,5 @@
     border-top: @size solid transparent;
     border-bottom: @size solid transparent;
     border-right: @size solid @color;
-    
+
 }

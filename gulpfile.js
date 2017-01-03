@@ -72,6 +72,9 @@ gulp.task('default', ['clean'], function() {
 elixir(function(mix) {
   mix.less('style.less', 'public/assets/css/style.css');
 
+  mix.scripts(['libs/modernizr.min.js'], 'public/js/head.js')
+     .scripts(['libs/jquery.min.js', 'plugins.js', 'esign.js'], 'public/js/app.js');
+
   mix.browserSync({
     // If you are developing locally point this to your local url
     proxy: 'http://localhost:8888/public',

@@ -2,7 +2,7 @@
 {% set description  = ''  %}
 {% set menuitem  = 'contact'  %}
 
-{% extends "layouts/app.html" %}
+{% extends "layouts/app.nunjucks" %}
 
 {% block content %}
 <div class="container">

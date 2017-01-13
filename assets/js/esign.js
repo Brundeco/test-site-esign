@@ -15,7 +15,7 @@ esign.init = function () {
 	Response.create({
 	    prop: "width", 
 	    prefix: "min-width- r src", 
-	    breakpoints: [767,0], 
+	    breakpoints: [752,0],
 	    lazy: true
 	});
 	
@@ -34,7 +34,7 @@ esign.navigation = function () {
 	});
 	
 	Response.crossover('width', function() {
-		if(Response.band(767)) {
+		if(Response.band(752)) {
 			esign.cache.$nav.css('display', 'block');
 		} else {
 			esign.cache.$nav.css('display', 'none');

@@ -1,6 +1,7 @@
-{% set title  = 'Home'  %}
-{% set description  = ''  %}
-{% set menuitem  = 'home'  %}
+{% set title = 'Home' %}
+{% set description = '' %}
+{% set menuitem = 'home' %}
+{% set bodyclass = 'home' %}
 
 {% extends "layouts/app.nunjucks" %}
 

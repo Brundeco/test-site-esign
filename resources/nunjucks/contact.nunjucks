@@ -1,6 +1,7 @@
-{% set title  = 'Contact'  %}
-{% set description  = ''  %}
-{% set menuitem  = 'contact'  %}
+{% set title = 'Contact' %}
+{% set description = '' %}
+{% set menuitem = 'contact' %}
+{% set bodyclass = 'contact' %}
 
 {% extends "layouts/app.nunjucks" %}
 
@@ -21,16 +22,16 @@
       <form action="#" method="post" class="validate">
         <div class="box error">
           <ul>
-						<li id="error_email">Naam is verplicht</li>
-						<li id="error_email">Geldig emailadres is verplicht</li>
-					</ul>
-				</div>
-				<div class="box success">
-					<p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
-				</div>
-				<fieldset>
-					<ul>
-						<li class="error">
+            <li id="error_email">Naam is verplicht</li>
+            <li id="error_email">Geldig emailadres is verplicht</li>
+          </ul>
+        </div>
+        <div class="box success">
+          <p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
+        </div>
+        <fieldset>
+          <ul>
+            <li class="error">
               <label for="name">Naam</label>
               <input type="text" name="name" id="name" class="validate[required]" />
             </li>
@@ -47,14 +48,14 @@
               <textarea name="message" id="message" class="validate[required]"></textarea>
             </li>
             <li>
-            	<input type="submit" value="Verzenden" class="submit" />
+              <input type="submit" value="Verzenden" class="submit" />
             </li>
-					</ul>
-				</fieldset>
-			</form>
+          </ul>
+        </fieldset>
+      </form>
 
-		</div>
-	</div>
+    </div>
+  </div>
 
 </div>
 {% endblock %}

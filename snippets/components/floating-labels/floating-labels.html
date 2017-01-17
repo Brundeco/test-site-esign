@@ -1,0 +1,30 @@
+<form action="#" method="post" class="validate">
+
+    <fieldset>
+
+            <!-- Mogelijkheid 1: floating label in inputveld zelf -->
+            <div class="floating-label--container">
+                <label for="name">Naam</label>
+                <input type="text" name="name" id="name" placeholder="Naam" class="validate[required]" />
+            </div>
+            <div class="floating-label--container">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" placeholder="Email" class="validate[required,custom[email]]" />
+            </div>
+
+            <!-- Mogelijkheid 2: floating label boven inputveld -->
+
+            <div class="floating-label--container floating-label--container_above">
+                <label for="phone">Telefoon</label>
+                <input type="tel" name="phone" id="phone" placeholder="Telefoon" class="" />
+            </div>
+            <div class="floating-label--container">
+                <label for="message">Bericht</label>
+                <textarea name="message" id="message" placeholder="Bericht" class="validate[required]"></textarea>
+            </div>
+            <div class="floating-label--container">
+                <input type="submit" value="Verzenden" class="submit" />
+            </div>
+
+    </fieldset>
+</form>

@@ -38,7 +38,7 @@ elixir(function(mix) {
 
   // Scripts
   mix.scripts(['libs/modernizr.min.js'], 'public/js/head.js')
-     .scripts(['libs/jquery.min.js', 'plugins.js', 'esign.js'], 'public/js/app.js');
+     .scripts(['libs/jquery.min.js', 'plugins.js', 'esign.js','script.js'], 'public/js/app.js');
 
   // Browsersync
   mix.browserSync({

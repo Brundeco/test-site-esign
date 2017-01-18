@@ -12,7 +12,6 @@ esign.cacheSelectors = function () {
 };
 
 esign.init = function () {
-
 	Response.create({
 	    prop: "width", 
 	    prefix: "min-width- r src", 
@@ -23,28 +22,14 @@ esign.init = function () {
 	esign.gaDevelopment();
 	esign.cacheSelectors();
 	
-	esign.navigation();
+
 	esign.responsiveVideos();
 	esign.blockLink();
 	esign.newsletter();
     esign.floatingLabels();
 };
 
-esign.navigation = function () {
-	$('.main-nav .trigger').click(function(e) {
-		e.preventDefault();
-		$(this).next('.nav-wrap').slideToggle('fast');
-	});
-	
-	Response.crossover('width', function() {
-		if(Response.band(752)) {
-			esign.cache.$nav.css('display', 'block');
-		} else {
-			//esign.cache.$nav.css('display', 'block');
-			esign.cache.$nav.css('display', 'none');
-		}
-	});
-};
+
 
 
 esign.floatingLabels = function(){

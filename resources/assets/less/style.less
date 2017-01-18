@@ -97,11 +97,11 @@ body {
 
     @media @tablet { margin: 0 20px; }
     @media @desktop {
-        width: 980px; margin: 0 auto;
-        &.small { width: 600px; }
-        &.medium { width: 780px; }
+        max-width: 980px; margin: 0 auto;
+        &.small { max-width: 600px; }
+        &.medium { max-width: 780px; }
     }
-    @media @wide { width: 1300px; }
+    @media @wide { max-width: 1300px; }
 
   &.static { position: static;}
 }
@@ -413,6 +413,21 @@ html.no-flexbox {
 	@media @tablet { padding: 50px 0 150px; }
 }
 
+.button_default {
+  background-color: @accent;.transition;
+  &:hover { background-color: @accentHover;}
+}
+
+.button_easein {
+  background-color: @accent;.transition(0.7s, easeInOut);
+  &:hover { background-color: @accentHover;}
+
+}
+.button_easeout {
+  background-color: @accent;.transition(0.7s, easeOut);
+  &:hover { background-color: @accentHover;}
+
+}
 
 /* =============================================================================
    FOOTER
@@ -478,6 +493,15 @@ article {
 
 }
 
+
+.page-banner {
+  height: 400px; width: 100%;
+  .background-size(cover); background-position: center top;
+  .at2x('https://placekitten.com/1200/400', 'https://placekitten.com/2400/800')
+
+}
+
+
 .main-nav .md-modal .logo {@media @tablet {display: none;} }
 .mobile {
   .md-modal {
@@ -487,6 +511,7 @@ article {
     text-align: left; .fs(18);
 
     a { padding: 10px 0;}
+
 
 
 

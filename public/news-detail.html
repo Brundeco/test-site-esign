@@ -66,37 +66,25 @@
   </script>
 </head>
 
-<body class="news-detail mobile">
+<body class="news-detail">
 
   <div class="page-wrap">
 
     <header class="page-header">
 
-      <div class="container static">
+      <div class="container">
         <a href="index.html" class="logo">
           <img src="assets/images/logo.png" alt="Template" width="150" height="80" />
         </a>
-        <nav class="main-nav" role="navigation">
-          <a href="" class="trigger main-modal-trigger">
-            <i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span></a>
-          <!--       attribuut data-view-slide" kan true/false zijn; bij true is de slide animation visible -->
-          <div id="main-modal" data-view-slide="true" class=" md-modal md-cover ">
-            <!-- data-animation-type mogelijkheden: fade, from-top of from-left -->
-            <div data-animation-type="from-left" class="md-content "  >
-              <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="Template" width="150" height="80"/>
-              </a>
-              <ul class="nav-wrap">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="news-detail.html">News detail</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </div>
-            <button type="button" class="md-close md-close-trigger" aria-label="close">
-              X </button>
 
-          </div>
+        <nav class="main-nav">
+          <span class="trigger"><i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span></span>
+          <ul class="nav-wrap">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="active"><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
         </nav>
       </div>
 
@@ -155,8 +143,9 @@
     </div>
   </footer>
 
-    <script src="assets/js/libs/jquery.min.js"></script>
+  <script src="assets/js/libs/jquery.min.js"></script>
+  <script src="assets/js/plugins.js"></script>
+  <script src="assets/js/esign.js"></script>
     <script src="js/app.js"></script>
-
 </body>
 </html>

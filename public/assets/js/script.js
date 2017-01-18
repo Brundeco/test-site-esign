@@ -2,7 +2,6 @@ var $nav;
 
 $(function() {
 
-
     Response.create({
         prop: "width",
         prefix: "min-width- r src",
@@ -15,15 +14,7 @@ $(function() {
         $('body').removeClass('mobile');
     }
 
-
-    $.getScript('../snippets/components/custom-modal/custom-modal.js', function(){
-        $.getScript('../snippets/components/modal-navigation/modal-navigation.js', function(){
-            esign.modals();
-
-        });
-    });
-
-
+    esign.modals();
     $('.md-show').removeClass('md-show');
 
     /* NAVIGATION */

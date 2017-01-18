@@ -58,7 +58,7 @@ gulp.task('retina-images', function () {
                 quality:70,
                 progressive: true
             }))
-        .pipe(tinypng('GpRfV1BOgogdnKzbYlK0pzgkRzQWI_HF'))
+        .pipe(tinypng('YOUR_API_CODE'))
         .pipe(gulp.dest('resources/assets/images/test-images/dist'));
 });
 

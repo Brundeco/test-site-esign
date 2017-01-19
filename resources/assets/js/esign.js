@@ -14,20 +14,19 @@ esign.cacheSelectors = function () {
 esign.init = function () {
 
 	Response.create({
-	    prop: "width", 
-	    prefix: "min-width- r src", 
-	    breakpoints: [752,0],
-	    lazy: true
+		prop: "width",
+	  prefix: "min-width- r src",
+	  breakpoints: [752,0],
+	  lazy: true
 	});
-	
+
 	esign.gaDevelopment();
 	esign.cacheSelectors();
-	
+
 	esign.navigation();
 	esign.responsiveVideos();
 	esign.blockLink();
 	esign.newsletter();
-    esign.floatingLabels();
 };
 
 esign.navigation = function () {
@@ -35,7 +34,7 @@ esign.navigation = function () {
 		e.preventDefault();
 		$(this).next('.nav-wrap').slideToggle('fast');
 	});
-	
+
 	Response.crossover('width', function() {
 		if(Response.band(752)) {
 			esign.cache.$nav.css('display', 'block');
@@ -45,30 +44,6 @@ esign.navigation = function () {
 		}
 	});
 };
-
-
-esign.floatingLabels = function(){
-
-    if (document.createElement("input").placeholder == undefined) {
-        $('.floating-label--container input').addClass('active');
-        $('.floating-label--container label').addClass('active');
-    }else {
-
-        $('.floating-label--container').each(function (index, element) {
-            $(element).find('input').on('select keydown', function () {
-                $(this).parent().find('label').addClass('active');
-                $(this).addClass('active');
-            });
-            $(element).find('input').on('keyup blur ', function () {
-                if ($(this).parent().find('input').val().length == 0) {
-                    $(this).parent().find('label').removeClass('active');
-                    $(this).removeClass('active');
-                }
-            });
-        });
-    }
-};
-
 
 esign.responsiveVideos = function () {
 	$('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"], iframe[src*="player.vimeo"]').wrap('<div class="video-container"></div>');
@@ -86,7 +61,7 @@ esign.blockLink = function () {
 esign.newsletter = function () {
 	$('.form-newsletter').submit(function(e) {
 		$form = $(this);
-		
+
 		$.post($form.attr('action'), $form.serializeArray(), function(data) {
 			if(data.errors === false) {
 				$form.html(data.result);
@@ -94,7 +69,7 @@ esign.newsletter = function () {
 				$form.find('.result').html(data.result);
 			}
 		});
-		
+
 		e.preventDefault();
 		return false;
 	});

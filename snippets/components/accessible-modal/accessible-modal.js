@@ -3,18 +3,41 @@
 * */
 
 esign.modal = function () {
-    // Centered modal
-    $('.modaal-button').modaal({
+
+    $('.modaal-trigger').modaal({
         type: 'inline',
         animation_speed: 200,
-        fullscreen: false
+        fullscreen: false,
+
+        // Add hashing
+        before_open: function () {
+            window.location.hash = this.$elem[0].hash;
+        },
+        before_close: function () {
+            window.location.hash = '';
+        }
     });
 
-    // Fullscreen modal
-    $('.modaal-fullscreen-button').modaal({
+    $('.modaal-fullscreen-trigger').modaal({
         type: 'inline',
         animation_speed: 200,
-        fullscreen: true
+        fullscreen: true,
+
+        // Add hashing
+        before_open: function () {
+            window.location.hash = this.$elem[0].hash;
+        },
+        before_close: function () {
+            window.location.hash = '';
+        }
     });
+
+    // Data-attributes overwrite js settings
+    $('.modaal-data-trigger').modaal();
+
+    // Open modal from hash
+    var $modalTrigger = $('a[href="' +  window.location.hash + '"]').first();
+    if ($modalTrigger.length) { $modalTrigger.trigger('click') }
+
 };
 

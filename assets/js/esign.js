@@ -24,7 +24,7 @@ esign.init = function () {
 	esign.navigation();
 	esign.responsiveVideos();
 	esign.blockLink();
-	esign.newsletter();
+    esign.formAjax();
 };
 
 esign.navigation = function () {
@@ -55,21 +55,23 @@ esign.blockLink = function () {
 };
 
 /* ajax newsletter subscribe */
-esign.newsletter = function () {
-	$('.form-newsletter').submit(function(e) {
-		$form = $(this);
-		
-		$.post($form.attr('action'), $form.serializeArray(), function(data) {
-			if(data.errors === false) {
-				$form.html(data.result);
-			} else {
-				$form.find('.result').html(data.result);
-			}
-		});
-		
-		e.preventDefault();
-		return false;
-	});
+esign.formAjax = function () {
+    $('.form-ajax').submit(function(e) {
+        $form = $(this);
+        $form.find('button,input[type="submit"]').attr("disabled", "disabled");
+
+        $.post($form.attr('action'), $form.serializeArray(), function(data) {
+            if(data.errors === false) {
+                $form.html(data.result);
+            } else {
+                $form.find('.result').html(data.result);
+                $form.find('button,input[type="submit"]').removeAttr('disabled')
+            }
+        });
+
+        e.preventDefault();
+        return false;
+    });
 };
 
 // initialize on docready

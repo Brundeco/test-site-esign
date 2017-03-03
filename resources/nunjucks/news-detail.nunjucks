@@ -8,26 +8,29 @@
 {% block content %}
 <div class="container">
 
-  <article class="article-detail" itemscope itemtype="http://schema.org/NewsArticle">
-    <div itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-      <meta itemprop="url" content="https://cdn.shopify.com/s/files/1/1205/1378/articles/style_image09_final_1680x660.jpg?v=1472824879">
-      <meta itemprop="width" content="1680">
-      <meta itemprop="height" content="660">
-    </div>
+  <article class="article-detail" itemscope itemtype="http://schema.org/NewsArticle" role="article">
     <meta itemprop="author" content="Esign">
-    <meta itemprop="dateModified" content="2016-09-16"/>
+    <meta itemprop="dateModified" content="2017-02-24">
+
     <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
       <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-        <meta itemprop="url" content="https://cdn.shopify.com/s/files/1/1205/1378/t/2/assets/logo.png?9752811773021543551">
-        <meta itemprop="width" content="734">
-        <meta itemprop="height" content="80">
+        <meta itemprop="url" content="assets/images/logo-esign.png">
+        <meta itemprop="width" content="104">
+        <meta itemprop="height" content="20">
       </div>
       <meta itemprop="name" content="Esign">
     </div>
-    <link itemprop="mainEntityOfPage" href="news-article.html">
 
-    <h1 itemprop="headline">Lorem ipsum</h1>
-    <time datetime="2016-09-14" itemprop="datePublished">14/09/2016</time>
+    <header>
+      <h1 itemprop="headline">Lorem ipsum</h1>
+      <time datetime="2017-01-01" itemprop="datePublished"><?php echo $article->01/01/2017</time>
+    </header>
+
+    <div class="" itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
+      <img src="assets/images/logo-esign.png" itemprop="url" alt="Lorem ipsum">
+      <meta itemprop="width" content="104">
+      <meta itemprop="height" content="20">
+    </div>
 
     <div class="article-body" itemprop="articleBody">
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>

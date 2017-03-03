@@ -1,0 +1,29 @@
+
+    <div class="one-half">
+
+
+      <span>blazy basic</span>
+      <img src="http://www.placehold.it/300x100" data-src="http://www.placehold.it/600x200 | http://www.placehold.it/1200x400"
+           class="intrinsic-item b-lazy"/>
+
+    </div>
+
+    <div class="one-half"> <span>blazy with picure element, loading animation and intrinsic placeholder</span>
+      <div class="intrinsic-container">
+        <div class="loading">&nbsp;</div>
+
+        <picture class="intrinsic ratio--4x3">
+          <!--[if IE 9]><video style="display: none;"><![endif]-->
+          <!--   <source data-srcset="../resources/assets/images/test-images/waytoobig.jpg" media="(min-width: 1000px)">
+             -->
+          <source data-srcset="../resources/assets/images/test-images/xlarge.jpg" media="(min-width: 1000px)">
+          <source data-srcset="../resources/assets/images/test-images/medium.jpg" media="(min-width: 800px)">
+          <source data-srcset="../resources/assets/images/test-images/small.jpg">
+
+          <!-- [if IE 9]></video><![endif] -->
+          <img class="intrinsic-item b-lazy fadeIn" src="../resources/assets/images/test-images/small.jpg" data-src="../resources/assets/images/test-images/small.jpg" alt="Test image" />
+        </picture>
+
+      </div>
+
+    </div>

@@ -232,6 +232,18 @@
   justify-content: @value;
 }
 
+.align-content(@align: stretch) {
+  -webkit-align-content: @align;
+  -ms-align-content: @align;
+  align-content: @align;
+}
+
+.justify-content(@justify: flex-start) {
+  -webkit-justify-content: @justify;
+  -ms-justify-content: @justify;
+  justify-content: @justify;
+}
+
 // Box orient
 .box-orient(@orient: vertical) {
   -webkit-box-orient: @orient;
@@ -523,6 +535,54 @@
   @media screen and (min-width: @max-vw) {
     line-height: @max-size;
   }
+}
+
+
+
+.underline-text (@textColor: black, @bgColor: white, @height:1px) {
+
+  color: @textColor;
+  //ie9 fallback
+  text-decoration: underline;
+  display: inline-block;
+
+
+  text-decoration: none;
+  text-shadow: 3px 0 @bgColor, 2px 0 @bgColor, 1px 0 @bgColor, -1px 0 @bgColor, -2px 0 @bgColor, -3px 0 @bgColor;
+
+  &:after {
+    margin-top: -8px;
+    content:''; display: block; height: @height; width: 100%;
+    background-color: @textColor;
+    background-repeat: repeat-x;
+    background-size: 1px @height;
+    /*
+    background-image: -webkit-linear-gradient(@bgColor 20%, @textColor 100%);
+    background-image: linear-gradient(@bgColor 20%, @textColor 100%);
+    background-position: 0 95%;
+
+    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
+    background-position: 0 93%;
+
+  } */
+
+  }
+
+
+  &::selection {
+
+    background-color: @selection;
+    text-shadow: none;
+    color: inherit;
+
+  }
+
+    &:hover{
+      cursor: pointer;
+}
+
+
+
 }
 
 // Height

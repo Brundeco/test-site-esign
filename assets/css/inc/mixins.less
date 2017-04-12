@@ -183,11 +183,11 @@
 }
 
 // Transitions
-.transition(@transition:0.3s) {
-	-webkit-transition: @transition;
-	   -moz-transition: @transition;
-	   	 -o-transition: @transition;
-	        transition: @transition;
+.transition(@transition:0.3s, @ease:cubic-bezier(0,.13,.64,1)) {
+	-webkit-transition: @transition @ease;
+	   -moz-transition: @transition @ease;
+	   	 -o-transition: @transition @ease;
+	        transition: @transition @ease;
 }
 
 .transition-delay(@delay:0.2s) {

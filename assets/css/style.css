@@ -391,10 +391,10 @@ em {
 a {
   color: #444444;
   text-decoration: underline;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
   font-weight: inherit;
   font-style: inherit;
 }
@@ -869,10 +869,10 @@ a.button {
   float: left;
   display: block;
   clear: both;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
   outline: 0;
   line-height: 1.2em;
   padding: 12px 20px;
@@ -1643,10 +1643,10 @@ body {
   /* .at2x('../images/template-sprite.png', '../images/template-sprite@2x.png', 300px, 50px); */
   display: inline-block;
   vertical-align: middle;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
 }
 .icon-hamburger,
 .icon-hamburger:before,
@@ -1655,10 +1655,10 @@ body {
   position: absolute;
   height: 1px;
   border-top: 3px solid #ff8000;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
 }
 .icon-hamburger {
   position: relative;
@@ -1740,17 +1740,17 @@ body {
   color: #fff;
   overflow: hidden;
   text-indent: -500px;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
 }
 .cycle-pager span:hover,
 .cycle-pager span:focus {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -o-transition: none;
-  transition: none;
+  -webkit-transition: none cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: none cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: none cubic-bezier(0, 0.13, 0.64, 1);
+  transition: none cubic-bezier(0, 0.13, 0.64, 1);
 }
 .cycle-pager span:hover,
 .cycle-pager span:focus,
@@ -1937,10 +1937,10 @@ a.esign {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-transition: 1s;
-  -moz-transition: 1s;
-  -o-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 1s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 1s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 1s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 1s cubic-bezier(0, 0.13, 0.64, 1);
   display: block;
   outline: 0;
 }
@@ -2028,10 +2028,10 @@ article:after {
 }
 article a img {
   display: block;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
   opacity: 1;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;

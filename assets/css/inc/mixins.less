@@ -364,6 +364,31 @@
   font-size: 0rem + @size / @doc-font-size;
 }
 
+// Responsive font size
+.fluid-font-size(@min-vw, @max-vw, @min-size, @max-size) {
+	font-size: @min-size;
+
+	@media screen and (min-width: @min-vw) {
+		font-size: calc(@min-size ~" + " unit(@max-size - @min-size) ~" * ((100vw - " @min-vw ~") /" unit(@max-vw - @min-vw) ~")");
+	}
+
+	@media screen and (min-width: @max-vw) {
+		font-size: @max-size;
+	}
+}
+
+.fluid-line-height(@min-vw, @max-vw, @min-size, @max-size) {
+	line-height: @min-size;
+
+	@media screen and (min-width: @min-vw) {
+		line-height: calc(@min-size ~" + " unit(@max-size - @min-size) ~" * ((100vw - " @min-vw ~") /" unit(@max-vw - @min-vw) ~")");
+	}
+
+	@media screen and (min-width: @max-vw) {
+		line-height: @max-size;
+	}
+}
+
 // Line height
 .lh(@lh) {
 	line-height: 0px + @lh;
@@ -395,17 +420,17 @@
 // Retina
 // A helper mixin for applying high-resolution background images (http://www.retinajs.com)
 .at2x(@path, @at2x_path, @w: auto, @h: auto) {
-  background-image: url(@path);
-  @media all and (-webkit-min-device-pixel-ratio : 1.5) {
-    background-image: url(@at2x_path);
-    background-size: @w @h;
-  }
+	background-image: url(@path);
+	@media all and (-webkit-min-device-pixel-ratio : 1.5) {
+		background-image: url(@at2x_path);
+		background-size: @w @h;
+	}
 }
 
 // Selection
 .selection(@background: @grayDark, @color: @white) {
-    ::-moz-selection { background-color: @background; color: @color; }
-    ::selection { background-color: @background; color: @color; }
+	::-moz-selection { background-color: @background; color: @color; }
+	::selection { background-color: @background; color: @color; }
 }
 
 // Animations

@@ -746,6 +746,10 @@ textarea,
   margin: 0;
   vertical-align: baseline;
   *vertical-align: middle;
+  -webkit-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -moz-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  -o-transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
 }
 button,
 input {
@@ -819,7 +823,7 @@ input[type="date"]:focus,
 textarea:focus,
 select:focus {
   outline: 0;
-  border-color: #444444;
+  border-color: #777777;
 }
 input[type="email"] {
   display: block;

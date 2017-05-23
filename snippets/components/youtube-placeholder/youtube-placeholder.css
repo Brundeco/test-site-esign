@@ -1,0 +1,21 @@
+.video-pl{
+    position: relative;
+}
+.video-pl__start{
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    line-height: 1.5rem;
+    position: absolute;
+    top: calc(50% - 1rem);
+    left: calc(50% - 1.5rem);
+    box-shadow: 0 0 2px rgba(0,0,0,.8);
+    cursor: pointer;
+}
+.video-pl__start:hover, .video-pl__start:focus{
+    background: rgba(227,37,36,.9);
+}

@@ -1,0 +1,33 @@
+
+<!-- Vanaf grootte x deze afbeelding inladen (+retina afbeelding) -->
+
+<picture>
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    <source srcset="img/xlarge.jpg 1x, img/xlarge@2x.jpg 2x" media="(min-width: 1000px)">
+    <source srcset="img/medium.jpg 1x, img/xlarge.jpg 2x" media="(min-width: 800px)">
+    <source srcset="img/small.jpg 1x, img/medium.jpg 2x">
+    <!--[if IE 9]></video><![endif]-->
+    <img  alt="Test image" />
+</picture>
+
+<!-- Geef w(idth) in van de verschillende formaten images & geef mee welke ruimte ze innemen op de website (vw) -->
+<picture>
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    <source media="(min-width: 36em)"
+            srcset="img/xlarge.jpg  1024w,
+         img/medium.jpg 640w,
+         img/small.jpg 320w"
+            sizes="50vw" />
+
+    <source srcset="img/xlarge@2x.jpg 2x,
+         img/xlarge.jpg 1x" />
+    <!--[if IE 9]></video><![endif]-->
+    <img alt="A test" />
+</picture>
+
+
+
+
+<script src="picturefill.min.js"></script>
+
+

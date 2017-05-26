@@ -1,0 +1,34 @@
+{
+  "name": "esign-template",
+  "version": "1.0.0",
+  "description": "Esign template",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@esign.git.beanstalkapp.com:/esign/frontend-template.git"
+  },
+  "author": "Esign",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.6.1",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.2.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-nunjucks": "^2.3.0",
+    "gulp-nunjucks-render": "^2.0.0",
+    "gulp-responsive": "^2.2.0",
+    "gulp-tinypng": "^1.0.2",
+    "laravel-elixir": "^6.0.0-15",
+    "laravel-elixir-browsersync-official": "^1.0.0",
+    "laravel-elixir-svgmin": "^0.1.0"
+  },
+  "dependencies": {
+    "del": "^2.2.2"
+  }
+}

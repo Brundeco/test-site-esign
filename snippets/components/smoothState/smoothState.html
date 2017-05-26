@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Smooth Scroll</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <link type="text/css" rel="stylesheet" href="smoothScroll.css" media="all" />
+
+</head>
+
+<body class="">
+<!-- smoothState wordt geinitialiseerd op volledige content; kan niet op de body tag -->
+<!-- data-transition is optional -->
+<div id="main" data-transition="fade"  class="page-wrap">
+
+<!--  <header class="page-header">
+
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Template" width="150" height="80" />
+      </a>
+
+      <nav class="main-nav">
+        <span class="trigger"><i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span></span>
+        <ul class="nav-wrap">
+          <li data-target="home" class="active"><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a data-direction="right" data-target="news" href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </header>-->
+
+
+  <!-- op sceneElement worden de transitions uitgevoerd -->
+
+  <div class="main sceneElement">
+
+    <div class="container">
+
+      <h1>Template</h1>
+
+      <div class="row">
+        <div class="one-half">
+          <img src="http://placehold.it/500x1000" />
+          <p>1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+        </div>
+        <div class="one-half">
+          <img src="http://placehold.it/500x1000" />
+          <p>2Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="three-fourth">
+        <p>&copy; 2015</p>
+      </div>
+      <div class="one-fourth">
+        <p>
+          <a class="esign" href="http://www.esign.eu/esign-heet-u-welkom" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat.">Site by Esign</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="jquery.smoothState.min.js"></script>
+<script src="smooth.js" ></script>
+
+</body>
+</html>

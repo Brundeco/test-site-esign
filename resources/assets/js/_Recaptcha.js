@@ -4,9 +4,9 @@
 
 function _Recaptcha() {
 
-	this.recaptchaResponse = function() {
-		// Default
-		$('form').submit();
-	};
+  this.recaptchaResponse = function() {
+    // Default
+    $('form').submit();
+  };
 
 }

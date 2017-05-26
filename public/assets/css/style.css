@@ -1073,247 +1073,7 @@ fieldset ul li.space {
   clear: none;
   display: inline-block;
 }
-.floating-label--container {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-}
-.floating-label--container label {
-  font-size: 14px;
-  font-size: 1.4rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  /* IE 9 */
-  -moz-transform: translate(0, 0);
-  /* Firefox */
-  -webkit-transform: translate(0, 0);
-  /* Safari and Chrome */
-  -o-transform: translate(0, 0);
-  /* Opera */
-  white-space: nowrap;
-  width: auto;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-  transition: all 0.5s cubic-bezier(0, 0.13, 0.64, 1);
-}
-.floating-label--container label.active {
-  display: block;
-  visibility: visible;
-  opacity: 1;
-  font-size: 12px;
-  font-size: 1.2rem;
-  transform: translate(0.5em, 0.5em);
-  -ms-transform: translate(0.5em, 0.5em);
-  /* IE 9 */
-  -moz-transform: translate(0.5em, 0.5em);
-  /* Firefox */
-  -webkit-transform: translate(0.5em, 0.5em);
-  /* Safari and Chrome */
-  -o-transform: translate(0.5em, 0.5em);
-  /* Opera */
-}
-.floating-label--container input {
-  box-sizing: border-box;
-  *behavior: url('../js/polyfills/boxsizing.htc');
-  height: 55px;
-}
-.floating-label--container input.active {
-  padding-top: 20px;
-}
-.floating-label--container.floating-label--container_above {
-  margin-top: 1.4em;
-}
-.floating-label--container.floating-label--container_above label.active {
-  transform: translate(0em, -2em);
-  -ms-transform: translate(0em, -2em);
-  /* IE 9 */
-  -moz-transform: translate(0em, -2em);
-  /* Firefox */
-  -webkit-transform: translate(0em, -2em);
-  /* Safari and Chrome */
-  -o-transform: translate(0em, -2em);
-  /* Opera */
-}
-.floating-label--container.floating-label--container_above input {
-  height: 35px;
-}
-.floating-label--container.floating-label--container_above input.active {
-  padding-top: 6px;
-}
-.floating-label--container.floating-label--container_error input {
-  border: 1px solid red;
-}
-.floating-label--container label {
-  margin-left: 20px;
-}
 /* Plugins */
-.sceneElement {
-  -webkit-animation-duration: .4s;
-  animation-duration: .4s;
-  transition-timing-function: ease-in;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-.is-exiting .sceneElement {
-  transition-timing-function: ease-out;
-}
-#main[data-transition=fade] .sceneElement {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-#main[data-transition=fade].is-exiting .sceneElement {
-  -webkit-animation-name: fadeOut;
-  animation-name: fadeOut;
-}
-#main[data-transition=moveleft] .sceneElement {
-  -webkit-animation-name: moveInFromLeft;
-  animation-name: moveInFromLeft;
-}
-#main[data-transition=moveleft].is-exiting .sceneElement {
-  -webkit-animation-name: moveOutToRight;
-  animation-name: moveOutToRight;
-}
-#main[data-transition=moveright] .sceneElement {
-  -webkit-animation-name: moveInFromRight;
-  animation-name: moveInFromRight;
-}
-#main[data-transition=moveright].is-exiting .sceneElement {
-  -webkit-animation-name: moveOutToLeft;
-  animation-name: moveOutToLeft;
-}
-/* ANIMATIONS */
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-@-webkit-keyframes moveInFromLeft {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-100px);
-    transform: translateX(-100px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-@keyframes moveInFromLeft {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-100px);
-    transform: translateX(-100px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes moveOutToLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-}
-@keyframes moveOutToLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-}
-@-webkit-keyframes moveInFromRight {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(100px);
-    transform: translateX(100px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-@keyframes moveInFromRight {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(100px);
-    transform: translateX(100px);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes moveOutToRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(50%);
-    transform: translateX(50%);
-  }
-}
-@keyframes moveOutToRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateX(50%);
-    transform: translateX(50%);
-  }
-}
 /* Validation engine */
 .formError {
   z-index: 990;
@@ -1391,59 +1151,59 @@ fieldset ul li.space {
 .formError .formErrorArrow div {
   display: none;
   /*font-size: 0px; height: 1px; background: @accent; margin: 0 auto; line-height: 0; font-size: 0; display: block;
-	border-left: 1px solid @accent; border-right: 1px solid @accent; 
-	.box-shadow(0 0 1px 1px rgba(200,200,200,0.2));*/
+  border-left: 1px solid @accent; border-right: 1px solid @accent;
+  .box-shadow(0 0 1px 1px rgba(200,200,200,0.2));*/
 }
 /*
 .formError .formErrorArrowBottom div {
-	.box-shadow(none);
+  .box-shadow(none);
 }
 
 .formError .formErrorArrow .line10 {
-	width: 15px; border: none;
+  width: 15px; border: none;
 }
 
 .formError .formErrorArrow .line9 {
-	width: 13px; border: none;
+  width: 13px; border: none;
 }
 
 .formError .formErrorArrow .line8 {
-	width: 11px;
+  width: 11px;
 }
 
 .formError .formErrorArrow .line7 {
-	width: 9px;
+  width: 9px;
 }
 
 .formError .formErrorArrow .line6 {
-	width: 7px;
+  width: 7px;
 }
 
 .formError .formErrorArrow .line5 {
-	width: 5px;
+  width: 5px;
 }
 
 .formError .formErrorArrow .line4 {
-	width: 3px;
+  width: 3px;
 }
 
 .formError .formErrorArrow .line3 {
-	width: 1px;
-	border-left: 2px solid @accent;
-	border-right: 2px solid @accent;
-	border-bottom: 0 solid #ddd;
+  width: 1px;
+  border-left: 2px solid @accent;
+  border-right: 2px solid @accent;
+  border-bottom: 0 solid #ddd;
 }
 
 .formError .formErrorArrow .line2 {
-	width: 3px;
-	border: none;
-	background: @accent;
+  width: 3px;
+  border: none;
+  background: @accent;
 }
 
 .formError .formErrorArrow .line1 {
-	width: 1px;
-	border: none;
-	background: @accent;
+  width: 1px;
+  border: none;
+  background: @accent;
 }
 */
 /*! fancyBox v2.1.4 fancyapps.com | fancyapps.com/fancybox/#license */
@@ -1609,7 +1369,7 @@ fieldset ul li.space {
 }
 .fancybox-lock .fancybox-overlay {
   /*overflow: auto;
-	overflow-y: auto;*/
+  overflow-y: auto;*/
 }
 /* Title helper */
 .fancybox-title {
@@ -1758,24 +1518,21 @@ body {
   .row {
     /* exceptions: only add what you need! */
     /*&.g20 {
-            margin-left: -20px;
-            > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one, > .left {
-                padding-left: 20px;
-            }
-        }*/
+      margin-left: -20px;
+      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one, > .left {
+        padding-left: 20px;
+      }
+    }*/
   }
-}
-.row > .left {
-  padding-left: 20px;
 }
 .one-half,
 .two-third,
 .one-third,
 .three-fourth,
 .one-fourth,
+.one-fifth,
 .two-fifth,
 .three-fifth,
- > .one-fifth,
 .one {
   float: left;
   display: block;
@@ -2263,6 +2020,9 @@ article a:focus img {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
+  @page {
+    margin: 2cm 0.5cm 1cm;
+  }
   html {
     font-size: 10px;
   }
@@ -2287,9 +2047,6 @@ article a:focus img {
   }
   img {
     max-width: 100% !important;
-  }
-  @page {
-    margin: 2cm 0.5cm 1cm;
   }
   .page-footer,
   .main-nav {

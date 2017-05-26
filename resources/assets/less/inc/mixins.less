@@ -537,15 +537,12 @@
   }
 }
 
-
-
 .underline-text (@textColor: black, @bgColor: white, @height:1px) {
 
   color: @textColor;
   //ie9 fallback
   text-decoration: underline;
   display: inline-block;
-
 
   text-decoration: none;
   text-shadow: 3px 0 @bgColor, 2px 0 @bgColor, 1px 0 @bgColor, -1px 0 @bgColor, -2px 0 @bgColor, -3px 0 @bgColor;
@@ -568,20 +565,11 @@
 
   }
 
-
   &::selection {
-
     background-color: @selection;
     text-shadow: none;
     color: inherit;
-
   }
-
-    &:hover{
-      cursor: pointer;
-}
-
-
 
 }
 

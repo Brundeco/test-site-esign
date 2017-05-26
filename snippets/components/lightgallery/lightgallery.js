@@ -4,7 +4,6 @@
 
 esign.lightgallery = function () {
 
-    $("#lightgallery").lightGallery({});
+  $("#lightgallery").lightGallery({});
 
 };
-

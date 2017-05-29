@@ -15,7 +15,6 @@
  */
 /**
  * GUIDELINES
- *
  * CLASSES
  * Naming: lorem-ipsum
  * Abbreviations: Emmet - http://docs.emmet.io/cheat-sheet/ | example: .va-m
@@ -180,15 +179,22 @@ table {
 }
 
 /* Vars.scss
- * Variables and mixins to pre-ignite any new web development project
+ * Variables to pre-ignite any new project
  * ------------------------------------------------------------------ */
+/* Grays */
+/* Accent colors */
+/* Links */
+/* States */
+/* Easing */
+/* Transitions */
+/* Document font-size */
+/* Mediaqueries */
 /* 600px */
 /* 767px */
 /* 767px */
 /* 980px */
 /* 1024px */
 /* 1350px */
-/* Micro clearfix hack for clearing floats - h5bp.com/q */
 .clearfix {
   *zoom: 1;
 }
@@ -202,7 +208,6 @@ table {
   clear: both;
 }
 
-/* Image replacement */
 .ir {
   display: block;
   border: 0;
@@ -214,13 +219,11 @@ table {
   direction: ltr;
 }
 
-/* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden {
   display: none !important;
   visibility: hidden;
 }
 
-/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
 .vh {
   border: 0;
   clip: rect(0 0 0 0);
@@ -232,7 +235,6 @@ table {
   width: 1px;
 }
 
-/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
 .vh.focusable:active, .vh.focusable:focus {
   clip: auto;
   height: auto;
@@ -242,38 +244,10 @@ table {
   width: auto;
 }
 
-/* Hide visually and from screenreaders, but maintain layout */
 .invisible {
   visibility: hidden;
 }
 
-/* User select */
-/* Flexbox */
-/* Direction of the elements inside a flexbox */
-/* row | row-reverse | column | column-reverse */
-/* Order elements (int) inside a flexbox */
-/* Single line or multiple lines inside a flexbox */
-/* nowrap | wrap | wrap-reverse */
-/* Length of the item relative to the rest of the flexible items */
-/* Justify elements (how) inside a flexbox */
-/* Underline text */
-/* ------------------------ */
-/* LESS mixin for CSS arrow */
-/* ------------------------ */
-/* Usage
- * .arrow(size, color, direction, offset, border-size, border-color);
- */
-/* Where
- * Size is the with of the arrow
- * Color is the color of the arrow (plain color required)
- * Direction is the orientation of the arrow (top, right, bottom, left)
- * Offset is the position of the arrow on its axis (px / em)
- * Border-size is the width of the border if there is one (optional; default "0")
- * Border-color is the color of the border if there is one (optional; default "inherit");
- */
-/* Extra
- * Drop-shadows can be used on the element to create a shadow on the arrow as well
- */
 /* Init mediaqueries */
 @media (min-width: 37em) {
   .init-mediaqueries {
@@ -321,11 +295,6 @@ p {
   margin-bottom: 1.5em;
 }
 
-p.large {
-  font-size: 16px;
-  font-size: 1.6rem;
-}
-
 strong {
   font-weight: 500;
   font-size: inherit;
@@ -339,7 +308,7 @@ em {
 a {
   color: #444;
   text-decoration: underline;
-  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
   font-weight: inherit;
   font-style: inherit;
 }
@@ -497,7 +466,7 @@ ul.social a {
   width: 40px;
   line-height: 40px;
   display: block;
-  border-radius: 35px;
+  border-radius: 40px;
   background-color: #FF8000;
   text-decoration: none;
   text-align: center;
@@ -588,7 +557,6 @@ dl {
   margin: 0 0 40px;
 }
 
-/* MISC */
 hr {
   display: block;
   height: 1px;
@@ -647,7 +615,7 @@ button, input, select, textarea, .button {
   margin: 0;
   vertical-align: baseline;
   *vertical-align: middle;
-  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
 }
 
 button, input {
@@ -658,7 +626,6 @@ button, select {
   text-transform: none;
 }
 
-/* Prevent zoom on touch devices in active inputs */
 @media (max-width: 47em) {
   input, textarea {
     font-size: 16px;
@@ -680,7 +647,7 @@ label, .label {
   margin-bottom: 8px;
 }
 
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
+button, input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
   *overflow: visible;
@@ -751,18 +718,16 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* buttons */
 button, input[type="reset"], input[type="submit"], .button, a.button {
   float: left;
   display: block;
   clear: both;
-  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
   outline: 0;
   line-height: 1.2em;
   padding: 12px 20px;
   margin: 10px 0 0;
-  background: #FF8000;
-  border-radius: 5px;
+  background-color: #FF8000;
   text-decoration: none;
   color: #fff;
   text-transform: uppercase;
@@ -773,20 +738,14 @@ button i, input[type="reset"] i, input[type="submit"] i, .button i, a.button i {
 }
 
 button:hover, button:focus, button:active, input[type="reset"]:hover, input[type="reset"]:focus, input[type="reset"]:active, input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active, .button:hover, .button:focus, .button:active, a.button:hover, a.button:focus, a.button:active {
-  background: #b35a00;
+  background-color: #b35a00;
 }
 
 button:active, input[type="reset"]:active, input[type="submit"]:active, .button:active, a.button:active {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-  transform: translateY(1px);
-  -ms-transform: translateY(1px);
-  /* IE 9 */
-  -moz-transform: translateY(1px);
-  /* Firefox */
   -webkit-transform: translateY(1px);
-  /* Safari and Chrome */
-  -o-transform: translateY(1px);
-  /* Opera */
+  -ms-transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, .button::-moz-focus-inner, a.button::-moz-focus-inner {
@@ -809,57 +768,40 @@ button:focus, input[type="reset"]:focus, input[type="submit"]:focus, .button:foc
   font-style: italic;
 }
 
-::-moz-placeholder {
-  color: #999;
-  font-style: italic;
-}
-
 :-ms-input-placeholder {
   color: #999;
   font-style: italic;
 }
 
-input:-moz-placeholder, textarea:-moz-placeholder {
+::placeholder {
   color: #999;
   font-style: italic;
 }
 
-/*::-ms-reveal { display: none; } /* Hide reveal password ie 10+ */
 ::-ms-clear {
   display: none;
 }
 
-/* Hide clear text field ie 10+ */
 input[type="search"] {
   -webkit-appearance: none;
 }
 
-/* Remove the rounded corners */
 ::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 
-/* Hide the cancel button */
 ::-webkit-search-results-button {
   -webkit-appearance: none;
 }
 
-/* Hide the magnifying glass */
 ::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-/* Hide number input spinner */
 ::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-/* Style file upload button */
-.grecaptcha-badge {
-  display: none;
-}
-
-/* forms */
 form .row {
   margin-bottom: 0;
 }
@@ -941,6 +883,10 @@ fieldset ul li.space {
   float: none;
   clear: none;
   display: inline-block;
+}
+
+.grecaptcha-badge {
+  display: none;
 }
 
 /* Plugins */
@@ -1385,7 +1331,8 @@ body {
     /* exceptions: only add what you need! */
     /*&.g20 {
       margin-left: -20px;
-      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one, > .left {
+      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth,
+      > .two-fifth, > .three-fifth, > .one, > .left {
         padding-left: 20px;
       }
     }*/
@@ -1494,7 +1441,7 @@ body {
   /* @include at2x('../images/template-sprite.png', '../images/template-sprite$2x.png', 300px, 50px); */
   display: inline-block;
   vertical-align: middle;
-  transition: 0.3s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
 }
 
 .icon-hamburger, .icon-hamburger:before, .icon-hamburger:after {
@@ -1502,7 +1449,7 @@ body {
   position: absolute;
   height: 1px;
   border-top: 3px solid #FF8000;
-  transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
 }
 
 .icon-hamburger {
@@ -1578,23 +1525,23 @@ body {
 }
 
 .cycle-pager span {
-  border: 2px solid #fff;
-  border-radius: 20px;
+  display: inline-block;
+  margin: 0 3px;
+  font-size: 36px;
   height: 20px;
   width: 20px;
-  display: inline-block;
-  cursor: pointer;
-  margin: 0 3px;
   line-height: 14px;
-  font-size: 36px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  border-radius: 20px;
   color: #fff;
   overflow: hidden;
   text-indent: -500px;
-  transition: 0.2s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
 }
 
 .cycle-pager span:hover, .cycle-pager span:focus {
-  transition: none cubic-bezier(0, 0.13, 0.64, 1);
+  transition: none;
 }
 
 .cycle-pager span:hover, .cycle-pager span:focus, .cycle-pager .cycle-pager-active {
@@ -1628,11 +1575,16 @@ body {
 .equal-h {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: -moz-flex;
   display: flex;
+  overflow: hidden;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  overflow: hidden;
+}
+
+.equal-h > * {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .equal-h:before, .equal-h:after {
@@ -1738,10 +1690,6 @@ html.no-flexbox .equal-h > div {
   margin: 0 0 15px;
 }
 
-.main-nav .nav-wrap li.active a {
-  font-weight: 800;
-}
-
 @media (min-width: 47em) {
   .main-nav li {
     float: left;
@@ -1800,14 +1748,14 @@ a.esign {
   opacity: 0.6;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  transition: 1s cubic-bezier(0, 0.13, 0.64, 1);
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
   display: block;
   outline: 0;
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   a.esign {
-    background-image: url("../images/logo-esign$2x.png");
+    background-image: url("../images/logo-esign@2x.png");
     background-size: 104px 20px;
   }
 }
@@ -1833,8 +1781,8 @@ a.esign:hover, a.esign:focus {
 }
 
 .center-block {
-  text-align: center;
   *zoom: 1;
+  text-align: center;
   margin: 20px 0;
 }
 
@@ -1853,9 +1801,9 @@ a.esign:hover, a.esign:focus {
 }
 
 .box {
+  *zoom: 1;
   margin: 0 0 20px;
   padding: 15px 15px 5px;
-  *zoom: 1;
   background: #E7E4DB;
 }
 

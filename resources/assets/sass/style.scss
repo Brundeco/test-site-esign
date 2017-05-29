@@ -16,7 +16,6 @@
 
 /**
  * GUIDELINES
- *
  * CLASSES
  * Naming: lorem-ipsum
  * Abbreviations: Emmet - http://docs.emmet.io/cheat-sheet/ | example: .va-m
@@ -77,7 +76,11 @@ body {
 .page-wrap {
   position: relative;
 
-  @media #{$tablet} { height: auto; min-height: 100%; z-index: 2; }
+  @media #{$tablet} {
+    height: auto;
+    min-height: 100%;
+    z-index: 2;
+  }
 }
 
 /* typekit async loading (all elements using $ typekit font) */
@@ -128,7 +131,8 @@ body {
     /* exceptions: only add what you need! */
     /*&.g20 {
       margin-left: -20px;
-      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one, > .left {
+      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth,
+      > .two-fifth, > .three-fifth, > .one, > .left {
         padding-left: 20px;
       }
     }*/
@@ -196,11 +200,12 @@ body {
   /* icon sprite */
   /* @include at2x('../images/template-sprite.png', '../images/template-sprite$2x.png', 300px, 50px); */
   display: inline-block; vertical-align: middle;
-  @include transition;
+  transition: $transitionDefault;
 }
 
 .icon-hamburger, .icon-hamburger:before, .icon-hamburger:after {
-  width: 24px; position: absolute; height: 1px; border-top: 3px solid $accent; @include transition(0.2s);
+  width: 24px; position: absolute; height: 1px; border-top: 3px solid $accent;
+  transition: $transitionDefault;
 }
 
 .icon-hamburger {
@@ -247,21 +252,33 @@ body {
 
 .cycle-pager {
   width: 100%; text-align: center;
+
   span {
-    border: 2px solid #fff; @include border-radius(20px);
-    height: 20px; width: 20px; display: inline-block; cursor:pointer;
-    margin: 0 3px; line-height: 14px; font-size: 36px; color: #fff;
-    overflow: hidden; text-indent: -500px; @include transition(0.2s);
-    &:hover, &:focus { @include transition(none); }
+    display: inline-block; margin: 0 3px; font-size: 36px;
+    height: 20px; width: 20px; line-height: 14px;
+    cursor:pointer;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    overflow: hidden; text-indent: -500px;
+    transition: $transitionDefault;
+
+    &:hover, &:focus {
+      transition: none;
+    }
   }
 
-  span:hover, span:focus, .cycle-pager-active { text-indent: 0; }
+  span:hover, span:focus, .cycle-pager-active {
+    text-indent: 0;
+  }
 }
 
 /* OTHER */
 
 /* google maps mw */
-.gm-style img { max-width: inherit; }
+.gm-style img {
+  max-width: inherit;
+}
 
 /* responsive video */
 .video-container {
@@ -274,8 +291,17 @@ body {
 
 /* equal height */
 .equal-h {
-  @include flex-box; @include flex-box-wrap; overflow: hidden;
-  &:before, &:after { display: none; }
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+
+  > * {
+    display: flex;
+  }
+
+  &:before, &:after {
+    display: none;
+  }
 }
 
 html.no-flexbox {
@@ -305,8 +331,14 @@ html.no-flexbox {
 
 .logo {
   text-decoration: none; @include opacity(100);
-  img { display: block; }
-  &:hover, &:focus { @include opacity(80); }
+
+  img {
+    display: block;
+  }
+
+  &:hover, &:focus {
+    @include opacity(80);
+  }
 }
 
 .main-nav {
@@ -317,22 +349,40 @@ html.no-flexbox {
     display: block; border-top: 1px solid $grayLight;
   }
 
-  a:hover, a:focus, li.active a { color: $black; }
+  a:hover, a:focus, li.active a {
+    color: $black;
+  }
 
   .trigger {
     display: block; position: relative; cursor: pointer;
     padding: 9px 0 9px 45px; font-weight: 500;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    .icon-hamburger { position: absolute; left: 0; top: 12px; }
+
+    .icon-hamburger {
+      position: absolute; left: 0; top: 12px;
+    }
   }
 
-  .nav-wrap {  display: none; margin: 0 0 15px; li.active a { font-weight: 800; }}
+  .nav-wrap {
+    display: none; margin: 0 0 15px;
+  }
 
   @media #{$tablet} {
-    li { float: left; margin: 0 0 0 20px; }
-    a { border-top: 0; padding: 0; }
-    .trigger { display: none; }
-    .nav-wrap { margin: 0 0 0 -20px; display: block; }
+    li {
+      float: left; margin: 0 0 0 20px;
+    }
+
+    a {
+      border-top: 0; padding: 0;
+    }
+
+    .trigger {
+      display: none;
+    }
+
+    .nav-wrap {
+      margin: 0 0 0 -20px; display: block;
+    }
   }
 }
 
@@ -344,7 +394,9 @@ html.no-flexbox {
 .main {
   padding: 40px 0;
 
-  @media #{$tablet} { padding: 50px 0 150px; }
+  @media #{$tablet} {
+    padding: 50px 0 150px;
+  }
 }
 
 /* =============================================================================
@@ -353,17 +405,26 @@ html.no-flexbox {
 
 .page-footer {
   position: relative;
-  .row { margin-bottom: 0; }
+
+  .row {
+    margin-bottom: 0;
+  }
 
   @media #{$tablet} {
-    height: 60px; margin: -60px 0 0; z-index: 5;
+    height: 60px;
+    margin: -60px 0 0;
+    z-index: 5;
   }
 }
 
 a.esign {
   width: 104px; height: 20px;
-  @include at2x('../images/logo-esign.png', '../images/logo-esign$2x.png', 104px, 20px);
-  text-indent: -9999px; @include opacity(60); @include transition(1s); display: block; outline: 0;
+  @include at2x('../images/logo-esign.png', '../images/logo-esign@2x.png', 104px, 20px);
+  text-indent: -9999px;
+  @include opacity(60);
+  transition: $transitionDefault;
+  display: block;
+  outline: 0;
 
   &:hover, &:focus {
     @include opacity(100);
@@ -384,14 +445,19 @@ a.esign {
 }
 
 .center-block {
-  text-align: center; @include clearfix;
+  @include clearfix;
+  text-align: center;
   margin: 20px 0;
-  .button { float: none; display: inline-block; }
+
+  .button {
+    float: none; display: inline-block;
+  }
 }
 
 .box {
+  @include clearfix;
   margin: 0 0 20px; padding: 15px 15px 5px;
-  @include clearfix; background: #E7E4DB;
+  background: #E7E4DB;
 
   ul, p {
     margin-bottom: 1em;
@@ -414,13 +480,16 @@ article {
 
   a {
     img { display: block; @include opacity(100); }
+
     &:hover, &:focus {
       img { @include opacity(80); }
     }
   }
 }
 
-.map { width: 100%; height: 350px; background: #efefef; margin: 0 0 40px; }
+.map {
+  width: 100%; height: 350px; background: #efefef; margin: 0 0 40px;
+}
 
 
 /* =============================================================================

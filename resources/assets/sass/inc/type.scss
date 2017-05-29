@@ -15,19 +15,23 @@
 /* BODY */
 
 p {
-  line-height: 1.5em; margin-bottom: 1.5em;
-
-  &.large {
-    @include fs(16);
-  }
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
 }
 
-strong { font-weight: 500; font-size: inherit; }
+strong {
+  font-weight: 500;
+  font-size: inherit;
+}
 
-em { font-style: italic; font-weight: inherit; }
+em {
+  font-style: italic;
+  font-weight: inherit;
+}
 
 a {
-  color: $linkColor; text-decoration: underline; @include transition;
+  color: $linkColor; text-decoration: underline;
+  transition: $transitionDefault;
   font-weight: inherit; font-style: inherit;
 
   &:hover, &:focus {
@@ -80,23 +84,31 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 h1, .h1 {
   @include fs(24);
 
-  @media #{$tablet} { @include fs(35); }
+  @media #{$tablet} {
+    @include fs(35);
+  }
 }
 
 h2, .h2 {
   @include fs(18);
 
-  @media #{$tablet} { @include fs(24); }
+  @media #{$tablet} {
+    @include fs(24);
+  }
 }
 
 h3, .h3 {
   @include fs(16);
 
-  @media #{$tablet} { @include fs(20); }
+  @media #{$tablet} {
+    @include fs(20);
+  }
 }
 
 h4, .h4 {
-  @media #{$tablet} { @include fs(16); }
+  @media #{$tablet} {
+    @include fs(16);
+  }
 }
 
 h5, .h5 {  }
@@ -107,7 +119,10 @@ h6, .h6 {  }
 /* LISTS */
 ul, ol {
   margin: 0 0 1.5em 16px;
-  li { line-height: 1.5em; padding: 0; }
+
+  li {
+    line-height: 1.5em; padding: 0;
+  }
 }
 
 ul ul, ul ol, ol ol, ol ul {
@@ -116,21 +131,31 @@ ul ul, ul ol, ol ol, ol ul {
 
 ul {
   list-style: disc;
-  ul { list-style: circle; }
+
+  ul {
+    list-style: circle;
+  }
 
   &.social {
     @extend .unstyled;
     @include clearfix;
-    li { float: left; }
+
+    li {
+      float: left;
+    }
   }
 
   &.social {
     margin: 20px 0 20px -5px;
     li { margin: 0 0 5px 5px; }
     a {
-      height: 40px; width: 40px; line-height: 40px; display: block;
-      @include border-radius(35px); background-color: $accent;
-      text-decoration: none; text-align: center; overflow: hidden;
+      height: 40px; width: 40px; line-height: 40px;
+      display: block;
+      border-radius: 40px;
+      background-color: $accent;
+      text-decoration: none;
+      text-align: center;
+      overflow: hidden;
     }
 
     .twitter {
@@ -176,9 +201,16 @@ ol {
 
 .unstyled, nav ul {
   margin: 0; padding: 0; list-style: none;
-  ul { list-style: none; }
-  li { list-style: none; list-style-image: none; padding: 0; background: none; }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    list-style: none; list-style-image: none; padding: 0; background: none;
+  }
 }
+
 nav ul {
   @include clearfix;
 }
@@ -191,7 +223,7 @@ dl {
 }
 
 
-/* MISC */
+// MISC
 hr {
   display: block; height: 1px;
   border: 0; border-top: 1px solid $accent; margin: 70px 0 40px;

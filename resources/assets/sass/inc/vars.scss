@@ -1,11 +1,11 @@
 /* Vars.scss
- * Variables and mixins to pre-ignite any new web development project
+ * Variables to pre-ignite any new project
  * ------------------------------------------------------------------ */
 
 // VARIABLES
 // ---------
 
-// Grays
+/* Grays */
 $black: #444;
 $grayDark: #777;
 $gray: #B4B4B4;
@@ -13,26 +13,35 @@ $grayMiddle: #D2CECB;
 $grayLight: #F4F4F4;
 $white: #fff;
 
-// Accent Colors
+/* Accent colors */
 $accent: #FF8000;
 $accentHover: darken($accent, 15%);
 
 $accentLight: lighten($accent, 15%);
 
-// Links
+/* Links */
 $linkColor: $black;
 $linkColorHover: $grayDark;
 
-// States
+/* States */
 $error: #f1062c;
 $success: $accent;
 
 $selection: rgba(red($accentHover), green($accentHover), blue($accentHover), 0.2);
 
-// Document font size
-$doc-font-size: 10;
+/* Easing */
+$easeLinear: cubic-bezier(0,0,1,1);
+$easeIn: cubic-bezier(0.42, 0.0, 1.0, 1.0);
+$easeOut: cubic-bezier(0.0, 0.0, 0.58, 1.0);
+$easeInOut: cubic-bezier(0.42, 0.0, 0.58, 1.0);
 
-// Mediaqueries
+/* Transitions */
+$transitionDefault: 0.25s $easeOut;
+
+/* Document font-size */
+$docFontSize: 10;
+
+/* Mediaqueries */
 $tabletMini: "(min-width: 37em)"; /* 600px */
 $tablet: "(min-width: 47em)"; /* 767px */
 $mobile: "(max-width: 47em)"; /* 767px */

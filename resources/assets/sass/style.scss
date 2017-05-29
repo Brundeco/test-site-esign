@@ -1,0 +1,483 @@
+/**
+ * OVERVIEW
+ *
+ * IMPORTS
+ * reset, core, patterns, plugins
+ *
+ * LAYOUT
+ * Grid / Elements (icons, slideshow, other, ...)
+ * Header / Main / Footer
+ * Content elements (no overrides from main)
+ * Pages (page overrides)
+ *
+ * Hooks (IE, ...)
+ * Print
+ */
+
+/**
+ * GUIDELINES
+ *
+ * CLASSES
+ * Naming: lorem-ipsum
+ * Abbreviations: Emmet - http://docs.emmet.io/cheat-sheet/ | example: .va-m
+ *
+ * MEDIAQUERIES
+ * @media $mobile, $tabletMini, $tablet, $desktop, $netbook, $wide ...
+ */
+
+/* =============================================================================
+   IMPORTS
+   ========================================================================== */
+
+/* CSS Reset */
+@import "inc/reset";
+
+// /* Core */
+@import "inc/vars";
+@import "inc/mixins";
+//@import "inc/animations";
+//@import "inc/custom-animations";
+
+/* Init mediaqueries */
+.init-mediaqueries {
+  @media #{$tabletMini} { margin: 0; }
+  @media #{$tablet} { margin: 0; }
+  @media #{$mobile} { margin: 0; }
+  @media #{$desktop} { margin: 0; }
+  @media #{$netbook} { margin: 0; }
+  @media #{$wide} { margin: 0; }
+}
+
+/* Styled patterns and elements */
+@import "inc/type";
+@import "inc/tables";
+@import "inc/forms";
+
+/* Plugins */
+@import "inc/plugins";
+
+
+/* =============================================================================
+   LAYOUT
+   ========================================================================== */
+
+html, body {
+  @media #{$tablet} {
+    height: 100%;
+  }
+}
+
+html { font-size: 62.5%; }
+
+body {
+  @include default-font; color: $black;
+  -webkit-tap-highlight-color: rgba(0,0,0,0); tap-highlight-color: rgba(0,0,0,0);
+}
+
+.page-wrap {
+  position: relative;
+
+  @media #{$tablet} { height: auto; min-height: 100%; z-index: 2; }
+}
+
+/* typekit async loading (all elements using $ typekit font) */
+.wf-loading {
+  overflow: hidden;
+  body { visibility: hidden; }
+}
+
+::selection {
+  background-color: $selection;
+  color: inherit;
+}
+
+/* =============================================================================
+   GRID
+   ========================================================================== */
+
+.container {
+  padding: 0 20px; position: relative; z-index: 5;
+
+  @media #{$tablet} {
+
+  }
+
+  @media #{$desktop} {
+    max-width: 1380px; margin: 0 auto;
+  }
+
+  @media #{$wide} {
+    padding-left: 40px; padding-right: 40px;
+  }
+}
+
+.row {
+  @include clearfix;
+  margin: 0 0 40px -20px;
+
+  &.g0 {
+    margin-left: 0px;
+
+    > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth,
+    > .two-fifth, > .three-fifth, > .one-fifth, > .one {
+      padding-left: 0px;
+    }
+  }
+
+  @media #{$tablet} {
+    /* exceptions: only add what you need! */
+    /*&.g20 {
+      margin-left: -20px;
+      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth, > .two-fifth, > .three-fifth, > .one, > .left {
+        padding-left: 20px;
+      }
+    }*/
+  }
+
+  @media #{$desktop} {
+
+  }
+}
+
+
+.one-half,
+.two-third,
+.one-third,
+.three-fourth,
+.one-fourth,
+.one-fifth,
+.two-fifth,
+.three-fifth,
+.one {
+  float: left;
+  display: block;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.one-half {
+  @media #{$tablet} { width: 50%; }
+}
+
+.two-third {
+  @media #{$tablet} { width: 66.66%; }
+}
+.one-third {
+  @media #{$tablet} { width: 33.33%; }
+}
+.three-fourth {
+  @media #{$tablet} { width: 50%; }
+  @media #{$desktop} { width: 75%; }
+}
+.one-fourth {
+  @media #{$tablet} { width: 50%; }
+  @media #{$desktop} { width: 25%; }
+}
+.one-fifth {
+  @media #{$tablet} { width: 40%; }
+  @media #{$desktop} { width: 20%; }
+}
+.two-fifth {
+  @media #{$tablet} { width: 50%; }
+  @media #{$desktop} { width: 40%; }
+}
+.three-fifth {
+  @media #{$tablet} { width: 50%; }
+  @media #{$desktop} { width: 60%; }
+}
+
+
+/* =============================================================================
+   ELEMENTS
+   ========================================================================== */
+
+/* ICONS */
+.icon {
+  /* icon sprite */
+  /* @include at2x('../images/template-sprite.png', '../images/template-sprite$2x.png', 300px, 50px); */
+  display: inline-block; vertical-align: middle;
+  @include transition;
+}
+
+.icon-hamburger, .icon-hamburger:before, .icon-hamburger:after {
+  width: 24px; position: absolute; height: 1px; border-top: 3px solid $accent; @include transition(0.2s);
+}
+
+.icon-hamburger {
+  position: relative;
+  &:before, &:after { content: ""; margin-left: 0; }
+  &:before { margin-top: 3px; }
+  &:after { margin-top: 9px; }
+}
+
+/* HELPERS */
+.a-c { text-align: center; }
+.a-l { text-align: left; }
+.a-r { text-align: right; }
+
+@media #{$tablet} {
+  .desktop-a-l { text-align: left; }
+  .desktop-a-c { text-align: center; }
+  .desktop-a-r { text-align: right; }
+
+  .left.left { float: left; }
+  .right.right { float: right; }
+}
+
+.left, .right {
+  > .va-wrap { width: auto; }
+}
+
+/* exceptions: only add what you need! */
+/*.mb0.mb0 { margin-bottom: 0; }
+.mb20.mb20 { margin-bottom: 20px; }
+.mb40.mb40 { margin-bottom: 40px; }*/
+
+/*.mt0.mt0 { margin-top: 0; }
+.mt20.mt20 { margin-top: 20px; }
+.mt40.mt40 { margin-top: 40px; }*/
+
+/*.ttu { text-transform: uppercase; }
+.ttl { text-transform: lowercase; }*/
+
+/* SLIDESHOW */
+.cycle-slideshow {
+  width: 100%; position: relative;
+}
+
+.cycle-pager {
+  width: 100%; text-align: center;
+  span {
+    border: 2px solid #fff; @include border-radius(20px);
+    height: 20px; width: 20px; display: inline-block; cursor:pointer;
+    margin: 0 3px; line-height: 14px; font-size: 36px; color: #fff;
+    overflow: hidden; text-indent: -500px; @include transition(0.2s);
+    &:hover, &:focus { @include transition(none); }
+  }
+
+  span:hover, span:focus, .cycle-pager-active { text-indent: 0; }
+}
+
+/* OTHER */
+
+/* google maps mw */
+.gm-style img { max-width: inherit; }
+
+/* responsive video */
+.video-container {
+  position: relative; padding: 0 0 56.25%; height: 0; overflow: hidden; margin: 0 0 15px;
+
+  iframe {
+    position: absolute; top:0; left: 0; width: 100%; height: 100%;
+  }
+}
+
+/* equal height */
+.equal-h {
+  @include flex-box; @include flex-box-wrap; overflow: hidden;
+  &:before, &:after { display: none; }
+}
+
+html.no-flexbox {
+  .equal-h {
+    height: 100%;
+    > div { float: left; }
+  }
+}
+
+/* vertical align */
+.va-wrap, .va-m, .va-b { display: table; width: 100%; height: 100%; }
+.va-wrap { table-layout: fixed; }
+.va-m, .va-b { display: table-cell; }
+.va-m { vertical-align: middle; }
+.va-b { vertical-align: bottom; }
+
+/* blocklink */
+.blocklink { cursor: pointer; }
+
+
+/* =============================================================================
+   HEADER
+   ========================================================================== */
+.page-header {
+
+}
+
+.logo {
+  text-decoration: none; @include opacity(100);
+  img { display: block; }
+  &:hover, &:focus { @include opacity(80); }
+}
+
+.main-nav {
+  text-transform: uppercase; @include optimize-font; color: $black;
+
+  a {
+    text-decoration: none; color: $grayDark; padding: 9px 0 9px 45px;
+    display: block; border-top: 1px solid $grayLight;
+  }
+
+  a:hover, a:focus, li.active a { color: $black; }
+
+  .trigger {
+    display: block; position: relative; cursor: pointer;
+    padding: 9px 0 9px 45px; font-weight: 500;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    .icon-hamburger { position: absolute; left: 0; top: 12px; }
+  }
+
+  .nav-wrap {  display: none; margin: 0 0 15px; li.active a { font-weight: 800; }}
+
+  @media #{$tablet} {
+    li { float: left; margin: 0 0 0 20px; }
+    a { border-top: 0; padding: 0; }
+    .trigger { display: none; }
+    .nav-wrap { margin: 0 0 0 -20px; display: block; }
+  }
+}
+
+
+/* =============================================================================
+   MAIN
+   ========================================================================== */
+
+.main {
+  padding: 40px 0;
+
+  @media #{$tablet} { padding: 50px 0 150px; }
+}
+
+/* =============================================================================
+   FOOTER
+   ========================================================================== */
+
+.page-footer {
+  position: relative;
+  .row { margin-bottom: 0; }
+
+  @media #{$tablet} {
+    height: 60px; margin: -60px 0 0; z-index: 5;
+  }
+}
+
+a.esign {
+  width: 104px; height: 20px;
+  @include at2x('../images/logo-esign.png', '../images/logo-esign$2x.png', 104px, 20px);
+  text-indent: -9999px; @include opacity(60); @include transition(1s); display: block; outline: 0;
+
+  &:hover, &:focus {
+    @include opacity(100);
+  }
+
+  @media #{$tablet} {
+    float: right;
+  }
+}
+
+
+/* =============================================================================
+   CONTENT
+   ========================================================================== */
+
+.large {
+  @include fs(20);
+}
+
+.center-block {
+  text-align: center; @include clearfix;
+  margin: 20px 0;
+  .button { float: none; display: inline-block; }
+}
+
+.box {
+  margin: 0 0 20px; padding: 15px 15px 5px;
+  @include clearfix; background: #E7E4DB;
+
+  ul, p {
+    margin-bottom: 1em;
+  }
+
+  &.error {
+    background: $error; color: #fff;
+  }
+
+  &.success {
+    background: $success;
+  }
+}
+
+
+section { position: relative; }
+
+article {
+  @include clearfix; margin: 0 0 20px;
+
+  a {
+    img { display: block; @include opacity(100); }
+    &:hover, &:focus {
+      img { @include opacity(80); }
+    }
+  }
+}
+
+.map { width: 100%; height: 350px; background: #efefef; margin: 0 0 40px; }
+
+
+/* =============================================================================
+   PAGES
+   ========================================================================== */
+
+
+
+
+/* =============================================================================
+   HOOKS
+   ========================================================================== */
+.lt-ie9 {
+  .logo {
+    img { max-width: inherit; }
+  }
+}
+
+.lt-ie8 {
+  .row { float: left; width: 100%; clear: both; } /* box model ie7 clear fix */
+}
+
+
+/* =============================================================================
+   PRINT
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  @page { margin: 2cm 0.5cm 1cm; }
+
+  html {
+    font-size: 10px;
+  }
+
+  * {
+    background-color: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .ir {
+    text-indent: 0; overflow: visible; direction: inherit;
+  }
+
+  a, a:visited {
+    text-decoration: underline;
+  }
+
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+
+  .page-footer, .main-nav { display: none; }
+
+  .one-half { width: 50%; }
+  .two-third { width: 66.66%; }
+  .one-third { width: 33.33%; }
+  .three-fourth { width: 75%; }
+  .one-fourth { width: 25%; }
+}

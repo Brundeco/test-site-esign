@@ -65,6 +65,8 @@ elixir(function (mix) {
   // Styles
   mix.less('style.less', 'public/assets/css/style.css');
 
+  //mix.sass('style.scss', 'public/assets/css/style.css');
+
   // Svg
   mix.svg('resources/assets/images/**/*.svg', 'public/assets/images', './',
       { plugins: [{ convertPathData: false }, { mergePaths: false }, { removeUnknownsAndDefaults: false }] }

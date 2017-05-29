@@ -62,10 +62,13 @@ elixir(function (mix) {
   // Templates
   gulp.watch('resources/nunjucks/**/*.+(html|nunjucks)', ['templates']);
 
-  // Styles
-  mix.less('style.less', 'public/assets/css/style.css');
+  // Images
+  mix.copy('resources/assets/images', 'public/assets/images');
 
-  //mix.sass('style.scss', 'public/assets/css/style.css');
+  // Styles
+  //mix.less('style.less', 'public/assets/css/style.css');
+
+  mix.sass('style.scss', 'public/assets/css/style.css');
 
   // Svg
   mix.svg('resources/assets/images/**/*.svg', 'public/assets/images', './',

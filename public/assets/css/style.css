@@ -1877,16 +1877,6 @@ article a:hover img, article a:focus img {
   max-width: inherit;
 }
 
-.lt-ie8 {
-  /* box model ie7 clear fix */
-}
-
-.lt-ie8 .row {
-  float: left;
-  width: 100%;
-  clear: both;
-}
-
 /* =============================================================================
    PRINT
    Inlined to avoid required HTTP connection: h5bp.com/r

@@ -1,4 +1,4 @@
-{% set site_title = title + ' - Esign' %}
+{% set site_title = title + ' - Template' %}
 <!doctype html>
 <html class="no-js" lang="nl">
 <head>
@@ -70,6 +70,7 @@
 </head>
 
 <body class="{{ bodyclass }}">
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="page-wrap">
 
@@ -77,7 +78,7 @@
 
       <div class="container">
         <a href="index.html" class="logo">
-          <img src="assets/images/logo.png" alt="Template" width="150" height="80" />
+          <img src="assets/images/logo.svg" alt="Template" width="150" />
         </a>
 
         <nav class="main-nav">
@@ -93,11 +94,11 @@
 
     </header>
 
-    <div class="main">
+    <main id="main" class="main">
 
       {% block content %}{% endblock %}
 
-    </div>
+    </main>
 
   </div>
 

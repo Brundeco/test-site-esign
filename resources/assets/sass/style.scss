@@ -374,6 +374,24 @@ html.no-flexbox {
   }
 }
 
+.skip-link {
+  left: -999px;
+  position: absolute;
+  top: auto;
+  overflow: hidden;
+  z-index: -999;
+  white-space: nowrap;
+
+  &:focus {
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #fff;
+    padding: 0.5em 1em;
+    @include fs(20);
+  }
+}
+
 
 /* =============================================================================
    MAIN
@@ -394,7 +412,7 @@ html.no-flexbox {
 .page-footer {
   position: relative;
 
-  .row {
+  .grid {
     margin-bottom: 0;
   }
 

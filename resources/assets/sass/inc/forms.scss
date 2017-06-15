@@ -1,8 +1,11 @@
-/* Forms.scss
- * Base styles for various input types, form layouts, and states
- * ------------------------------------------------------------- */
 
-form { margin: 0; }
+/*============================================================================
+  FORMS
+==============================================================================*/
+
+form {
+  margin: 0;
+}
 
 legend {
   border: 0; padding: 0; white-space: normal; *margin-left: -7px;
@@ -163,10 +166,14 @@ fieldset {
       margin: 0 0 10px; float: left; width: 100%; padding: 0 0 0 20px;
 
       &.error {
-        input { border-color: $error; }
+        input {
+          border-color: $error;
+        }
       }
 
-      &.space { margin-top: 25px; }
+      &.space {
+        margin-top: 25px;
+      }
 
       @media #{$medium} {
         &.one-half { width: 50%; }
@@ -181,7 +188,11 @@ fieldset {
   button, input[type="reset"], input[type="submit"], .button, a.button {
     float: left; clear: none; margin-right: 15px;
 
-    &.right { float: right; margin-right: 0; margin-left: 15px; }
+    &.right {
+      float: right;
+      margin-right: 0;
+      margin-left: 15px;
+    }
   }
 }
 

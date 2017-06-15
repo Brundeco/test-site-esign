@@ -1,3 +1,8 @@
+
+/*============================================================================
+  TYPOGRAPHY
+==============================================================================*/
+
 // Font Stacks
 @mixin default-font($size: 16, $weight: 400, $lineHeight: 1.5em) {
   font-family: Helvetica, Arial, Verdana, sans-serif;
@@ -12,12 +17,7 @@
 }
 
 
-/* Typography.less
- * Headings, body text, lists, code, and more for a versatile and durable typography system
- * ---------------------------------------------------------------------------------------- */
-
-
-/* BODY */
+// Body
 
 p {
   line-height: 1.5em;
@@ -73,8 +73,7 @@ img {
 }
 
 
-
-/* HEADINGS */
+// Headings
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   @include display-font;
@@ -123,7 +122,8 @@ h5, .h5 {  }
 h6, .h6 {  }
 
 
-/* LISTS */
+// Lists
+
 ul, ol {
   margin: 0 0 1.5em 16px;
 
@@ -230,7 +230,8 @@ dl {
 }
 
 
-// MISC
+// Misc
+
 hr {
   display: block; height: 1px;
   border: 0; border-top: 1px solid $accent; margin: 70px 0 40px;

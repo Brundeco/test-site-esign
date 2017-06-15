@@ -1,6 +1,7 @@
-/* Vars.scss
- * Variables to pre-ignite any new project
- * ------------------------------------------------------------------*/
+
+/*============================================================================
+  VARIABLES
+==============================================================================*/
 
 // Grays
 $black: #444;
@@ -24,7 +25,9 @@ $linkColorHover: $grayDark;
 $error: #f1062c;
 $success: #39963a;
 
+// Selection
 $selection: rgba(red($accentHover), green($accentHover), blue($accentHover), 0.2);
+
 
 // Easing
 $easeLinear: cubic-bezier(0,0,1,1);
@@ -35,13 +38,24 @@ $easeInOut: cubic-bezier(0.42, 0.0, 0.58, 1.0);
 // Transitions
 $transitionDefault: 0.25s $easeOut;
 
-// Document font-size
+
+// Sizes
 $docFontSize: 10;
+
+
+// Grid
+$gutter: 20px !default;
+
+// Would you like push and pull classes enabled?
+$push: false !default;
+$pull: false !default;
+
+
 
 // Mediaqueries
 // If you want more breakpoints, add a nummeric suffix (e.g huge-2)
 $small: "(min-width: 480px)";
-$medium: "(min-width: 767px)";
+$medium: "(min-width: 768px)";
 $large: "(min-width: 1024px)";
 $larger: "(min-width: 1200px)";
 $huge: "(min-width: 1400px)";
@@ -50,12 +64,6 @@ $massive: "(min-width: 1680px)";
 // Mobile mediaqueries
 $maxMedium: "(max-width: 766px)";
 
-// Grid
-$gutter: 20px !default;
-
-// Would you like push and pull classes enabled?
-$push: false !default;
-$pull: false !default;
 
 // Define your breakpoints. The first value is the prefix that shall be used for
 // your classes (e.g. `.medium--one-half`), the second value is the media query
@@ -74,8 +82,9 @@ $breakpoints: (
 // you only need a new width breakpoint at mobile sizes. It allows you to only
 // compile as much CSS as you need.
 $breakpoint-has-widths: ('medium', 'large') !default;
-$breakpoint-has-push:   () !default;
-$breakpoint-has-pull:   () !default;
+$breakpoint-has-push:   ('medium') !default;
+$breakpoint-has-pull:   ('medium') !default;
+
 
 // Init mediaqueries for ordering inside carabiner
 .init-mediaqueries {

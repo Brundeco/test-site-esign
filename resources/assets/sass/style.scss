@@ -28,22 +28,22 @@
    IMPORTS
    ========================================================================== */
 
-/* CSS Reset */
+// CSS Reset
 @import "inc/reset";
 
-// /* Core */
+// Core
 @import "inc/vars";
 @import "inc/mixins";
 //@import "inc/animations";
 //@import "inc/custom-animations";
 
-
-/* Styled patterns and elements */
+// Styled patterns and elements
+@import "inc/grid";
 @import "inc/type";
 @import "inc/tables";
 @import "inc/forms";
 
-/* Plugins */
+// Plugins
 @import "inc/plugins";
 
 
@@ -445,7 +445,7 @@ a.esign {
 .box {
   @include clearfix;
   margin: 0 0 20px; padding: 15px 20px 0;
-  background: #E7E4DB;
+  background: #efefef;
 
   ul, p {
     margin-bottom: 1em;

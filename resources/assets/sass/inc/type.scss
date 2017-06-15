@@ -35,10 +35,12 @@ em {
 }
 
 a {
-  color: $linkColor; text-decoration: underline;
-  transition: $transitionDefault;
   font-weight: inherit; font-style: inherit;
+  color: $linkColor;
+  transition: $transitionDefault;
+  text-decoration: underline;
   text-decoration-skip: ink;
+  // @include smart-underline; cross browser text-decoration skip
 
   &:hover, &:focus {
     color: $linkColorHover;

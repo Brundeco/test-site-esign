@@ -156,11 +156,6 @@
 //
 //  `strip-unit()` function by Hugo Giraudel
 //
-//  11.08.2016 Remove redundant `&` self-reference
-//  31.03.2016 Remove redundant parenthesis from output
-//  02.10.2015 Add support for multiple properties
-//  24.04.2015 Initial release
-//
 //  Usage:
 //  @include fluid-type(font-size, $mediumSize, $largerSize, 18px, 45px);
 //  @include fluid-type(padding-bottom padding-top, $mediumSize, $largerSize, 2em, 4em);
@@ -190,40 +185,30 @@
 }
 
 // Underline text
-@mixin underline-text ($textColor: black, $bgColor: white, $height:1px) {
+@mixin smart-underline($background: #fff, $text: #000, $selection: $selection, $position: 95%, $width: 1px){
+	color: inherit;
+	text-decoration: none;
+	background:
+		linear-gradient($background, $background),
+		linear-gradient($background, $background),
+		linear-gradient($text, $text);
+	background-size: .05em $width, .05em $width, $width $width;
+	background-repeat: no-repeat, no-repeat, repeat-x;
+	text-shadow: 0.03em 0 $background, -0.03em 0 $background, 0 0.03em $background, 0 -0.03em $background, 0.06em 0 $background, -0.06em 0 $background, 0.09em 0 $background, -0.09em 0 $background, 0.12em 0 $background, -0.12em 0 $background, 0.15em 0 $background, -0.15em 0 $background;
+	background-position: 0 $position, 100% $position;
 
-  color: $textColor;
-  //ie9 fallback
-  text-decoration: underline;
-  display: inline-block;
+	&::selection {
+		text-shadow: 0.03em 0 $selection, -0.03em 0 $selection, 0 0.03em $selection, 0 -0.03em $selection, 0.06em 0 $selection, -0.06em 0 $selection, 0.09em 0 $selection, -0.09em 0 $selection, 0.12em 0 $selection, -0.12em 0 $selection, 0.15em 0 $selection, -0.15em 0 $selection;
+		background: $selection;
+	}
 
-  text-decoration: none;
-  text-shadow: 3px 0 $bgColor, 2px 0 $bgColor, 1px 0 $bgColor, -1px 0 $bgColor, -2px 0 $bgColor, -3px 0 $bgColor;
+	&:before, &:after, *, *:before, *:after {
+		text-shadow: none;
+	}
 
-  &:after {
-    margin-top: -8px;
-    content:''; display: block; height: $height; width: 100%;
-    background-color: $textColor;
-    background-repeat: repeat-x;
-    background-size: 1px $height;
-    /*
-    background-image: -webkit-linear-gradient($bgColor 20%, $textColor 100%);
-    background-image: linear-gradient($bgColor 20%, $textColor 100%);
-    background-position: 0 95%;
-
-    @media (-webkit-min-device-pixel-ratio: 1.75), (min-resolution: 168dpi) {
-    background-position: 0 93%;
-
-  } */
-
-  }
-
-  &::selection {
-    background-color: $selection;
-    text-shadow: none;
-    color: inherit;
-  }
-
+	&:visited{
+		color: inherit;
+	}
 }
 
 // Height

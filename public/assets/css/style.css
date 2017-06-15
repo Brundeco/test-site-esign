@@ -846,11 +846,11 @@ em {
 }
 
 a {
-  color: #444;
-  text-decoration: underline;
-  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
   font-weight: inherit;
   font-style: inherit;
+  color: #444;
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
+  text-decoration: underline;
   -webkit-text-decoration-skip: ink;
   text-decoration-skip: ink;
 }
@@ -1817,12 +1817,12 @@ body {
 }
 
 ::-moz-selection {
-  background-color: rgba(179, 90, 0, 0.2);
+  background-color: #ffe6cc;
   color: inherit;
 }
 
 ::selection {
-  background-color: rgba(179, 90, 0, 0.2);
+  background-color: #ffe6cc;
   color: inherit;
 }
 

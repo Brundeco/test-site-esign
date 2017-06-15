@@ -26,7 +26,7 @@ $error: #f1062c;
 $success: #39963a;
 
 // Selection
-$selection: rgba(red($accentHover), green($accentHover), blue($accentHover), 0.2);
+$selection: lighten($accent, 40%);
 
 
 // Easing

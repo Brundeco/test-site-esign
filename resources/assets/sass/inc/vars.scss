@@ -54,12 +54,19 @@ $pull: false !default;
 
 // Mediaqueries
 // If you want more breakpoints, add a nummeric suffix (e.g huge-2)
-$small: "(min-width: 480px)";
-$medium: "(min-width: 768px)";
-$large: "(min-width: 1024px)";
-$larger: "(min-width: 1200px)";
-$huge: "(min-width: 1400px)";
-$massive: "(min-width: 1680px)";
+$smallSize: 480px;
+$mediumSize: 768px;
+$largeSize: 1024px;
+$largerSize: 1200px;
+$hugeSize: 1400px;
+$massiveSize: 1680px;
+
+$small: "(min-width: #{$smallSize})";
+$medium: "(min-width: #{$mediumSize})";
+$large: "(min-width: #{$largeSize})";
+$larger: "(min-width: #{$largerSize})";
+$huge: "(min-width: #{$hugeSize})";
+$massive: "(min-width: #{$massiveSize})";
 
 // Mobile mediaqueries
 $maxMedium: "(max-width: 766px)";

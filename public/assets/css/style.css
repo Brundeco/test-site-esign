@@ -915,46 +915,56 @@ h1 a:hover, h1 a:focus, .h1 a:hover, .h1 a:focus, h2 a:hover, h2 a:focus, .h2 a:
 }
 
 h1, .h1 {
-  font-size: 24px;
-  font-size: 2.4rem;
+  font-size: 28px;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   h1, .h1 {
-    font-size: 35px;
-    font-size: 3.5rem;
+    font-size: calc(28px + 12 * (100vw - 768px) / 432);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h1, .h1 {
+    font-size: 40px;
   }
 }
 
 h2, .h2 {
-  font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 20px;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   h2, .h2 {
-    font-size: 24px;
-    font-size: 2.4rem;
+    font-size: calc(20px + 12 * (100vw - 768px) / 432);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h2, .h2 {
+    font-size: 32px;
   }
 }
 
 h3, .h3 {
   font-size: 16px;
-  font-size: 1.6rem;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  h3, .h3 {
+    font-size: calc(16px + 4 * (100vw - 768px) / 256);
+  }
+}
+
+@media screen and (min-width: 1024px) {
   h3, .h3 {
     font-size: 20px;
-    font-size: 2rem;
   }
 }
 
-@media (min-width: 768px) {
-  h4, .h4 {
-    font-size: 16px;
-    font-size: 1.6rem;
-  }
+h4, .h4 {
+  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 ul, ol {
@@ -1103,7 +1113,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #FF8000;
+  border-top: 1px solid #F4F4F4;
   margin: 70px 0 40px;
 }
 

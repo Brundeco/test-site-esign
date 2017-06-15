@@ -162,8 +162,8 @@
 //  24.04.2015 Initial release
 //
 //  Usage:
-//  @include fluid-type(font-size, 320px, 1400px, 18px, 45px);
-//  @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+//  @include fluid-type(font-size, $mediumSize, $largerSize, 18px, 45px);
+//  @include fluid-type(padding-bottom padding-top, $mediumSize, $largerSize, 2em, 4em);
 //
 // =========================================================================
 

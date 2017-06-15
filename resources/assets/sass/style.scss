@@ -74,21 +74,6 @@ body {
   }
 }
 
-/* typekit async loading (all elements using $ typekit font) */
-.wf-loading {
-  overflow: hidden;
-  body { visibility: hidden; }
-}
-
-::selection {
-  background-color: $selection;
-  color: inherit;
-}
-
-/* =============================================================================
-   GRID
-   ========================================================================== */
-
 .container {
   position: relative;
   max-width: 1480px;
@@ -99,83 +84,17 @@ body {
     padding-left: 40px;
     padding-right: 40px;
   }
-
 }
 
-.row {
-  @include clearfix;
-  margin: 0 0 40px -20px;
-
-  &.g0 {
-    margin-left: 0px;
-
-    > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth,
-    > .two-fifth, > .three-fifth, > .one-fifth, > .one {
-      padding-left: 0px;
-    }
-  }
-
-  @media #{$medium} {
-    /* exceptions: only add what you need! */
-    /*&.g20 {
-      margin-left: -20px;
-      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth,
-      > .two-fifth, > .three-fifth, > .one, > .left {
-        padding-left: 20px;
-      }
-    }*/
-  }
-
-  @media #{$large} {
-
-  }
+/* typekit async loading (all elements using $ typekit font) */
+.wf-loading {
+  overflow: hidden;
+  body { visibility: hidden; }
 }
 
-
-.one-half,
-.two-third,
-.one-third,
-.three-fourth,
-.one-fourth,
-.one-fifth,
-.two-fifth,
-.three-fifth,
-.one {
-  float: left;
-  display: block;
-  width: 100%;
-  padding-left: 20px;
-}
-
-.one-half {
-  @media #{$medium} { width: 50%; }
-}
-
-.two-third {
-  @media #{$medium} { width: 66.66%; }
-}
-.one-third {
-  @media #{$medium} { width: 33.33%; }
-}
-.three-fourth {
-  @media #{$medium} { width: 50%; }
-  @media #{$large} { width: 75%; }
-}
-.one-fourth {
-  @media #{$medium} { width: 50%; }
-  @media #{$large} { width: 25%; }
-}
-.one-fifth {
-  @media #{$medium} { width: 40%; }
-  @media #{$large} { width: 20%; }
-}
-.two-fifth {
-  @media #{$medium} { width: 50%; }
-  @media #{$large} { width: 40%; }
-}
-.three-fifth {
-  @media #{$medium} { width: 50%; }
-  @media #{$large} { width: 60%; }
+::selection {
+  background-color: $selection;
+  color: inherit;
 }
 
 
@@ -204,19 +123,6 @@ body {
 }
 
 /* HELPERS */
-.a-c { text-align: center; }
-.a-l { text-align: left; }
-.a-r { text-align: right; }
-
-@media #{$medium} {
-  .large-a-l { text-align: left; }
-  .large-a-c { text-align: center; }
-  .large-a-r { text-align: right; }
-
-  .left.left { float: left; }
-  .right.right { float: right; }
-}
-
 .left, .right {
   > .va-wrap { width: auto; }
 }

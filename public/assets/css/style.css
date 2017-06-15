@@ -1807,6 +1807,20 @@ body {
   }
 }
 
+.container {
+  position: relative;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
 /* typekit async loading (all elements using $ typekit font) */
 .wf-loading {
   overflow: hidden;
@@ -1824,152 +1838,6 @@ body {
 ::selection {
   background-color: #ffe6cc;
   color: inherit;
-}
-
-/* =============================================================================
-   GRID
-   ========================================================================== */
-.container {
-  position: relative;
-  max-width: 1480px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-
-.row {
-  *zoom: 1;
-  margin: 0 0 40px -20px;
-}
-
-.row:before, .row:after {
-  display: table;
-  content: " ";
-}
-
-.row:after {
-  clear: both;
-}
-
-.row.g0 {
-  margin-left: 0px;
-}
-
-.row.g0 > .one-half, .row.g0 > .two-third, .row.g0 > .one-third, .row.g0 > .three-fourth, .row.g0 > .one-fourth,
-.row.g0 > .two-fifth, .row.g0 > .three-fifth, .row.g0 > .one-fifth, .row.g0 > .one {
-  padding-left: 0px;
-}
-
-@media (min-width: 768px) {
-  .row {
-    /* exceptions: only add what you need! */
-    /*&.g20 {
-      margin-left: -20px;
-      > .one-half, > .two-third, > .one-third, > .three-fourth, > .one-fourth,
-      > .two-fifth, > .three-fifth, > .one, > .left {
-        padding-left: 20px;
-      }
-    }*/
-  }
-}
-
-.one-half,
-.two-third,
-.one-third,
-.three-fourth,
-.one-fourth,
-.one-fifth,
-.two-fifth,
-.three-fifth,
-.one {
-  float: left;
-  display: block;
-  width: 100%;
-  padding-left: 20px;
-}
-
-@media (min-width: 768px) {
-  .one-half {
-    width: 50%;
-  }
-}
-
-@media (min-width: 768px) {
-  .two-third {
-    width: 66.66%;
-  }
-}
-
-@media (min-width: 768px) {
-  .one-third {
-    width: 33.33%;
-  }
-}
-
-@media (min-width: 768px) {
-  .three-fourth {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .three-fourth {
-    width: 75%;
-  }
-}
-
-@media (min-width: 768px) {
-  .one-fourth {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .one-fourth {
-    width: 25%;
-  }
-}
-
-@media (min-width: 768px) {
-  .one-fifth {
-    width: 40%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .one-fifth {
-    width: 20%;
-  }
-}
-
-@media (min-width: 768px) {
-  .two-fifth {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .two-fifth {
-    width: 40%;
-  }
-}
-
-@media (min-width: 768px) {
-  .three-fifth {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .three-fifth {
-    width: 60%;
-  }
 }
 
 /* =============================================================================
@@ -2010,36 +1878,6 @@ body {
 }
 
 /* HELPERS */
-.a-c {
-  text-align: center;
-}
-
-.a-l {
-  text-align: left;
-}
-
-.a-r {
-  text-align: right;
-}
-
-@media (min-width: 768px) {
-  .large-a-l {
-    text-align: left;
-  }
-  .large-a-c {
-    text-align: center;
-  }
-  .large-a-r {
-    text-align: right;
-  }
-  .left.left {
-    float: left;
-  }
-  .right.right {
-    float: right;
-  }
-}
-
 .left > .va-wrap, .right > .va-wrap {
   width: auto;
 }

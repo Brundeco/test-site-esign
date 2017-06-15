@@ -6,6 +6,11 @@
   font-weight: $weight;
 }
 
+@mixin display-font() {
+  font-family: Museo Sans, Helvetica, Arial, Verdana, sans-serif;
+  font-weight: 500;
+}
+
 
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
@@ -33,6 +38,7 @@ a {
   color: $linkColor; text-decoration: underline;
   transition: $transitionDefault;
   font-weight: inherit; font-style: inherit;
+  text-decoration-skip: ink;
 
   &:hover, &:focus {
     color: $linkColorHover;
@@ -71,6 +77,7 @@ img {
 /* HEADINGS */
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  @include display-font;
   @include optimize-font;
   color: $accent; line-height: 1.2em; margin: 0 0 0.8em;
 
@@ -84,7 +91,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 h1, .h1 {
   @include fs(24);
 
-  @media #{$tablet} {
+  @media #{$medium} {
     @include fs(35);
   }
 }
@@ -92,7 +99,7 @@ h1, .h1 {
 h2, .h2 {
   @include fs(18);
 
-  @media #{$tablet} {
+  @media #{$medium} {
     @include fs(24);
   }
 }
@@ -100,13 +107,13 @@ h2, .h2 {
 h3, .h3 {
   @include fs(16);
 
-  @media #{$tablet} {
+  @media #{$medium} {
     @include fs(20);
   }
 }
 
 h4, .h4 {
-  @media #{$tablet} {
+  @media #{$medium} {
     @include fs(16);
   }
 }

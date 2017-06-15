@@ -20,7 +20,7 @@
  * Abbreviations: Emmet - http://docs.emmet.io/cheat-sheet/ | example: .va-m
  *
  * MEDIAQUERIES
- * @media $mobile, $tabletMini, $tablet, $desktop, $netbook, $wide ...
+ * @media $mobile, $mediumMini, $medium, $large, $netbook, $wide ...
  */
 /* =============================================================================
    IMPORTS
@@ -180,21 +180,43 @@ table {
 
 /* Vars.scss
  * Variables to pre-ignite any new project
- * ------------------------------------------------------------------ */
-/* Grays */
-/* Accent colors */
-/* Links */
-/* States */
-/* Easing */
-/* Transitions */
-/* Document font-size */
-/* Mediaqueries */
-/* 600px */
-/* 767px */
-/* 767px */
-/* 980px */
-/* 1024px */
-/* 1350px */
+ * ------------------------------------------------------------------*/
+@media (min-width: 480px) {
+  .init-mediaqueries {
+    margin: 0;
+  }
+}
+
+@media (min-width: 767px) {
+  .init-mediaqueries {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .init-mediaqueries {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .init-mediaqueries {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1400px) {
+  .init-mediaqueries {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1680px) {
+  .init-mediaqueries {
+    margin: 0;
+  }
+}
+
 .clearfix {
   *zoom: 1;
 }
@@ -248,43 +270,6 @@ table {
   visibility: hidden;
 }
 
-/* Init mediaqueries */
-@media (min-width: 37em) {
-  .init-mediaqueries {
-    margin: 0;
-  }
-}
-
-@media (min-width: 47em) {
-  .init-mediaqueries {
-    margin: 0;
-  }
-}
-
-@media (max-width: 47em) {
-  .init-mediaqueries {
-    margin: 0;
-  }
-}
-
-@media (min-width: 61em) {
-  .init-mediaqueries {
-    margin: 0;
-  }
-}
-
-@media (min-width: 64em) {
-  .init-mediaqueries {
-    margin: 0;
-  }
-}
-
-@media (min-width: 84em) {
-  .init-mediaqueries {
-    margin: 0;
-  }
-}
-
 /* Styled patterns and elements */
 /* Typography.less
  * Headings, body text, lists, code, and more for a versatile and durable typography system
@@ -311,6 +296,8 @@ a {
   transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
   font-weight: inherit;
   font-style: inherit;
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip: ink;
 }
 
 a:hover, a:focus {
@@ -351,6 +338,8 @@ img {
 
 /* HEADINGS */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-family: Museo Sans, Helvetica, Arial, Verdana, sans-serif;
+  font-weight: 500;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -376,7 +365,7 @@ h1, .h1 {
   font-size: 2.4rem;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   h1, .h1 {
     font-size: 35px;
     font-size: 3.5rem;
@@ -388,7 +377,7 @@ h2, .h2 {
   font-size: 1.8rem;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   h2, .h2 {
     font-size: 24px;
     font-size: 2.4rem;
@@ -400,14 +389,14 @@ h3, .h3 {
   font-size: 1.6rem;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   h3, .h3 {
     font-size: 20px;
     font-size: 2rem;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   h4, .h4 {
     font-size: 16px;
     font-size: 1.6rem;
@@ -607,7 +596,6 @@ legend {
   padding: 0;
   white-space: normal;
   *margin-left: -7px;
-  color: #fff;
   font-size: 18px;
 }
 
@@ -624,12 +612,6 @@ button, input {
 
 button, select {
   text-transform: none;
-}
-
-@media (max-width: 47em) {
-  input, textarea {
-    font-size: 16px;
-  }
 }
 
 label, .label, input, select, textarea {
@@ -845,7 +827,7 @@ fieldset ul li.space {
   margin-top: 25px;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   fieldset ul li.one-half {
     width: 50%;
   }
@@ -1228,7 +1210,7 @@ fieldset ul li.space {
 /* =============================================================================
    LAYOUT
    ========================================================================== */
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   html, body {
     height: 100%;
   }
@@ -1253,7 +1235,7 @@ body {
   position: relative;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .page-wrap {
     height: auto;
     min-height: 100%;
@@ -1284,19 +1266,13 @@ body {
    GRID
    ========================================================================== */
 .container {
-  padding: 0 20px;
   position: relative;
-  z-index: 5;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-@media (min-width: 61em) {
-  .container {
-    max-width: 1380px;
-    margin: 0 auto;
-  }
-}
-
-@media (min-width: 84em) {
+@media (min-width: 1024px) {
   .container {
     padding-left: 40px;
     padding-right: 40px;
@@ -1326,7 +1302,7 @@ body {
   padding-left: 0px;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .row {
     /* exceptions: only add what you need! */
     /*&.g20 {
@@ -1354,79 +1330,79 @@ body {
   padding-left: 20px;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .one-half {
     width: 50%;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .two-third {
     width: 66.66%;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .one-third {
     width: 33.33%;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .three-fourth {
     width: 50%;
   }
 }
 
-@media (min-width: 61em) {
+@media (min-width: 1024px) {
   .three-fourth {
     width: 75%;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .one-fourth {
     width: 50%;
   }
 }
 
-@media (min-width: 61em) {
+@media (min-width: 1024px) {
   .one-fourth {
     width: 25%;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .one-fifth {
     width: 40%;
   }
 }
 
-@media (min-width: 61em) {
+@media (min-width: 1024px) {
   .one-fifth {
     width: 20%;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .two-fifth {
     width: 50%;
   }
 }
 
-@media (min-width: 61em) {
+@media (min-width: 1024px) {
   .two-fifth {
     width: 40%;
   }
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .three-fifth {
     width: 50%;
   }
 }
 
-@media (min-width: 61em) {
+@media (min-width: 1024px) {
   .three-fifth {
     width: 60%;
   }
@@ -1482,14 +1458,14 @@ body {
   text-align: right;
 }
 
-@media (min-width: 47em) {
-  .desktop-a-l {
+@media (min-width: 767px) {
+  .large-a-l {
     text-align: left;
   }
-  .desktop-a-c {
+  .large-a-c {
     text-align: center;
   }
-  .desktop-a-r {
+  .large-a-r {
     text-align: right;
   }
   .left.left {
@@ -1690,7 +1666,7 @@ html.no-flexbox .equal-h > div {
   margin: 0 0 15px;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .main-nav li {
     float: left;
     margin: 0 0 0 20px;
@@ -1715,7 +1691,7 @@ html.no-flexbox .equal-h > div {
   padding: 40px 0;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .main {
     padding: 50px 0 150px;
   }
@@ -1732,7 +1708,7 @@ html.no-flexbox .equal-h > div {
   margin-bottom: 0;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   .page-footer {
     height: 60px;
     margin: -60px 0 0;
@@ -1766,7 +1742,7 @@ a.esign:hover, a.esign:focus {
   backface-visibility: hidden;
 }
 
-@media (min-width: 47em) {
+@media (min-width: 767px) {
   a.esign {
     float: right;
   }
@@ -1803,7 +1779,7 @@ a.esign:hover, a.esign:focus {
 .box {
   *zoom: 1;
   margin: 0 0 20px;
-  padding: 15px 15px 5px;
+  padding: 15px 20px 0;
   background: #E7E4DB;
 }
 
@@ -1821,12 +1797,13 @@ a.esign:hover, a.esign:focus {
 }
 
 .box.error {
-  background: #f1062c;
-  color: #fff;
+  color: #f1062c;
+  background: #fff7f8;
 }
 
 .box.success {
-  background: #FF8000;
+  color: #39963a;
+  background: #dcf2dc;
 }
 
 section {

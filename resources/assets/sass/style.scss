@@ -21,7 +21,7 @@
  * Abbreviations: Emmet - http://docs.emmet.io/cheat-sheet/ | example: .va-m
  *
  * MEDIAQUERIES
- * @media $mobile, $tabletMini, $tablet, $desktop, $netbook, $wide ...
+ * @media $mobile, $mediumMini, $medium, $large, $netbook, $wide ...
  */
 
 /* =============================================================================
@@ -37,15 +37,6 @@
 //@import "inc/animations";
 //@import "inc/custom-animations";
 
-/* Init mediaqueries */
-.init-mediaqueries {
-  @media #{$tabletMini} { margin: 0; }
-  @media #{$tablet} { margin: 0; }
-  @media #{$mobile} { margin: 0; }
-  @media #{$desktop} { margin: 0; }
-  @media #{$netbook} { margin: 0; }
-  @media #{$wide} { margin: 0; }
-}
 
 /* Styled patterns and elements */
 @import "inc/type";
@@ -61,7 +52,7 @@
    ========================================================================== */
 
 html, body {
-  @media #{$tablet} {
+  @media #{$medium} {
     height: 100%;
   }
 }
@@ -76,7 +67,7 @@ body {
 .page-wrap {
   position: relative;
 
-  @media #{$tablet} {
+  @media #{$medium} {
     height: auto;
     min-height: 100%;
     z-index: 2;
@@ -99,19 +90,16 @@ body {
    ========================================================================== */
 
 .container {
-  padding: 0 20px; position: relative; z-index: 5;
+  position: relative;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 20px;
 
-  @media #{$tablet} {
-
+  @media #{$large} {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
-  @media #{$desktop} {
-    max-width: 1380px; margin: 0 auto;
-  }
-
-  @media #{$wide} {
-    padding-left: 40px; padding-right: 40px;
-  }
 }
 
 .row {
@@ -127,7 +115,7 @@ body {
     }
   }
 
-  @media #{$tablet} {
+  @media #{$medium} {
     /* exceptions: only add what you need! */
     /*&.g20 {
       margin-left: -20px;
@@ -138,7 +126,7 @@ body {
     }*/
   }
 
-  @media #{$desktop} {
+  @media #{$large} {
 
   }
 }
@@ -160,34 +148,34 @@ body {
 }
 
 .one-half {
-  @media #{$tablet} { width: 50%; }
+  @media #{$medium} { width: 50%; }
 }
 
 .two-third {
-  @media #{$tablet} { width: 66.66%; }
+  @media #{$medium} { width: 66.66%; }
 }
 .one-third {
-  @media #{$tablet} { width: 33.33%; }
+  @media #{$medium} { width: 33.33%; }
 }
 .three-fourth {
-  @media #{$tablet} { width: 50%; }
-  @media #{$desktop} { width: 75%; }
+  @media #{$medium} { width: 50%; }
+  @media #{$large} { width: 75%; }
 }
 .one-fourth {
-  @media #{$tablet} { width: 50%; }
-  @media #{$desktop} { width: 25%; }
+  @media #{$medium} { width: 50%; }
+  @media #{$large} { width: 25%; }
 }
 .one-fifth {
-  @media #{$tablet} { width: 40%; }
-  @media #{$desktop} { width: 20%; }
+  @media #{$medium} { width: 40%; }
+  @media #{$large} { width: 20%; }
 }
 .two-fifth {
-  @media #{$tablet} { width: 50%; }
-  @media #{$desktop} { width: 40%; }
+  @media #{$medium} { width: 50%; }
+  @media #{$large} { width: 40%; }
 }
 .three-fifth {
-  @media #{$tablet} { width: 50%; }
-  @media #{$desktop} { width: 60%; }
+  @media #{$medium} { width: 50%; }
+  @media #{$large} { width: 60%; }
 }
 
 
@@ -220,10 +208,10 @@ body {
 .a-l { text-align: left; }
 .a-r { text-align: right; }
 
-@media #{$tablet} {
-  .desktop-a-l { text-align: left; }
-  .desktop-a-c { text-align: center; }
-  .desktop-a-r { text-align: right; }
+@media #{$medium} {
+  .large-a-l { text-align: left; }
+  .large-a-c { text-align: center; }
+  .large-a-r { text-align: right; }
 
   .left.left { float: left; }
   .right.right { float: right; }
@@ -367,7 +355,7 @@ html.no-flexbox {
     display: none; margin: 0 0 15px;
   }
 
-  @media #{$tablet} {
+  @media #{$medium} {
     li {
       float: left; margin: 0 0 0 20px;
     }
@@ -394,7 +382,7 @@ html.no-flexbox {
 .main {
   padding: 40px 0;
 
-  @media #{$tablet} {
+  @media #{$medium} {
     padding: 50px 0 150px;
   }
 }
@@ -410,7 +398,7 @@ html.no-flexbox {
     margin-bottom: 0;
   }
 
-  @media #{$tablet} {
+  @media #{$medium} {
     height: 60px;
     margin: -60px 0 0;
     z-index: 5;
@@ -430,7 +418,7 @@ a.esign {
     @include opacity(100);
   }
 
-  @media #{$tablet} {
+  @media #{$medium} {
     float: right;
   }
 }
@@ -456,7 +444,7 @@ a.esign {
 
 .box {
   @include clearfix;
-  margin: 0 0 20px; padding: 15px 15px 5px;
+  margin: 0 0 20px; padding: 15px 20px 0;
   background: #E7E4DB;
 
   ul, p {
@@ -464,11 +452,13 @@ a.esign {
   }
 
   &.error {
-    background: $error; color: #fff;
+    color: $error;
+    background: lighten($error, 50%);
   }
 
   &.success {
-    background: $success;
+    color: $success;
+    background: lighten($success, 50%);
   }
 }
 

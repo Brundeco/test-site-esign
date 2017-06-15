@@ -1,11 +1,8 @@
 /* Vars.scss
  * Variables to pre-ignite any new project
- * ------------------------------------------------------------------ */
+ * ------------------------------------------------------------------*/
 
-// VARIABLES
-// ---------
-
-/* Grays */
+// Grays
 $black: #444;
 $grayDark: #777;
 $gray: #B4B4B4;
@@ -13,38 +10,79 @@ $grayMiddle: #D2CECB;
 $grayLight: #F4F4F4;
 $white: #fff;
 
-/* Accent colors */
+// Accent colors
 $accent: #FF8000;
 $accentHover: darken($accent, 15%);
 
 $accentLight: lighten($accent, 15%);
 
-/* Links */
+// Links
 $linkColor: $black;
 $linkColorHover: $grayDark;
 
-/* States */
+// States
 $error: #f1062c;
-$success: $accent;
+$success: #39963a;
 
 $selection: rgba(red($accentHover), green($accentHover), blue($accentHover), 0.2);
 
-/* Easing */
+// Easing
 $easeLinear: cubic-bezier(0,0,1,1);
 $easeIn: cubic-bezier(0.42, 0.0, 1.0, 1.0);
 $easeOut: cubic-bezier(0.0, 0.0, 0.58, 1.0);
 $easeInOut: cubic-bezier(0.42, 0.0, 0.58, 1.0);
 
-/* Transitions */
+// Transitions
 $transitionDefault: 0.25s $easeOut;
 
-/* Document font-size */
+// Document font-size
 $docFontSize: 10;
 
-/* Mediaqueries */
-$tabletMini: "(min-width: 37em)"; /* 600px */
-$tablet: "(min-width: 47em)"; /* 767px */
-$mobile: "(max-width: 47em)"; /* 767px */
-$desktop: "(min-width: 61em)"; /* 980px */
-$netbook: "(min-width: 64em)"; /* 1024px */
-$wide: "(min-width: 84em)"; /* 1350px */
+// Mediaqueries
+// If you want more breakpoints, add a nummeric suffix (e.g huge-2)
+$small: "(min-width: 480px)";
+$medium: "(min-width: 767px)";
+$large: "(min-width: 1024px)";
+$larger: "(min-width: 1200px)";
+$huge: "(min-width: 1400px)";
+$massive: "(min-width: 1680px)";
+
+// Mobile mediaqueries
+$maxMedium: "(max-width: 766px)";
+
+// Grid
+$gutter: 20px !default;
+
+// Would you like push and pull classes enabled?
+$push: false !default;
+$pull: false !default;
+
+// Define your breakpoints. The first value is the prefix that shall be used for
+// your classes (e.g. `.medium--one-half`), the second value is the media query
+// that the breakpoint fires at.
+$breakpoints: (
+  'small' '#{$small}',
+  'medium' '#{$medium}',
+  'large' '#{$large}',
+  'larger' '#{$larger}',
+  'huge' '#{$huge}',
+  'massive' '#{$massive}'
+) !default;
+
+// Define which namespaced breakpoints you would like to generate for each of
+// widths, push and pull. This is handy if you only need pull on, say, large, or
+// you only need a new width breakpoint at mobile sizes. It allows you to only
+// compile as much CSS as you need.
+$breakpoint-has-widths: ('medium', 'large') !default;
+$breakpoint-has-push:   () !default;
+$breakpoint-has-pull:   () !default;
+
+// Init mediaqueries for ordering inside carabiner
+.init-mediaqueries {
+  @media #{$small} { margin: 0; }
+  @media #{$medium} { margin: 0; }
+  @media #{$large} { margin: 0; }
+  @media #{$larger} { margin: 0; }
+  @media #{$huge} { margin: 0; }
+  @media #{$massive} { margin: 0; }
+}

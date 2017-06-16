@@ -85,7 +85,7 @@
           <span class="trigger"><i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span></span>
           <ul class="nav-wrap">
             <li{% if menuitem == 'home' %} class="active"{% endif %}><a href="index.html">Home</a></li>
-            <li{% if menuitem == 'about' %} class="active"{% endif %}><a href="about.html">About</a></li>
+            <li{% if menuitem == 'components' %} class="active"{% endif %}><a href="components.html">Components</a></li>
             <li{% if menuitem == 'news' %} class="active"{% endif %}><a href="news.html">News</a></li>
             <li{% if menuitem == 'contact' %} class="active"{% endif %}><a href="contact.html">Contact</a></li>
           </ul>

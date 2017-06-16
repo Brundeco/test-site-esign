@@ -127,17 +127,17 @@ body {
   > .va-wrap { width: auto; }
 }
 
-/* exceptions: only add what you need! */
-/*.mb0.mb0 { margin-bottom: 0; }
-.mb20.mb20 { margin-bottom: 20px; }
-.mb40.mb40 { margin-bottom: 40px; }*/
+// Exceptions: only add what you need!
+// .mb0.mb0 { margin-bottom: 0; }
+// .mb20.mb20 { margin-bottom: 20px; }
+// .mb40.mb40 { margin-bottom: 40px; }
 
-/*.mt0.mt0 { margin-top: 0; }
-.mt20.mt20 { margin-top: 20px; }
-.mt40.mt40 { margin-top: 40px; }*/
+// .mt0.mt0 { margin-top: 0; }
+// .mt20.mt20 { margin-top: 20px; }
+// .mt40.mt40 { margin-top: 40px; }
 
-/*.ttu { text-transform: uppercase; }
-.ttl { text-transform: lowercase; }*/
+// .ttu { text-transform: uppercase; }
+// .ttl { text-transform: lowercase; }
 
 /* SLIDESHOW */
 .cycle-slideshow {
@@ -377,12 +377,12 @@ a.esign {
 
   &.error {
     color: $error;
-    background: lighten($error, 50%);
+    background-color: $errorBg;
   }
 
   &.success {
     color: $success;
-    background: lighten($success, 50%);
+    background-color: $successBg;
   }
 }
 

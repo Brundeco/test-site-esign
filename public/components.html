@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Contact - Template</title>
+  <title>Components - Template</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,7 +16,7 @@
   <meta http-equiv="cleartype" content="on">
 
   
-  <meta property="og:title" content="Contact - Template">
+  <meta property="og:title" content="Components - Template">
   <meta property="og:description" content="" >
   <meta property="og:url" content="nl">
   <meta property="og:image" content="assets/images/share-image.jpg" >
@@ -26,7 +26,7 @@
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact - Template">
+  <meta name="twitter:title" content="Components - Template">
   <meta name="twitter:description" content="">
   <meta name="twitter:image" content="assets/images/share-image.jpg">
 
@@ -69,7 +69,7 @@
   </script>
 </head>
 
-<body class="contact">
+<body class="components">
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="page-wrap">
@@ -85,9 +85,9 @@
           <span class="trigger"><i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span></span>
           <ul class="nav-wrap">
             <li><a href="index.html">Home</a></li>
-            <li><a href="components.html">Components</a></li>
+            <li class="active"><a href="components.html">Components</a></li>
             <li><a href="news.html">News</a></li>
-            <li class="active"><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -99,17 +99,174 @@
       
 <div class="container">
 
-  <div id="map" class="map"></div>
+  <h1>Components</h1>
 
-  <h1>Contact</h1>
+  <h2>Grid</h2>
 
   <div class="grid">
     <div class="grid__item medium--one-half">
-      <h2>Adres</h2>
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend, sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
     </div>
     <div class="grid__item medium--one-half">
-      <h2>Contacteer ons</h2>
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla at ex vel, efficitur pulvinar nibh.</p>
+    </div>
+  </div>
 
+  <div class="grid">
+    <div class="grid__item medium--one-third">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend.</p>
+    </div>
+    <div class="grid__item medium--one-third">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+    <div class="grid__item medium--one-third">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="grid__item medium--one-half large--one-quarter">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+    <div class="grid__item medium--one-half large--one-quarter">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+    <div class="grid__item medium--one-half large--one-quarter">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+    <div class="grid__item medium--one-half large--one-quarter">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+  </div>
+
+  <ul class="grid">
+    <li class="grid__item medium--one-half">
+      <div class="box">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+      </div>
+    </li>
+    <li class="grid__item medium--one-half">
+      <div class="box">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+      </div>
+    </li>
+  </ul>
+
+  <hr/>
+
+  <h2>Device helpers</h2>
+
+  <h3>Visibility</h3>
+  <ul>
+    <li>.show</li>
+    <li>.hide</li>
+    <li>.breakpoint + --show</li>
+    <li>.breakpoint + --hide</li>
+  </ul>
+
+  <h3>Text alignment</h3>
+  <ul>
+    <li>.text-left</li>
+    <li>.text-center</li>
+    <li>.text-right</li>
+    <li>.breakpoint + --text-left</li>
+    <li>.breakpoint + --text-center</li>
+    <li>.breakpoint + --text-right</li>
+  </ul>
+
+  <h3>Floats</h3>
+  <ul>
+    <li>.left</li>
+    <li>.right</li>
+    <li>.breakpoint + --left</li>
+    <li>.breakpoint + --right</li>
+  </ul>
+
+  <hr/>
+
+  <h2>Typography</h2>
+
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+  <h6>Heading 6</h6>
+
+  <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. <strong>Etiam eu erat pulvinar</strong>, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit <em>elementum volutpat sit</em> amet vel ex.</p>
+
+  <blockquote>
+    <p>Eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+    <cite>The author of the quote</cite>
+  </blockquote>
+
+  <ul>
+    <li>
+      Unordered list item 1
+
+      <ul>
+        <li>Unordered list item 1.1</li>
+        <li>Unordered list item 1.2</li>
+        <li>Unordered list item 1.3</li>
+      </ul>
+    </li>
+    <li>Unordered list item 2</li>
+    <li>Unordered list item 3</li>
+  </ul>
+
+  <ol>
+    <li>Ordered list item 1</li>
+    <li>Ordered list item 2</li>
+    <li>Ordered list item 3</li>
+  </ol>
+
+  <ul class="unstyled">
+    <li>Unstyled list item 1</li>
+    <li>Unstyled list item 2</li>
+    <li>Unstyled list item 3</li>
+  </ul>
+
+  <dl>
+    <dt>Dt item 1</dt>
+    <dd>Dd item 1</dd>
+    <dt>Dt item 2</dt>
+    <dd>Dd item 2</dd>
+  </dl>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title 1</th>
+        <th>Title 2</th>
+        <th>Title 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+      </tr>
+      <tr>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+      </tr>
+      <tr>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <hr/>
+
+  <h2>Forms</h2>
+
+  <div class="grid">
+    <div class="grid__item medium--one-half">
       <form action="#" method="post" class="validate">
         <div class="box error">
           <ul>

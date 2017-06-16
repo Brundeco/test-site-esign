@@ -836,7 +836,7 @@ p {
 }
 
 strong {
-  font-weight: 500;
+  font-weight: 600;
   font-size: inherit;
 }
 
@@ -911,7 +911,7 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a, h6 a, .h6 a {
 }
 
 h1 a:hover, h1 a:focus, .h1 a:hover, .h1 a:focus, h2 a:hover, h2 a:focus, .h2 a:hover, .h2 a:focus, h3 a:hover, h3 a:focus, .h3 a:hover, .h3 a:focus, h4 a:hover, h4 a:focus, .h4 a:hover, .h4 a:focus, h5 a:hover, h5 a:focus, .h5 a:hover, .h5 a:focus, h6 a:hover, h6 a:focus, .h6 a:hover, .h6 a:focus {
-  color: #b35a00;
+  color: #cc6600;
 }
 
 h1, .h1 {
@@ -936,13 +936,13 @@ h2, .h2 {
 
 @media screen and (min-width: 768px) {
   h2, .h2 {
-    font-size: calc(20px + 12 * (100vw - 768px) / 432);
+    font-size: calc(20px + 8 * (100vw - 768px) / 432);
   }
 }
 
 @media screen and (min-width: 1200px) {
   h2, .h2 {
-    font-size: 32px;
+    font-size: 28px;
   }
 }
 
@@ -952,13 +952,13 @@ h3, .h3 {
 
 @media screen and (min-width: 768px) {
   h3, .h3 {
-    font-size: calc(16px + 4 * (100vw - 768px) / 256);
+    font-size: calc(16px + 6 * (100vw - 768px) / 256);
   }
 }
 
 @media screen and (min-width: 1024px) {
   h3, .h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 
@@ -1076,7 +1076,7 @@ ol {
 }
 
 .unstyled, ul.social, ul.lined, nav ul {
-  margin: 0;
+  margin: 0 0 1.5em;
   padding: 0;
   list-style: none;
 }
@@ -1106,19 +1106,52 @@ nav ul:after {
 }
 
 dl {
-  margin: 0 0 40px;
+  margin: 0 0 1.5em;
+}
+
+dt, dd {
+  line-height: 1.5em;
+}
+
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin-bottom: 0.5em;
 }
 
 hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #F4F4F4;
-  margin: 70px 0 40px;
+  border-top: 1px solid #B4B4B4;
+  margin: 50px 0;
 }
 
 blockquote {
   line-height: inherit;
+  padding-left: 20px;
+  border-left: 1px solid #B4B4B4;
+  margin-bottom: 1.5em;
+  font-size: 20px;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+blockquote p {
+  margin-bottom: 0.5em;
+}
+
+blockquote cite {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  blockquote {
+    padding-left: 40px;
+  }
 }
 
 /*============================================================================
@@ -1282,7 +1315,7 @@ button i, input[type="reset"] i, input[type="submit"] i, .button i, a.button i {
 }
 
 button:hover, button:focus, button:active, input[type="reset"]:hover, input[type="reset"]:focus, input[type="reset"]:active, input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active, .button:hover, .button:focus, .button:active, a.button:hover, a.button:focus, a.button:active {
-  background-color: #b35a00;
+  background-color: #cc6600;
 }
 
 button:active, input[type="reset"]:active, input[type="submit"]:active, .button:active, a.button:active {
@@ -1882,15 +1915,6 @@ body {
   width: auto;
 }
 
-/* exceptions: only add what you need! */
-/*.mb0.mb0 { margin-bottom: 0; }
-.mb20.mb20 { margin-bottom: 20px; }
-.mb40.mb40 { margin-bottom: 40px; }*/
-/*.mt0.mt0 { margin-top: 0; }
-.mt20.mt20 { margin-top: 20px; }
-.mt40.mt40 { margin-top: 40px; }*/
-/*.ttu { text-transform: uppercase; }
-.ttl { text-transform: lowercase; }*/
 /* SLIDESHOW */
 .cycle-slideshow {
   width: 100%;
@@ -2219,12 +2243,12 @@ a.esign:hover, a.esign:focus {
 
 .box.error {
   color: #f1062c;
-  background: #fff7f8;
+  background-color: #fff7f8;
 }
 
 .box.success {
   color: #39963a;
-  background: #dcf2dc;
+  background-color: #eff9ef;
 }
 
 section {

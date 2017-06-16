@@ -25,7 +25,7 @@ p {
 }
 
 strong {
-  font-weight: 500;
+  font-weight: 600;
   font-size: inherit;
 }
 
@@ -101,11 +101,11 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  @include fluid-type(font-size, $mediumSize, $largerSize, 20px, 32px);
+  @include fluid-type(font-size, $mediumSize, $largerSize, 20px, 28px);
 }
 
 h3, .h3 {
-  @include fluid-type(font-size, $mediumSize, $largeSize, 16px, 20px);
+  @include fluid-type(font-size, $mediumSize, $largeSize, 16px, 22px);
 }
 
 h4, .h4 {
@@ -210,7 +210,7 @@ ol {
 }
 
 .unstyled, nav ul {
-  margin: 0; padding: 0; list-style: none;
+  margin: 0 0 1.5em; padding: 0; list-style: none;
 
   ul {
     list-style: none;
@@ -227,10 +227,19 @@ nav ul {
 }
 
 dl {
-  margin: 0 0 40px;
-  dt, dd {
+  margin: 0 0 1.5em;
+}
 
-  }
+dt, dd {
+  line-height: 1.5em;
+}
+
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin-bottom: 0.5em;
 }
 
 
@@ -238,9 +247,26 @@ dl {
 
 hr {
   display: block; height: 1px;
-  border: 0; border-top: 1px solid $grayLight; margin: 70px 0 40px;
+  border: 0; border-top: 1px solid $gray; margin: 50px 0;
 }
 
 blockquote {
   line-height: inherit;
+  padding-left: 20px;
+  border-left: 1px solid $gray;
+  margin-bottom: 1.5em;
+  @include fs(20);
+  font-style: italic;
+
+  p {
+    margin-bottom: 0.5em;
+  }
+
+  cite {
+    @include fs(14);
+  }
+
+  @media #{$medium} {
+    padding-left: 40px;
+  }
 }

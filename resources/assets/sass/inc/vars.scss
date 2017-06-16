@@ -13,7 +13,7 @@ $white: #fff;
 
 // Accent colors
 $accent: #FF8000;
-$accentHover: darken($accent, 15%);
+$accentHover: darken($accent, 10%);
 
 $accentLight: lighten($accent, 15%);
 
@@ -23,7 +23,10 @@ $linkColorHover: $grayDark;
 
 // States
 $error: #f1062c;
+$errorBg: lighten($error, 50%);
+
 $success: #39963a;
+$successBg: lighten($success, 55%);
 
 // Selection
 $selection: lighten($accent, 40%);

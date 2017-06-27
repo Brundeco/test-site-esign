@@ -60,7 +60,7 @@ esign.blockLink = function () {
 /* ajax newsletter subscribe */
 esign.formAjax = function () {
   $('.form-ajax').submit(function(e) {
-    $form = $(this);
+    var $form = $(this);
     $form.find('button,input[type="submit"]').attr("disabled", "disabled");
 
     $.post($form.attr('action'), $form.serializeArray(), function(data) {

@@ -11,7 +11,7 @@ var gulp = require('gulp'),
 
 require('laravel-elixir-svgmin');
 
-elixir.config.css.autoprefix.options.browsers = ['> 1%', 'Last 2 versions', 'IE 9', 'IE 8'];
+elixir.config.css.autoprefix.options.browsers = ['> 1%', 'Last 2 versions', 'IE 9'];
 
 // Templates
 gulp.task('templates', function () {

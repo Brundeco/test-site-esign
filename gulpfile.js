@@ -6,8 +6,10 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     del = require('del'),
     responsive = require('gulp-responsive'),
-    tinypng = require('gulp-tinypng');
-    require('laravel-elixir-svgmin');
+    tinypng = require('gulp-tinypng'),
+    svgSprite = require('gulp-svg-sprites');
+
+require('laravel-elixir-svgmin');
 
 elixir.config.css.autoprefix.options.browsers = ['> 1%', 'Last 2 versions', 'IE 9', 'IE 8'];
 
@@ -55,6 +57,16 @@ gulp.task('retina-images', function () {
     .pipe(tinypng('YOUR_API_CODE'))
     .pipe(gulp.dest('public/assets/images'));
 
+});
+
+// Svg sprite
+gulp.task('sprites', function () {
+  return gulp.src('resources/assets/images/svg/*.svg')
+    .pipe(svgSprite({
+      mode: 'symbols',
+      svgId: 'icon-%f'
+    }))
+    .pipe(gulp.dest('resources/assets/svg-sprite/'));
 });
 
 elixir(function (mix) {

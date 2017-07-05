@@ -214,5 +214,11 @@
     </div>
   </div>
 
+  <hr/>
+
+  <h2>Google Maps</h2>
+
+  <div id="map" class="map"></div>
+
 </div>
 {% endblock %}

@@ -24,8 +24,8 @@
 }
 
 .formError .formErrorContent {
-  background: $accent; position:relative; color: #fff; width: 150px;
-  border: 1px solid $accent; padding: 4px 10px 4px 10px;
+  background: $error; position:relative; color: #fff; width: 150px;
+  border: 1px solid $error; padding: 4px 10px 4px 10px;
   @include fs(14);
   box-shadow: 0 0 2px 1px rgba(0,0,0,0.2);
   border-radius: 5px;
@@ -38,7 +38,7 @@
   &:after {
     content: ""; display: block;
     position: absolute; bottom: 0; left: 0;
-    border: 8px solid transparent; border-bottom: 0; border-top-color: $accent;
+    border: 8px solid transparent; border-bottom: 0; border-top-color: $error;
   }
 }
 

@@ -1516,11 +1516,11 @@ fieldset ul li.space {
 }
 
 .formError .formErrorContent {
-  background: #FF8000;
+  background: #f1062c;
   position: relative;
   color: #fff;
   width: 150px;
-  border: 1px solid #FF8000;
+  border: 1px solid #f1062c;
   padding: 4px 10px 4px 10px;
   font-size: 14px;
   font-size: 1.4rem;
@@ -1543,7 +1543,7 @@ fieldset ul li.space {
   left: 0;
   border: 8px solid transparent;
   border-bottom: 0;
-  border-top-color: #FF8000;
+  border-top-color: #f1062c;
 }
 
 .formError .formErrorArrowBottom {
@@ -2039,6 +2039,12 @@ article a:hover img, article a:focus img {
   height: 350px;
   background: #efefef;
   margin: 0 0 40px;
+}
+
+@media (min-width: 768px) {
+  .map {
+    height: 550px;
+  }
 }
 
 /* =============================================================================

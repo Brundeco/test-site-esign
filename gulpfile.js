@@ -88,8 +88,20 @@ elixir(function (mix) {
   );
 
   // Scripts
-  mix.scripts(['libs/modernizr.min.js'], 'public/assets/js/head.js')
-     .scripts(['libs/jquery.min.js', 'plugins.js', 'esign.js'], 'public/assets/js/app.js');
+  mix.scripts([
+      'libs/modernizr.min.js'
+    ], 'public/assets/js/head.js')
+    .scripts([
+      'libs/jquery.min.js',
+      'plugins.js',
+      'esign.js'
+    ], 'public/assets/js/app.js')
+    .scripts([
+      'libs/validation/languages/jquery.validationEngine-nl.js',
+      'libs/validation/jquery.validationEngine.js',
+      'googlemaps-styles.js',
+      'contact.js'
+    ], 'public/assets/js/contact.js');
 
   // Browsersync
   mix.browserSync({

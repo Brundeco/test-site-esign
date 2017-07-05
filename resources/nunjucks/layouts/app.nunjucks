@@ -114,5 +114,12 @@
   </footer>
 
   <script src="assets/js/app.js"></script>
+  {% if bodyclass == 'contact' or bodyclass == 'components' %}
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ API_KEY }}&language=nl"></script>
+    <script>
+      var baseUrl = 'http://localhost:3000/frontend-template/public/';
+    </script>
+    <script src="assets/js/contact.js"></script>
+  {% endif %}
 </body>
 </html>

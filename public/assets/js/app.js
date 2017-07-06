@@ -44,7 +44,7 @@ esign.cacheSelectors = function () {
     $html: $('html'),
 
     // navigation
-    $nav: $('.nav-wrap')
+    $nav: $('.main-nav__wrap')
 
   };
 };
@@ -68,16 +68,15 @@ esign.init = function () {
 };
 
 esign.navigation = function () {
-  $('.main-nav .trigger').click(function(e) {
+  $('.main-nav__trigger').click(function(e) {
     e.preventDefault();
-    $(this).next('.nav-wrap').slideToggle('fast');
+    $(this).next('.main-nav__wrap').slideToggle('fast');
   });
 
   Response.crossover('width', function() {
     if(Response.band(752)) {
       esign.cache.$nav.css('display', 'block');
     } else {
-      //esign.cache.$nav.css('display', 'block');
       esign.cache.$nav.css('display', 'none');
     }
   });

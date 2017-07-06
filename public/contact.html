@@ -73,13 +73,15 @@
     <header class="page-header">
 
       <div class="container">
-        <a href="index.html" class="logo">
+        <a href="index.html" class="page-header__logo">
           <img src="assets/images/logo.svg" alt="Template" width="150" />
         </a>
 
         <nav class="main-nav">
-          <span class="trigger"><i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span></span>
-          <ul class="nav-wrap">
+          <button class="main-nav__trigger">
+            <i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span>
+          </button>
+          <ul class="main-nav__wrap">
             <li><a href="index.html">Home</a></li>
             <li><a href="components.html">Components</a></li>
             <li><a href="news.html">News</a></li>
@@ -107,13 +109,13 @@
       <h2>Contacteer ons</h2>
 
       <form action="#" method="post" class="validate">
-        <div class="box error">
+        <div class="note note--error">
           <ul>
-            <li id="error_email">Naam is verplicht</li>
-            <li id="error_email">Geldig emailadres is verplicht</li>
+            <li>Naam is verplicht</li>
+            <li>Geldig emailadres is verplicht</li>
           </ul>
         </div>
-        <div class="box success">
+        <div class="note note--success">
           <p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
         </div>
         <fieldset>

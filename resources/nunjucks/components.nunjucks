@@ -177,13 +177,13 @@
   <div class="grid">
     <div class="grid__item medium--one-half">
       <form action="#" method="post" class="validate">
-        <div class="box error">
+        <div class="note note--error">
           <ul>
-            <li id="error_email">Naam is verplicht</li>
-            <li id="error_email">Geldig emailadres is verplicht</li>
+            <li>Naam is verplicht</li>
+            <li>Geldig emailadres is verplicht</li>
           </ul>
         </div>
-        <div class="box success">
+        <div class="note note--success">
           <p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
         </div>
         <fieldset>

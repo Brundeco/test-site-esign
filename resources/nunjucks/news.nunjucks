@@ -14,25 +14,25 @@
     <li>
       <div class="article-teaser">
         <h2><a href="news-article.html">Lorem ipsum</a></h2>
-        <p>03/02/2014</p>
+        <p>03/02/2017</p>
 
-        <div class="intro">
+        <div class="article-teaser__body">
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
         </div>
 
-        <p><a href="news-article.html" class="button-more">Read more</a></p>
+        <p><a href="news-detail.html" class="button-more">Read more</a></p>
       </div>
     </li>
     <li>
       <div class="article-teaser">
         <h2><a href="news-article.html">Lorem ipsum</a></h2>
-        <p>03/02/2014</p>
+        <p>03/02/2017</p>
 
-        <div class="intro">
+        <div class="article-teaser__body">
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
         </div>
 
-        <p><a href="news-article.html" class="button-more">Read more</a></p>
+        <p><a href="news-detail.html" class="button-more">Read more</a></p>
       </div>
     </li>
   </ul>

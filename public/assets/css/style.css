@@ -66,18 +66,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, time, 
   box-sizing: border-box;
 }
 
-/* HTML5 */
 audio, canvas, video {
   display: inline-block;
-  *display: inline;
-  *zoom: 1;
 }
 
 audio:not([controls]) {
   display: none;
 }
 
-/* TYPE */
 a:focus {
   outline: thin dotted;
 }
@@ -97,16 +93,10 @@ sub, sup {
   vertical-align: baseline;
 }
 
-/**
- * Turn on proper supercript numerals
- */
 sup {
   top: -0.5em;
 }
 
-/**
- * Turn on proper subscript numerals
- */
 sub {
   bottom: -0.25em;
 }
@@ -124,9 +114,6 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-/**
- * Turn on small caps for upper and lowercase letters
- */
 abbr {
   text-transform: uppercase;
 }
@@ -135,17 +122,14 @@ time {
   display: block;
 }
 
-/* FORMS */
 button, input, select, textarea {
   font-size: 100%;
   margin: 0;
   vertical-align: baseline;
-  *vertical-align: middle;
 }
 
 button, input {
   line-height: normal;
-  *overflow: visible;
 }
 
 button::-moz-focus-inner, input::-moz-focus-inner {
@@ -170,12 +154,6 @@ input[type="search"]::-webkit-search-decoration {
 textarea {
   overflow: auto;
   vertical-align: top;
-}
-
-/* TABLE */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 
 /*============================================================================
@@ -1600,7 +1578,6 @@ body {
   }
 }
 
-/* typekit async loading (all elements using $ typekit font) */
 .wf-loading {
   overflow: hidden;
 }
@@ -1622,10 +1599,7 @@ body {
 /* =============================================================================
    ELEMENTS
    ========================================================================== */
-/* ICONS */
 .icon {
-  /* icon sprite */
-  /* @include at2x('../images/template-sprite.png', '../images/template-sprite$2x.png', 300px, 50px); */
   display: inline-block;
   vertical-align: middle;
   transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
@@ -1657,12 +1631,10 @@ body {
   margin-top: 9px;
 }
 
-/* HELPERS */
 .left > .va-wrap, .right > .va-wrap {
   width: auto;
 }
 
-/* SLIDESHOW */
 .cycle-slideshow {
   width: 100%;
   position: relative;
@@ -1697,13 +1669,10 @@ body {
   text-indent: 0;
 }
 
-/* OTHER */
-/* google maps mw */
 .gm-style img {
   max-width: inherit;
 }
 
-/* responsive video */
 .video-container {
   position: relative;
   padding: 0 0 56.25%;
@@ -1720,7 +1689,6 @@ body {
   height: 100%;
 }
 
-/* equal height */
 .equal-h {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1748,7 +1716,6 @@ html.no-flexbox .equal-h > div {
   float: left;
 }
 
-/* vertical align */
 .block-link {
   position: relative;
   cursor: pointer;

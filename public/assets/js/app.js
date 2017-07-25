@@ -85,7 +85,7 @@ esign.responsiveVideos = function () {
   $('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"], iframe[src*="player.vimeo"]').wrap('<div class="video-container"></div>');
 };
 
-/* ajax newsletter subscribe */
+// Ajax newsletter subscribe
 esign.formAjax = function () {
   $('.form-ajax').submit(function(e) {
     var $form = $(this);
@@ -105,7 +105,7 @@ esign.formAjax = function () {
   });
 };
 
-/* log ga calls in development */
+// Log ga calls in development
 esign.gaDevelopment = function() {
   if (typeof ga === typeof undefined) {
     window.ga = function() {
@@ -122,7 +122,7 @@ esign.gaDevelopment = function() {
   }
 };
 
-// initialize on docready
+// Initialize on docready
 $(esign.init);
 
 //# sourceMappingURL=app.js.map

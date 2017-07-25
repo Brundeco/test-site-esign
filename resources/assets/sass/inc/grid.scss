@@ -176,35 +176,35 @@ ul.grid-uniform {
 
 // Push
 @mixin push-setup($namespace: "") {
-  /* Whole */
+  // Whole
   .push--#{$namespace}one-whole       { left: 100%; @include silent-relative(); }
 
-  /* Halves */
+  // Halves
   .push--#{$namespace}one-half        { left: 50%; @include silent-relative(); }
 
-  /* Thirds */
+  // Thirds
   .push--#{$namespace}one-third       { left: 33.333%; @include silent-relative(); }
   .push--#{$namespace}two-thirds      { left: 66.666%; @include silent-relative(); }
 
-  /* Quarters */
+  // Quarters
   .push--#{$namespace}one-quarter     { left: 25%; @include silent-relative(); }
   .push--#{$namespace}two-quarters    { left: 50%; @include silent-relative(); }
   .push--#{$namespace}three-quarters  { left: 75%; @include silent-relative(); }
 
-  /* Fifths */
+  // Fifths
   .push--#{$namespace}one-fifth       { left: 20%; @include silent-relative(); }
   .push--#{$namespace}two-fifths      { left: 40%; @include silent-relative(); }
   .push--#{$namespace}three-fifths    { left: 60%; @include silent-relative(); }
   .push--#{$namespace}four-fifths     { left: 80%; @include silent-relative(); }
 
-  /* Sixths */
+  // Sixths
   .push--#{$namespace}one-sixth       { left: 16.666%; @include silent-relative(); }
   .push--#{$namespace}two-sixths      { left: 33.333%; @include silent-relative(); }
   .push--#{$namespace}three-sixths    { left: 50%; @include silent-relative(); }
   .push--#{$namespace}four-sixths     { left: 66.666%; @include silent-relative(); }
   .push--#{$namespace}five-sixths     { left: 83.333%; @include silent-relative(); }
 
-  /* Eighths */
+  // Eighths
   .push--#{$namespace}one-eighth      { left: 12.5%; @include silent-relative(); }
   .push--#{$namespace}two-eighths     { left: 25%; @include silent-relative(); }
   .push--#{$namespace}three-eighths   { left: 37.5%; @include silent-relative(); }
@@ -213,7 +213,7 @@ ul.grid-uniform {
   .push--#{$namespace}six-eighths     { left: 75%; @include silent-relative(); }
   .push--#{$namespace}seven-eighths   { left: 87.5%; @include silent-relative(); }
 
-  /* Tenths */
+  // Tenths
   .push--#{$namespace}one-tenth       { left: 10%; @include silent-relative(); }
   .push--#{$namespace}two-tenths      { left: 20%; @include silent-relative(); }
   .push--#{$namespace}three-tenths    { left: 30%; @include silent-relative(); }
@@ -224,7 +224,7 @@ ul.grid-uniform {
   .push--#{$namespace}eight-tenths    { left: 80%; @include silent-relative(); }
   .push--#{$namespace}nine-tenths     { left: 90%; @include silent-relative(); }
 
-  /* Twelfths */
+  // Twelfths
   .push--#{$namespace}one-twelfth     { left: 8.333%; @include silent-relative(); }
   .push--#{$namespace}two-twelfths    { left: 16.666%; @include silent-relative();  }
   .push--#{$namespace}three-twelfths  { left: 25%; @include silent-relative(); }
@@ -253,35 +253,35 @@ ul.grid-uniform {
 
 // Pull
 @mixin pull-setup($namespace: "") {
-  /* Whole */
+  // Whole
   .pull--#{$namespace}one-whole       { right: 100%; @include silent-relative(); }
 
-  /* Halves */
+  // Halves
   .pull--#{$namespace}one-half        { right: 50%; @include silent-relative(); }
 
-  /* Thirds */
+  // Thirds
   .pull--#{$namespace}one-third       { right: 33.333%; @include silent-relative(); }
   .pull--#{$namespace}two-thirds      { right: 66.666%; @include silent-relative(); }
 
-  /* Quarters */
+  // Quarters
   .pull--#{$namespace}one-quarter     { right: 25%; @include silent-relative(); }
   .pull--#{$namespace}two-quarters    { right: 50%; @include silent-relative(); }
   .pull--#{$namespace}three-quarters  { right: 75%; @include silent-relative(); }
 
-  /* Fifths */
+  // Fifths
   .pull--#{$namespace}one-fifth       { right: 20%; @include silent-relative(); }
   .pull--#{$namespace}two-fifths      { right: 40%; @include silent-relative(); }
   .pull--#{$namespace}three-fifths    { right: 60%; @include silent-relative(); }
   .pull--#{$namespace}four-fifths     { right: 80%; @include silent-relative(); }
 
-  /* Sixths */
+  // Sixths
   .pull--#{$namespace}one-sixth       { right: 16.666%; @include silent-relative(); }
   .pull--#{$namespace}two-sixths      { right: 33.333%; @include silent-relative(); }
   .pull--#{$namespace}three-sixths    { right: 50%; @include silent-relative(); }
   .pull--#{$namespace}four-sixths     { right: 66.666%; @include silent-relative(); }
   .pull--#{$namespace}five-sixths     { right: 83.333%; @include silent-relative(); }
 
-  /* Eighths */
+  // Eighths
   .pull--#{$namespace}one-eighth      { right: 12.5%; @include silent-relative(); }
   .pull--#{$namespace}two-eighths     { right: 25%; @include silent-relative(); }
   .pull--#{$namespace}three-eighths   { right: 37.5%; @include silent-relative(); }
@@ -290,7 +290,7 @@ ul.grid-uniform {
   .pull--#{$namespace}six-eighths     { right: 75%; @include silent-relative(); }
   .pull--#{$namespace}seven-eighths   { right: 87.5%; @include silent-relative(); }
 
-  /* Tenths */
+  // Tenths
   .pull--#{$namespace}one-tenth       { right: 10%; @include silent-relative(); }
   .pull--#{$namespace}two-tenths      { right: 20%; @include silent-relative(); }
   .pull--#{$namespace}three-tenths    { right: 30%; @include silent-relative(); }
@@ -301,7 +301,7 @@ ul.grid-uniform {
   .pull--#{$namespace}eight-tenths    { right: 80%; @include silent-relative(); }
   .pull--#{$namespace}nine-tenths     { right: 90%; @include silent-relative(); }
 
-  /* Twelfths */
+  // Twelfths
   .pull--#{$namespace}one-twelfth     { right: 8.333%; @include silent-relative(); }
   .pull--#{$namespace}two-twelfths    { right: 16.666%; @include silent-relative(); }
   .pull--#{$namespace}three-twelfths  { right: 25%; @include silent-relative(); }

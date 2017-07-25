@@ -35,16 +35,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, time, 
   box-sizing: border-box;
 }
 
-/* HTML5 */
-// Display in IE6-9 and FF3
+// Display in IE9
 audio, canvas, video {
-  display: inline-block; *display: inline; *zoom: 1;
+  display: inline-block;
 }
+
 // Prevents modern browsers from displaying 'audio' without controls
 audio:not([controls]) { display: none; }
 
-/* TYPE */
 
+// Type
 a:focus { outline: thin dotted; }
 
 ol, ul { list-style: none; }
@@ -55,16 +55,12 @@ sub, sup {
   font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;
 }
 
-/**
- * Turn on proper supercript numerals
- */
+// Turn on proper supercript numerals
 sup {
   top: -0.5em;
 }
 
-/**
- * Turn on proper subscript numerals
- */
+// Turn on proper subscript numerals
 sub {
   bottom: -0.25em;
 }
@@ -73,9 +69,7 @@ figure { margin: 0; }
 img { border: 0; -ms-interpolation-mode: bicubic; }
 svg:not(:root) { overflow: hidden; }
 
-/**
- * Turn on small caps for upper and lowercase letters
- */
+// Turn on small caps for upper and lowercase letters
 abbr {
   text-transform: uppercase;
 }
@@ -84,32 +78,35 @@ time {
   display: block;
 }
 
-/* FORMS */
+// Forms
 button, input, select, textarea {
-  font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle;
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
 }
+
 button, input {
-  line-height: normal;  *overflow: visible; // Inner spacing ie IE6/7
+  line-height: normal;
 }
+
 button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0; padding: 0;
 }
+
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer; -webkit-appearance: button;
 }
+
 input[type="search"] { // Appearance in Safari/Chrome
   -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box;
+  box-sizing: content-box;
 }
+
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; // Inner-padding issues in Chrome OSX, Safari 5
 }
+
 textarea {
   overflow: auto; // Remove vertical scrollbar in IE6-9
   vertical-align: top; // Readability and alignment cross-browser
-}
-
-/* TABLE */
-table {
-  border-collapse: collapse; border-spacing: 0;
 }

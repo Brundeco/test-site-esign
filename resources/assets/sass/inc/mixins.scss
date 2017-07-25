@@ -286,3 +286,19 @@
     border-top:    $perpendicular-borders;
   }
 }
+
+// Custom ordered list
+@mixin custom-ordered-list {
+  list-style: none;
+  counter-reset: list-counter;
+  margin-left: 0;
+
+  li {
+    &::before {
+      display: inline-block;
+      content: counter(list-counter, decimal-leading-zero) ".";
+      counter-increment: list-counter;
+      margin-right: 5px;
+    }
+  }
+}

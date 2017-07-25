@@ -2,12 +2,12 @@
  * OVERVIEW
  *
  * IMPORTS
- * reset, core, patterns, plugins
+ * reset, vars, mixins, core, plugins
  *
  * LAYOUT
- * Grid / Elements (icons, slideshow, other, ...)
+ * Helpers
  * Header / Main / Footer
- * Content elements (no overrides from main)
+ * Components
  * Pages (page overrides)
  *
  * Hooks (IE, ...)
@@ -17,11 +17,11 @@
 /**
  * GUIDELINES
  * CLASSES
- * Naming: lorem-ipsum
+ * Naming: BEM - http://getbem.com/
  * Abbreviations: Emmet - http://docs.emmet.io/cheat-sheet/ | example: .va-m
  *
  * MEDIAQUERIES
- * @media $mobile, $mediumMini, $medium, $large, $netbook, $wide ...
+ * @media $small, $medium, $maxMedium, $large, $larger, $huge, $massive
  */
 
 /* =============================================================================
@@ -100,7 +100,7 @@ body {
 
 
 /* =============================================================================
-   ELEMENTS
+   HELPERS
    ========================================================================== */
 
 // Icons
@@ -122,11 +122,6 @@ body {
   &:after { margin-top: 9px; }
 }
 
-// Helpers
-.left, .right {
-  > .va-wrap { width: auto; }
-}
-
 // Exceptions: only add what you need!
 // .mb0.mb0 { margin-bottom: 0; }
 // .mb20.mb20 { margin-bottom: 20px; }
@@ -138,36 +133,6 @@ body {
 
 // .ttu { text-transform: uppercase; }
 // .ttl { text-transform: lowercase; }
-
-// Slideshow
-.cycle-slideshow {
-  width: 100%; position: relative;
-}
-
-.cycle-pager {
-  width: 100%; text-align: center;
-
-  span {
-    display: inline-block; margin: 0 3px; font-size: 36px;
-    height: 20px; width: 20px; line-height: 14px;
-    cursor:pointer;
-    border: 2px solid #fff;
-    border-radius: 20px;
-    color: #fff;
-    overflow: hidden; text-indent: -500px;
-    transition: $transitionDefault;
-
-    &:hover, &:focus {
-      transition: none;
-    }
-  }
-
-  span:hover, span:focus, .cycle-pager-active {
-    text-indent: 0;
-  }
-}
-
-// OTHER
 
 // Google maps mw
 .gm-style img {
@@ -229,6 +194,7 @@ html.no-flexbox {
 /* =============================================================================
    HEADER
    ========================================================================== */
+
 .page-header {
   padding: 20px 0;
 }
@@ -332,6 +298,7 @@ html.no-flexbox {
   }
 }
 
+
 /* =============================================================================
    FOOTER
    ========================================================================== */
@@ -370,9 +337,10 @@ a.esign {
 
 
 /* =============================================================================
-   CONTENT
+   COMPONENTS
    ========================================================================== */
 
+// Rte
 .large {
   @include fs(20);
 }
@@ -386,6 +354,7 @@ a.esign {
     float: none; display: inline-block;
   }
 }
+
 
 // Article
 section { position: relative; }
@@ -401,6 +370,7 @@ article {
     }
   }
 }
+
 
 // Note
 .note {
@@ -423,7 +393,37 @@ article {
   background-color: $errorBg;
 }
 
-// Maps
+
+// Slideshow
+.cycle-slideshow {
+  width: 100%; position: relative;
+}
+
+.cycle-pager {
+  width: 100%; text-align: center;
+
+  span {
+    display: inline-block; margin: 0 3px; font-size: 36px;
+    height: 20px; width: 20px; line-height: 14px;
+    cursor:pointer;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    overflow: hidden; text-indent: -500px;
+    transition: $transitionDefault;
+
+    &:hover, &:focus {
+      transition: none;
+    }
+  }
+
+  span:hover, span:focus, .cycle-pager-active {
+    text-indent: 0;
+  }
+}
+
+
+// Map
 .map {
   width: 100%;
   height: 350px;
@@ -432,6 +432,58 @@ article {
 
   @media #{$medium} {
     height: 550px;
+  }
+}
+
+
+// Social
+.social {
+  @include clearfix;
+  list-style: none;
+  margin: 0 0 2em -5px;
+}
+
+.social__item {
+  padding: 0 0 5px 5px;
+  float: left;
+}
+
+.social__link {
+  height: 40px; width: 40px;
+  line-height: 40px;
+  display: block;
+  border-radius: 40px;
+  background-color: $accent;
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+}
+
+.social__link--facebook {
+  background-color: #3C5B9B;
+  &:hover, &:focus {
+    background-color: darken(#3C5B9B, 8%);
+  }
+}
+
+.social__link--twitter {
+  background-color: #2DAAE1;
+  &:hover, &:focus {
+    background-color: darken(#2DAAE1, 8%);
+  }
+}
+
+.social__link--pinterest {
+  background-color: #CB2027;
+  &:hover, &:focus {
+    background-color: darken(#CB2027, 8%);
+  }
+}
+
+.social__link--linkedin {
+  background-color: #0173B2;
+  &:hover, &:focus {
+    background-color: darken(#0173B2, 8%);
   }
 }
 
@@ -446,6 +498,7 @@ article {
 /* =============================================================================
    HOOKS
    ========================================================================== */
+
 
 
 

@@ -2,12 +2,12 @@
  * OVERVIEW
  *
  * IMPORTS
- * reset, core, patterns, plugins
+ * reset, vars, mixins, core, plugins
  *
  * LAYOUT
- * Grid / Elements (icons, slideshow, other, ...)
+ * Helpers
  * Header / Main / Footer
- * Content elements (no overrides from main)
+ * Components
  * Pages (page overrides)
  *
  * Hooks (IE, ...)
@@ -16,11 +16,11 @@
 /**
  * GUIDELINES
  * CLASSES
- * Naming: lorem-ipsum
+ * Naming: BEM - http://getbem.com/
  * Abbreviations: Emmet - http://docs.emmet.io/cheat-sheet/ | example: .va-m
  *
  * MEDIAQUERIES
- * @media $mobile, $mediumMini, $medium, $large, $netbook, $wide ...
+ * @media $small, $medium, $maxMedium, $large, $larger, $huge, $massive
  */
 /* =============================================================================
    IMPORTS
@@ -980,84 +980,21 @@ ul.lined li:last-child {
   border-bottom: none;
 }
 
-.social-links {
-  *zoom: 1;
-  margin: 20px 0 20px -5px;
-}
-
-.social-links:before, .social-links:after {
-  display: table;
-  content: " ";
-}
-
-.social-links:after {
-  clear: both;
-}
-
-.social-links li {
-  margin: 0 0 5px 5px;
-  float: left;
-}
-
-.social-links a {
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
-  display: block;
-  border-radius: 40px;
-  background-color: #FF8000;
-  text-decoration: none;
-  text-align: center;
-  overflow: hidden;
-}
-
-.social-links .twitter {
-  background: #2DAAE1;
-}
-
-.social-links .twitter:hover, .social-links .twitter:focus {
-  background: #1d94c9;
-}
-
-.social-links .facebook {
-  background: #3C5B9B;
-}
-
-.social-links .facebook:hover, .social-links .facebook:focus {
-  background: #314a7e;
-}
-
-.social-links .pinterest {
-  background: #CB2027;
-}
-
-.social-links .pinterest:hover, .social-links .pinterest:focus {
-  background: #a81a20;
-}
-
-.social-links .linkedin {
-  background: #0173B2;
-}
-
-.social-links .linkedin:hover, .social-links .linkedin:focus {
-  background: #015989;
-}
-
 ol {
   list-style: decimal;
 }
 
-.unstyled, ul.lined, .social-links, nav ul {
+.unstyled, ul.lined, nav ul {
   margin: 0 0 1.5em;
   padding: 0;
   list-style: none;
 }
 
-.unstyled ul, ul.lined ul, .social-links ul, nav ul ul {
+.unstyled ul, ul.lined ul, nav ul ul {
   list-style: none;
 }
 
-.unstyled li, ul.lined li, .social-links li, nav ul li {
+.unstyled li, ul.lined li, nav ul li {
   list-style: none;
   list-style-image: none;
   padding: 0;
@@ -1597,7 +1534,7 @@ body {
 }
 
 /* =============================================================================
-   ELEMENTS
+   HELPERS
    ========================================================================== */
 .icon {
   display: inline-block;
@@ -1629,44 +1566,6 @@ body {
 
 .icon-hamburger:after {
   margin-top: 9px;
-}
-
-.left > .va-wrap, .right > .va-wrap {
-  width: auto;
-}
-
-.cycle-slideshow {
-  width: 100%;
-  position: relative;
-}
-
-.cycle-pager {
-  width: 100%;
-  text-align: center;
-}
-
-.cycle-pager span {
-  display: inline-block;
-  margin: 0 3px;
-  font-size: 36px;
-  height: 20px;
-  width: 20px;
-  line-height: 14px;
-  cursor: pointer;
-  border: 2px solid #fff;
-  border-radius: 20px;
-  color: #fff;
-  overflow: hidden;
-  text-indent: -500px;
-  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
-}
-
-.cycle-pager span:hover, .cycle-pager span:focus {
-  transition: none;
-}
-
-.cycle-pager span:hover, .cycle-pager span:focus, .cycle-pager .cycle-pager-active {
-  text-indent: 0;
 }
 
 .gm-style img {
@@ -1919,7 +1818,7 @@ a.esign:hover, a.esign:focus {
 }
 
 /* =============================================================================
-   CONTENT
+   COMPONENTS
    ========================================================================== */
 .large {
   font-size: 20px;
@@ -2007,6 +1906,40 @@ article a:hover img, article a:focus img {
   background-color: #fff7f8;
 }
 
+.cycle-slideshow {
+  width: 100%;
+  position: relative;
+}
+
+.cycle-pager {
+  width: 100%;
+  text-align: center;
+}
+
+.cycle-pager span {
+  display: inline-block;
+  margin: 0 3px;
+  font-size: 36px;
+  height: 20px;
+  width: 20px;
+  line-height: 14px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  color: #fff;
+  overflow: hidden;
+  text-indent: -500px;
+  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
+}
+
+.cycle-pager span:hover, .cycle-pager span:focus {
+  transition: none;
+}
+
+.cycle-pager span:hover, .cycle-pager span:focus, .cycle-pager .cycle-pager-active {
+  text-indent: 0;
+}
+
 .map {
   width: 100%;
   height: 350px;
@@ -2018,6 +1951,70 @@ article a:hover img, article a:focus img {
   .map {
     height: 550px;
   }
+}
+
+.social {
+  *zoom: 1;
+  list-style: none;
+  margin: 0 0 2em -5px;
+}
+
+.social:before, .social:after {
+  display: table;
+  content: " ";
+}
+
+.social:after {
+  clear: both;
+}
+
+.social__item {
+  padding: 0 0 5px 5px;
+  float: left;
+}
+
+.social__link {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  display: block;
+  border-radius: 40px;
+  background-color: #FF8000;
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+}
+
+.social__link--facebook {
+  background-color: #3C5B9B;
+}
+
+.social__link--facebook:hover, .social__link--facebook:focus {
+  background-color: #314a7e;
+}
+
+.social__link--twitter {
+  background-color: #2DAAE1;
+}
+
+.social__link--twitter:hover, .social__link--twitter:focus {
+  background-color: #1d94c9;
+}
+
+.social__link--pinterest {
+  background-color: #CB2027;
+}
+
+.social__link--pinterest:hover, .social__link--pinterest:focus {
+  background-color: #a81a20;
+}
+
+.social__link--linkedin {
+  background-color: #0173B2;
+}
+
+.social__link--linkedin:hover, .social__link--linkedin:focus {
+  background-color: #015989;
 }
 
 /* =============================================================================

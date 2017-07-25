@@ -155,57 +155,6 @@ ul {
   }
 }
 
-.social-links {
-  @extend .unstyled;
-  @include clearfix;
-  margin: 20px 0 20px -5px;
-
-  li {
-    margin: 0 0 5px 5px;
-    float: left;
-  }
-
-  a {
-    height: 40px; width: 40px; line-height: 40px;
-    display: block;
-    border-radius: 40px;
-    background-color: $accent;
-    text-decoration: none;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .twitter {
-    background: #2DAAE1;
-    &:hover, &:focus {
-      background: darken(#2DAAE1, 8%);
-    }
-  }
-
-  .facebook {
-    background: #3C5B9B;
-    &:hover, &:focus {
-      background: darken(#3C5B9B, 8%);
-    }
-  }
-
-  .pinterest {
-    background: #CB2027;
-    &:hover, &:focus {
-      background: darken(#CB2027, 8%);
-    }
-  }
-
-  .linkedin {
-    background: #0173B2;
-    &:hover, &:focus {
-      background: darken(#0173B2, 8%);
-    }
-  }
-}
-
-
-
 ol {
   list-style: decimal;
 }

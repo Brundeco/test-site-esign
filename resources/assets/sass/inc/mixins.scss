@@ -105,20 +105,6 @@
   perspective: $perspective;
 }
 
-// Alpha colors
-@mixin background-color-with-alpha ($color, $alpha) {
-  $rgba: rgba(red($color), green($color), blue($color), $alpha);
-  background-color: $color;
-  background-color: $rgba;
-}
-
-@mixin border-color-with-alpha ($color, $alpha) {
-  $rgba: rgba(red($color), green($color), blue($color), $alpha);
-  /* border-color-with-alpha */ //
-  border-color: $color;
-  border-color: $rgba;
-}
-
 // Opacity
 @mixin opacity($opacity: 100) {
   opacity: $opacity / 100;

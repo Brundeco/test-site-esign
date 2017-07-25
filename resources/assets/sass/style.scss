@@ -213,8 +213,18 @@ html.no-flexbox {
 // .va-m { vertical-align: middle; }
 // .va-b { vertical-align: bottom; }
 
-/* blocklink */
-.blocklink { cursor: pointer; }
+// Block link
+.block-link {
+	position: relative;
+  cursor: pointer;
+}
+
+.block-link__target {
+	&:before {
+		content: ""; display: block;
+		position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+	}
+}
 
 
 /* =============================================================================

@@ -25,7 +25,6 @@ esign.init = function () {
 
   esign.navigation();
   esign.responsiveVideos();
-  esign.blockLink();
   esign.formAjax();
 };
 
@@ -46,14 +45,6 @@ esign.navigation = function () {
 
 esign.responsiveVideos = function () {
   $('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"], iframe[src*="player.vimeo"]').wrap('<div class="video-container"></div>');
-};
-
-esign.blockLink = function () {
-  $('.block-link').click(function(e) {
-    e.preventDefault();
-    var url = $(this).find('.target').attr('href');
-    window.location = url;
-  });
 };
 
 /* ajax newsletter subscribe */

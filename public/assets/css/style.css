@@ -1876,6 +1876,10 @@ article a:hover img, article a:focus img {
   backface-visibility: hidden;
 }
 
+.article-detail__image {
+  margin-bottom: 1.5em;
+}
+
 .note {
   *zoom: 1;
   margin: 0 0 20px;

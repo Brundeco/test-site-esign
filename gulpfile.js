@@ -77,6 +77,9 @@ elixir(function (mix) {
   // Images
   mix.copy('resources/assets/images', 'public/assets/images');
 
+  // Fonts
+  mix.copy('resources/assets/fonts', 'public/assets/fonts');
+
   // Styles
   //mix.less('style.less', 'public/assets/css/style.css');
 

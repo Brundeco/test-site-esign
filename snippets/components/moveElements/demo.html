@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="nl"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="nl"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="nl"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>moveElements | Demo</title>
+  <meta name="description" content=" "/>
+  <meta name="keywords" content=""/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <!-- Made by Esign -->
+  <!-- Esign is @ http://www.esign.eu/ -->
+  <!-- Esign contact: info@esign.eu -->
+
+  <meta name="robots" content="all,index,follow"/>
+
+  <meta http-equiv="cleartype" content="on"/>
+  <meta name="HandheldFriendly" content="True"/>
+  <meta name="MobileOptimized" content="320"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link type="text/css" rel="stylesheet" href="../../../public/assets/css/style.css" media="all"/>
+
+</head>
+
+<body class="">
+
+<div class="page-wrap">
+
+  <div class="main">
+
+    <div class="container">
+      <div class="row">
+        <div class="one-half">
+          <div class="accent-block" style="padding: 50px; width: 100%; background-color: #00b3ee;">
+            <p>Originele positie van het element:</p>
+            <span class="position-anchor position-original" data-element-id="idofelement">&nbsp;</span>
+
+            <div id="idofelement" style="border:2px solid white; padding: 10px;"
+                 class="move-element" data-breakpoint-type="max">
+
+            <p>Ik ben het element dat verplaatst</p>
+
+            <p class="small">
+              Ik heb de klasse move-element en een id <br/>
+              Je kan me een breakpoint meegeven bv data-breakpoint="767" (default 752)
+              en een 'type' breakpoint (min als de window minstens die size moet hebben voor hij verplaatst, max wanneer de window max die size mag hebben).<br>
+              Wanneer je een element enkel de klasse meegeeft, dan zal het breakpoint standaard 752 zijn, type max.
+              Dit is nu het geval, dus ik verplaats bij ene venster kleiner dan 752
+
+
+
+            </p>
+            <p class="small">
+              Mijn originele positie stel je in door een element de klasses "position-anchor" en <strong>"position-original"</strong> mee te geven,
+              en ook het attribuut data-element-id instelt op de id van het element.
+
+            </p>
+            <p class="small">
+              De positie waar ik naar verhuis stel je in door een element de klasses "position-anchor" en <strong>"position-moved"</strong> mee te geven,
+              en ook het attribuut data-element-id instelt op de id van het element.
+
+            </p>
+
+
+          </div>
+          </div>
+
+
+
+
+        </div>
+        <div class="one-half">
+          <div  style="padding: 50px; width: 100%; background-color: #0173B2; color: white;">
+            <p>
+              Hieronder komt het element wanneer het venster kleiner is dan 752
+            </p>
+
+           <span class="position-anchor position-moved" data-element-id="idofelement"></span>
+
+          </div>
+
+        </div>
+      </div>
+      <a class="button moveElement-original" data-element-id="idofelement">
+        Verplaats het element naar originele positie
+      </a>
+      <a class="button moveElement-new" data-element-id="idofelement">
+        Verplaats het element naar originele positie
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+
+<script src="../../../resources/assets/js/libs/jquery.min.js"></script>
+
+<script>
+  moveElements = [];
+
+  $('.move-element').each(function(index, element){
+
+
+
+
+    var origPos = $('[data-element-id=' +$(element).attr('id') +'].position-original');
+    if(origPos.length == 0){
+      console.error('Original position not set for element ' , $(element));
+    }
+
+    if(origPos.length > 1) {
+      console.error('Multiple original positions set for element ' , $(element));
+    }
+
+    var newPos = $('[data-element-id=' +$(element).attr('id') +'].position-moved');
+    if(newPos.length == 0){
+      console.error('New position not set for element ' , $(element));
+    }
+    if(newPos.length > 1) {
+      console.error('Multiple new positions set for element ' , $(element));
+    }
+    var moveElement = {
+      element: element,
+      origPos: origPos,
+      newPos: newPos,
+      moveWhen: {
+        type:'resize',
+        props: {
+          breakpoint: breakpoint,
+          breakpointType: breakpointType,
+        }
+      },
+      placeOnOriginalPosition: function(){
+        console.log(this.origPos);
+        $(this.element).insertAfter(this.origPos);
+      },
+      placeOnNewPosition: function(){
+        console.log(this.newPos);
+        $(this.element).insertAfter(this.newPos);
+      },
+      placeOnPosition: function(position){
+        /* position as element */
+        console.log(position);
+        $(this.element).insertAfter($(position));
+      },
+      setOriginalPosition: function(position){
+        /* position as element */
+        console.log("Setted new original position: ",position);
+        this.origPos = position;
+      },
+      setNewPosition: function(position){
+        /* position as element */
+        console.log("Setted new go to position: ",position);
+        this.newPos = position;
+      }
+
+    };
+
+
+    //console.log(origPos, newPos);
+
+    /* INSTELLEN VAN EVENTS */
+
+    var moveWhen = $(element).data("move-when");
+
+    switch(moveWhen){
+      /*case 'resize':
+        /!* BIJ BEPAALD BREAKPOINT VERPLAATSEN *!/
+        var breakpoint = $(element).data('breakpoint');
+        //type; max of min width
+        var breakpointType = $(element).data('breakpoint-type');
+        moveOnResize(element, origPos, newPos, breakpoint, breakpointType);
+        break;
+
+      case 'boolean':
+        /!* NA EXPLICIET SETTEN ERVAN *!/
+
+        break;*/
+
+      default:
+        var breakpoint = $(element).data('breakpoint');
+        //type; max of min width
+        var breakpointType = $(element).data('breakpoint-type');
+        moveOnResize(element, origPos, newPos, breakpoint, breakpointType);
+        break;
+    }
+
+    $('.moveElement-new[data-element-id=' + $(element).attr('id') + ']').on('click', function(){
+      moveElement.placeOnNewPosition();
+    });
+    $('.moveElement-original[data-element-id=' + $(element).attr('id') + ']').on('click', function(){
+      moveElement.placeOnOriginalPosition();
+    });
+
+  });
+
+
+  function moveOnResize(element, origPos, newPos, breakpoint, breakpointType) {
+
+    if(breakpoint == undefined){
+      console.info('Breakpoint not defined for moveElementOnResize element', $(element), 'Used default breakpoint');
+      breakpoint = 752;
+    }
+    if(breakpointType == undefined){
+      console.info('Breakpoint type not defined for moveElementOnResize element', $(element), 'Used min as type');
+      breakpointType = 'max';
+    }
+
+    /*  */
+
+    if(breakpointType == 'max') {
+      if($(window).width() < breakpoint) {
+        $(element).insertAfter(newPos);
+      }else {
+        $(element).insertAfter(origPos);
+      }
+
+      $(window).on('resize', function(){
+        if($(window).width() < breakpoint) {
+          $(element).insertAfter(newPos);
+        }else {
+          $(element).insertAfter(origPos);
+        }
+      });
+    }
+
+    if(breakpointType == 'min') {
+      if($(window).width() > breakpoint) {
+        $(element).insertAfter(newPos);
+      }else {
+        $(element).insertAfter(origPos);
+      }
+
+      $(window).on('resize', function(){
+        if($(window).width() > breakpoint) {
+          $(element).insertAfter(newPos);
+        }else {
+          $(element).insertAfter(origPos);
+        }
+      });
+    }
+
+
+
+
+
+  }
+
+
+</script>
+</body>
+</html>

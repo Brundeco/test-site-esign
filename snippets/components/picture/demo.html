@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="nl"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="nl"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="nl"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Picture | Demo</title>
+  <meta name="description" content=" "/>
+  <meta name="keywords" content=""/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <!-- Made by Esign -->
+  <!-- Esign is @ http://www.esign.eu/ -->
+  <!-- Esign contact: info@esign.eu -->
+
+  <meta name="robots" content="all,index,follow"/>
+
+  <meta http-equiv="cleartype" content="on"/>
+  <meta name="HandheldFriendly" content="True"/>
+  <meta name="MobileOptimized" content="320"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+    body {
+      font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    xmp {
+      font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #eee; padding:10px 5px;
+    }
+
+    .container {
+      max-width: 900px; margin: 0 auto; padding: 0 20px;
+    }
+  </style>
+
+  <link type="text/css" rel="stylesheet" href="../../../resources/assets/sass/style.css" media="all"/>
+
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="assets/js/ie.js" charset="UTF-8"></script>
+  <![endif]-->
+
+
+</head>
+
+<body class="">
+
+<div class="page-wrap">
+
+  <div class="main">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="one">
+          <h1>Picture element</h1>
+          <p>
+            <em>
+              <a href="https://www.smashingmagazine.com/2014/05/responsive-images-done-right-guide-picture-srcset/" target="_blank">Referentie Smashing Magazine</a>
+            </em>
+          </p>
+          <p>
+            Vanaf bepaalde schermgroottes (meegegeven in media attribuut) andere afbeelding inladen
+
+          </p>
+
+          <ul>
+            <li>
+              <span>
+                <strong>Retina & > 1000</strong>
+              </span>
+              <span>
+                Xlarge retina 2048
+              </span>
+            </li>
+            <li>
+              <span>
+                <strong>Retina & < 1000</strong>
+              </span>
+              <span>
+                Xlarge  1024x767
+              </span>
+            </li>
+            <li>
+              <span>
+                <strong> < 800 </strong>
+              </span>
+              <span>
+                Medium 717x538
+              </span>
+            </li>
+          </ul>
+
+          <p>
+            Fallback voor ie9 met video element
+          </p>
+          <xmp>
+            <picture>
+              <!--[if IE 9]>
+              <video style="display: none;"><![endif]-->
+              <source srcset="img/xlarge.jpg 1x, img/xlarge@2x.jpg 2x" media="(min-width: 1000px)">
+              <source srcset="img/medium.jpg 1x, img/xlarge.jpg 2x" media="(min-width: 800px)">
+              <source srcset="img/small.jpg 1x, img/medium.jpg 2x">
+              <!--[if IE 9]></video><![endif]-->
+              <img alt="Test image"/>
+            </picture>
+          </xmp>
+
+
+          <!-- Vanaf grootte x deze afbeelding inladen (+retina afbeelding) -->
+          <picture>
+            <!--[if IE 9]>
+            <video style="display: none;"><![endif]-->
+            <source srcset="img/xlarge.jpg 1x, img/xlarge@2x.jpg 2x" media="(min-width: 1000px)">
+            <source srcset="img/medium.jpg 1x, img/xlarge.jpg 2x" media="(min-width: 800px)">
+            <source srcset="img/small.jpg 1x, img/medium.jpg 2x">
+            <!--[if IE 9]></video><![endif]-->
+            <img alt="Test image"/>
+          </picture>
+
+          <br>
+
+          <h2></h2>
+          <p>
+            Een andere manier om het picture element te gebruiken is door verschillende groottes aan de hand van hoeveel plaats ze zullen innemen op de website. <br>
+            Hiervoor geef je bij srcset de breedte (in pixels) van je afbeelding mee ipv de resolutie; In onderstaand voorbeeld is xlarge.jpg 1024px breed, dus we geven dit mee in de srcset.
+            <xmp> srcset="img/xlarge.jpg  1024w</xmp>
+            <br/>
+            Het volgende attribuut dat we moeten invullen is "sizes".
+            Deze vertelt de browser hoeveel pixels hij nodig heeft door te berekenen hoe breed de gerenderde afbeelding moet zijn.
+            <br>
+            Deze kan je ingeven als een vaste of relatieve waarde, px, ems, %, ...
+            <xmp>sizes="33.3vw"</xmp>
+            Je kan ook een breakpoint meegeven wanneer deze size veranderd, adhv een mediaquerie <br>
+            Je laatste waarde is de default size
+            <xmp>sizes="(min-width: 36em) 33.3vw,
+              100vw"</xmp>
+
+
+
+
+          </p>
+
+
+          <xmp>
+            <picture>
+              <!--[if IE 9]>
+              <video style="display: none;"><![endif]-->
+              <source media="(min-width: 36em)"
+                      srcset="img/xlarge.jpg  1024w,
+     img/medium.jpg 640w,
+     img/small.jpg 320w"
+                      sizes="(min-width: 36em) 50vw, 100vw"/>
+
+              <source srcset="img/xlarge@2x.jpg 2x,
+     img/xlarge.jpg 1x"/>
+              <!--[if IE 9]></video><![endif]-->
+              <img alt="A test"/>
+            </picture>
+          </xmp>
+
+
+          <picture>
+            <!--[if IE 9]>
+            <video style="display: none;"><![endif]-->
+            <source media="(min-width: 36em)"
+                    srcset="img/xlarge.jpg  1024w,
+     img/medium.jpg 640w,
+     img/small.jpg 320w"
+                    sizes="(min-width: 36em) 50vw, 100vw"/>
+
+            <source srcset="img/xlarge@2x.jpg 2x,
+     img/xlarge.jpg 1x"/>
+            <!--[if IE 9]></video><![endif]-->
+            <img alt="A test"/>
+          </picture>
+
+        </div>
+      </div>
+
+<!--      <div>
+        <p>
+          Img met sizes
+        </p>
+        <img
+          sizes="(min-width: 40em) 80vw, 100vw"
+          srcset="img/small.jpg 375w,
+        img/medium.jpg 480w,
+        img/xlarge.jpg 768w"
+          alt="…">
+      </div>-->
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="three-fourth">
+        <p>&copy; 2017</p>
+      </div>
+      <div class="one-fourth">
+        <p>
+          <a class="esign" href="http://www.esign.eu/esign-heet-u-welkom" target="_blank"
+             title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat.">Site by Esign</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../resources/assets/js/libs/jquery.min.js"></script>
+<script src="picturefill.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

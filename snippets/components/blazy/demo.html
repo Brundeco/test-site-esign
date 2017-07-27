@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="nl"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="nl"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="nl"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blazy | Demo</title>
+  <meta name="description" content=" "/>
+  <meta name="keywords" content=""/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <!-- Made by Esign -->
+  <!-- Esign is @ http://www.esign.eu/ -->
+  <!-- Esign contact: info@esign.eu -->
+
+  <meta name="robots" content="all,index,follow"/>
+
+  <meta http-equiv="cleartype" content="on"/>
+  <meta name="HandheldFriendly" content="True"/>
+  <meta name="MobileOptimized" content="320"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link type="text/css" rel="stylesheet" href="../../../public/assets/css/style.css" media="all"/>
+  <link type="text/css" rel="stylesheet" href="blazy.css" media="all"/>
+
+  <style>
+
+    body {
+      font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    xmp {
+      font-family: "Courier New", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #eee;
+      padding: 10px 5px;
+    }
+
+    .container {
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  </style>
+
+
+</head>
+
+<body class="">
+
+<div class="page-wrap">
+
+  <div class="main">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="">
+          <h1>Blazy</h1>
+          <p><a href="http://dinbror.dk/blazy/" target="_blank">Referentie</a></p>
+
+
+          <span>blazy basic</span><br>
+          <p>src & data-src zijn verplicht </p>
+          <img id="blazy-basic" src="http://www.placehold.it/300x100"
+
+               data-src="http://www.placehold.it/2400x800"
+               class="intrinsic-item b-lazy"/>
+          <xmp>
+            <img src="http://www.placehold.it/300x100"
+                 data-src="http://www.placehold.it/1200x400"
+                 data-src-small="http://www.placehold.it/600x200"
+                 class="b-lazy"/>
+          </xmp>
+
+          <p>Blazy met breakpoints</p>
+          <img src="http://www.placehold.it/300x100"
+
+               data-src="http://www.placehold.it/2400x800"
+               data-src-small="http://www.placehold.it/600x200"
+               data-src-medium="http://www.placehold.it/1200x400"
+               class="intrinsic-item b-lazy"/>
+
+          <xmp>
+            var bLazy = new Blazy({
+            breakpoints: [{
+            width: 420, src: 'data-src-small'},
+            {width: 768, src: 'data-src-medium'},
+            {width: 980, src: 'data-src'}
+            ]});
+
+          </xmp>
+
+          <p>
+
+            <strong>How the breakpoints works:</strong><br/>
+
+            The breakpoints are defined by the device width not the browser width. It means that it’ll look at your
+            screen width which won’t change when you resize your browser window.
+            The reason why I’m looking at the device width and not the width is that I don’t want to load multiple image
+            sources for the same image when you resize (multiple server request per image). And if you have a big screen
+            but the initial width of your browser window is something small I don’t want to upscale a low res image when
+            you resize it up.
+
+          </p>
+
+
+        </div>
+
+        <div style="margin-top: 50px;" class=""><span>Blazy with picure element, own made loading animation and intrinsic placeholder</span>
+          <div class="intrinsic-container">
+            <div class="loading">&nbsp;</div>
+
+            <picture class="intrinsic ratio--4x3">
+              <!--[if IE 9]>
+              <video style="display: none;"><![endif]-->
+
+              <source data-srcset="test-images/dist/xlarge.jpg, test-images/dist/xlarge@2x.jpg 2x"
+                      media="(min-width: 850px)">
+              <source data-srcset="test-images/dist/medium.jpg, test-images/dist/medium@2x.jpg 2x"
+                      media="(min-width: 550px)">
+              <source data-srcset="test-images/dist/small.jpg, test-images/dist/small@2x.jpg 2x">
+
+              <!-- [if IE 9]></video><![endif] -->
+              <img class="intrinsic-item b-lazy fadeIn" src="test-images/dist/small.jpg"
+                   data-src="test-images/small.jpg" alt="Test image"/>
+            </picture>
+
+          </div>
+
+          <xmp>
+            <div class="intrinsic-container">
+              <div class="loading">&nbsp;</div>
+
+              <picture class="intrinsic ratio--4x3">
+                <!--[if IE 9]>
+                <video style="display: none;"><![endif]-->
+
+                <source data-srcset="test-images/dist/xlarge.jpg, test-images/dist/xlarge@2x.jpg 2x"
+                        media="(min-width: 850px)">
+                <source data-srcset="test-images/dist/medium.jpg, test-images/dist/medium@2x.jpg 2x"
+                        media="(min-width: 550px)">
+                <source data-srcset="test-images/dist/small.jpg, test-images/dist/small@2x.jpg 2x">
+
+                <!-- [if IE 9]></video><![endif] -->
+                <img class="intrinsic-item b-lazy fadeIn" src="test-images/dist/small.jpg"
+                     data-src="test-images/small.jpg" alt="Test image"/>
+              </picture>
+
+            </div>
+          </xmp>
+
+          <p>CSS:</p>
+          <xmp>
+
+            .b-lazy {
+            &.fadeIn {
+            opacity: 0;
+            transition: opacity 1500ms;
+            &.b-loaded {
+            opacity: 1;
+            }}}
+
+            .loading {
+            transition:opacity 500ms;
+            &.done {opacity: 0; animation: none;}
+            position: absolute; top: 50%; left: 50%;z-index: 99;
+            margin-top: -25px; margin-left: -25px;
+            border-radius: 50%;
+            width: 50px; height: 50px;
+            border: .25rem solid darken(@grayLight,10%);
+            border-top-color: @white;
+            animation: spin 1s infinite linear;
+            &.--double {
+            border-style: double;
+            border-width: .5rem; }
+            }
+
+
+            /* INTRINSIC */
+            .intrinsic {
+            position: relative; height:0; width: 100%; display: block;padding-top: 100%;
+            background-color: lightgrey; opacity: 1; transition:opacity 500ms;
+            &.ratio--square {
+            padding-top: 100%;
+            }
+            &.ratio--4x3 {
+            padding-top: 75%;
+            }
+            &.ratio--16x9 {
+            padding-top: 56.25%;
+            }
+            &.ratio--2x6 {
+            padding-top: 33.33%;
+            }
+            &.loaded {
+            padding-top: 0; height: auto;
+
+            .intrinsic-item {
+            position: static;
+            }
+            }
+
+            .intrinsic-item { position: absolute; top: 0; left: 0; height: 100%; width: 100%; }
+
+            &:after {
+            content: ""; display: block; position: absolute; width: 100%; height: 100%; top:0;
+            background-color: black; transition:opacity; opacity: 0.5;
+            }
+            &.loaded:after {
+            opacity: 0;
+            }
+            }
+
+            .intrinsic-container { position: relative; }
+
+
+          </xmp>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<script src="../../../resources/assets/js/libs/jquery.min.js"></script>
+<script src="blazy.min.js"></script>
+
+<script>
+
+
+  (function () {
+
+
+    $('.b-lazy').each(function (index, element) {
+
+      var thisEl = element;
+
+      $(element).on('load', function () {
+        $(element).parent().parent().find('.loading').addClass('done');
+        $(element).parent().addClass('loaded');
+      })
+
+    });
+
+
+    var bLazy = new Blazy({
+      breakpoints: [{
+        width: 420 // max-width
+        , src: 'data-src-small'
+      }
+        , {
+          width: 768 // max-width
+          , src: 'data-src-medium'
+        }
+        , {
+          width: 980 // max-width
+          , src: 'data-src'
+        }],
+
+      success: function (e) {
+
+      },
+      error: function (e, msg) {
+        console.log("Error: ", e, msg);
+      }
+    });
+    //fix om op te lossen dat soms sommige images niet laden na herbezoeken pagina
+    //https://github.com/dinbror/blazy/issues/24
+    setTimeout(bLazy.revalidate, 300);
+
+
+  })();
+
+
+</script>
+</body>
+</html>

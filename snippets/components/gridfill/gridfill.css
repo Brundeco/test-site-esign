@@ -1,36 +1,32 @@
-
-
-// CSS classes gebruikt met gridfill
-
-.grid-fit { overflow: auto; }
+.grid-fit {
+  overflow: auto;
+}
 .grid-item {
   float: left;
-  object-fit: cover; width: 100%; padding: 10px;
-
-  img { object-fit: cover; }
-
+  object-fit: cover;
+  width: 100%;
+  padding: 10px;
 }
-
-@media @mobile {
+.grid-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 767px) {
   .small-one-full {
     width: 100%;
   }
-
   .small-one-half {
     width: 50%;
   }
-
   .small-one-third {
     width: 33.33%;
   }
   .small-two-third {
     width: 66.66%;
-
   }
-
 }
-
-@media @tablet {
+@media (min-width: 768px) {
   .medium-one-full {
     width: 100%;
   }
@@ -59,8 +55,7 @@
     width: 66.66%;
   }
 }
-
-@media @netbook {
+@media (min-width: 1024px) {
   .large-one-full {
     width: 100%;
   }
@@ -92,7 +87,7 @@
     width: 66.66%;
   }
 }
-@media @wide {
+@media (min-height: 768px) {
   .xlarge-one-full {
     width: 100%;
   }

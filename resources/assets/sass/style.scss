@@ -51,13 +51,9 @@
    LAYOUT
    ========================================================================== */
 
-html, body {
-  @media #{$medium} {
-    height: 100%;
-  }
+html {
+  font-size: 62.5%;
 }
-
-html { font-size: 62.5%; }
 
 body {
   @include default-font; color: $black;
@@ -69,8 +65,7 @@ body {
   position: relative;
 
   @media #{$medium} {
-    height: auto;
-    min-height: 100%;
+    min-height: 100vh;
     z-index: 2;
   }
 }

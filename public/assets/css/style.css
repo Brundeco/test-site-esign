@@ -1627,7 +1627,17 @@ html.no-flexbox .equal-h > div {
    HEADER
    ========================================================================== */
 .page-header {
+  *zoom: 1;
   padding: 20px 0;
+}
+
+.page-header:before, .page-header:after {
+  display: table;
+  content: " ";
+}
+
+.page-header:after {
+  clear: both;
 }
 
 .page-header__logo {
@@ -1635,6 +1645,7 @@ html.no-flexbox .equal-h > div {
   opacity: 1;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  float: left;
 }
 
 .page-header__logo img {
@@ -1654,12 +1665,13 @@ html.no-flexbox .equal-h > div {
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: antialiased;
   color: #444;
+  margin-top: 20px;
 }
 
 .main-nav a {
   text-decoration: none;
   color: #777;
-  padding: 9px 0 9px 45px;
+  padding: 12px 15px;
   display: block;
   border-top: 1px solid #F4F4F4;
 }
@@ -1669,6 +1681,10 @@ html.no-flexbox .equal-h > div {
 }
 
 @media (min-width: 768px) {
+  .main-nav {
+    margin: 35px 0 0 40px;
+    float: left;
+  }
   .main-nav li {
     float: left;
     margin: 0 0 0 20px;
@@ -1679,23 +1695,32 @@ html.no-flexbox .equal-h > div {
   }
 }
 
+@media (min-width: 1024px) {
+  .main-nav li {
+    margin-left: 45px;
+  }
+}
+
 .main-nav__trigger {
   display: block;
   position: relative;
-  padding: 9px 0 9px 45px;
+  padding: 12px 20px 12px 55px;
   background-color: transparent;
   color: #444;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  float: none;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: 1px solid #efefef;
 }
 
 .main-nav__trigger .icon-hamburger {
   position: absolute;
-  left: 0;
-  top: 14px;
+  left: 10px;
+  top: 18px;
 }
 
 .main-nav__trigger:hover, .main-nav__trigger:focus {

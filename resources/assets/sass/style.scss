@@ -191,12 +191,14 @@ html.no-flexbox {
    ========================================================================== */
 
 .page-header {
+  @include clearfix;
   padding: 20px 0;
 }
 
 .page-header__logo {
   text-decoration: none;
   @include opacity(100);
+  float: left;
 
   img {
     display: block;
@@ -209,9 +211,10 @@ html.no-flexbox {
 
 .main-nav {
   text-transform: uppercase; @include optimize-font; color: $black;
+  margin-top: 20px;
 
   a {
-    text-decoration: none; color: $grayDark; padding: 9px 0 9px 45px;
+    text-decoration: none; color: $grayDark; padding: 12px 15px;
     display: block; border-top: 1px solid $grayLight;
   }
 
@@ -220,6 +223,9 @@ html.no-flexbox {
   }
 
   @media #{$medium} {
+    margin: 35px 0 0 40px;
+    float: left;
+
     li {
       float: left; margin: 0 0 0 20px;
     }
@@ -228,16 +234,23 @@ html.no-flexbox {
       border-top: 0; padding: 0;
     }
   }
+
+  @media #{$large} {
+    li {
+      margin-left: 45px;
+    }
+  }
 }
 
 .main-nav__trigger {
-  display: block; position: relative; padding: 9px 0 9px 45px;
+  display: block; position: relative; padding: 12px 20px 12px 55px;
   background-color: transparent; color: $black; font-weight: 500;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  float: none;
+  position: absolute; top: 15px; right: 20px;
+  border: 1px solid #efefef;
 
   .icon-hamburger {
-    position: absolute; left: 0; top: 14px;
+    position: absolute; left: 10px; top: 18px;
   }
 
   &:hover, &:focus {

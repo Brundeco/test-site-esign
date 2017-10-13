@@ -1804,34 +1804,38 @@ html.no-flexbox .equal-h > div {
 }
 
 a.esign {
-  width: 104px;
+  width: 80px;
   height: 20px;
-  background-image: url("../images/logo-esign.png");
-  text-indent: -9999px;
-  opacity: 0.6;
+  background-image: url("../images/logo-esign.svg");
+  background-size: 77px 20px;
+  background-repeat: no-repeat;
+  background-position: top left;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  text-indent: -9999px;
+  opacity: 0.6;
+  transition-duration: 0.5s;
   display: block;
   outline: 0;
-}
-
-@media all and (-webkit-min-device-pixel-ratio: 1.5) {
-  a.esign {
-    background-image: url("../images/logo-esign@2x.png");
-    background-size: 104px 20px;
-  }
+  z-index: 9999;
 }
 
 a.esign:hover, a.esign:focus {
   opacity: 1;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 @media (min-width: 768px) {
   a.esign {
-    float: right;
+    width: 16px;
+    position: absolute;
+    right: 45px;
+    bottom: 0;
+  }
+  a.esign:hover, a.esign:focus {
+    opacity: 1;
+    width: 80px;
   }
 }
 

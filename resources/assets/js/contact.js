@@ -13,8 +13,10 @@ $(function() {
     externUrl: 'https://www.google.be/maps/place/Esign+-+Web+%26+Graphics/@51.0325538,3.7333816,19z/data=!3m1!4b1!4m5!3m4!1s0x47c373970c763623:0xde317546f86febc9!8m2!3d51.0325538!4d3.7339288'
   };
 
-  var map = addContactGoogleMaps('map', mapData.lat, mapData.long);
-  addContactGoogleMapsMarker(map, mapData.lat, mapData.long, mapData.title, mapData.externUrl);
+  if ($('#map').length > 0) {
+    var map = addContactGoogleMaps('map', mapData.lat, mapData.long);
+    addContactGoogleMapsMarker(map, mapData.lat, mapData.long, mapData.title, mapData.externUrl);
+  }
 
 });
 

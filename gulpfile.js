@@ -114,4 +114,18 @@ elixir(function (mix) {
     injectChanges: true,
     notify: false
   });
+
+  // Use for versioning (only with Laravel)
+  /*mix.version([
+   'js/app.js',
+   'js/contact.js',
+   'css/style.css'
+   ]);
+
+   // copy asset dirs to build dir
+   var dirs = ['fonts', 'images'];
+   var i;
+   for (i = 0; i < dirs.length; i++) {
+   mix.copy('public/' + dirs[i], 'public/build/' + dirs[i]);
+   }*/
 });

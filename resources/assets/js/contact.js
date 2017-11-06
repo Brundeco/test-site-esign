@@ -1,3 +1,4 @@
+// Maps
 $(function() {
 
   if(!Modernizr.touch) {
@@ -73,3 +74,102 @@ function addContactGoogleMapsMarker(map, latitude, longitude, title, externUrl) 
 
   return marker;
 }
+
+// Recaptcha
+window.esignContact = window.esignContact || {};
+
+esignContact.init = function () {
+  esignContact.formAjax();
+};
+
+/* Captcha */
+esignContact.formAjax = function () {
+  $('.form-ajax-captcha').submit(function(e) {
+    e.preventDefault();
+    var $form = $(this);
+
+
+    if($form.hasClass('validate')){
+      if ($form.validationEngine('validate') == false) {
+        return false;
+      }
+    }
+
+    if($form.find('[name="g-recaptcha-response"]').length && $form.find('[name="g-recaptcha-response"]').val() != ''){
+      grecaptcha.reset();
+    }
+
+    grecaptcha.execute($form.find('.g-recaptcha').data('widgetid'));
+
+    return false;
+  });
+};
+
+/**
+ * async ReCaptcha inladen en toevegen aan elk recaptcha blokje
+ */
+var onloadReCaptchaCallback = function() {
+  $('.g-recaptcha').each(function(i,el){
+    var attributes = {
+      'sitekey'  : $(el).data('sitekey'),
+      'size'     : $(el).data('size'),
+      'callback' : $(el).data('callback')
+    };
+
+    var widgetid = grecaptcha.render(el, attributes);
+    $(el).data('widgetid',widgetid);
+  });
+};
+
+// Callback of Google recaptcha
+function submitRecaptchaForm(token) {
+  var $form = $('#contact-form');
+
+  esignContact.recaptchaFormSend($form);
+};
+
+// Callback of Google recaptcha
+function submitRecaptchaFormNewsletter(token) {
+  var $form = $('#form-newsletter');
+
+  esignContact.recaptchaFormSend($form);
+};
+
+esignContact.recaptchaFormSend = function($form){
+
+  $form.find('input[type="submit"], button').attr('disabled', 'disabled');
+
+  form_data = $form.serializeArray();
+
+  $.post($form.attr('action'), form_data, function (data) {
+
+    $('li').removeClass('error');
+    var $result = $form.find('.result');
+
+    if (data.errors === false) {
+      $form.html(data.result);
+
+      if(typeof ga === "function"){
+        ga('send', 'pageview', $form.attr('action'));
+      }
+
+    } else {
+      $result.html(data.result);
+      if (data.fields) {
+        $.each(data.fields, function (i, field) {
+          $('input[name="' + field + '"],textarea[name="' + field + '"]').addClass('error');
+        });
+      }
+    }
+
+    $form.find('input[type="submit"], button').removeAttr('disabled');
+
+  }).fail(function(response) {
+    alert('Error: ' + response.responseText);
+  });
+
+};
+
+
+// initialize on docready
+$(esignContact.init);

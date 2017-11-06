@@ -1,3 +1,20 @@
+// Settings
+var mode = 'static'; // ci, laravel, static
+var browserSyncEnabled = true;
+
+// Vars used in tasks
+var basePath = '';
+
+switch (mode) {
+  case 'static':
+  case 'laravel':
+    basePath = 'public/';
+    break;
+  case 'ci':
+    basePath = '';
+    break;
+}
+
 // Load plugins
 var gulp = require('gulp'),
     elixir = require('laravel-elixir'),
@@ -75,18 +92,18 @@ elixir(function (mix) {
   gulp.watch('resources/nunjucks/**/*.+(html|nunjucks)', ['templates']);
 
   // Images
-  mix.copy('resources/assets/images', 'public/assets/images');
+  mix.copy('resources/assets/images', basePath + 'assets/images');
 
   // Fonts
-  mix.copy('resources/assets/fonts', 'public/assets/fonts');
+  mix.copy('resources/assets/fonts', basePath + 'assets/fonts');
 
   // Styles
   //mix.less('style.less', 'public/assets/css/style.css');
 
-  mix.sass('style.scss', 'public/assets/css/style.css');
+  mix.sass('style.scss', basePath + 'assets/css/style.css');
 
   // Svg
-  mix.svg('resources/assets/images/**/*.svg', 'public/assets/images', './',
+  mix.svg('resources/assets/images/**/*.svg', basePath + 'assets/images', './',
       { plugins: [{ convertPathData: false }, { mergePaths: false }, { removeUnknownsAndDefaults: false }] }
   );
 
@@ -104,16 +121,18 @@ elixir(function (mix) {
       'libs/validation/jquery.validationEngine.js',
       'googlemaps-styles.js',
       'contact.js'
-    ], 'public/assets/js/contact.js');
+    ], basePath + 'assets/js/contact.js');
 
   // Browsersync
-  mix.browserSync({
-    // If you are developing locally point this to your local url
-    proxy: 'localhost:8888/frontend-template/public',
-    files: ['public/**/*'],
-    injectChanges: true,
-    notify: false
-  });
+  if (browserSyncEnabled) {
+    mix.browserSync({
+      // If you are developing locally point this to your local url
+      proxy: 'localhost:8888/frontend-template/public',
+      files: ['public/**/*'],
+      injectChanges: true,
+      notify: false
+    });
+  }
 
   // Use for versioning (only with Laravel)
   /*mix.version([

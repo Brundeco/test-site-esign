@@ -7,10 +7,13 @@ var basePath = '';
 
 switch (mode) {
   case 'static':
+    basePath = 'static/';
+    break;
   case 'laravel':
     basePath = 'public/';
     break;
   case 'ci':
+    // Assets in root
     basePath = '';
     break;
 }
@@ -37,14 +40,14 @@ gulp.task('templates', function () {
     .pipe(nunjucksRender({
       path: ['resources/nunjucks']
     }))
-    .pipe(gulp.dest('./public/'))
+    .pipe(gulp.dest('./static/'))
     .pipe(notify({message: 'templates complete'}));
 
 });
 
 // Clean
 gulp.task('clean', function () {
-  return del(['public/*.html', 'public/assets/css', 'public/assets/js', 'public/assets/images']);
+  return del([basePath + '*.html', basePath + 'assets/css', basePath + 'assets/js', basePath + 'assets/images']);
 });
 
 // Default task
@@ -72,7 +75,7 @@ gulp.task('retina-images', function () {
       progressive: true
     }))
     .pipe(tinypng('YOUR_API_CODE'))
-    .pipe(gulp.dest('public/assets/images'));
+    .pipe(gulp.dest(basePath + 'assets/images'));
 
 });
 
@@ -98,7 +101,7 @@ elixir(function (mix) {
   mix.copy('resources/assets/fonts', basePath + 'assets/fonts');
 
   // Styles
-  //mix.less('style.less', 'public/assets/css/style.css');
+  //mix.less('style.less', basePath + 'assets/css/style.css');
 
   mix.sass('style.scss', basePath + 'assets/css/style.css');
 
@@ -110,12 +113,12 @@ elixir(function (mix) {
   // Scripts
   mix.scripts([
       'libs/modernizr.min.js'
-    ], 'public/assets/js/head.js')
+    ], basePath + 'assets/js/head.js')
     .scripts([
       'libs/jquery.min.js',
       'plugins.js',
       'esign.js'
-    ], 'public/assets/js/app.js')
+    ], basePath + 'assets/js/app.js')
     .scripts([
       'libs/validation/languages/jquery.validationEngine-nl.js',
       'libs/validation/jquery.validationEngine.js',
@@ -127,8 +130,8 @@ elixir(function (mix) {
   if (browserSyncEnabled) {
     mix.browserSync({
       // If you are developing locally point this to your local url
-      proxy: 'localhost:8888/frontend-template/public',
-      files: ['public/**/*'],
+      proxy: 'localhost:8888/frontend-template/static',
+      files: [basePath + '**/*'],
       injectChanges: true,
       notify: false
     });

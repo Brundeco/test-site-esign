@@ -92,7 +92,9 @@ gulp.task('sprites', function () {
 elixir(function (mix) {
 
   // Templates
-  gulp.watch('resources/nunjucks/**/*.+(html|nunjucks)', ['templates']);
+  if  (mode === 'static') {
+    gulp.watch('resources/nunjucks/**/*.+(html|nunjucks)', ['templates']);
+  }
 
   // Images
   mix.copy('resources/assets/images', basePath + 'assets/images');
@@ -137,17 +139,37 @@ elixir(function (mix) {
     });
   }
 
-  // Use for versioning (only with Laravel)
-  /*mix.version([
-   'js/app.js',
-   'js/contact.js',
-   'css/style.css'
-   ]);
+  // Versioning based on current mode
+  if  (mode === 'laravel') {
+    // Directories in version function are relative to the public directory
+    mix.version([
+      'js/app.js',
+      'js/contact.js',
+      'css/style.css'
+    ]);
 
-   // copy asset dirs to build dir
-   var dirs = ['fonts', 'images'];
-   var i;
-   for (i = 0; i < dirs.length; i++) {
-   mix.copy('public/' + dirs[i], 'public/build/' + dirs[i]);
-   }*/
+    // copy asset dirs to build dir
+    var dirs = ['fonts', 'images'];
+    var i;
+    for (i = 0; i < dirs.length; i++) {
+      mix.copy('public/' + dirs[i], 'public/build/' + dirs[i]);
+    }
+  }
+
+  if (mode === 'ci') {
+    del(['assets/dist/*']).then(function () {
+      gulp.src([
+        basePath + 'assets/js/app.js',
+        basePath + 'assets/js/head.js',
+        basePath + 'assets/js/contact.js',
+        basePath + 'assets/css/style.css'
+      ])
+        .pipe(rev())
+        .pipe(gulp.dest(basePath + 'assets/dist'))
+        .pipe(rev.manifest({
+          merge: true
+        }))
+        .pipe(gulp.dest(basePath + 'assets'));
+    });
+  }
 });

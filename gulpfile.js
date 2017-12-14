@@ -109,10 +109,15 @@ gulp.task('sprites', function () {
 });
 
 elixir(function (mix) {
+  var watchMode = gulp.tasks.watch.done;
 
   // Templates
   if  (mode === 'static') {
-    gulp.watch('resources/nunjucks/**/*.+(html|nunjucks)', ['templates']);
+    if (watchMode) {
+      gulp.watch('resources/nunjucks/**/*.+(html|nunjucks)', ['templates']);
+    } else {
+      gulp.start('templates');
+    }
   }
 
   // Images
@@ -176,6 +181,10 @@ elixir(function (mix) {
   }
 
   if (mode === 'ci') {
-    gulp.watch('assets/css/*.css', ['ci_version']);
+    if (watchMode) {
+      gulp.watch('assets/css/*.css', ['ci_version']);
+    } else {
+      gulp.start('ci_version');
+    }
   }
 });

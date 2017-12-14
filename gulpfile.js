@@ -28,6 +28,7 @@ var gulp = require('gulp'),
     responsive = require('gulp-responsive'),
     tinypng = require('gulp-tinypng'),
     svgSprite = require('gulp-svg-sprites');
+    rev = require('gulp-rev');
 
 require('laravel-elixir-svgmin');
 
@@ -43,6 +44,24 @@ gulp.task('templates', function () {
     .pipe(gulp.dest('./static/'))
     .pipe(notify({message: 'templates complete'}));
 
+});
+
+// CI versioning
+gulp.task('ci_version', function () {
+  del(['assets/dist/*']).then(function () {
+    gulp.src([
+      basePath + 'assets/js/app.js',
+      basePath + 'assets/js/head.js',
+      basePath + 'assets/js/contact.js',
+      basePath + 'assets/css/style.css'
+    ])
+      .pipe(rev())
+      .pipe(gulp.dest(basePath + 'assets/dist'))
+      .pipe(rev.manifest({
+        merge: true
+      }))
+      .pipe(gulp.dest(basePath + 'assets'));
+  });
 });
 
 // Clean
@@ -157,19 +176,6 @@ elixir(function (mix) {
   }
 
   if (mode === 'ci') {
-    del(['assets/dist/*']).then(function () {
-      gulp.src([
-        basePath + 'assets/js/app.js',
-        basePath + 'assets/js/head.js',
-        basePath + 'assets/js/contact.js',
-        basePath + 'assets/css/style.css'
-      ])
-        .pipe(rev())
-        .pipe(gulp.dest(basePath + 'assets/dist'))
-        .pipe(rev.manifest({
-          merge: true
-        }))
-        .pipe(gulp.dest(basePath + 'assets'));
-    });
+    gulp.watch('assets/css/*.css', ['ci_version']);
   }
 });

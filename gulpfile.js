@@ -109,7 +109,7 @@ gulp.task('sprites', function () {
 });
 
 elixir(function (mix) {
-  var watchMode = gulp.tasks.watch.done;
+  var watchMode = elixir.isWatching();
 
   // Templates
   if  (mode === 'static') {

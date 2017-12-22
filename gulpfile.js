@@ -183,6 +183,7 @@ elixir(function (mix) {
   if (mode === 'ci') {
     if (watchMode) {
       gulp.watch('assets/css/*.css', ['ci_version']);
+      gulp.watch('assets/js/*.js', ['ci_version']);
     } else {
       gulp.start('ci_version');
     }

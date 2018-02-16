@@ -17,12 +17,15 @@
       connect = require('gulp-connect'),
       open = require('gulp-open'),
       concat = require('gulp-concat'),
-      fs = require('vinyl-fs')
+      fs = require('vinyl-fs'),
+      path = require('path'),
+      sequence = require('run-sequence')
   ;
 
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static
   var liveReload = typeof argv.liveReload !== typeof liveReload ? true : false;
+  var production = typeof argv.production !== typeof undefined;
 
   // Vars used in tasks
   var paths = {};
@@ -40,7 +43,7 @@
   paths.fonts = paths.assets + 'fonts/';
 
   var dist = {base: paths.root + 'static/'};
-  if (mode == 'laravel') dist.base = paths.root + 'public/';
+  if (mode == 'laravel') dist.base = paths.root + 'public/build/';
   if (mode == 'ci') dist.base = paths.root + ''; // Assets in root
   dist.assets = dist.base + 'assets/';
   dist.css = dist.assets + 'css/';
@@ -48,9 +51,8 @@
   dist.images = dist.assets + 'images/';
   dist.fonts = dist.assets + 'fonts/';
   dist.html = dist.base;
-
-  //console.log(paths);
-  //console.log(dist);
+  dist.revManifest = dist.assets; // CI
+  if (mode == 'laravel') dist.revManifest = paths.root + 'public/';
 
   // Templates
   gulp.task('templates', function () {
@@ -63,22 +65,20 @@
       .pipe(notify({message: 'Templates rendered'}));
   });
 
-  // CI versioning
-  gulp.task('ci_version', function () {
-    del(['assets/dist/*']).then(function () {
+  // Versioning
+  gulp.task('version', function () {
+    if (production) {
       gulp.src([
-        paths.js + 'app.js',
-        paths.js + 'head.js',
-        paths.js + 'contact.js',
-        paths.css + 'style.css'
-      ])
+          dist.js + 'app.js',
+          dist.js + 'head.js',
+          dist.js + 'contact.js',
+          dist.css + 'style.css'
+        ], {base: 'assets'})
         .pipe(rev())
-        .pipe(gulp.dest(paths.dist))
-        .pipe(rev.manifest({
-          merge: true
-        }))
-        .pipe(gulp.dest(paths.assets));
-    });
+        .pipe(gulp.dest(dist.assets))
+        .pipe(rev.manifest({merge: true}))
+        .pipe(gulp.dest(dist.revManifest));
+    }
   });
 
   // Clean
@@ -121,29 +121,31 @@
 
   // Scripts
   gulp.task('scripts', function() {
-    gulp.src([
-      paths.js + 'libs/modernizr.min.js',
-    ])
-    .pipe(concat('head.js'))
-    .pipe(gulp.dest(dist.js));
 
     gulp.src([
-      paths.js + 'libs/jquery.min.js',
-      paths.js + 'plugins.js',
-      paths.js + 'esign.js'
-    ])
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest(dist.js));
+        paths.js + 'libs/modernizr.min.js'
+      ])
+      .pipe(concat('head.js'))
+      .pipe(gulp.dest(dist.js))
+    ;
 
     gulp.src([
-      paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
-      paths.js + 'libs/validation/jquery.validationEngine.js',
-      paths.js + 'googlemaps-styles.js',
-      paths.js + 'contact.js'
-    ])
-    .pipe(concat('contact.js'))
-    .pipe(gulp.dest(dist.js))
-    .pipe(notify({message: 'Scripts merged'}));
+        paths.js + 'libs/jquery.min.js',
+        paths.js + 'plugins.js',
+        paths.js + 'esign.js'
+      ])
+      .pipe(concat('app.js'))
+      .pipe(gulp.dest(dist.js));
+
+      gulp.src([
+        paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
+        paths.js + 'libs/validation/jquery.validationEngine.js',
+        paths.js + 'googlemaps-styles.js',
+        paths.js + 'contact.js'
+      ])
+      .pipe(concat('contact.js'))
+      .pipe(gulp.dest(dist.js))
+      .pipe(notify({message: 'Scripts merged'}));
   });
 
   // Styles
@@ -192,8 +194,11 @@
     return gulp.src(dist.base + 'index.html').pipe(open({ uri: 'http://localhost:3000/index.html'}));
   });
 
+  gulp.task('scripts-styles', function() {
+    gulp.start(['scripts', 'styles']);
+  });
+
   gulp.task('watcher', function () {
-    // F7 styles and scripts
     gulp.watch(paths.js + '**/*', ['scripts']);
     gulp.watch([paths.css + '**/*', paths.sass + '**/*'], ['styles']);
     gulp.watch(paths.nunjucks + '**/*', ['templates']);
@@ -204,7 +209,9 @@
 
   gulp.task('build', function() {
     if (mode === 'static') gulp.start('templates');
-    gulp.start(['images', 'fonts', 'svg', 'styles', 'scripts']);
+    gulp.start(['images', 'fonts', 'svg']);
+    console.log(production);
+    sequence('scripts-styles', 'version');
   });
 
   gulp.task('server', [ 'watch', 'connect', 'open' ]);

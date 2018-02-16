@@ -43,16 +43,18 @@
   paths.fonts = paths.assets + 'fonts/';
 
   var dist = {base: paths.root + 'static/'};
-  if (mode == 'laravel') dist.base = paths.root + 'public/build/';
+  if (mode == 'laravel') dist.base = paths.root + 'public/';
   if (mode == 'ci') dist.base = paths.root + ''; // Assets in root
   dist.assets = dist.base + 'assets/';
+  if (mode == 'laravel') dist.assets = dist.base + 'build/';
   dist.css = dist.assets + 'css/';
   dist.js = dist.assets + 'js/';
   dist.images = dist.assets + 'images/';
   dist.fonts = dist.assets + 'fonts/';
   dist.html = dist.base;
   dist.revManifest = dist.assets; // CI
-  if (mode == 'laravel') dist.revManifest = paths.root + 'public/';
+  if (mode == 'laravel') dist.revManifest = dist.base;
+  if (mode == 'static') dist.revManifest = dist.base;
 
   // Templates
   gulp.task('templates', function () {
@@ -68,17 +70,18 @@
   // Versioning
   gulp.task('version', function () {
     if (production) {
-      gulp.src([
+      return gulp.src([
           dist.js + 'app.js',
           dist.js + 'head.js',
           dist.js + 'contact.js',
           dist.css + 'style.css'
-        ], {base: 'assets'})
+        ], {base: mode == 'laravel' ? dist.base : dist.assets})
         .pipe(rev())
-        .pipe(gulp.dest(dist.assets))
+        .pipe(gulp.dest(mode == 'laravel' ? dist.base : dist.assets))
         .pipe(rev.manifest({merge: true}))
         .pipe(gulp.dest(dist.revManifest));
     }
+    return gulp;
   });
 
   // Clean
@@ -90,7 +93,8 @@
    * free plan = max 500 images/month
    */
   gulp.task('retina-images', function () {
-    gulp.src(paths.images + 'test-images/**/*')
+    return gulp
+      .src(paths.images + 'test-images/**/*')
       .pipe(responsive({
           '*.{png,jpg}': [{
             width: '100%',
@@ -105,13 +109,14 @@
           progressive: true
         }))
       .pipe(tinypng('YOUR_API_CODE'))
-      .pipe(gulp.dest(paths.images));
-
+      .pipe(gulp.dest(paths.images))
+      ;
   });
 
   // Svg sprite
   gulp.task('sprites', function () {
-    return gulp.src(paths.svg + '*.svg')
+    return gulp
+      .src(paths.svg + '*.svg')
       .pipe(svgSprite({
         mode: 'symbols',
         svgId: 'icon-%f'
@@ -120,24 +125,35 @@
   });
 
   // Scripts
-  gulp.task('scripts', function() {
-
-    gulp.src([
+  gulp.task('scripts-head', function() {
+    return gulp
+      .src([
         paths.js + 'libs/modernizr.min.js'
       ])
       .pipe(concat('head.js'))
       .pipe(gulp.dest(dist.js))
+      .pipe(notify({message: 'Scripts head merged'}))
     ;
+  });
 
-    gulp.src([
+  // Scripts
+  gulp.task('scripts-body', function() {
+    return gulp
+      .src([
         paths.js + 'libs/jquery.min.js',
         paths.js + 'plugins.js',
         paths.js + 'esign.js'
       ])
       .pipe(concat('app.js'))
-      .pipe(gulp.dest(dist.js));
+      .pipe(gulp.dest(dist.js))
+      .pipe(notify({message: 'Scripts body merged'}))
+    ;
+  });
 
-      gulp.src([
+  // Scripts contact
+  gulp.task('scripts-contact', function() {
+    return gulp
+      .src([
         paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
         paths.js + 'libs/validation/jquery.validationEngine.js',
         paths.js + 'googlemaps-styles.js',
@@ -145,12 +161,14 @@
       ])
       .pipe(concat('contact.js'))
       .pipe(gulp.dest(dist.js))
-      .pipe(notify({message: 'Scripts merged'}));
+      .pipe(notify({message: 'Scripts contact merged'}))
+    ;
   });
 
   // Styles
   gulp.task('styles', function() {
-    gulp.src([paths.sass + 'style.scss']) // compile sass
+    return gulp
+      .src([paths.sass + 'style.scss']) // compile sass
       .pipe(addsrc([])) // other css files (plugins, libs)
       .pipe(sass())
       .pipe(gulp.dest(dist.css))
@@ -160,7 +178,8 @@
   // Svg
   //{ plugins: [{ convertPathData: false }, { mergePaths: false }, { removeUnknownsAndDefaults: false }] }
   gulp.task('svg', function() {
-    gulp.src(paths.images + '**/*.svg')
+    return gulp
+      .src(paths.images + '**/*.svg')
       .pipe(svgmin())
       .pipe(gulp.dest(dist.images))
       .pipe(notify({message: 'SVGs minified'}));
@@ -169,16 +188,22 @@
 
   // Images
   gulp.task('images', function() {
-    gulp.src(paths.images + '**/*')
+    return gulp
+      .src(paths.images + '**/*')
       .pipe(gulp.dest(dist.images))
       .pipe(notify({message: 'Images copied'}));
   });
 
   // Fonts
   gulp.task('fonts', function() {
-    gulp.src(paths.fonts + '**/*')
+    return gulp
+      .src(paths.fonts + '**/*')
       .pipe(gulp.dest(dist.fonts))
       .pipe(notify({message: 'Fonts copied'}));
+  });
+
+  gulp.task('scripts', function() {
+    return gulp.start('scripts-head', 'scripts-body', 'scripts-contact');
   });
 
   gulp.task('connect', function () {
@@ -194,10 +219,6 @@
     return gulp.src(dist.base + 'index.html').pipe(open({ uri: 'http://localhost:3000/index.html'}));
   });
 
-  gulp.task('scripts-styles', function() {
-    gulp.start(['scripts', 'styles']);
-  });
-
   gulp.task('watcher', function () {
     gulp.watch(paths.js + '**/*', ['scripts']);
     gulp.watch([paths.css + '**/*', paths.sass + '**/*'], ['styles']);
@@ -209,9 +230,9 @@
 
   gulp.task('build', function() {
     if (mode === 'static') gulp.start('templates');
-    gulp.start(['images', 'fonts', 'svg']);
-    console.log(production);
-    sequence('scripts-styles', 'version');
+    gulp.start('fonts');
+    sequence('images', 'svg');
+    sequence(['scripts', 'styles'], 'version');
   });
 
   gulp.task('server', [ 'watch', 'connect', 'open' ]);

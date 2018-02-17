@@ -26,7 +26,7 @@
 
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static
-  var liveReload = typeof argv.liveReload !== typeof liveReload ? true : false;
+  var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
 
   // Vars used in tasks
@@ -74,12 +74,14 @@
     if (production) {
       var fJs = filter(['**/*.js'], {restore: true});
       var fCss = filter(['**/*.css'], {restore: true});
+      var base = dist.base;
+      if (mode == 'ci') base = dist.assets;
       return gulp.src([
           dist.js + 'app.js',
           dist.js + 'head.js',
           dist.js + 'contact.js',
           dist.css + 'style.css'
-        ], {base: mode == 'laravel' ? dist.base : dist.assets})
+        ], {base: base})
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(fJs)
         .pipe(uglify())

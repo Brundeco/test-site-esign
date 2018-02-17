@@ -1,5 +1,5 @@
 (function(){
-  //'use strict';
+  'use strict';
   var gulp = require('gulp'),
       nunjucksRender = require('gulp-nunjucks-render'),
       nunjucks = require('gulp-nunjucks'),

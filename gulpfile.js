@@ -25,7 +25,7 @@
   ;
 
   // Settings
-  var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static
+  var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static TODO Craft
   var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
 
@@ -106,6 +106,7 @@
 
   // Clean
   gulp.task('clean', function () {
+    // TODO check for all envs
     return del([dist.base]);
   });
 
@@ -225,6 +226,7 @@
       .src(paths.images + '**/*')
       .pipe(gulp.dest(dist.images))
       .pipe(notify({message: 'Images copied'}));
+      // TODO compression
   });
 
   // Fonts
@@ -233,10 +235,12 @@
       .src(paths.fonts + '**/*')
       .pipe(gulp.dest(dist.fonts))
       .pipe(notify({message: 'Fonts copied'}));
+      // TODO check if other filetypes can be auto-generated
   });
 
   gulp.task('scripts', function(cb) {
     return sequence(['scripts-head', 'scripts-body', 'scripts-contact'], cb);
+    // TODO ES6
   });
 
   gulp.task('connect', function () {
@@ -277,6 +281,7 @@
   });
 
   gulp.task('watcher', function (cb) {
+    // TODO watcher for Laravel's blade files, watcher for CI views
     return sequence(
       ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-svgs', 'watch-fonts'], cb
     );

@@ -233,8 +233,8 @@
       .pipe(notify({message: 'Fonts copied'}));
   });
 
-  gulp.task('scripts', function() {
-    return gulp.start('scripts-head', 'scripts-body', 'scripts-contact');
+  gulp.task('scripts', function(cb) {
+    return sequence(['scripts-head', 'scripts-body', 'scripts-contact'], cb);
   });
 
   gulp.task('connect', function () {
@@ -250,30 +250,46 @@
     return gulp.src(dist.base + 'index.html').pipe(open({ uri: 'http://localhost:3000/index.html'}));
   });
 
-  gulp.task('watcher', function () {
-    gulp.watch(paths.js + '**/*.js', ['scripts']);
-    gulp.watch([paths.css + '**/*', paths.sass + '**/*'], ['styles']);
-    gulp.watch(paths.nunjucks + '**/*', ['templates']);
-    gulp.watch([paths.images + '**/*', '!' + paths.images + '**/*.svg'], ['images']);
-    gulp.watch(paths.images + '**/*.svg', ['svg']);
-    gulp.watch(paths.fonts + '**/*', ['fonts']);
+  gulp.task('watch-scripts', function() {
+    return gulp.watch(paths.js + '**/*.js', ['scripts']);
   });
 
-  gulp.task('build', function() {
-    if (mode === 'static') gulp.start('templates');
-    gulp.start('fonts');
-    sequence('images', 'svg');
-    sequence(['scripts', 'styles'], 'version');
+  gulp.task('watch-styles', function() {
+    return gulp.watch([paths.css + '**/*', paths.sass + '**/*'], ['styles']);
+  });
+
+  gulp.task('watch-nunjucks', function() {
+    return gulp.watch(paths.nunjucks + '**/*', ['templates']);
+  });
+
+  gulp.task('watch-images', function() {
+    return gulp.watch([paths.images + '**/*', '!' + paths.images + '**/*.svg'], ['images']);
+  });
+
+  gulp.task('watch-svgs', function() {
+    return gulp.watch(paths.images + '**/*.svg', ['svg']);
+  });
+
+  gulp.task('watch-fonts', function() {
+    return gulp.watch(paths.fonts + '**/*', ['fonts']);
+  });
+
+  gulp.task('watcher', function (cb) {
+    return sequence(
+      ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-svgs', 'watch-fonts'], cb
+    );
+  });
+
+  gulp.task('build', function(cb) {
+    var tasks = ['images', 'svg', 'scripts', 'styles', 'fonts'];
+    if (mode === 'static') tasks.push('templates');
+    sequence(tasks, 'version', cb);
   });
 
   gulp.task('server', [ 'watch', 'connect', 'open' ]);
 
-  gulp.task('watch', function() {
-    gulp.start('build');
-    gulp.start('watcher');
-    if (liveReload) {
-      gulp.start('connect', 'open');
-    }
+  gulp.task('watch', function(cb) {
+    sequence('build', 'watcher', liveReload ? ['connect', 'open'] : [], cb);
   });
 
   gulp.task('default', function() {

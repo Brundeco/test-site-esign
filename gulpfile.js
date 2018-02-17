@@ -199,8 +199,8 @@
     return gulp
       .src([paths.sass + 'style.scss']) // compile sass
       .pipe(addsrc([])) // other css files (plugins, libs)
-      .pipe(sourcemaps.init())
       .pipe(sass())
+      .pipe(sourcemaps.init())
       .pipe(concat('style.css'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.css))

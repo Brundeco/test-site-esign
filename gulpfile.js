@@ -17,9 +17,11 @@
       connect = require('gulp-connect'),
       open = require('gulp-open'),
       concat = require('gulp-concat'),
-      fs = require('vinyl-fs'),
-      path = require('path'),
-      sequence = require('run-sequence')
+      sequence = require('run-sequence'),
+      uglify = require('gulp-uglify'),
+      filter = require('gulp-filter'),
+      cleanCss = require('gulp-clean-css'),
+      sourcemaps = require('gulp-sourcemaps')
   ;
 
   // Settings
@@ -70,13 +72,26 @@
   // Versioning
   gulp.task('version', function () {
     if (production) {
+      var fJs = filter(['**/*.js'], {restore: true});
+      var fCss = filter(['**/*.css'], {restore: true});
       return gulp.src([
           dist.js + 'app.js',
           dist.js + 'head.js',
           dist.js + 'contact.js',
           dist.css + 'style.css'
         ], {base: mode == 'laravel' ? dist.base : dist.assets})
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(fJs)
+        .pipe(uglify())
+        .pipe(fJs.restore)
+        .pipe(fCss)
+        .pipe(cleanCss({compatibility: 'ie9'}))
+        .pipe(fCss.restore)
+        .on('error', function(err) {
+          console.error('Error in compress task', err.toString());
+        })
         .pipe(rev())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(mode == 'laravel' ? dist.base : dist.assets))
         .pipe(rev.manifest({merge: true}))
         .pipe(gulp.dest(dist.revManifest));
@@ -124,19 +139,22 @@
       .pipe(gulp.dest(paths.assets + 'svg-sprite/'));
   });
 
-  // Scripts
+  // Scripts head
   gulp.task('scripts-head', function() {
     return gulp
       .src([
         paths.js + 'libs/modernizr.min.js'
       ])
+      .pipe(sourcemaps.init())
       .pipe(concat('head.js'))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
+      .pipe(filter(['**/*.js']))
       .pipe(notify({message: 'Scripts head merged'}))
     ;
   });
 
-  // Scripts
+  // Scripts body
   gulp.task('scripts-body', function() {
     return gulp
       .src([
@@ -144,8 +162,11 @@
         paths.js + 'plugins.js',
         paths.js + 'esign.js'
       ])
+      .pipe(sourcemaps.init())
       .pipe(concat('app.js'))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
+      .pipe(filter(['**/*.js']))
       .pipe(notify({message: 'Scripts body merged'}))
     ;
   });
@@ -159,8 +180,11 @@
         paths.js + 'googlemaps-styles.js',
         paths.js + 'contact.js'
       ])
+      .pipe(sourcemaps.init())
       .pipe(concat('contact.js'))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
+      .pipe(filter(['**/*.js']))
       .pipe(notify({message: 'Scripts contact merged'}))
     ;
   });
@@ -170,7 +194,10 @@
     return gulp
       .src([paths.sass + 'style.scss']) // compile sass
       .pipe(addsrc([])) // other css files (plugins, libs)
+      .pipe(sourcemaps.init())
       .pipe(sass())
+      .pipe(concat('style.css'))
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.css))
       .pipe(notify({message: 'Styles merged'}));
   });
@@ -220,7 +247,7 @@
   });
 
   gulp.task('watcher', function () {
-    gulp.watch(paths.js + '**/*', ['scripts']);
+    gulp.watch(paths.js + '**/*.js', ['scripts']);
     gulp.watch([paths.css + '**/*', paths.sass + '**/*'], ['styles']);
     gulp.watch(paths.nunjucks + '**/*', ['templates']);
     gulp.watch([paths.images + '**/*', '!' + paths.images + '**/*.svg'], ['images']);
@@ -238,10 +265,11 @@
   gulp.task('server', [ 'watch', 'connect', 'open' ]);
 
   gulp.task('watch', function() {
-      gulp.start('watcher');
-      if (liveReload) {
-        gulp.start('connect', 'open');
-      }
+    gulp.start('build');
+    gulp.start('watcher');
+    if (liveReload) {
+      gulp.start('connect', 'open');
+    }
   });
 
   gulp.task('default', function() {

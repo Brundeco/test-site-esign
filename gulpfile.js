@@ -40,22 +40,21 @@
   paths.nunjucks = paths.resources + 'nunjucks/';
   paths.images = paths.assets + 'images/';
   paths.svg = paths.images + 'svg/';
-  paths.dist = paths.assets + 'dist/';
   paths.fonts = paths.assets + 'fonts/';
 
   var dist = {base: paths.root + 'static/'};
-  if (mode == 'laravel') dist.base = paths.root + 'public/';
-  if (mode == 'ci') dist.base = paths.root + ''; // Assets in root
+  if (mode === 'laravel') dist.base = paths.root + 'public/';
+  if (mode === 'ci') dist.base = paths.root + ''; // Assets in root
   dist.assets = dist.base + 'assets/';
-  if (mode == 'laravel') dist.assets = dist.base + 'build/';
+  if (mode === 'laravel') dist.assets = dist.base + 'build/';
   dist.css = dist.assets + 'css/';
   dist.js = dist.assets + 'js/';
   dist.images = dist.assets + 'images/';
   dist.fonts = dist.assets + 'fonts/';
   dist.html = dist.base;
   dist.revManifest = dist.assets; // CI
-  if (mode == 'laravel') dist.revManifest = dist.base;
-  if (mode == 'static') dist.revManifest = dist.base;
+  if (mode === 'laravel') dist.revManifest = dist.base;
+  if (mode === 'static') dist.revManifest = dist.base;
 
   // Templates
   gulp.task('templates', function () {
@@ -74,7 +73,7 @@
       var fJs = filter(['**/*.js'], {restore: true});
       var fCss = filter(['**/*.css'], {restore: true});
       var base = dist.base;
-      if (mode == 'ci') base = dist.assets;
+      if (mode === 'ci') base = dist.assets;
       return gulp.src([
           dist.js + 'app.js',
           dist.js + 'head.js',
@@ -89,11 +88,11 @@
         .pipe(cleanCss({compatibility: 'ie9'}))
         .pipe(fCss.restore)
         .on('error', function(err) {
-          console.error('Error in compress task', err.toString());
+          console.error('Error in clean CSS task', err.toString());
         })
         .pipe(rev())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(mode == 'laravel' ? dist.base : dist.assets))
+        .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
         .pipe(rev.manifest({merge: true}))
         .pipe(gulp.dest(dist.revManifest))
         .pipe(filter(['**/*.json'])) // Filter so notification is only shown once

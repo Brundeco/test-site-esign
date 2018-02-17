@@ -72,6 +72,30 @@
   if (mode === 'laravel') dist.revManifest = dist.base;
   if (mode === 'static') dist.revManifest = dist.base;
 
+  var assets = {
+    scripts: {
+      head: [
+        paths.js + 'libs/modernizr.min.js'
+        // Add more here if needed
+      ],
+      body: [
+        paths.js + 'libs/jquery.min.js',
+        paths.js + 'esign.js'
+        // Add more if needed
+      ],
+      contact: [
+        paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
+        paths.js + 'libs/validation/jquery.validationEngine.js',
+        paths.js + 'googlemaps-styles.js',
+        paths.js + 'contact.js'
+        // Add more if needed
+      ]
+    },
+    styles: [
+      // Add if needed
+    ]
+  };
+
   // Templates
   gulp.task('templates', function () {
     gulp.src([paths.nunjucks + '**/*.+(html|nunjucks)'])
@@ -201,9 +225,7 @@
   // Scripts head
   gulp.task('scripts-head', function() {
     return gulp
-      .src([
-        paths.js + 'libs/modernizr.min.js'
-      ])
+      .src(assets.scripts.head)
       .pipe(sourcemaps.init())
       .pipe(concat('head.js'))
       .pipe(sourcemaps.write('.'))
@@ -217,11 +239,7 @@
   gulp.task('scripts-body', function() {
     // TODO ES6 (Babel)
     return gulp
-      .src([
-        paths.js + 'libs/jquery.min.js',
-        paths.js + 'plugins.js',
-        paths.js + 'esign.js'
-      ])
+      .src(assets.scripts.body)
       .pipe(sourcemaps.init())
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write('.'))
@@ -234,12 +252,7 @@
   // Scripts contact
   gulp.task('scripts-contact', function() {
     return gulp
-      .src([
-        paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
-        paths.js + 'libs/validation/jquery.validationEngine.js',
-        paths.js + 'googlemaps-styles.js',
-        paths.js + 'contact.js'
-      ])
+      .src(assets.scripts.contact)
       .pipe(sourcemaps.init())
       .pipe(concat('contact.js'))
       .pipe(sourcemaps.write('.'))
@@ -253,7 +266,7 @@
   gulp.task('styles', function() {
     return gulp
       .src([paths.sass + 'style.scss']) // compile sass
-      .pipe(addsrc([])) // other css files (plugins, libs)
+      .pipe(addsrc(assets.styles)) // other css files (plugins, libs)
       .pipe(sass())
       .pipe(sourcemaps.init())
       .pipe(autoprefixer({

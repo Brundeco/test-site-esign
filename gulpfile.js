@@ -22,7 +22,9 @@
       cleanCss = require('gulp-clean-css'),
       sourcemaps = require('gulp-sourcemaps'),
       autoprefixer = require('gulp-autoprefixer'),
-      imagemin = require('gulp-imagemin')
+      imagemin = require('gulp-imagemin'),
+      revDistClean = require('gulp-rev-dist-clean'),
+      first = require('gulp-first')
   ;
 
   // Settings
@@ -74,7 +76,6 @@
   gulp.task('templates', function () {
     gulp.src([paths.nunjucks + '**/*.+(html|nunjucks)'])
       .pipe(nunjucksRender({
-        //path: [paths.nunjucks]
         path: [paths.nunjucks]
       }))
       .pipe(gulp.dest(dist.html))
@@ -111,7 +112,7 @@
         merge: true
       }))
       .pipe(gulp.dest(dist.revManifest))
-      .pipe(filter(['**/*.json'])) // Filter so notification is only shown once
+      .pipe(first()) // Filter so notification is only shown once
       .pipe(notify({message: 'Assets versioned'}))
     ;
   });
@@ -132,12 +133,13 @@
         merge: true
       }))
       .pipe(gulp.dest(dist.revManifest))
+      .pipe(first())
       .pipe(notify({message: 'Images versioned'}))
     ;
   });
 
   gulp.task('version', function(cb) {
-    if (production) {
+    if (production && mode !== 'static') {
       sequence([
         'version-scripts-styles'
         , 'version-images'
@@ -150,7 +152,15 @@
   // Clean
   gulp.task('clean', function () {
     // TODO check for all envs
-    return del([dist.base]);
+    //return del([dist.base]);
+    try {
+      return gulp.src([dist.assets + '**/*'], {read: false})
+        .pipe(revDistClean(dist.revManifest + 'rev-manifest.json', {keepOriginalFiles: true, keepRenamedFiles: false}))
+        .pipe(first())
+        .pipe(notify({message: 'Old files cleaned'}))
+    } catch (e) {
+      return gulp;
+    }
   });
 
   /* Tiny png api key: https://tinypng.com/developers
@@ -273,6 +283,7 @@
     return gulp
       .src(paths.images + '**/*')
       .pipe(gulp.dest(dist.images))
+      .pipe(first())
       .pipe(notify({message: 'Images copied'}));
 
   });
@@ -338,7 +349,7 @@
   gulp.task('build', function(cb) {
     var tasks = ['images', 'svg', 'scripts', 'styles', 'fonts'];
     if (mode === 'static') tasks.push('templates');
-    sequence(tasks, 'version', cb);
+    sequence('clean', tasks, 'version', cb);
   });
 
   gulp.task('server', [ 'watch', 'connect', 'open' ]);

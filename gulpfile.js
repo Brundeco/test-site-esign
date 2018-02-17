@@ -94,7 +94,10 @@
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(mode == 'laravel' ? dist.base : dist.assets))
         .pipe(rev.manifest({merge: true}))
-        .pipe(gulp.dest(dist.revManifest));
+        .pipe(gulp.dest(dist.revManifest))
+        .pipe(filter(['**/*.json'])) // Filter so notification is only shown once
+        .pipe(notify({message: 'Assets versioned'}))
+      ;
     }
     return gulp;
   });
@@ -149,7 +152,7 @@
       .pipe(concat('head.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
-      .pipe(filter(['**/*.js']))
+      .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(notify({message: 'Scripts head merged'}))
     ;
   });
@@ -166,7 +169,7 @@
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
-      .pipe(filter(['**/*.js']))
+      .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(notify({message: 'Scripts body merged'}))
     ;
   });
@@ -184,7 +187,7 @@
       .pipe(concat('contact.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
-      .pipe(filter(['**/*.js']))
+      .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(notify({message: 'Scripts contact merged'}))
     ;
   });
@@ -199,6 +202,7 @@
       .pipe(concat('style.css'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.css))
+      .pipe(filter(['**/*.css'])) // Filter so notification is only shown once
       .pipe(notify({message: 'Styles merged'}));
   });
 

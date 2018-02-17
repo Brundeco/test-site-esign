@@ -112,12 +112,11 @@
     var fCss = filter(['**/*.css'], {restore: true});
     var base = dist.base;
     if (mode === 'ci') base = dist.assets;
-    return gulp.src([
-        dist.js + 'app.js',
-        dist.js + 'head.js',
-        dist.js + 'contact.js',
-        dist.css + 'style.css'
-      ], {base: base})
+
+    var src = [dist.js + 'app.js', dist.js + 'head.js', dist.css + 'style.css'];
+    if (mode !== 'laravel') src.push(dist.js + 'contact.js');
+
+    return gulp.src(src, {base: base})
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(fJs)
       .pipe(uglify())
@@ -251,6 +250,7 @@
 
   // Scripts contact
   gulp.task('scripts-contact', function() {
+    if (mode === 'laravel') return gulp;
     return gulp
       .src(assets.scripts.contact)
       .pipe(sourcemaps.init())

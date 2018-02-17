@@ -21,13 +21,26 @@
       filter = require('gulp-filter'),
       cleanCss = require('gulp-clean-css'),
       sourcemaps = require('gulp-sourcemaps'),
-      autoprefixer = require('gulp-autoprefixer')
+      autoprefixer = require('gulp-autoprefixer'),
+      imagemin = require('gulp-imagemin')
   ;
 
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static TODO Craft
   var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
+
+  var imageminConfig = [
+    imagemin.gifsicle({interlaced: true}),
+    imagemin.jpegtran({progressive: true}),
+    imagemin.optipng({optimizationLevel: 1}),
+    imagemin.svgo({
+      plugins: [
+        {removeViewBox: false},
+        {cleanupIDs: false}
+      ]
+    })
+  ];
 
   // Vars used in tasks
   var paths = {};
@@ -69,38 +82,69 @@
   });
 
   // Versioning
-  gulp.task('version', function () {
+  gulp.task('version-scripts-styles', function () {
+    var fJs = filter(['**/*.js'], {restore: true});
+    var fCss = filter(['**/*.css'], {restore: true});
+    var base = dist.base;
+    if (mode === 'ci') base = dist.assets;
+    return gulp.src([
+        dist.js + 'app.js',
+        dist.js + 'head.js',
+        dist.js + 'contact.js',
+        dist.css + 'style.css'
+      ], {base: base})
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(fJs)
+      .pipe(uglify())
+      .pipe(fJs.restore)
+      .pipe(fCss)
+      .pipe(cleanCss({compatibility: 'ie9'}))
+      .pipe(fCss.restore)
+      .on('error', function(err) {
+        console.error('Error in clean CSS task', err.toString());
+      })
+      .pipe(rev())
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
+      .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
+        base: dist.revManifest,
+        merge: true
+      }))
+      .pipe(gulp.dest(dist.revManifest))
+      .pipe(filter(['**/*.json'])) // Filter so notification is only shown once
+      .pipe(notify({message: 'Assets versioned'}))
+    ;
+  });
+
+  gulp.task('version-images', function() {
+    var fPng = filter(['**/*.png'], {restore: true});
+    var base = dist.base;
+    if (mode === 'ci') base = dist.assets;
+    return gulp
+      .src(dist.images + '**/*', {base: base})
+      .pipe(fPng)
+      .pipe(imagemin(imageminConfig))
+      .pipe(fPng.restore)
+      .pipe(rev())
+      .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
+      .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
+        base: dist.revManifest,
+        merge: true
+      }))
+      .pipe(gulp.dest(dist.revManifest))
+      .pipe(notify({message: 'Images versioned'}))
+    ;
+  });
+
+  gulp.task('version', function(cb) {
     if (production) {
-      var fJs = filter(['**/*.js'], {restore: true});
-      var fCss = filter(['**/*.css'], {restore: true});
-      var base = dist.base;
-      if (mode === 'ci') base = dist.assets;
-      return gulp.src([
-          dist.js + 'app.js',
-          dist.js + 'head.js',
-          dist.js + 'contact.js',
-          dist.css + 'style.css'
-        ], {base: base})
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(fJs)
-        .pipe(uglify())
-        .pipe(fJs.restore)
-        .pipe(fCss)
-        .pipe(cleanCss({compatibility: 'ie9'}))
-        .pipe(fCss.restore)
-        .on('error', function(err) {
-          console.error('Error in clean CSS task', err.toString());
-        })
-        .pipe(rev())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
-        .pipe(rev.manifest({merge: true}))
-        .pipe(gulp.dest(dist.revManifest))
-        .pipe(filter(['**/*.json'])) // Filter so notification is only shown once
-        .pipe(notify({message: 'Assets versioned'}))
-      ;
+      sequence([
+        'version-scripts-styles'
+        , 'version-images'
+      ], cb);
+    } else {
+      cb();
     }
-    return gulp;
   });
 
   // Clean
@@ -161,6 +205,7 @@
 
   // Scripts body
   gulp.task('scripts-body', function() {
+    // TODO ES6 (Babel)
     return gulp
       .src([
         paths.js + 'libs/jquery.min.js',
@@ -229,7 +274,7 @@
       .src(paths.images + '**/*')
       .pipe(gulp.dest(dist.images))
       .pipe(notify({message: 'Images copied'}));
-      // TODO compression
+
   });
 
   // Fonts

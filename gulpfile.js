@@ -20,7 +20,8 @@
       uglify = require('gulp-uglify'),
       filter = require('gulp-filter'),
       cleanCss = require('gulp-clean-css'),
-      sourcemaps = require('gulp-sourcemaps')
+      sourcemaps = require('gulp-sourcemaps'),
+      autoprefixer = require('gulp-autoprefixer')
   ;
 
   // Settings
@@ -200,6 +201,10 @@
       .pipe(addsrc([])) // other css files (plugins, libs)
       .pipe(sass())
       .pipe(sourcemaps.init())
+      .pipe(autoprefixer({
+        browsers: ['> 1%', 'Last 2 versions', 'IE 9'],
+        cascade: false
+      }))
       .pipe(concat('style.css'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.css))

@@ -1,7 +1,6 @@
 (function(){
   //'use strict';
   var gulp = require('gulp'),
-      elixir = require('laravel-elixir'),
       nunjucksRender = require('gulp-nunjucks-render'),
       nunjucks = require('gulp-nunjucks'),
       notify = require('gulp-notify'),

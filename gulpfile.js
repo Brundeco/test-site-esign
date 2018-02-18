@@ -184,18 +184,14 @@
         pngquant: true,
         optipng: false,
         zopflipng: true,
-        jpegRecompress: true,
-        mozjpeg: true,
+        jpegRecompress: ['--accurate', '--strip', '--quality', 'low', '--min', 55],
+        mozjpeg: ['-optimize', '-progressive'],
         guetzli: false,
         gifsicle: true,
         svgo: true,
         concurrent: 10,
-        quiet: false, // defaults to false,
-        options: {
-          jpegRecompress: ['--strip', '--quality', 'medium', '--min', 40, '--max', 80],
-          mozjpeg: ['-optimize', '-progressive']
-        }
-      })) // PNG compression equal to tinyPNG TODO improve jpeg compression
+        quiet: false
+      })) // JPEG & PNG compression rates equal to tinyPNG
       .pipe(rev())
       .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {

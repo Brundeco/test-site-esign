@@ -27,17 +27,6 @@
     revUrls = require('gulp-rev-urls')
   ;
 
-  var customNotify = function(opts) {
-    var defaults = {
-      icon: __dirname + '/notification.png',
-      title: 'Gulp'
-    };
-    for (var key in opts) {
-      if (opts.hasOwnProperty(key)) defaults[key] = opts[key];
-    }
-    return notify(defaults);
-  };
-
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static TODO Craft
   var liveReload = typeof argv.liveReload !== typeof liveReload;
@@ -96,6 +85,17 @@
     styles: [
       // Add if needed
     ]
+  };
+
+  var customNotify = function(opts) {
+    var defaults = {
+      icon: __dirname + '/notification.png',
+      title: 'Gulp'
+    };
+    for (var key in opts) {
+      if (opts.hasOwnProperty(key)) defaults[key] = opts[key];
+    }
+    return notify(defaults);
   };
 
   // Templates

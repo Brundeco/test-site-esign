@@ -79,6 +79,9 @@
         // Add more here if needed
       ],
       body: [
+        paths.js + 'polyfills/native-console.js',
+        paths.js + 'plugins/response/response.js',
+        paths.js + 'plugins/jquery-touchswipe/jquery.touchswipe.js',
         paths.js + 'libs/jquery.min.js',
         paths.js + 'esign.js'
         // Add more if needed

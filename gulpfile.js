@@ -24,13 +24,15 @@
     revDistClean = require('gulp-rev-dist-clean'),
     first = require('gulp-first'),
     image = require('gulp-image'),
-    revUrls = require('gulp-rev-urls')
+    revUrls = require('gulp-rev-urls'),
+    babel = require('gulp-babel')
   ;
 
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static TODO Craft
   var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
+  var es6 = typeof argv.es6 !== typeof undefined;
 
   // Vars used in tasks
   var paths = {};
@@ -45,6 +47,7 @@
   paths.images = paths.assets + 'images/';
   paths.svg = paths.images + 'svg/';
   paths.fonts = paths.assets + 'fonts/';
+  paths.babel = 'node_modules/babel-polyfill/dist/polyfill.js';
 
   var dist = {base: paths.root + 'static/'};
   if (mode === 'laravel') dist.base = paths.root + 'public/';
@@ -67,10 +70,11 @@
         // Add more here if needed
       ],
       body: [
+        paths.js + 'libs/jquery-3.2.1.js',
         paths.js + 'polyfills/native-console.js',
         paths.js + 'plugins/response/response.js',
         paths.js + 'plugins/jquery-touchswipe/jquery.touchswipe.js',
-        paths.js + 'libs/jquery.min.js',
+        paths.js + 'es6example.js',
         paths.js + 'esign.js'
         // Add more if needed
       ],
@@ -86,6 +90,15 @@
       // Add if needed
     ]
   };
+
+  if (es6) {
+    assets.scripts.body.unshift(paths.babel);
+    assets.scripts.contact.unshift(paths.babel);
+  }
+
+  var es6Scripts = [
+    paths.js + 'es6example.js'
+  ];
 
   var customNotify = function(opts) {
     var defaults = {
@@ -105,6 +118,7 @@
         path: [paths.nunjucks]
       }))
       .pipe(gulp.dest(dist.html))
+      .pipe(first())
       .pipe(customNotify({message: 'Templates rendered'}));
   });
 
@@ -249,11 +263,26 @@
       .pipe(gulp.dest(paths.assets + 'svg-sprite/'));
   });
 
+  function handleEs6(task) {
+    if (!es6) return task;
+    var fEs6 = filter(es6Scripts instanceof Array ? es6Scripts : ['**/*'], {restore: true});
+    return task
+      .pipe(fEs6)
+      .pipe(babel({
+        presets: ['env']
+      }))
+      .pipe(fEs6.restore)
+    ;
+  }
+
   // Scripts head
   gulp.task('scripts-head', function() {
-    return gulp
+    var task = gulp
       .src(assets.scripts.head)
       .pipe(sourcemaps.init())
+    ;
+    task = handleEs6(task);
+    return task
       .pipe(concat('head.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
@@ -264,10 +293,12 @@
 
   // Scripts body
   gulp.task('scripts-body', function() {
-    // TODO ES6 (Babel)
-    return gulp
+    var task = gulp
       .src(assets.scripts.body)
       .pipe(sourcemaps.init())
+    ;
+    task = handleEs6(task);
+    return task
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
@@ -279,9 +310,12 @@
   // Scripts contact
   gulp.task('scripts-contact', function() {
     if (mode === 'laravel') return gulp;
-    return gulp
+    var task = gulp
       .src(assets.scripts.contact)
       .pipe(sourcemaps.init())
+    ;
+    task = handleEs6(task);
+    return task
       .pipe(concat('contact.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))

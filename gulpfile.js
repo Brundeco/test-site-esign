@@ -25,7 +25,8 @@
     first = require('gulp-first'),
     image = require('gulp-image'),
     revUrls = require('gulp-rev-urls'),
-    babel = require('gulp-babel')
+    babel = require('gulp-babel'),
+    sassLint = require('gulp-sass-lint')
   ;
 
   // Settings
@@ -33,6 +34,7 @@
   var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
   var es6 = typeof argv.es6 !== typeof undefined;
+  var lint = typeof argv.lint !== typeof undefined;
 
   // Vars used in tasks
   var paths = {};
@@ -326,8 +328,17 @@
 
   // Styles
   gulp.task('styles', function() {
-    return gulp
-      .src([paths.sass + 'style.scss']) // compile sass TODO check if we can apply a linter
+    var task = gulp
+      .src([paths.sass + 'style.scss']); // compile sass
+
+    if (lint) {
+      task = task
+        .pipe(sassLint())
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError());
+    }
+
+    return task
       .pipe(addsrc(assets.styles)) // other css files (plugins, libs)
       .pipe(sass())
       .pipe(sourcemaps.init())
@@ -364,7 +375,6 @@
   // Scripts
   gulp.task('scripts', function(cb) {
     return sequence(['scripts-head', 'scripts-body', 'scripts-contact'], cb);
-    // TODO ES6
     // TODO check if we can apply a linter
   });
 

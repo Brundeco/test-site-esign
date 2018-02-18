@@ -93,6 +93,20 @@
     ]
   };
 
+  // Image compression settings, by default JPEG & PNG compression rates equal to tinyPNG
+  var imageConfig = {
+    pngquant: true,
+    optipng: false,
+    zopflipng: true,
+    jpegRecompress: ['--accurate', '--strip', '--quality', 'low', '--min', 55],
+    mozjpeg: ['-optimize', '-progressive'],
+    guetzli: false,
+    gifsicle: true,
+    svgo: true,
+    concurrent: 10,
+    quiet: false
+  };
+
   if (es6) {
     assets.scripts.body.unshift(paths.babel);
     assets.scripts.contact.unshift(paths.babel);
@@ -180,18 +194,7 @@
     if (mode === 'ci') base = dist.assets;
     return gulp
       .src(dist.images + '**/*', {base: base})
-      .pipe(image({
-        pngquant: true,
-        optipng: false,
-        zopflipng: true,
-        jpegRecompress: ['--accurate', '--strip', '--quality', 'low', '--min', 55],
-        mozjpeg: ['-optimize', '-progressive'],
-        guetzli: false,
-        gifsicle: true,
-        svgo: true,
-        concurrent: 10,
-        quiet: false
-      })) // JPEG & PNG compression rates equal to tinyPNG
+      .pipe(image(imageConfig))
       .pipe(rev())
       .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {

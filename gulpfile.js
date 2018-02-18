@@ -159,8 +159,6 @@
     ;
   });
 
-  console.log(__dirname);
-
   gulp.task('version-images', function() {
     var base = dist.base;
     if (mode === 'ci') base = dist.assets;

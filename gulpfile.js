@@ -27,6 +27,17 @@
     revUrls = require('gulp-rev-urls')
   ;
 
+  var customNotify = function(opts) {
+    var defaults = {
+      icon: __dirname + '/notification.png',
+      title: 'Gulp'
+    };
+    for (var key in opts) {
+      if (opts.hasOwnProperty(key)) defaults[key] = opts[key];
+    }
+    return notify(defaults);
+  };
+
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static TODO Craft
   var liveReload = typeof argv.liveReload !== typeof liveReload;
@@ -94,7 +105,7 @@
         path: [paths.nunjucks]
       }))
       .pipe(gulp.dest(dist.html))
-      .pipe(notify({message: 'Templates rendered'}));
+      .pipe(customNotify({message: 'Templates rendered'}));
   });
 
   // Versioning
@@ -142,12 +153,15 @@
       }))
       .pipe(gulp.dest(dist.revManifest))
       .pipe(first()) // Filter so notification is only shown once
-      .pipe(notify({message: 'Assets versioned'}))
+      .pipe(customNotify({
+        message: 'Assets versioned'
+      }))
     ;
   });
 
+  console.log(__dirname);
+
   gulp.task('version-images', function() {
-    var fPng = filter(['**/*.png'], {restore: true});
     var base = dist.base;
     if (mode === 'ci') base = dist.assets;
     return gulp
@@ -176,7 +190,7 @@
       }))
       .pipe(gulp.dest(dist.revManifest))
       .pipe(first())
-      .pipe(notify({message: 'Images versioned'}))
+      .pipe(customNotify({message: 'Images versioned'}))
     ;
   });
 
@@ -196,7 +210,7 @@
       return gulp.src([dist.assets + '**/*'], {read: false})
         .pipe(revDistClean(dist.revManifest + 'rev-manifest.json', {keepOriginalFiles: true, keepRenamedFiles: false}))
         .pipe(first())
-        .pipe(notify({message: 'Old files cleaned'}))
+        .pipe(customNotify({message: 'Old files cleaned'}))
     } catch (e) {
       return gulp;
     }
@@ -246,7 +260,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
-      .pipe(notify({message: 'Scripts head merged'}))
+      .pipe(customNotify({message: 'Scripts head merged'}))
     ;
   });
 
@@ -260,7 +274,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
-      .pipe(notify({message: 'Scripts body merged'}))
+      .pipe(customNotify({message: 'Scripts body merged'}))
     ;
   });
 
@@ -274,7 +288,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
-      .pipe(notify({message: 'Scripts contact merged'}))
+      .pipe(customNotify({message: 'Scripts contact merged'}))
     ;
   });
 
@@ -293,7 +307,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.css))
       .pipe(filter(['**/*.css'])) // Filter so notification is only shown once
-      .pipe(notify({message: 'Styles merged'}));
+      .pipe(customNotify({message: 'Styles merged'}));
   });
 
   // Images
@@ -302,7 +316,7 @@
       .src(paths.images + '**/*')
       .pipe(gulp.dest(dist.images))
       .pipe(first())
-      .pipe(notify({message: 'Images copied'}));
+      .pipe(customNotify({message: 'Images copied'}));
 
   });
 
@@ -311,7 +325,7 @@
     return gulp
       .src(paths.fonts + '**/*')
       .pipe(gulp.dest(dist.fonts))
-      .pipe(notify({message: 'Fonts copied'}));
+      .pipe(customNotify({message: 'Fonts copied'}));
       // TODO check if other filetypes can be auto-generated
   });
 

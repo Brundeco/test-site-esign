@@ -40,8 +40,6 @@
     "gulp-svg-sprites": "^4.1.1",
     "gulp-tinypng": "^1.0.2",
     "gulp-uglify": "^3.0.0",
-    "i": "^0.3.6",
-    "npm": "^5.6.0",
     "run-sequence": "^2.2.1",
     "uglify-js": "^3.3.11"
   },

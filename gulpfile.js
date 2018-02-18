@@ -218,7 +218,6 @@
 
   // Clean
   gulp.task('clean', function () {
-    // TODO check for all envs
     //return del([dist.base]);
     try {
       return gulp.src([dist.assets + '**/*'], {read: false})
@@ -295,6 +294,7 @@
 
   // Scripts body
   gulp.task('scripts-body', function() {
+    // TODO jshint?
     var task = gulp
       .src(assets.scripts.body)
       .pipe(sourcemaps.init())

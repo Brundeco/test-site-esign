@@ -1,48 +1,37 @@
 (function(){
   'use strict';
   var gulp = require('gulp'),
-      nunjucksRender = require('gulp-nunjucks-render'),
-      nunjucks = require('gulp-nunjucks'),
-      notify = require('gulp-notify'),
-      del = require('del'),
-      responsive = require('gulp-responsive'),
-      tinypng = require('gulp-tinypng'),
-      svgSprite = require('gulp-svg-sprites'),
-      rev = require('gulp-rev'),
-      sass = require('gulp-sass'),
-      argv = require('yargs').argv,
-      addsrc = require('gulp-add-src'),
-      svgmin = require('gulp-svgmin'),
-      connect = require('gulp-connect'),
-      open = require('gulp-open'),
-      concat = require('gulp-concat'),
-      sequence = require('run-sequence'),
-      uglify = require('gulp-uglify'),
-      filter = require('gulp-filter'),
-      cleanCss = require('gulp-clean-css'),
-      sourcemaps = require('gulp-sourcemaps'),
-      autoprefixer = require('gulp-autoprefixer'),
-      imagemin = require('gulp-imagemin'),
-      revDistClean = require('gulp-rev-dist-clean'),
-      first = require('gulp-first')
+    nunjucksRender = require('gulp-nunjucks-render'),
+    nunjucks = require('gulp-nunjucks'),
+    notify = require('gulp-notify'),
+    del = require('del'),
+    responsive = require('gulp-responsive'),
+    tinypng = require('gulp-tinypng'),
+    svgSprite = require('gulp-svg-sprites'),
+    rev = require('gulp-rev'),
+    sass = require('gulp-sass'),
+    argv = require('yargs').argv,
+    addsrc = require('gulp-add-src'),
+    svgmin = require('gulp-svgmin'),
+    connect = require('gulp-connect'),
+    open = require('gulp-open'),
+    concat = require('gulp-concat'),
+    sequence = require('run-sequence'),
+    uglify = require('gulp-uglify'),
+    filter = require('gulp-filter'),
+    cleanCss = require('gulp-clean-css'),
+    sourcemaps = require('gulp-sourcemaps'),
+    autoprefixer = require('gulp-autoprefixer'),
+    revDistClean = require('gulp-rev-dist-clean'),
+    first = require('gulp-first'),
+    image = require('gulp-image'),
+    revUrls = require('gulp-rev-urls')
   ;
 
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static TODO Craft
   var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
-
-  var imageminConfig = [
-    imagemin.gifsicle({interlaced: true}),
-    imagemin.jpegtran({progressive: true}),
-    imagemin.optipng({optimizationLevel: 1}),
-    imagemin.svgo({
-      plugins: [
-        {removeViewBox: false},
-        {cleanupIDs: false}
-      ]
-    })
-  ];
 
   // Vars used in tasks
   var paths = {};
@@ -113,6 +102,7 @@
   gulp.task('version-scripts-styles', function () {
     var fJs = filter(['**/*.js'], {restore: true});
     var fCss = filter(['**/*.css'], {restore: true});
+    var fOwnCss = filter([dist.css + 'style.css'], {restore: true});
     var base = dist.base;
     if (mode === 'ci') base = dist.assets;
 
@@ -124,6 +114,20 @@
       .pipe(fJs)
       .pipe(uglify())
       .pipe(fJs.restore)
+      .pipe(fOwnCss)
+      .pipe(revUrls({
+        manifest: dist.revManifest + 'rev-manifest.json',
+        debug: false,
+        transform: function(object, key, value, settings) {
+          var regex = /build\//;
+          object[key.replace(regex, '')] = value.replace(regex, '');
+        },
+        revise: function (origUrl, fullUrl, manifest) {
+          var revUrl = manifest[origUrl.replace(/^\.\.\//,'')];
+          return '../' + revUrl;
+        }
+      }))
+      .pipe(fOwnCss.restore)
       .pipe(fCss)
       .pipe(cleanCss({compatibility: 'ie9'}))
       .pipe(fCss.restore)
@@ -149,9 +153,22 @@
     if (mode === 'ci') base = dist.assets;
     return gulp
       .src(dist.images + '**/*', {base: base})
-      .pipe(fPng)
-      .pipe(imagemin(imageminConfig))
-      .pipe(fPng.restore)
+      .pipe(image({
+        pngquant: true,
+        optipng: false,
+        zopflipng: true,
+        jpegRecompress: true,
+        mozjpeg: true,
+        guetzli: false,
+        gifsicle: true,
+        svgo: true,
+        concurrent: 10,
+        quiet: false, // defaults to false,
+        options: {
+          jpegRecompress: ['--strip', '--quality', 'medium', '--min', 40, '--max', 80],
+          mozjpeg: ['-optimize', '-progressive']
+        }
+      })) // PNG compression equal to tinyPNG TODO improve jpeg compression
       .pipe(rev())
       .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
@@ -166,10 +183,7 @@
 
   gulp.task('version', function(cb) {
     if (production && mode !== 'static') {
-      sequence([
-        'version-scripts-styles'
-        , 'version-images'
-      ], cb);
+      sequence('version-images', 'version-scripts-styles', cb);
     } else {
       cb();
     }

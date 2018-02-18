@@ -12,7 +12,6 @@
     sass = require('gulp-sass'),
     argv = require('yargs').argv,
     addsrc = require('gulp-add-src'),
-    svgmin = require('gulp-svgmin'),
     connect = require('gulp-connect'),
     open = require('gulp-open'),
     concat = require('gulp-concat'),
@@ -297,17 +296,6 @@
       .pipe(notify({message: 'Styles merged'}));
   });
 
-  // Svg
-  //{ plugins: [{ convertPathData: false }, { mergePaths: false }, { removeUnknownsAndDefaults: false }] }
-  gulp.task('svg', function() {
-    return gulp
-      .src(paths.images + '**/*.svg')
-      .pipe(svgmin())
-      .pipe(gulp.dest(dist.images))
-      .pipe(notify({message: 'SVGs minified'}));
-  });
-
-
   // Images
   gulp.task('images', function() {
     return gulp
@@ -327,11 +315,13 @@
       // TODO check if other filetypes can be auto-generated
   });
 
+  // Scripts
   gulp.task('scripts', function(cb) {
     return sequence(['scripts-head', 'scripts-body', 'scripts-contact'], cb);
     // TODO ES6
   });
 
+  // Start live reload server
   gulp.task('connect', function () {
     return connect.server({
       root: [ dist.base ],
@@ -340,6 +330,7 @@
     });
   });
 
+  // Open live reload in browser
   gulp.task('open', function () {
     // TODO other environments
     return gulp.src(dist.base + 'index.html').pipe(open({ uri: 'http://localhost:3000/index.html'}));
@@ -358,11 +349,7 @@
   });
 
   gulp.task('watch-images', function() {
-    return gulp.watch([paths.images + '**/*', '!' + paths.images + '**/*.svg'], ['images']);
-  });
-
-  gulp.task('watch-svgs', function() {
-    return gulp.watch(paths.images + '**/*.svg', ['svg']);
+    return gulp.watch(paths.images + '**/*', ['images']);
   });
 
   gulp.task('watch-fonts', function() {
@@ -372,19 +359,20 @@
   gulp.task('watcher', function (cb) {
     // TODO watcher for Laravel's blade files, watcher for CI views
     return sequence(
-      ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-svgs', 'watch-fonts'], cb
+      ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-fonts'], cb
     );
   });
 
   gulp.task('build', function(cb) {
-    var tasks = ['images', 'svg', 'scripts', 'styles', 'fonts'];
-    if (mode === 'static') tasks.push('templates');
+    var tasks = ['images', 'scripts', 'styles', 'fonts'];
+    if (mode === 'static') tasks.push('templates'); // render nunjucks templates
     sequence('clean', tasks, 'version', cb);
   });
 
   gulp.task('server', [ 'watch', 'connect', 'open' ]);
 
   gulp.task('watch', function(cb) {
+    // Do a complete build first, then start watching, optionally start live reload
     sequence('build', 'watcher', liveReload ? ['connect', 'open'] : [], cb);
   });
 

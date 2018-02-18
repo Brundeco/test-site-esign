@@ -293,7 +293,7 @@
   // Styles
   gulp.task('styles', function() {
     return gulp
-      .src([paths.sass + 'style.scss']) // compile sass
+      .src([paths.sass + 'style.scss']) // compile sass TODO check if we can apply a linter
       .pipe(addsrc(assets.styles)) // other css files (plugins, libs)
       .pipe(sass())
       .pipe(sourcemaps.init())
@@ -331,6 +331,7 @@
   gulp.task('scripts', function(cb) {
     return sequence(['scripts-head', 'scripts-body', 'scripts-contact'], cb);
     // TODO ES6
+    // TODO check if we can apply a linter
   });
 
   // Start live reload server

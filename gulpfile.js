@@ -171,7 +171,10 @@
     var base = dist.base;
     if (mode === 'ci') base = dist.assets;
 
-    var src = [dist.js + 'app.js', dist.js + 'head.js', dist.css + 'style.css'];
+    var src = [
+      dist.js + (mode === 'shop' ? 'client.js' : 'app.js'),
+      dist.js + 'head.js',
+      dist.css + (mode === 'shop' ? 'client.css' : 'style.css')];
     if (!isLaravel) src.push(dist.js + 'contact.js');
     if (mode === 'shop') {
       src.push(dist.js + 'admin.js');
@@ -330,7 +333,7 @@
     ;
     task = handleEs6(task);
     return task
-      .pipe(concat('app.js'))
+      .pipe(concat(mode === 'shop' ? 'client.js' : 'app.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
@@ -375,7 +378,7 @@
         browsers: ['> 1%', 'Last 2 versions', 'IE 9'],
         cascade: false
       }))
-      .pipe(concat('style.css'))
+      .pipe(concat(mode === 'shop' ? 'client.css' : 'style.css'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.css))
       .pipe(filter(['**/*.css'])) // Filter so notification is only shown once
@@ -460,6 +463,7 @@
     var tasks = ['images', 'scripts', 'styles', 'fonts'];
     if (mode === 'static') tasks.push('templates'); // render nunjucks templates
     if (mode === 'shop') {
+      tasks.push('plugins-admin');
       tasks.push('scripts-admin');
       tasks.push('styles-admin');
     }

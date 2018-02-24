@@ -26,15 +26,17 @@
     image = require('gulp-image'),
     revUrls = require('gulp-rev-urls'),
     babel = require('gulp-babel'),
-    sassLint = require('gulp-sass-lint')
+    sassLint = require('gulp-sass-lint'),
+    util = require('gulp-util')
   ;
 
   // Settings
-  var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, static TODO Craft
+  var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, shop, static TODO Craft
   var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
   var es6 = typeof argv.es6 !== typeof undefined;
   var lint = typeof argv.lint !== typeof undefined;
+  var isLaravel = mode === 'shop' || mode === 'laravel';
 
   // Vars used in tasks
   var paths = {};
@@ -44,7 +46,9 @@
   paths.assets = paths.resources + 'assets/';
   paths.css = paths.assets + 'css/';
   paths.sass = paths.assets + 'sass/';
+  if (mode === 'shop') paths.sass = paths.sass + 'client/';
   paths.js = paths.assets + 'js/';
+  if (mode === 'shop') paths.js = paths.js + 'client/';
   paths.nunjucks = paths.resources + 'nunjucks/';
   paths.images = paths.assets + 'images/';
   paths.svg = paths.images + 'svg/';
@@ -52,17 +56,17 @@
   paths.babel = 'node_modules/babel-polyfill/dist/polyfill.js';
 
   var dist = {base: paths.root + 'static/'};
-  if (mode === 'laravel') dist.base = paths.root + 'public/';
+  if (isLaravel) dist.base = paths.root + 'public/';
   if (mode === 'ci') dist.base = paths.root + ''; // Assets in root
   dist.assets = dist.base + 'assets/';
-  if (mode === 'laravel') dist.assets = dist.base + 'build/';
+  if (isLaravel) dist.assets = dist.base + 'build/';
   dist.css = dist.assets + 'css/';
   dist.js = dist.assets + 'js/';
   dist.images = dist.assets + 'images/';
   dist.fonts = dist.assets + 'fonts/';
   dist.html = dist.base;
   dist.revManifest = dist.assets; // CI
-  if (mode === 'laravel') dist.revManifest = dist.base;
+  if (isLaravel) dist.revManifest = dist.base;
   if (mode === 'static') dist.revManifest = dist.base;
 
   var assets = {
@@ -76,7 +80,7 @@
         paths.js + 'polyfills/native-console.js',
         paths.js + 'plugins/response/response.js',
         paths.js + 'plugins/jquery-touchswipe/jquery.touchswipe.js',
-        paths.js + 'es6example.js',
+        //paths.js + 'es6example.js',
         paths.js + 'esign.js'
         // Add more if needed
       ],
@@ -147,7 +151,7 @@
     if (mode === 'ci') base = dist.assets;
 
     var src = [dist.js + 'app.js', dist.js + 'head.js', dist.css + 'style.css'];
-    if (mode !== 'laravel') src.push(dist.js + 'contact.js');
+    if (!isLaravel) src.push(dist.js + 'contact.js');
 
     return gulp.src(src, {base: base})
       .pipe(sourcemaps.init({loadMaps: true}))
@@ -177,7 +181,7 @@
       })
       .pipe(rev())
       .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
+      .pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
         merge: true
@@ -187,7 +191,7 @@
       .pipe(customNotify({
         message: 'Assets versioned'
       }))
-    ;
+      ;
   });
 
   gulp.task('version-images', function() {
@@ -197,7 +201,7 @@
       .src(dist.images + '**/*', {base: base})
       .pipe(image(imageConfig))
       .pipe(rev())
-      .pipe(gulp.dest(mode === 'laravel' ? dist.base : dist.assets))
+      .pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
         merge: true
@@ -205,7 +209,7 @@
       .pipe(gulp.dest(dist.revManifest))
       .pipe(first())
       .pipe(customNotify({message: 'Images versioned'}))
-    ;
+      ;
   });
 
   gulp.task('version', function(cb) {
@@ -273,7 +277,7 @@
         presets: ['env']
       }))
       .pipe(fEs6.restore)
-    ;
+      ;
   }
 
   // Scripts head
@@ -289,7 +293,7 @@
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(customNotify({message: 'Scripts head merged'}))
-    ;
+      ;
   });
 
   // Scripts body
@@ -306,12 +310,12 @@
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(customNotify({message: 'Scripts body merged'}))
-    ;
+      ;
   });
 
   // Scripts contact
   gulp.task('scripts-contact', function() {
-    if (mode === 'laravel') return gulp;
+    if (isLaravel) return gulp;
     var task = gulp
       .src(assets.scripts.contact)
       .pipe(sourcemaps.init())
@@ -323,7 +327,7 @@
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(customNotify({message: 'Scripts contact merged'}))
-    ;
+      ;
   });
 
   // Styles
@@ -369,7 +373,7 @@
       .src(paths.fonts + '**/*')
       .pipe(gulp.dest(dist.fonts))
       .pipe(customNotify({message: 'Fonts copied'}));
-      // TODO check if other filetypes can be auto-generated
+    // TODO check if other filetypes can be auto-generated
   });
 
   // Scripts

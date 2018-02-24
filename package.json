@@ -50,6 +50,7 @@
     "uglify-js": "^3.3.11"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "gulp-rev-keep-original-name": "0.0.3"
   }
 }

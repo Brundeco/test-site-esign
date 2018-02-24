@@ -27,7 +27,8 @@
     revUrls = require('gulp-rev-urls'),
     babel = require('gulp-babel'),
     sassLint = require('gulp-sass-lint'),
-    util = require('gulp-util')
+    util = require('gulp-util'),
+    revkeep = require('gulp-rev-keep-original-name')
   ;
 
   // Settings
@@ -81,7 +82,6 @@
       body: [
         // Plugins
         paths.assets + 'js/plugins/validationEngine/jquery.validationEngine.js',
-        paths.assets + 'js/plugins/validationEngine/languages/jquery.validationEngine-nl.js',
 
         // Polyfills
         paths.assets + 'js/Util.js',
@@ -104,7 +104,6 @@
         // Add more if needed
       ],
       contact: [
-        paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
         paths.js + 'libs/validation/jquery.validationEngine.js',
         paths.js + 'googlemaps-styles.js',
         paths.js + 'contact.js'
@@ -223,8 +222,9 @@
         });
     }
 
-    task = task.pipe(rev())
-      .pipe(sourcemaps.write('.'))
+    task = task.pipe(rev());
+    if (!production) task = task.pipe(revkeep());
+    task = task.pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
@@ -249,8 +249,9 @@
       task = task.pipe(image(imageConfig));
     }
 
-    task = task.pipe(rev())
-      .pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
+    task = task.pipe(rev());
+    if (!production) task = task.pipe(revkeep());
+    task = task.pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
         merge: true
@@ -481,9 +482,7 @@
       tasks.push('watch-scripts-admin');
       tasks.push('watch-styles-admin');
     }
-    return sequence(
-      tasks, cb
-    );
+    return sequence(tasks, cb);
   });
 
   gulp.task('dummy', function(cb) { cb(); });

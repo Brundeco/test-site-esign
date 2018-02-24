@@ -124,7 +124,7 @@
   ];
   var j;
   for (j = 0; j < languages.length; j++) {
-    copy.push([paths.assets + 'js/libs/validation/languages/jquery.validationEngine-' + languages[j] + '.js',
+    copy.push([paths.js + 'libs/validation/languages/jquery.validationEngine-' + languages[j] + '.js',
       dist.js + 'libs/validation/languages/'])
   }
 

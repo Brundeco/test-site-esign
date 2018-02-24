@@ -153,6 +153,7 @@
       .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(fJs)
       .pipe(uglify())
+      .on('error', function (err) { util.log(util.colors.red('[Error]'), err.toString()); })
       .pipe(fJs.restore)
       .pipe(fOwnCss)
       .pipe(revUrls({

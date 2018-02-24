@@ -181,33 +181,39 @@
       src.push(dist.css + 'admin.css');
     }
 
-    return gulp.src(src, {base: base})
-      .pipe(sourcemaps.init({loadMaps: true}))
-      .pipe(fJs)
-      .pipe(uglify())
-      .on('error', function (err) { util.log(util.colors.red('[Error]'), err.toString()); })
-      .pipe(fJs.restore)
-      .pipe(fOwnCss)
-      .pipe(revUrls({
-        manifest: dist.revManifest + 'rev-manifest.json',
-        debug: false,
-        transform: function(object, key, value, settings) {
-          var regex = /build\//;
-          object[key.replace(regex, '')] = value.replace(regex, '');
-        },
-        revise: function (origUrl, fullUrl, manifest) {
-          var revUrl = manifest[origUrl.replace(/^\.\.\//,'')];
-          return '../' + revUrl;
-        }
-      }))
-      .pipe(fOwnCss.restore)
-      .pipe(fCss)
-      .pipe(cleanCss({compatibility: 'ie9'}))
-      .pipe(fCss.restore)
-      .on('error', function(err) {
-        console.error('Error in clean CSS task', err.toString());
-      })
-      .pipe(rev())
+    var task = gulp.src(src, {base: base})
+      .pipe(sourcemaps.init({loadMaps: true}));
+
+    if (production && mode !== 'static') {
+      task = task.pipe(fJs)
+        .pipe(uglify())
+        .on('error', function (err) {
+          util.log(util.colors.red('[Error]'), err.toString());
+        })
+        .pipe(fJs.restore)
+        .pipe(fOwnCss)
+        .pipe(revUrls({
+          manifest: dist.revManifest + 'rev-manifest.json',
+          debug: false,
+          transform: function (object, key, value, settings) {
+            var regex = /build\//;
+            object[key.replace(regex, '')] = value.replace(regex, '');
+          },
+          revise: function (origUrl, fullUrl, manifest) {
+            var revUrl = manifest[origUrl.replace(/^\.\.\//, '')];
+            return '../' + revUrl;
+          }
+        }))
+        .pipe(fOwnCss.restore)
+        .pipe(fCss)
+        .pipe(cleanCss({compatibility: 'ie9'}))
+        .pipe(fCss.restore)
+        .on('error', function (err) {
+          console.error('Error in clean CSS task', err.toString());
+        });
+    }
+
+    task = task.pipe(rev())
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
@@ -219,16 +225,21 @@
       .pipe(customNotify({
         message: 'Assets versioned'
       }))
-      ;
+    ;
+    return task;
   });
 
   gulp.task('version-images', function() {
     var base = dist.base;
     if (mode === 'ci') base = dist.assets;
-    return gulp
-      .src(dist.images + '**/*', {base: base})
-      .pipe(image(imageConfig))
-      .pipe(rev())
+    var task = gulp
+      .src(dist.images + '**/*', {base: base});
+
+    if (production && mode !== 'static') {
+      task = task.pipe(image(imageConfig));
+    }
+
+    task = task.pipe(rev())
       .pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
@@ -237,15 +248,12 @@
       .pipe(gulp.dest(dist.revManifest))
       .pipe(first())
       .pipe(customNotify({message: 'Images versioned'}))
-      ;
+    ;
+    return task;
   });
 
   gulp.task('version', function(cb) {
-    if (production && mode !== 'static') {
-      sequence('version-images', 'version-scripts-styles', cb);
-    } else {
-      cb();
-    }
+    sequence('version-images', 'version-scripts-styles', cb);
   });
 
   // Clean

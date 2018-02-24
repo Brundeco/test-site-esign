@@ -69,6 +69,8 @@
   if (isLaravel) dist.revManifest = dist.base;
   if (mode === 'static') dist.revManifest = dist.base;
 
+  if (mode === 'shop') require(__dirname + '/tasks/esign-shop-admin')(gulp, mode, liveReload, production, es6, lint);
+
   var assets = {
     scripts: {
       head: [
@@ -76,11 +78,27 @@
         // Add more here if needed
       ],
       body: [
-        paths.js + 'libs/jquery-3.2.1.js',
-        paths.js + 'polyfills/native-console.js',
-        paths.js + 'plugins/response/response.js',
-        paths.js + 'plugins/jquery-touchswipe/jquery.touchswipe.js',
-        //paths.js + 'es6example.js',
+        // Plugins
+        paths.assets + 'js/plugins/validationEngine/jquery.validationEngine.js',
+        paths.assets + 'js/plugins/validationEngine/languages/jquery.validationEngine-nl.js',
+
+        // Polyfills
+        paths.assets + 'js/Util.js',
+
+        // Libraries
+        paths.assets + 'js/libs/handlebars/handlebars.min.js',
+
+        // Inheritance
+        paths.js + '_HasParams.js',
+
+        // Page-specific
+        paths.js + 'ContactIndex.js',
+
+        // Objects
+        paths.js + 'Request.js',
+        paths.js + 'SearchController.js',
+        paths.js + 'Search.js',
+
         paths.js + 'esign.js'
         // Add more if needed
       ],
@@ -93,7 +111,10 @@
       ]
     },
     styles: [
-      // Add if needed
+      paths.css + 'plugins/fancybox/jquery.fancybox.css',
+      paths.css + 'plugins/chosen/chosen-custom.css',
+      paths.css + 'plugins/slick/slick.css'
+      // Add more if needed
     ]
   };
 
@@ -152,6 +173,10 @@
 
     var src = [dist.js + 'app.js', dist.js + 'head.js', dist.css + 'style.css'];
     if (!isLaravel) src.push(dist.js + 'contact.js');
+    if (mode === 'shop') {
+      src.push(dist.js + 'admin.js');
+      src.push(dist.css + 'admin.css');
+    }
 
     return gulp.src(src, {base: base})
       .pipe(sourcemaps.init({loadMaps: true}))
@@ -343,9 +368,9 @@
     }
 
     return task
-      .pipe(addsrc(assets.styles)) // other css files (plugins, libs)
-      .pipe(sass())
       .pipe(sourcemaps.init())
+      .pipe(sass())
+      .pipe(addsrc(assets.styles)) // other css files (plugins, libs)
       .pipe(autoprefixer({
         browsers: ['> 1%', 'Last 2 versions', 'IE 9'],
         cascade: false
@@ -419,14 +444,25 @@
 
   gulp.task('watcher', function (cb) {
     // TODO watcher for Laravel's blade files, watcher for CI views
+    var tasks = ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-fonts'];
+    if (mode === 'shop') {
+      tasks.push('watch-scripts-admin');
+      tasks.push('watch-styles-admin');
+    }
     return sequence(
-      ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-fonts'], cb
+      tasks, cb
     );
   });
+
+  gulp.task('dummy', function(cb) { cb(); });
 
   gulp.task('build', function(cb) {
     var tasks = ['images', 'scripts', 'styles', 'fonts'];
     if (mode === 'static') tasks.push('templates'); // render nunjucks templates
+    if (mode === 'shop') {
+      tasks.push('scripts-admin');
+      tasks.push('styles-admin');
+    }
     sequence('clean', tasks, 'version', cb);
   });
 
@@ -434,7 +470,7 @@
 
   gulp.task('watch', function(cb) {
     // Do a complete build first, then start watching, optionally start live reload
-    sequence('build', 'watcher', liveReload ? ['connect', 'open'] : [], cb);
+    sequence('build', 'watcher', liveReload ? ['connect', 'open'] : 'dummy', cb);
   });
 
   gulp.task('default', function() {

@@ -37,6 +37,7 @@
   var es6 = typeof argv.es6 !== typeof undefined;
   var lint = typeof argv.lint !== typeof undefined;
   var isLaravel = mode === 'shop' || mode === 'laravel';
+  var languages = ['en']; // used to copy needed validation engine language files
 
   // Vars used in tasks
   var paths = {};
@@ -117,6 +118,15 @@
       // Add more if needed
     ]
   };
+
+  var copy = [
+    // Add if needed
+  ];
+  var j;
+  for (j = 0; j < languages.length; j++) {
+    copy.push([paths.assets + 'js/libs/validation/languages/jquery.validationEngine-' + languages[j] + '.js',
+      dist.js + 'libs/validation/languages/'])
+  }
 
   // Image compression settings, by default JPEG & PNG compression rates equal to tinyPNG
   var imageConfig = {
@@ -291,6 +301,17 @@
       .pipe(tinypng('YOUR_API_CODE'))
       .pipe(gulp.dest(paths.images))
       ;
+  });
+
+  gulp.task('plugins', function() {
+    var i;
+    var task = gulp;
+    for (i = 0; i < copy.length; i++) {
+      task = task.src(copy[i][0])
+        .pipe(gulp.dest(copy[i][1]))
+      ;
+    }
+    return task;
   });
 
   // Svg sprite
@@ -468,7 +489,7 @@
   gulp.task('dummy', function(cb) { cb(); });
 
   gulp.task('build', function(cb) {
-    var tasks = ['images', 'scripts', 'styles', 'fonts'];
+    var tasks = ['images', 'scripts', 'styles', 'fonts', 'plugins'];
     if (mode === 'static') tasks.push('templates'); // render nunjucks templates
     if (mode === 'shop') {
       tasks.push('plugins-admin');

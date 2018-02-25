@@ -28,7 +28,8 @@
     babel = require('gulp-babel'),
     sassLint = require('gulp-sass-lint'),
     util = require('gulp-util'),
-    revkeep = require('gulp-rev-keep-original-name')
+    revkeep = require('gulp-rev-keep-original-name'),
+    rjs = require('gulp-requirejs')
   ;
 
   // Settings
@@ -80,30 +81,16 @@
         // Add more here if needed
       ],
       body: [
-        // Plugins
-        paths.assets + 'js/plugins/validationEngine/jquery.validationEngine.js',
-
-        // Polyfills
-        paths.assets + 'js/Util.js',
-
-        // Libraries
-        paths.assets + 'js/libs/handlebars/handlebars.min.js',
-
-        // Inheritance
-        paths.js + '_HasParams.js',
-
-        // Page-specific
-        paths.js + 'ContactIndex.js',
-
-        // Objects
-        paths.js + 'Request.js',
-        paths.js + 'SearchController.js',
-        paths.js + 'Search.js',
-
+        paths.js + 'libs/jquery-3.2.1.js',
+        paths.js + 'polyfills/native-console.js',
+        paths.js + 'plugins/response/response.js',
+        paths.js + 'plugins/jquery-touchswipe/jquery.touchswipe.js',
+        paths.js + 'es6example.js',
         paths.js + 'esign.js'
         // Add more if needed
       ],
       contact: [
+        paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
         paths.js + 'libs/validation/jquery.validationEngine.js',
         paths.js + 'googlemaps-styles.js',
         paths.js + 'contact.js'
@@ -111,9 +98,6 @@
       ]
     },
     styles: [
-      paths.css + 'plugins/fancybox/jquery.fancybox.css',
-      paths.css + 'plugins/chosen/chosen-custom.css',
-      paths.css + 'plugins/slick/slick.css'
       // Add more if needed
     ]
   };

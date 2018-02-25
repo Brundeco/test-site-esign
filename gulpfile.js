@@ -28,8 +28,7 @@
     babel = require('gulp-babel'),
     sassLint = require('gulp-sass-lint'),
     util = require('gulp-util'),
-    revkeep = require('gulp-rev-keep-original-name'),
-    rjs = require('gulp-requirejs')
+    revkeep = require('gulp-rev-keep-original-name')
   ;
 
   // Settings

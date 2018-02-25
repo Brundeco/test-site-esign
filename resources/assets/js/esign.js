@@ -1,3 +1,11 @@
+require([
+  '../../../node_modules/requirejs/require.js',
+  '../../../node_modules/jquery/dist/jquery.js',
+  'polyfills/native-console.js',
+  '../../../node_modules/response.js/response.js',
+  '../../../node_modules/jquery-touchswipe/jquery.touchSwipe.js'
+]);
+
 window.esign = window.esign || {};
 
 esign.cacheSelectors = function () {

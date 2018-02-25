@@ -1,4 +1,11 @@
-// Maps
+require([
+  '../../../node_modules/requirejs/require.js',
+  '../../../node_modules/jquery/dist/jquery.js',
+  'libs/validation/languages/jquery.validationEngine-nl.js',
+  'libs/validation/jquery.validationEngine.js',
+  'googlemaps-styles.js'
+]);
+
 $(function() {
 
   if(!Modernizr.touch) {

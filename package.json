@@ -51,6 +51,10 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "gulp-rev-keep-original-name": "0.0.3"
+    "gulp-requirejs": "^1.1.1",
+    "gulp-rev-keep-original-name": "0.0.3",
+    "jquery": "^3.3.1",
+    "jquery-touchswipe": "^1.6.18",
+    "response.js": "^0.10.0"
   }
 }

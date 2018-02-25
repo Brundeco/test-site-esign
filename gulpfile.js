@@ -28,7 +28,8 @@
     babel = require('gulp-babel'),
     sassLint = require('gulp-sass-lint'),
     util = require('gulp-util'),
-    revkeep = require('gulp-rev-keep-original-name')
+    revkeep = require('gulp-rev-keep-original-name'),
+    rjs = require('gulp-requirejs')
   ;
 
   // Settings
@@ -74,28 +75,6 @@
   if (mode === 'shop') require(__dirname + '/tasks/esign-shop-admin')(gulp, mode, liveReload, production, es6, lint);
 
   var assets = {
-    scripts: {
-      head: [
-        paths.js + 'libs/modernizr.min.js'
-        // Add more here if needed
-      ],
-      body: [
-        paths.js + 'libs/jquery-3.2.1.js',
-        paths.js + 'polyfills/native-console.js',
-        paths.js + 'plugins/response/response.js',
-        paths.js + 'plugins/jquery-touchswipe/jquery.touchswipe.js',
-        paths.js + 'es6example.js',
-        paths.js + 'esign.js'
-        // Add more if needed
-      ],
-      contact: [
-        paths.js + 'libs/validation/languages/jquery.validationEngine-nl.js',
-        paths.js + 'libs/validation/jquery.validationEngine.js',
-        paths.js + 'googlemaps-styles.js',
-        paths.js + 'contact.js'
-        // Add more if needed
-      ]
-    },
     styles: [
       // Add more if needed
     ]
@@ -323,13 +302,16 @@
 
   // Scripts head
   gulp.task('scripts-head', function() {
-    var task = gulp
-      .src(assets.scripts.head)
-      .pipe(sourcemaps.init())
-    ;
-    task = handleEs6(task);
-    return task
-      .pipe(concat('head.js'))
+    return rjs({
+      baseUrl: paths.js,
+      out: 'head.js',
+      generateSourceMaps: true,
+      name: 'head'
+    })
+      .on('error', function (err) {
+        util.log(util.colors.red('[Error]'), err.toString());
+      })
+      .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
@@ -339,31 +321,37 @@
 
   // Scripts body
   gulp.task('scripts-body', function() {
-    // TODO jshint?
-    var task = gulp
-      .src(assets.scripts.body)
-      .pipe(sourcemaps.init())
-    ;
-    task = handleEs6(task);
-    return task
-      .pipe(concat(mode === 'shop' ? 'client.js' : 'app.js'))
+    // // TODO jshint?
+    return rjs({
+      baseUrl: paths.js,
+      out: mode === 'shop' ? 'client.js' : 'app.js',
+      generateSourceMaps: true,
+      name: 'esign'
+    })
+      .on('error', function (err) {
+        util.log(util.colors.red('[Error]'), err.toString());
+      })
+      .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(customNotify({message: 'Scripts body merged'}))
-      ;
+    ;
   });
 
   // Scripts contact
   gulp.task('scripts-contact', function() {
     if (isLaravel) return gulp;
-    var task = gulp
-      .src(assets.scripts.contact)
-      .pipe(sourcemaps.init())
-    ;
-    task = handleEs6(task);
-    return task
-      .pipe(concat('contact.js'))
+    return rjs({
+      baseUrl: paths.js,
+      out: 'contact.js',
+      generateSourceMaps: true,
+      name: 'contact'
+    })
+      .on('error', function (err) {
+        util.log(util.colors.red('[Error]'), err.toString());
+      })
+      .pipe(sourcemaps.init({loadMaps: true}))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once

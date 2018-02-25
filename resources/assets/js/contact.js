@@ -1,6 +1,6 @@
 require([
-  '../../../node_modules/requirejs/require.js',
-  '../../../node_modules/jquery/dist/jquery.js',
+  'node_modules/requirejs/require',
+  'node_modules/jquery/dist/jquery',
   'libs/validation/languages/jquery.validationEngine-nl.js',
   'libs/validation/jquery.validationEngine.js',
   'googlemaps-styles.js'

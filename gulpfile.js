@@ -57,6 +57,9 @@
   paths.svg = paths.images + 'svg/';
   paths.fonts = paths.assets + 'fonts/';
   paths.babel = 'node_modules/babel-polyfill/dist/polyfill.js';
+  paths.requireJs = {
+    'node_modules': (mode === 'shop' ? '../' : '') + '../../../node_modules'
+  };
 
   var dist = {base: paths.root + 'static/'};
   if (isLaravel) dist.base = paths.root + 'public/';
@@ -306,7 +309,8 @@
       baseUrl: paths.js,
       out: 'head.js',
       generateSourceMaps: true,
-      name: 'head'
+      name: 'head',
+      paths: paths.requireJs
     })
       .on('error', function (err) {
         util.log(util.colors.red('[Error]'), err.toString());
@@ -326,7 +330,8 @@
       baseUrl: paths.js,
       out: mode === 'shop' ? 'client.js' : 'app.js',
       generateSourceMaps: true,
-      name: 'esign'
+      name: 'esign',
+      paths: paths.requireJs
     })
       .on('error', function (err) {
         util.log(util.colors.red('[Error]'), err.toString());
@@ -346,7 +351,8 @@
       baseUrl: paths.js,
       out: 'contact.js',
       generateSourceMaps: true,
-      name: 'contact'
+      name: 'contact',
+      paths: paths.requireJs
     })
       .on('error', function (err) {
         util.log(util.colors.red('[Error]'), err.toString());

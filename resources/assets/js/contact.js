@@ -1,9 +1,9 @@
 require([
-  'node_modules/requirejs/require',
-  'node_modules/jquery/dist/jquery',
-  'libs/validation/languages/jquery.validationEngine-nl.js',
-  'libs/validation/jquery.validationEngine.js',
-  'googlemaps-styles.js'
+  'requirejs/require',
+  'jquery/dist/jquery',
+  'js/libs/validation/languages/jquery.validationEngine-nl',
+  'js/libs/validation/jquery.validationEngine',
+  'js/googlemaps-styles'
 ]);
 
 $(function() {

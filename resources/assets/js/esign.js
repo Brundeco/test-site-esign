@@ -1,9 +1,9 @@
 require([
-  'node_modules/requirejs/require',
-  'node_modules/jquery/dist/jquery',
-  'polyfills/native-console.js',
-  'node_modules/response.js/response',
-  'node_modules/jquery-touchswipe/jquery.touchSwipe'
+  'requirejs/require',
+  'jquery/dist/jquery',
+  'js/polyfills/native-console',
+  'response.js/response',
+  'jquery-touchswipe/jquery.touchSwipe'
 ]);
 
 window.esign = window.esign || {};

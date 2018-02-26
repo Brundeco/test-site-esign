@@ -57,9 +57,8 @@
   paths.svg = paths.images + 'svg/';
   paths.fonts = paths.assets + 'fonts/';
   paths.babel = 'node_modules/babel-polyfill/dist/polyfill.js';
-  paths.requireJs = {
-    'node_modules': (mode === 'shop' ? '../' : '') + '../../../node_modules'
-  };
+  paths.requireJs = {'js': '../' + paths.assets + 'js/'};
+  if (mode === 'shop') paths.requireJs['client'] = '../' + paths.js;
 
   var dist = {base: paths.root + 'static/'};
   if (isLaravel) dist.base = paths.root + 'public/';
@@ -306,16 +305,16 @@
   // Scripts head
   gulp.task('scripts-head', function() {
     return rjs({
-      baseUrl: paths.js,
+      baseUrl: 'node_modules/',
       out: 'head.js',
       generateSourceMaps: true,
-      name: 'head',
+      name: '../' + paths.js + 'head',
       paths: paths.requireJs
     })
       .on('error', function (err) {
         util.log(util.colors.red('[Error]'), err.toString());
       })
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.init({loadMaps: false}))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
@@ -325,39 +324,39 @@
 
   // Scripts body
   gulp.task('scripts-body', function() {
-    // // TODO jshint?
+    // TODO jshint?
     return rjs({
-      baseUrl: paths.js,
+      baseUrl: 'node_modules/',
       out: mode === 'shop' ? 'client.js' : 'app.js',
       generateSourceMaps: true,
-      name: 'esign',
+      name: '../' + paths.js + 'esign',
       paths: paths.requireJs
     })
       .on('error', function (err) {
         util.log(util.colors.red('[Error]'), err.toString());
       })
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.init({loadMaps: false}))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
       .pipe(customNotify({message: 'Scripts body merged'}))
-    ;
+      ;
   });
 
   // Scripts contact
   gulp.task('scripts-contact', function() {
     if (isLaravel) return gulp;
     return rjs({
-      baseUrl: paths.js,
+      baseUrl: 'node_modules/',
       out: 'contact.js',
       generateSourceMaps: true,
-      name: 'contact',
+      name: '../' + paths.js + 'contact',
       paths: paths.requireJs
     })
       .on('error', function (err) {
         util.log(util.colors.red('[Error]'), err.toString());
       })
-      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.init({loadMaps: false}))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once

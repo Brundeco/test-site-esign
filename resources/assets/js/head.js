@@ -5,6 +5,6 @@
  */
 
 require([
-  'node_modules/requirejs/require',
-  'libs/modernizr.min.js'
+  'requirejs/require',
+  'js/libs/modernizr.min'
 ]);

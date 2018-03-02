@@ -84,7 +84,7 @@ esignContact.init = function () {
 
 /* Captcha */
 esignContact.formAjax = function () {
-  $('.form-ajax-captcha').submit(function(e) {
+  $('.form-ajax-recaptcha').submit(function(e) {
     e.preventDefault();
     var $form = $(this);
 
@@ -121,22 +121,9 @@ var onloadReCaptchaCallback = function() {
   });
 };
 
-// Callback of Google recaptcha
-function submitRecaptchaForm(token) {
-  var $form = $('#contact-form');
+esignContact.recaptchaFormSend = function(form){
 
-  esignContact.recaptchaFormSend($form);
-};
-
-// Callback of Google recaptcha
-function submitRecaptchaFormNewsletter(token) {
-  var $form = $('#form-newsletter');
-
-  esignContact.recaptchaFormSend($form);
-};
-
-esignContact.recaptchaFormSend = function($form){
-
+  $form = $(form);
   $form.find('input[type="submit"], button').attr('disabled', 'disabled');
 
   form_data = $form.serializeArray();

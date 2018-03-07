@@ -133,6 +133,7 @@
       }))
       .pipe(gulp.dest(dist.html))
       .pipe(first())
+      .pipe(connect.reload())
       .pipe(customNotify({message: 'Templates rendered'}));
   });
 
@@ -318,6 +319,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
+      .pipe(connect.reload())
       .pipe(customNotify({message: 'Scripts head merged'}))
       ;
   });
@@ -339,6 +341,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
+      .pipe(connect.reload())
       .pipe(customNotify({message: 'Scripts body merged'}))
       ;
   });
@@ -360,6 +363,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.js))
       .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
+      .pipe(connect.reload())
       .pipe(customNotify({message: 'Scripts contact merged'}))
       ;
   });
@@ -388,6 +392,7 @@
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist.css))
       .pipe(filter(['**/*.css'])) // Filter so notification is only shown once
+      .pipe(connect.reload())
       .pipe(customNotify({message: 'Styles merged'}));
   });
 
@@ -397,6 +402,7 @@
       .src(paths.images + '**/*')
       .pipe(gulp.dest(dist.images))
       .pipe(first())
+      .pipe(connect.reload())
       .pipe(customNotify({message: 'Images copied'}));
 
   });
@@ -406,6 +412,8 @@
     return gulp
       .src(paths.fonts + '**/*')
       .pipe(gulp.dest(dist.fonts))
+      .pipe(first())
+      .pipe(connect.reload())
       .pipe(customNotify({message: 'Fonts copied'}));
     // TODO check if other filetypes can be auto-generated
   });

@@ -7,4 +7,4 @@
 require([
   'requirejs/require',
   'js/libs/modernizr.min'
-]);
+], function() {});

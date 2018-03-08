@@ -382,7 +382,9 @@
 
     return task
       .pipe(sourcemaps.init())
-      .pipe(sass())
+      .pipe(sass({}).on('error', function(err) {
+        return customNotify().write(err);
+      }))
       .pipe(addsrc(assets.styles)) // other css files (plugins, libs)
       .pipe(autoprefixer({
         browsers: ['> 1%', 'Last 2 versions', 'IE 9'],

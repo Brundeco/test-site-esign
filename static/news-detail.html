@@ -1,11 +1,11 @@
-{% set site_title = title + ' - Template' %}
+
 <!doctype html>
 <html class="no-js" lang="nl">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{ site_title }}</title>
-  <meta name="description" content="{{ description }}">
+  <title>Nieuws detail - Template</title>
+  <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Made by Esign -->
@@ -15,19 +15,19 @@
   <meta name="robots" content="all,index,follow">
   <meta http-equiv="cleartype" content="on">
 
-  {# <meta property="fb:app_id" content=""> #}
-  <meta property="og:title" content="{{ site_title }}">
-  <meta property="og:description" content="{{ description }}" >
+
+  <meta property="og:title" content="Nieuws detail - Template">
+  <meta property="og:description" content="" >
   <meta property="og:url" content="nl">
   <meta property="og:image" content="assets/images/share-image.jpg" >
   <meta property="og:site_name" content="Template">
   <meta property="og:type" content="website">
-  {# <meta property="article:author" content=""> #}
 
-  {# <meta name="twitter:site" content="@"> #}
+
+
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ site_title }}">
-  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:title" content="Nieuws detail - Template">
+  <meta name="twitter:description" content="">
   <meta name="twitter:image" content="assets/images/share-image.jpg">
 
   <link rel="shortcut icon" href="assets/images/icons/favicon.ico" type="image/x-icon">
@@ -65,7 +65,7 @@
   </script>
 </head>
 
-<body class="{{ bodyclass }}">
+<body class="news-detail">
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="page-wrap">
@@ -82,10 +82,10 @@
             <i class="icon-hamburger" aria-hidden="true"></i><span>Menu</span>
           </button>
           <ul class="main-nav__wrap">
-            <li{% if menuitem == 'home' %} class="active"{% endif %}><a href="index.html">Home</a></li>
-            <li{% if menuitem == 'components' %} class="active"{% endif %}><a href="components.html">Components</a></li>
-            <li{% if menuitem == 'news' %} class="active"{% endif %}><a href="news.html">News</a></li>
-            <li{% if menuitem == 'contact' %} class="active"{% endif %}><a href="contact.html">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="components.html">Components</a></li>
+            <li class="active"><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -94,7 +94,28 @@
 
     <main id="main" class="main">
 
-      {% block content %}{% endblock %}
+
+<div class="container">
+
+  <article class="article-detail">
+    <header class="article-detail__header">
+      <h1>Lorem ipsum</h1>
+      <time datetime="2017-01-01">01/01/2017</time>
+    </header>
+
+    <div class="article-detail__image">
+      <img src="https://dummyimage.com/600x400/000/fff" alt="Lorem ipsum" />
+    </div>
+
+    <div class="article-detail__body">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+      <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+      <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+    </div>
+  </article>
+
+</div>
+
 
     </main>
 
@@ -108,7 +129,7 @@
         </div>
         <div class="grid__item medium--one-half">
           <p>
-            <a class="esign" href="https://www.esign.eu/esign-heet-u-welkom" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat.">Site by Esign</a>
+            <a class="esign" href="http://www.esign.eu/esign-heet-u-welkom" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat.">Site by Esign</a>
           </p>
         </div>
       </div>
@@ -116,12 +137,6 @@
   </footer>
 
   <script src="assets/js/app.js"></script>
-  {% if bodyclass == 'contact' or bodyclass == 'components' %}
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ API_KEY }}&language=nl"></script>
-    <script>
-      var baseUrl = 'http://localhost:3000/frontend-template/public/';
-    </script>
-    <script src="assets/js/contact.js"></script>
-  {% endif %}
+
 </body>
 </html>

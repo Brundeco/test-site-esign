@@ -157,6 +157,7 @@ elixir(function (mix) {
     mix.browserSync({
       // If you are developing locally point this to your local url
       proxy: 'localhost:8888/frontend-template/static',
+      // Browsersync reloading too much? Try a more specific watch location / reload trigger
       files: [basePath + '**/*'],
       injectChanges: true,
       notify: false

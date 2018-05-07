@@ -127,8 +127,6 @@ elixir(function (mix) {
   mix.copy('resources/assets/fonts', basePath + 'assets/fonts');
 
   // Styles
-  //mix.less('style.less', basePath + 'assets/css/style.css');
-
   mix.sass('style.scss', basePath + 'assets/css/style.css');
 
   // Svg

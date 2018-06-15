@@ -269,15 +269,24 @@
       ;
   });
 
-  gulp.task('plugins', function() {
+  function copyPlugin(copy, i)
+  {
+    var taskName = 'plugins-subtask-' + i;
+    gulp.task(taskName, function() {
+      return gulp.src(copy[0])
+        .pipe(gulp.dest(copy[1]))
+        ;
+    });
+    return taskName;
+  }
+
+  gulp.task('plugins', function(cb) {
     var i;
-    var task = gulp;
+    var tasks = [];
     for (i = 0; i < copy.length; i++) {
-      task = task.src(copy[i][0])
-        .pipe(gulp.dest(copy[i][1]))
-      ;
+      tasks.push(copyPlugin(copy[i], i));
     }
-    return task;
+    sequence(tasks, cb);
   });
 
   // Svg sprite

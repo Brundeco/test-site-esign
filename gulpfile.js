@@ -117,7 +117,7 @@
   var customNotify = function(opts) {
     var defaults = {
       icon: __dirname + '/notification.png',
-      title: 'Gulp'
+      title: 'Esign Gulp'
     };
     for (var key in opts) {
       if (opts.hasOwnProperty(key)) defaults[key] = opts[key];

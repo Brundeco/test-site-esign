@@ -33,12 +33,14 @@
   ;
 
   // Settings
-  var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, shop, static TODO Craft
+  var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, shop, static
   var liveReload = typeof argv.liveReload !== typeof liveReload;
   var production = typeof argv.production !== typeof undefined;
   var es6 = typeof argv.es6 !== typeof undefined;
   var lint = typeof argv.lint !== typeof undefined;
   var isLaravel = mode === 'shop' || mode === 'laravel';
+  var isCi = mode === 'ci';
+  var isFramework = isLaravel || isCi;
   var languages = ['en']; // used to copy needed validation engine language files
 
   // Vars used in tasks
@@ -62,16 +64,14 @@
 
   var dist = {base: paths.root + 'static/'};
   if (isLaravel) dist.base = paths.root + 'public/';
-  if (mode === 'ci') dist.base = paths.root + ''; // Assets in root
-  dist.assets = dist.base + 'assets/';
-  if (isLaravel) dist.assets = dist.base + 'build/';
+  if (isCi) dist.base = paths.root + 'assets/';
+  if (isFramework) dist.assets = dist.base + 'build/';
   dist.css = dist.assets + 'css/';
   dist.js = dist.assets + 'js/';
   dist.images = dist.assets + 'images/';
   dist.fonts = dist.assets + 'fonts/';
   dist.html = dist.base;
-  dist.revManifest = dist.assets; // CI
-  if (isLaravel) dist.revManifest = dist.base;
+  if (isFramework) dist.revManifest = dist.base;
   if (mode === 'static') dist.revManifest = dist.base;
 
   if (mode === 'shop') require(__dirname + '/tasks/esign-shop-admin')(gulp, mode, liveReload, production, es6, lint);
@@ -143,7 +143,6 @@
     var fCss = filter(['**/*.css'], {restore: true});
     var fOwnCss = filter([dist.css + 'style.css'], {restore: true});
     var base = dist.base;
-    if (mode === 'ci') base = dist.assets;
 
     var src = [
       dist.js + (mode === 'shop' ? 'client.js' : 'app.js'),
@@ -174,8 +173,11 @@
             object[key.replace(regex, '')] = value.replace(regex, '');
           },
           revise: function (origUrl, fullUrl, manifest) {
-            var revUrl = manifest[origUrl.replace(/^\.\.\//, '')];
-            return '../' + revUrl;
+            if (manifest.hasOwnProperty(origUrl.replace(/^\.\.\//, ''))) {
+              var revUrl = manifest[origUrl.replace(/^\.\.\//, '')];
+              return '../' + revUrl;
+            }
+            return origUrl;
           }
         }))
         .pipe(fOwnCss.restore)
@@ -190,7 +192,7 @@
     task = task.pipe(rev());
     if (!production) task = task.pipe(revkeep());
     task = task.pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
+      .pipe(gulp.dest(isFramework ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
         merge: true
@@ -206,7 +208,6 @@
 
   gulp.task('version-images', function() {
     var base = dist.base;
-    if (mode === 'ci') base = dist.assets;
     var task = gulp
       .src(dist.images + '**/*', {base: base});
 
@@ -216,7 +217,7 @@
 
     task = task.pipe(rev());
     if (!production) task = task.pipe(revkeep());
-    task = task.pipe(gulp.dest(isLaravel ? dist.base : dist.assets))
+    task = task.pipe(gulp.dest(isFramework ? dist.base : dist.assets))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
         merge: true

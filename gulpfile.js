@@ -65,6 +65,7 @@
   var dist = {base: paths.root + 'static/'};
   if (isLaravel) dist.base = paths.root + 'public/';
   if (isCi) dist.base = paths.root + 'assets/';
+  dist.assets = dist.base + 'assets/';
   if (isFramework) dist.assets = dist.base + 'build/';
   dist.css = dist.assets + 'css/';
   dist.js = dist.assets + 'js/';

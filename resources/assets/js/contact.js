@@ -1,26 +1,3 @@
-// Maps
-$(function() {
-
-  if(!Modernizr.touch) {
-    $('.validate').validationEngine();
-  } else {
-    $('.validate').validationEngine({scroll: false});
-  }
-
-  var mapData = {
-    title: 'Esign',
-    lat: 51.0325538,
-    long: 3.7333816,
-    externUrl: 'https://www.google.be/maps/place/Esign+-+Web+%26+Graphics/@51.0325538,3.7333816,19z/data=!3m1!4b1!4m5!3m4!1s0x47c373970c763623:0xde317546f86febc9!8m2!3d51.0325538!4d3.7339288'
-  };
-
-  if ($('#map').length > 0) {
-    var map = addContactGoogleMaps('map', mapData.lat, mapData.long);
-    addContactGoogleMapsMarker(map, mapData.lat, mapData.long, mapData.title, mapData.externUrl);
-  }
-
-});
-
 function addContactGoogleMaps(container, latitude, longitude) {
 
   var zoom = 15,
@@ -157,6 +134,36 @@ esignContact.recaptchaFormSend = function(form){
 
 };
 
+require([
+  'requirejs/require',
+  'jquery/dist/jquery',
+  'js/libs/validation/languages/jquery.validationEngine-nl',
+  'js/libs/validation/jquery.validationEngine',
+  'js/googlemaps-styles'
+], function() {
+  $(function() {
 
-// initialize on docready
-$(esignContact.init);
+    if(!Modernizr.touch) {
+      $('.validate').validationEngine();
+    } else {
+      $('.validate').validationEngine({scroll: false});
+    }
+
+    var mapData = {
+      title: 'Esign',
+      lat: 51.0325538,
+      long: 3.7333816,
+      externUrl: 'https://www.google.be/maps/place/Esign+-+Web+%26+Graphics/@51.0325538,3.7333816,19z/data=!3m1!4b1!4m5!3m4!1s0x47c373970c763623:0xde317546f86febc9!8m2!3d51.0325538!4d3.7339288'
+    };
+
+    if ($('#map').length > 0) {
+      var map = addContactGoogleMaps('map', mapData.lat, mapData.long);
+      addContactGoogleMapsMarker(map, mapData.lat, mapData.long, mapData.title, mapData.externUrl);
+    }
+
+  });
+
+
+  // initialize on docready
+  $(esignContact.init);
+});

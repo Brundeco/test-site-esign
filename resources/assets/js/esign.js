@@ -84,5 +84,13 @@ esign.gaDevelopment = function() {
   }
 };
 
-// Initialize on docready
-$(esign.init);
+require([
+  'requirejs/require',
+  'jquery/dist/jquery',
+  'js/polyfills/native-console',
+  'response.js/response',
+  'jquery-touchswipe/jquery.touchSwipe'
+], function() {
+  // Initialize on docready
+  $(esign.init);
+});

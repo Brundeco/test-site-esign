@@ -108,7 +108,6 @@
 
   if (es6) {
     assets.scripts.body.unshift(paths.babel);
-    assets.scripts.contact.unshift(paths.babel);
   }
 
   var es6Scripts = [
@@ -149,7 +148,6 @@
       dist.js + (mode === 'shop' ? 'client.js' : 'app.js'),
       dist.js + 'head.js',
       dist.css + (mode === 'shop' ? 'client.css' : 'style.css')];
-    if (!isLaravel) src.push(dist.js + 'contact.js');
     if (mode === 'shop') {
       src.push(dist.js + 'admin.js');
       src.push(dist.css + 'admin.css');
@@ -357,28 +355,6 @@
       ;
   });
 
-  // Scripts contact
-  gulp.task('scripts-contact', function() {
-    if (isLaravel) return gulp;
-    return rjs({
-      baseUrl: 'node_modules/',
-      out: 'contact.js',
-      generateSourceMaps: true,
-      name: '../' + paths.js + 'contact',
-      paths: paths.requireJs
-    })
-      .on('error', function (err) {
-        util.log(util.colors.red('[Error]'), err.toString());
-      })
-      .pipe(sourcemaps.init({loadMaps: false}))
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(dist.js))
-      .pipe(filter(['**/*.js'])) // Filter so notification is only shown once
-      .pipe(connect.reload())
-      .pipe(customNotify({message: 'Scripts contact merged'}))
-      ;
-  });
-
   // Styles
   gulp.task('styles', function() {
     var task = gulp
@@ -433,7 +409,7 @@
 
   // Scripts
   gulp.task('scripts', function(cb) {
-    return sequence(['scripts-head', 'scripts-body', 'scripts-contact'], cb);
+    return sequence(['scripts-head', 'scripts-body'], cb);
     // TODO check if we can apply a linter
   });
 

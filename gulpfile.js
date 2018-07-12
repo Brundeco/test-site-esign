@@ -34,7 +34,7 @@
 
   // Settings
   var mode = typeof argv.mode !== typeof undefined ? argv.mode : 'static'; // ci, laravel, shop, static
-  var liveReload = typeof argv.liveReload !== typeof liveReload;
+  var liveReload = typeof argv.liveReload !== typeof undefined;
   var production = typeof argv.production !== typeof undefined;
   var es6 = typeof argv.es6 !== typeof undefined;
   var lint = typeof argv.lint !== typeof undefined;

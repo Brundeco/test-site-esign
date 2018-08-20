@@ -409,7 +409,9 @@
 
   // Scripts
   gulp.task('scripts', function(cb) {
-    return sequence(['scripts-head', 'scripts-body'], cb);
+    return sequence(['scripts-body'], cb);
+    // only add 'scripts-head' when you really need it
+
     // TODO check if we can apply a linter
   });
 

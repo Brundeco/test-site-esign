@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "development": "gulp watch",
+    "live": "gulp watch --live-reload",
+    "production": "gulp --production"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,9 @@
 window.esign = window.esign || {};
 
 esign.init = function () {
+
+  $('html').removeClass('no-js').addClass('js');
+
   Response.create({
     prop: "width",
     prefix: "min-width- r src",

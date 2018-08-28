@@ -191,7 +191,7 @@
     task = task.pipe(rev());
     if (!production) task = task.pipe(revkeep());
     task = task.pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(isFramework ? dist.base : dist.assets))
+      .pipe(gulp.dest(dist.base))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
         merge: true
@@ -216,7 +216,7 @@
 
     task = task.pipe(rev());
     if (!production) task = task.pipe(revkeep());
-    task = task.pipe(gulp.dest(isFramework ? dist.base : dist.assets))
+    task = task.pipe(gulp.dest(dist.base))
       .pipe(rev.manifest(dist.revManifest + 'rev-manifest.json', {
         base: dist.revManifest,
         merge: true

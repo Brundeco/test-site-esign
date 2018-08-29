@@ -9,7 +9,8 @@
   "scripts": {
     "development": "gulp watch",
     "live": "gulp watch --live-reload",
-    "production": "gulp --production"
+    "production": "gulp --production",
+    "sprite": "gulp sprites"
   },
   "repository": {
     "type": "git",

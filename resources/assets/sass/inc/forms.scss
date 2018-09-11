@@ -144,6 +144,36 @@ input[type="search"] { -webkit-appearance: none; }
 // Style file upload button
 ::-ms-browse, ::-webkit-file-upload-button { }
 
+.checkbox {
+  label {
+    margin-left: 30px;
+    position: relative;
+    line-height: 22px;
+    span {
+      display: inline-block;
+      width: 20px; height: 20px;
+      border: 1px solid $black;
+      position: absolute;
+      left: -30px;
+    }
+  }
+  input {
+    display: none;
+    &:checked {
+      + label span:after {
+        content: '';
+        border: solid $black;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: rotate(45deg) translate(-85%, -15%);
+      }
+    }
+  }
+}
+
 // Forms
 form {
   .row {

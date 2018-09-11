@@ -965,6 +965,33 @@ input[type="search"] {
 ::-webkit-outer-spin-button {
   -webkit-appearance: none; }
 
+.checkbox label {
+  margin-left: 30px;
+  position: relative;
+  line-height: 22px; }
+  .checkbox label span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #444;
+    position: absolute;
+    left: -30px; }
+
+.checkbox input {
+  display: none; }
+  .checkbox input:checked + label span:after {
+    content: '';
+    border: solid #444;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: rotate(45deg) translate(-85%, -15%);
+    -ms-transform: rotate(45deg) translate(-85%, -15%);
+    transform: rotate(45deg) translate(-85%, -15%); }
+
 form .row {
   margin-bottom: 0; }
 

@@ -479,7 +479,7 @@
   gulp.task('dummy', function(cb) { cb(); });
 
   gulp.task('build', function(cb) {
-    var tasks = ['images', 'scripts', 'styles', 'fonts', 'plugins'];
+    var tasks = ['images', 'scripts', 'styles', 'fonts', 'plugins', 'manifest'];
     if (mode === 'static') tasks.push('templates'); // render nunjucks templates
     if (mode === 'shop') {
       tasks.push('plugins-admin');

@@ -1,5 +1,8 @@
 {
-  "name": "Esign",
+  "name": "",
+  "short_name": "",
+  "background_color": "#ffffff",
+  "description": "",
   "icons": [
     {
       "src": "\/assets\/images\/icons\/android-icon-36x36.png",

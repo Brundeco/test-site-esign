@@ -61,6 +61,7 @@
   paths.babel = 'node_modules/babel-polyfill/dist/polyfill.js';
   paths.requireJs = {'js': '../' + paths.assets + 'js/'};
   if (mode === 'shop') paths.requireJs['client'] = '../' + paths.js;
+  paths.manifest = paths.resources + 'manifest/';
 
   var dist = {base: paths.root + 'static/'};
   if (isLaravel) dist.base = paths.root + 'public/';
@@ -415,6 +416,17 @@
     // TODO check if we can apply a linter
   });
 
+  // Manifest
+  gulp.task('manifest', function() {
+    return gulp
+      .src(paths.manifest + '**/*')
+      .pipe(gulp.dest(dist.base))
+      .pipe(first())
+      .pipe(connect.reload())
+      .pipe(customNotify({message: 'Manifest copied'}));
+    // TODO check if other filetypes can be auto-generated
+  });
+
   // Start live reload server
   gulp.task('connect', function () {
     return connect.server({
@@ -450,9 +462,13 @@
     return gulp.watch(paths.fonts + '**/*', ['fonts']);
   });
 
+  gulp.task('watch-manifest', function() {
+    return gulp.watch(paths.manifest + '**/*', ['manifest']);
+  });
+
   gulp.task('watcher', function (cb) {
     // TODO watcher for Laravel's blade files, watcher for CI views
-    var tasks = ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-fonts'];
+    var tasks = ['watch-scripts', 'watch-styles', 'watch-nunjucks', 'watch-images', 'watch-fonts', 'watch-manifest'];
     if (mode === 'shop') {
       tasks.push('watch-scripts-admin');
       tasks.push('watch-styles-admin');

@@ -177,33 +177,38 @@ esign.formAjaxRecaptcha = function () {
 esign.recaptchaFormSend = function (form) {
   $form = $(form);
   $form.find('input[type="submit"], button').attr('disabled', 'disabled');
-  form_data = $form.serializeArray();
 
-  $.post($form.attr('action'), form_data, function (data) {
+  $.ajax({
+    type: 'POST',
+    url:$form.attr('action'),
+    data: new FormData($form[0]),
+    processData: false,
+    // Allows us to get file fields via JS
+    contentType: false,
+    success: function(data) {
+      $('li').removeClass('error');
+      var $result = $form.find('.result');
 
-    $('li').removeClass('error');
-    var $result = $form.find('.result');
+      if (data.errors === false) {
+        $form.html(data.result);
 
-    if (data.errors === false) {
-      $form.html(data.result);
+        if (typeof ga === "function") {
+          ga('send', 'pageview', $form.attr('action'));
+        }
 
-      if (typeof ga === "function") {
-        ga('send', 'pageview', $form.attr('action'));
+        //todo GTM trigger event
+
+      } else {
+        $result.html(data.result);
+        if (data.fields) {
+          $.each(data.fields, function (i, field) {
+            $('input[name="' + field + '"],textarea[name="' + field + '"]').addClass('error');
+          });
+        }
       }
 
-      //todo GTM trigger event
-
-    } else {
-      $result.html(data.result);
-      if (data.fields) {
-        $.each(data.fields, function (i, field) {
-          $('input[name="' + field + '"],textarea[name="' + field + '"]').addClass('error');
-        });
-      }
+      $form.find('input[type="submit"], button').removeAttr('disabled');
     }
-
-    $form.find('input[type="submit"], button').removeAttr('disabled');
-
   }).fail(function (response) {
     alert('Error: ' + response.responseText);
   });

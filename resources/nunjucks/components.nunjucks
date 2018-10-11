@@ -205,6 +205,22 @@
               <textarea name="message" id="message" class="validate[required]"></textarea>
             </li>
             <li>
+              <div class="radio">
+                <input type="radio" id="radio-1" name="radio" value="1" class="validate[required]" />
+                <label for="radio-1">Option 1</label>
+              </div>
+              <div class="radio">
+                <input type="radio" id="radio-2" name="radio" value="1" class="validate[required]" />
+                <label for="radio-2">Option 2</label>
+              </div>
+            </li>
+            <li>
+              <div class="checkbox">
+                <input type="checkbox" id="privacy" name="privacy" value="1" class="validate[required]" />
+                <label for="privacy">I agree my data will be processed in accordance with the privacy policy.</label>
+              </div>
+            </li>
+            <li>
               <input type="submit" value="Verzenden" class="submit" />
             </li>
           </ul>

@@ -206,6 +206,12 @@ textarea {
 .invisible {
   visibility: hidden; }
 
+/*
+  This mixin can be used to set the object-fit:
+  @include object-fit(contain);
+  or object-fit and object-position:
+  @include object-fit(cover, top);
+*/
 /*============================================================================
   GRID
 ==============================================================================*/
@@ -975,32 +981,59 @@ input[type="search"] {
 ::-webkit-outer-spin-button {
   -webkit-appearance: none; }
 
-.checkbox label {
-  margin-left: 30px;
-  position: relative;
-  line-height: 22px; }
-  .checkbox label span {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #444;
+.checkbox, .radio {
+  position: relative; }
+  .checkbox label, .radio label {
+    padding-left: 35px;
+    cursor: pointer; }
+    .checkbox label:before, .checkbox label:after, .radio label:before, .radio label:after {
+      content: "";
+      display: block;
+      position: absolute;
+      -webkit-transform: 0.25s cubic-bezier(0, 0, 0.58, 1);
+      -ms-transform: 0.25s cubic-bezier(0, 0, 0.58, 1);
+      transform: 0.25s cubic-bezier(0, 0, 0.58, 1); }
+    .checkbox label:before, .radio label:before {
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #B4B4B4; }
+    .checkbox label:after, .radio label:after {
+      top: 2px;
+      left: 6px;
+      border: solid #444;
+      border-width: 0 3px 3px 0;
+      width: 8px;
+      height: 13px;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      opacity: 0; }
+  .checkbox input[type="checkbox"], .checkbox input[type="radio"], .radio input[type="checkbox"], .radio input[type="radio"] {
     position: absolute;
-    left: -30px; }
+    top: 0;
+    left: 0;
+    z-index: -1;
+    visibility: hidden; }
+    .checkbox input[type="checkbox"]:checked + label:before, .checkbox input[type="radio"]:checked + label:before, .radio input[type="checkbox"]:checked + label:before, .radio input[type="radio"]:checked + label:before {
+      border-color: #777; }
+    .checkbox input[type="checkbox"]:checked + label:after, .checkbox input[type="radio"]:checked + label:after, .radio input[type="checkbox"]:checked + label:after, .radio input[type="radio"]:checked + label:after {
+      opacity: 1; }
 
-.checkbox input {
-  display: none; }
-  .checkbox input:checked + label span:after {
-    content: '';
-    border: solid #444;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: rotate(45deg) translate(-85%, -15%);
-    -ms-transform: rotate(45deg) translate(-85%, -15%);
-    transform: rotate(45deg) translate(-85%, -15%); }
+.radio label:before, .radio label:after {
+  border-radius: 100%; }
+
+.radio label:after {
+  border: 0;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background-color: #444; }
 
 form .row {
   margin-bottom: 0; }
@@ -1604,5 +1637,4 @@ article {
   .medium--one-quarter {
     width: 25%; } }
 
-
-//# sourceMappingURL=style.css.map
+/*# sourceMappingURL=style.css.map */

@@ -196,30 +196,37 @@ esign.formAjaxRecaptcha = () => {
 esign.recaptchaFormSend = (form) => {
   const $form = $(form);
   $form.find('input[type="submit"], button').attr('disabled', 'disabled');
-  const formData = $form.serializeArray();
 
-  $.post($form.attr('action'), formData, (data) => {
-    $('li').removeClass('error');
-    const $result = $form.find('.result');
+  $.ajax({
+    type: 'POST',
+    url: $form.attr('action'),
+    data: new FormData($form[0]),
+    processData: false,
+    // Allows us to get file fields via JS
+    contentType: false,
+    success(data) {
+      $('li').removeClass('error');
+      const $result = $form.find('.result');
 
-    if (data.errors === false) {
-      $form.html(data.result);
+      if (data.errors === false) {
+        $form.html(data.result);
 
-      // Place some conversion tracking here
-      if (typeof ga === 'function') {
-        ga('send', 'pageview', $form.attr('action'));
+        if (typeof ga === 'function') {
+          ga('send', 'pageview', $form.attr('action'));
+        }
+
+        // todo GTM trigger event
+      } else {
+        $result.html(data.result);
+        if (data.fields) {
+          $.each(data.fields, (i, field) => {
+            $(`input[name="${field}"],textarea[name="${field}"]`).addClass('error');
+          });
+        }
       }
-    } else {
-      $result.html(data.result);
-      if (data.fields) {
-        $.each(data.fields, (i, field) => {
-          const $fields = $(`input[name="${field}"], textarea[name="${field}"]`);
-          $fields.addClass('error');
-        });
-      }
-    }
 
-    $form.find('input[type="submit"], button').removeAttr('disabled');
+      $form.find('input[type="submit"], button').removeAttr('disabled');
+    },
   }).fail((response) => {
     // eslint-disable-next-line no-console
     console.log(`Error: ${response.responseText}`);

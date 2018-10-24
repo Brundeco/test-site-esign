@@ -62,7 +62,8 @@ ul.grid-uniform {
   }
 }
 
-// Gutterless grid
+
+// Grid gutter
 .grid--full {
   @extend .grid;
   margin-left: 0;
@@ -72,15 +73,23 @@ ul.grid-uniform {
   }
 }
 
-// Grid gutter exceptions
-// .grid--g40 {
-//   @extend .grid;
-//   margin-left: -40px;
-//
-//   > .grid__item {
-//     padding-left: 40px;
-//   }
-// }
+.grid--half {
+  @extend .grid;
+  margin-left: -$gutter/2;
+
+  > .grid__item {
+    padding-left: $gutter/2;
+  }
+}
+
+.grid--x2 {
+  @extend .grid;
+  margin-left: -$gutter*2;
+
+  > .grid__item {
+    padding-left: $gutter*2;
+  }
+}
 
 
 // Widths

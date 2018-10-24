@@ -48,6 +48,12 @@
               <textarea name="message" id="message" class="validate[required]"></textarea>
             </li>
             <li>
+              <div class="checkbox">
+                <input type="checkbox" id="privacy" name="privacy" value="1" class="validate[required]" data-prompt-position="topLeft:125" />
+                <label for="privacy">I agree my data will be processed in accordance with the privacy policy.</label>
+              </div>
+            </li>
+            <li>
               <input type="submit" value="Verzenden" class="submit" />
             </li>
           </ul>

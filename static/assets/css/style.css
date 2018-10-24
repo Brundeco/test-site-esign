@@ -206,19 +206,25 @@ textarea {
 .invisible {
   visibility: hidden; }
 
+/*
+  This mixin can be used to set the object-fit:
+  @include object-fit(contain);
+  or object-fit and object-position:
+  @include object-fit(cover, top);
+*/
 /*============================================================================
   GRID
 ==============================================================================*/
-.grid, .grid--rev, .grid--full {
+.grid, .grid--rev, .grid--full, .grid--half, .grid--x2 {
   *zoom: 1;
   margin: 0 0 20px -20px; }
-  .grid:before, .grid--rev:before, .grid--full:before, .grid:after, .grid--rev:after, .grid--full:after {
+  .grid:before, .grid--rev:before, .grid--full:before, .grid--half:before, .grid--x2:before, .grid:after, .grid--rev:after, .grid--full:after, .grid--half:after, .grid--x2:after {
     display: table;
     content: " "; }
-  .grid:after, .grid--rev:after, .grid--full:after {
+  .grid:after, .grid--rev:after, .grid--full:after, .grid--half:after, .grid--x2:after {
     clear: both; }
 
-ul.grid, ul.grid--rev, ul.grid--full,
+ul.grid, ul.grid--rev, ul.grid--full, ul.grid--half, ul.grid--x2,
 ul.grid-uniform {
   list-style: none;
   padding: 0; }
@@ -240,6 +246,16 @@ ul.grid-uniform {
   margin-left: 0; }
   .grid--full > .grid__item {
     padding-left: 0; }
+
+.grid--half {
+  margin-left: -10px; }
+  .grid--half > .grid__item {
+    padding-left: 10px; }
+
+.grid--x2 {
+  margin-left: -40px; }
+  .grid--x2 > .grid__item {
+    padding-left: 40px; }
 
 .one-whole {
   width: 100%; }
@@ -965,6 +981,60 @@ input[type="search"] {
 ::-webkit-outer-spin-button {
   -webkit-appearance: none; }
 
+.checkbox, .radio {
+  position: relative; }
+  .checkbox label, .radio label {
+    padding-left: 35px;
+    cursor: pointer; }
+    .checkbox label:before, .checkbox label:after, .radio label:before, .radio label:after {
+      content: "";
+      display: block;
+      position: absolute;
+      -webkit-transform: 0.25s cubic-bezier(0, 0, 0.58, 1);
+      -ms-transform: 0.25s cubic-bezier(0, 0, 0.58, 1);
+      transform: 0.25s cubic-bezier(0, 0, 0.58, 1); }
+    .checkbox label:before, .radio label:before {
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #B4B4B4; }
+    .checkbox label:after, .radio label:after {
+      top: 2px;
+      left: 6px;
+      border: solid #444;
+      border-width: 0 3px 3px 0;
+      width: 8px;
+      height: 13px;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      opacity: 0; }
+  .checkbox input[type="checkbox"], .checkbox input[type="radio"], .radio input[type="checkbox"], .radio input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    visibility: hidden; }
+    .checkbox input[type="checkbox"]:checked + label:before, .checkbox input[type="radio"]:checked + label:before, .radio input[type="checkbox"]:checked + label:before, .radio input[type="radio"]:checked + label:before {
+      border-color: #777; }
+    .checkbox input[type="checkbox"]:checked + label:after, .checkbox input[type="radio"]:checked + label:after, .radio input[type="checkbox"]:checked + label:after, .radio input[type="radio"]:checked + label:after {
+      opacity: 1; }
+
+.radio label:before, .radio label:after {
+  border-radius: 100%; }
+
+.radio label:after {
+  border: 0;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background-color: #444; }
+
 form .row {
   margin-bottom: 0; }
 
@@ -1149,9 +1219,7 @@ body {
    ========================================================================== */
 .icon {
   display: inline-block;
-  vertical-align: middle;
-  -webkit-transition: 0.25s cubic-bezier(0, 0, 0.58, 1);
-  transition: 0.25s cubic-bezier(0, 0, 0.58, 1); }
+  vertical-align: middle; }
 
 .icon-hamburger, .icon-hamburger:before, .icon-hamburger:after {
   width: 24px;
@@ -1343,7 +1411,7 @@ html.no-flexbox .equal-h {
    ========================================================================== */
 .page-footer {
   position: relative; }
-  .page-footer .grid, .page-footer .grid--rev, .page-footer .grid--full {
+  .page-footer .grid, .page-footer .grid--rev, .page-footer .grid--full, .page-footer .grid--half, .page-footer .grid--x2 {
     margin-bottom: 0; }
   @media (min-width: 768px) {
     .page-footer {

@@ -3,8 +3,8 @@ require('babel-polyfill');
 const webpack = require('webpack');
 const path = require('path');
 const glob = require('glob');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoPrefixer = require('autoprefixer');
@@ -29,7 +29,7 @@ module.exports = {
     app: [
       'babel-polyfill',
       './resources/assets/js/esign.js',
-      // './resources/assets/sass/style.scss',
+      './resources/assets/sass/style.scss',
     ],
   },
   module: {
@@ -48,26 +48,21 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
-      // {
-      //   test: /\.s[ac]ss/,
-      //   use: ExtractTextPlugin.extract({
-      //     use: [
-      //       {
-      //         loader: "css-loader",
-      //         options: {
-      //           url: false
-      //         }
-      //       },
-      //       {
-      //         loader: "postcss-loader"
-      //       },
-      //       {
-      //         loader: "sass-loader"
-      //       }
-      //     ],
-      //     fallback: "style-loader"
-      //   })
-      // },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: `${basePath}/static/assets/css`,
+            },
+          },
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
       {
         test: /\.(njk|nunjucks)$/,
         loader: ['html-loader', `nunjucks-html-loader?${nunjucksOptions}`],
@@ -87,8 +82,10 @@ module.exports = {
   },
   plugins: [
     ...pages,
-    // new StyleLintPlugin({ syntax: 'scss' }),
-    // new ExtractTextPlugin('assets/css/style.css')
+    new StyleLintPlugin({ syntax: 'scss' }),
+    new MiniCssExtractPlugin({
+      filename: 'style.[contenthash].css',
+    }),
   ],
   devServer: {
     port: 3000,

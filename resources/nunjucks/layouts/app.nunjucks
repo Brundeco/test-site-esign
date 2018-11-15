@@ -59,7 +59,10 @@
   {# <link rel="dns-prefetch" href="//ebugs.esign.eu"> #}
 
   {# place typekit or google fonts css here #}
-  <link rel="stylesheet" href="../assets/css/style.css">
+
+  {# not needed for webpack setup: #}
+  {# <link rel="stylesheet" href="../assets/css/style.css"> #}
+
 
   {# google analytics #}
   {# <script>

@@ -3,17 +3,14 @@
   FORMS
 ==============================================================================*/
 
-form {
-  margin: 0;
-}
-
 legend {
-  border: 0; padding: 0; white-space: normal; *margin-left: -7px;
+  border: 0; padding: 0; white-space: normal;
   font-size: 18px;
 }
 
 button, input, select, textarea, .button {
-  margin: 0; vertical-align: baseline; *vertical-align: middle;
+  margin: 0;
+  vertical-align: baseline;
   transition: $transitionDefault;
 }
 
@@ -35,7 +32,8 @@ button, select {
 
 label, .label, input, select, textarea {
   @include default-font();
-  vertical-align: middle; color: $black;
+  vertical-align: middle;
+  color: $black;
 }
 
 
@@ -44,18 +42,19 @@ label, .label {
 }
 
 button, input[type="button"], input[type="reset"], input[type="submit"] {
-  -webkit-appearance: button;  cursor: pointer; *overflow: visible; border: none;
-}
-
-input[type="checkbox"], input[type="radio"] {
-  cursor: pointer;
+  -webkit-appearance: button; cursor: pointer; border: none;
 }
 
 input[type="text"], input[type="search"], input[type="password"],
 input[type="email"], input[type="tel"], input[type="date"], textarea, select {
   padding: 6px; margin-bottom: 2px; display: block;
-  background: #fff; height: 35px; line-height: inherit; width: 100%; border: 1px solid $gray;
-  &:focus { outline: 0; border-color: $grayDark; }
+  background: #fff; height: 35px; line-height: inherit;
+  width: 100%; border: 1px solid $gray;
+
+  &:focus {
+    outline: 0;
+    border-color: $grayDark;
+  }
 }
 
 input[type="email"] {
@@ -63,7 +62,8 @@ input[type="email"] {
 }
 
 textarea {
-  overflow: auto; vertical-align: top; resize: vertical; width: 100%; height: 185px;
+  overflow: auto; vertical-align: top; resize: vertical;
+  width: 100%; height: 185px;
 }
 
 button::-moz-focus-inner, input::-moz-focus-inner {
@@ -71,8 +71,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 input[type="checkbox"], input[type="radio"] {
-  box-sizing: border-box; width: auto; height: auto; padding: 0;
-  margin: 3px 0; *margin-top: 0; *height: 13px; *width: 13px; line-height: normal; border: none;
+  box-sizing: border-box;
+  width: auto; height: auto;
+  padding: 0; margin: 3px 0;
+  line-height: normal; border: none;
+  cursor: pointer;
 }
 
 input[type="file"] {
@@ -81,6 +84,7 @@ input[type="file"] {
 
 input[type="search"] {
   -webkit-appearance: textfield;
+  // -webkit-appearance: none; // Remove the rounded corners
   box-sizing: content-box;
 }
 
@@ -126,8 +130,6 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
 // Hide clear text field ie 10+
 ::-ms-clear { display: none; }
 
-// Remove the rounded corners
-input[type="search"] { -webkit-appearance: none; }
 
 // Hide the cancel button
 ::-webkit-search-cancel-button { -webkit-appearance: none; }
@@ -135,14 +137,12 @@ input[type="search"] { -webkit-appearance: none; }
 // Hide the magnifying glass
 ::-webkit-search-results-button { -webkit-appearance: none; }
 
-::-webkit-textfield-decoration-container { }
-
 // Hide number input spinner
 ::-webkit-inner-spin-button { -webkit-appearance: none; }
 ::-webkit-outer-spin-button { -webkit-appearance: none; }
 
 // Style file upload button
-::-ms-browse, ::-webkit-file-upload-button { }
+// ::-ms-browse, ::-webkit-file-upload-button { }
 
 .checkbox, .radio {
   position: relative;

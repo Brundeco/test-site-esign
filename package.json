@@ -11,7 +11,7 @@
     "dev": "npm run development",
     "development": "cross-env webpack-dev-server --mode development --hot",
     "build": "npm run production",
-    "production": "cross-env webpack --mode production --colors",
+    "production": "cross-env webpack --mode production",
     "sprite": ""
   },
   "repository": {

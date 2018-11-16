@@ -84,7 +84,7 @@ module.exports = {
   },
   output: {
     path: `${basePath}/static/`,
-    filename: 'assets/js/app.js',
+    filename: 'assets/js/app.[hash].js',
   },
   optimization: {
     splitChunks: {
@@ -110,7 +110,7 @@ module.exports = {
     ...pages,
     new StyleLintPlugin({ syntax: 'scss' }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/style.[contenthash].css',
+      filename: 'assets/css/style.[chunkhash].css',
     }),
   ],
   devServer: {

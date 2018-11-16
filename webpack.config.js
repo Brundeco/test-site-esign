@@ -1,13 +1,18 @@
 require('babel-polyfill');
 
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const path = require('path');
 const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const autoPrefixer = require('autoprefixer');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+// function resolve(dir) {
+//   return path.join(__dirname, '..', dir);
+// }
 
 const isDev = (process.env.NODE_ENV === 'development');
 const basePath = process.cwd();
@@ -51,14 +56,15 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
           {
             loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
             options: {
-              publicPath: `${basePath}/static/assets/css`,
+              url: false,
             },
           },
-          'css-loader',
           'postcss-loader',
           'sass-loader',
         ],
@@ -68,23 +74,43 @@ module.exports = {
         loader: ['html-loader', `nunjucks-html-loader?${nunjucksOptions}`],
       },
       {
-        test: /\.(jpe?g|png|svg|gif)$/,
+        test: /\.(jpe?g|png|svg|gif|webp)$/,
         loader: 'file-loader',
         options: {
-          name: (isDev) ? '[name].[ext]' : 'assets/images/[name].[hash:8].[ext]',
+          name: 'assets/images/[name].[ext]', // (isDev) ? '[name].[ext]' : 'assets/images/[name].[hash:8].[ext]',
         },
       },
     ],
   },
   output: {
-    path: `${basePath}/static`,
-    filename: 'assets/js/bundle.js',
+    path: `${basePath}/static/`,
+    filename: 'assets/js/app.js',
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
+    namedChunks: true,
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true, // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   plugins: [
     ...pages,
     new StyleLintPlugin({ syntax: 'scss' }),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: 'assets/css/style.[contenthash].css',
     }),
   ],
   devServer: {
@@ -96,9 +122,8 @@ module.exports = {
   },
 };
 
-// if (!isDev) {
-//   module.exports.plugins.push(
-//     new CleanWebpackPlugin(['static/build']),
-//     new webpack.optimize.UglifyJsPlugin(),
-//   );
-// }
+if (!isDev) {
+  module.exports.plugins.push(
+    // new CleanWebpackPlugin(['static/']),
+  );
+}

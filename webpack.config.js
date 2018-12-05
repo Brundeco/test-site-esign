@@ -6,7 +6,7 @@ const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -127,6 +127,6 @@ module.exports = {
 
 if (!isDev) {
   module.exports.plugins.push(
-    // new CleanWebpackPlugin(['static/']),
+    new CleanWebpackPlugin(['static/']),
   );
 }

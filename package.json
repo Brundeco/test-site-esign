@@ -59,7 +59,6 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
-    "jquery-touchswipe": "^1.6.19",
-    "response.js": "^0.10.0"
+    "jquery-touchswipe": "^1.6.19"
   }
 }

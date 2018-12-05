@@ -9,6 +9,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 // function resolve(dir) {
 //   return path.join(__dirname, '..', dir);
@@ -112,11 +113,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/css/style.[chunkhash].css',
     }),
+    new ManifestPlugin({
+      fileName: 'rev-manifest.json',
+    }),
   ],
   devServer: {
     port: 3000,
     contentBase: `${basePath}/static`,
-    hot: true,
     // open: true,
     watchContentBase: true,
   },

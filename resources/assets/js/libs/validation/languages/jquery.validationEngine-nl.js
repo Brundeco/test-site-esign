@@ -1,3 +1,4 @@
+/* eslint-disable */
 (function($){
 	$.fn.validationEngineLanguage = function(){
 	};
@@ -10,7 +11,7 @@
 	                "alertTextCheckboxMultiple": "* Selecteer a.u.b. een optie",
 	                "alertTextCheckboxe": "* Dit selectievakje is verplicht"
 	            },
-	            "requiredInFunction": { 
+	            "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },

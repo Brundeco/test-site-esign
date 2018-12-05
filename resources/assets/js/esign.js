@@ -2,12 +2,11 @@ import $ from 'jquery';
 import googleMapsStyles from './googlemaps-styles';
 
 require('./polyfills/native-console');
-
 // require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc
+require('./libs/validation/languages/jquery.validationEngine-nl');
+require('./libs/validation/jquery.validationEngine');
 
 // 'response.js/response',
-// 'js/libs/validation/languages/jquery.validationEngine-nl',
-// 'js/libs/validation/jquery.validationEngine',
 
 const esign = window.esign || {};
 
@@ -34,7 +33,7 @@ esign.init = () => {
 
   esign.initMaps();
 
-  // esign.formValidation();
+  esign.formValidation();
   esign.formAjax();
   esign.formAjaxRecaptcha();
 };

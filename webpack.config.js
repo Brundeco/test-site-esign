@@ -1,6 +1,6 @@
 require('babel-polyfill');
 
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const path = require('path');
 const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -53,6 +53,19 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: require.resolve('jquery'), // expose jQuery globally
+        use: [
+          {
+            loader: 'expose-loader',
+            options: 'jQuery',
+          },
+          {
+            loader: 'expose-loader',
+            options: '$',
+          },
+        ],
       },
       {
         test: /\.scss$/,
@@ -109,6 +122,10 @@ module.exports = {
   },
   plugins: [
     ...pages,
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
     new StyleLintPlugin({ syntax: 'scss' }),
     new MiniCssExtractPlugin({
       filename: 'assets/css/style.[chunkhash].css',
@@ -127,6 +144,6 @@ module.exports = {
 
 if (!isDev) {
   module.exports.plugins.push(
-    new CleanWebpackPlugin(['static/']),
+    new CleanWebpackPlugin(['static/assets/']),
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Esign: update to 2.6.2 to fix usage of .size() -> was removed in jQuery 3
 // Releases on repo are not up to date, this is a direct copy of the repo file instead of a release download (BertH)
 

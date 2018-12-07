@@ -1,10 +1,10 @@
 import $ from 'jquery';
-import googleMapsStyles from './googlemaps-styles';
+import googleMapsStyles from './constants/googleMapsStyles';
 
 require('./polyfills/native-console');
 // require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc
-require('./libs/validation/languages/jquery.validationEngine-nl');
-require('./libs/validation/jquery.validationEngine');
+require('./components/validation/languages/jquery.validationEngine-nl');
+require('./components/validation/jquery.validationEngine');
 
 const esign = window.esign || {};
 

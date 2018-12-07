@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import googleMapsStyles from './constants/googleMapsStyles';
 
-require('./polyfills/native-console');
+require('./utils/native-console');
 // require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc
 require('./components/validation/languages/jquery.validationEngine-nl');
 require('./components/validation/jquery.validationEngine');

@@ -9,10 +9,10 @@
   },
   "scripts": {
     "dev": "npm run development",
-    "development": "cross-env webpack-dev-server --mode development",
-    "hot": "cross-env webpack-dev-server --mode development --hot",
+    "development": "cross-env NODE_ENV=development webpack-dev-server --mode development",
+    "hot": "cross-env NODE_ENV=development webpack-dev-server --mode development --hot",
     "prod": "npm run production",
-    "production": "cross-env webpack --mode production",
+    "production": "cross-env NODE_ENV=production webpack --mode production",
     "sprite": ""
   },
   "repository": {

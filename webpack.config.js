@@ -10,7 +10,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const ImageminPlugin = require('imagemin-webpack');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminPngquant = require('imagemin-pngquant');
 const imageminOptipng = require('imagemin-optipng');
 const imageminZopfli = require('imagemin-zopfli');
@@ -86,7 +86,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              url: false,
+              url: true,
             },
           },
           'postcss-loader',
@@ -146,45 +146,40 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './resources/assets/fonts', to: 'assets/fonts/[name].[hash:8].[ext]' },
-      // { from: './resources/assets/images', to: 'assets/images/[name].[hash:8].[ext]' },
-    ], {
-      debug: 'info',
-    }),
+      { from: './resources/assets/images', to: 'assets/images/[name].[hash:8].[ext]' },
+    ]),
     new ImageminPlugin({
-      bail: false, // Ignore errors on corrupted images
-      cache: false,
-      imageminOptions: {
-        plugins: [
-          imageminPngquant({
-            nofs: true,
-            strip: true,
-          }),
-          imageminOptipng({
-            optimizationLevel: 5,
-          }),
-          imageminZopfli({
-            more: true,
-          }),
-          imageminJpegRecompress({
-            accurate: true,
-            quality: 'low',
-            min: 45,
-            max: 85,
-            strip: true,
-          }),
-          imageminMozjpeg({
-            progressive: true,
-            quality: 80,
-          }),
-          imageminGifsicle({
-            interlaced: true,
-            optimizationLevel: 3,
-          }),
-          imageminSvgo({
-            removeViewBox: false,
-          }),
-        ],
-      },
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      plugins: [
+        imageminPngquant({
+          nofs: true,
+          strip: true,
+        }),
+        imageminOptipng({
+          optimizationLevel: 5,
+        }),
+        imageminZopfli({
+          more: true,
+        }),
+        imageminJpegRecompress({
+          accurate: true,
+          quality: 'low',
+          min: 45,
+          max: 85,
+          strip: true,
+        }),
+        imageminMozjpeg({
+          progressive: true,
+          quality: 80,
+        }),
+        imageminGifsicle({
+          interlaced: true,
+          optimizationLevel: 3,
+        }),
+        imageminSvgo({
+          removeViewBox: false,
+        }),
+      ],
     }),
     new ManifestPlugin({
       fileName: 'rev-manifest.json',
@@ -197,7 +192,7 @@ module.exports = {
     watchContentBase: true,
   },
   stats: {
-    children: false, // Temporarily suppress "Entrypoint undefined" warnings
+    children: false, // Suppress "Entrypoint undefined" warnings
   },
 };
 

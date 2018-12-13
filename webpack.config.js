@@ -1,4 +1,4 @@
-require('babel-polyfill');
+require('@babel/polyfill');
 
 const webpack = require('webpack');
 const path = require('path');
@@ -10,6 +10,15 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const ImageminPlugin = require('imagemin-webpack');
+const imageminPngquant = require('imagemin-pngquant');
+const imageminOptipng = require('imagemin-optipng');
+const imageminZopfli = require('imagemin-zopfli');
+const imageminJpegRecompress = require('imagemin-jpeg-recompress');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+const imageminGifsicle = require('imagemin-gifsicle');
+const imageminSvgo = require('imagemin-svgo');
+
 
 // function resolve(dir) {
 //   return path.join(__dirname, '..', dir);
@@ -33,7 +42,7 @@ const pages = glob.sync('**/*.nunjucks', {
 module.exports = {
   entry: {
     app: [
-      'babel-polyfill',
+      '@babel/polyfill',
       './resources/assets/js/esign.js',
       './resources/assets/sass/style.scss',
     ],
@@ -89,10 +98,14 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|svg|gif|webp)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'assets/images/[name].[ext]', // (isDev) ? '[name].[ext]' : 'assets/images/[name].[hash:8].[ext]',
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: (isDev) ? 'assets/images/[name].[ext]' : 'assets/images/[name].[hash:8].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
@@ -130,6 +143,43 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/css/style.[chunkhash].css',
     }),
+    new ImageminPlugin({
+      bail: false, // Ignore errors on corrupted images
+      cache: true,
+      imageminOptions: {
+        plugins: [
+          imageminPngquant({
+            nofs: true,
+            posterize: 8,
+            strip: true,
+          }),
+          imageminOptipng({
+            optimizationLevel: 5,
+          }),
+          imageminZopfli({
+            more: true,
+          }),
+          imageminJpegRecompress({
+            accurate: true,
+            quality: 'low',
+            min: 45,
+            max: 85,
+            strip: true,
+          }),
+          imageminMozjpeg({
+            progressive: true,
+            quality: 80,
+          }),
+          imageminGifsicle({
+            interlaced: true,
+            optimizationLevel: 3,
+          }),
+          imageminSvgo({
+            removeViewBox: false,
+          }),
+        ],
+      },
+    }),
     new ManifestPlugin({
       fileName: 'rev-manifest.json',
     }),
@@ -139,6 +189,9 @@ module.exports = {
     contentBase: `${basePath}/static`,
     // open: true,
     watchContentBase: true,
+  },
+  stats: {
+    children: false, // Temporarily suppress "Entrypoint undefined" warnings
   },
 };
 

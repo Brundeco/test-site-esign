@@ -18,6 +18,7 @@ const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 // function resolve(dir) {
@@ -111,7 +112,7 @@ module.exports = {
   },
   output: {
     path: `${basePath}/static/`,
-    filename: 'assets/js/app.[hash].js',
+    filename: 'assets/js/app.[hash:8].js',
   },
   optimization: {
     splitChunks: {
@@ -141,16 +142,21 @@ module.exports = {
     }),
     new StyleLintPlugin({ syntax: 'scss' }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/style.[chunkhash].css',
+      filename: 'assets/css/style.[chunkhash:8].css',
+    }),
+    new CopyWebpackPlugin([
+      { from: './resources/assets/fonts', to: 'assets/fonts/[name].[hash:8].[ext]' },
+      // { from: './resources/assets/images', to: 'assets/images/[name].[hash:8].[ext]' },
+    ], {
+      debug: 'info',
     }),
     new ImageminPlugin({
       bail: false, // Ignore errors on corrupted images
-      cache: true,
+      cache: false,
       imageminOptions: {
         plugins: [
           imageminPngquant({
             nofs: true,
-            posterize: 8,
             strip: true,
           }),
           imageminOptipng({

@@ -149,6 +149,7 @@ module.exports = {
       { from: './resources/assets/images', to: 'assets/images/[name].[hash:8].[ext]' },
     ]),
     new ImageminPlugin({
+      disable: isDev,
       test: /\.(jpe?g|png|gif|svg)$/i,
       plugins: [
         imageminPngquant({

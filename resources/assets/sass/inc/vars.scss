@@ -94,14 +94,3 @@ $breakpoints: (
 $breakpoint-has-widths: ('medium', 'large') !default;
 $breakpoint-has-push:   ('medium') !default;
 $breakpoint-has-pull:   ('medium') !default;
-
-
-// Init mediaqueries for ordering inside carabiner
-.init-mediaqueries {
-  @media #{$small} { margin: 0; }
-  @media #{$medium} { margin: 0; }
-  @media #{$large} { margin: 0; }
-  @media #{$larger} { margin: 0; }
-  @media #{$huge} { margin: 0; }
-  @media #{$massive} { margin: 0; }
-}

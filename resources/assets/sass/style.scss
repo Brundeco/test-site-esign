@@ -501,11 +501,6 @@ section { position: relative; }
    PAGES
    ========================================================================== */
 
-  .hero {
-    a {
-      color: #000;
-    }
-  }
 
 
 
@@ -539,10 +534,4 @@ section { position: relative; }
   img { max-width: 100% !important; }
 
   .page-footer, .main-nav { display: none; }
-
-  .medium--one-half { width: 50%; }
-  .medium--two-thirds { width: 66.66%; }
-  .medium--one-third { width: 33.33%; }
-  .medium--three-quarters { width: 75%; }
-  .medium--one-quarter { width: 25%; }
 }

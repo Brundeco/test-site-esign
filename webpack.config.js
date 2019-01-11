@@ -54,13 +54,13 @@ if (isShop) {
 }
 
 const dist = {
-  base: `${paths.root}static/`,
+  root: `${paths.root}static/`,
   assets: 'assets/',
   revManifest: '',
 };
 
-if (isLaravel) dist.base = `${paths.root}public/`;
-if (isCi) dist.base = `${paths.root}assets/`;
+if (isLaravel) dist.root = `${paths.root}public/`;
+if (isCi) dist.root = `${paths.root}assets/`;
 if (isFramework) dist.assets = 'build/';
 
 dist.css = `${dist.assets}css/`;
@@ -124,11 +124,14 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../../',
+            },
           },
           {
             loader: 'css-loader',
             options: {
-              url: true,
+              url: !isDev,
             },
           },
           'postcss-loader',
@@ -153,7 +156,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(basePath, `${dist.base}`),
+    path: path.join(basePath, dist.root),
     filename: `${dist.js}app.[hash:8].js`,
   },
   optimization: {
@@ -229,7 +232,7 @@ module.exports = {
   ],
   devServer: {
     port: 3000,
-    contentBase: `${basePath}/${dist.base}`,
+    contentBase: path.join(basePath, dist.root),
     open: launchDev,
     watchContentBase: true,
     stats: {
@@ -244,7 +247,7 @@ module.exports = {
 if (!isDev) {
   module.exports.plugins.push(
     new CleanWebpackPlugin([
-      path.join(dist.base, dist.assets),
+      path.join(dist.root, dist.assets),
     ]),
   );
 }

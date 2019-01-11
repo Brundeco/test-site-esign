@@ -153,7 +153,6 @@ module.exports = {
       test: /\.(jpe?g|png|gif|svg)$/i,
       plugins: [
         imageminPngquant({
-          nofs: true,
           strip: true,
         }),
         imageminOptipng({
@@ -191,6 +190,9 @@ module.exports = {
     contentBase: `${basePath}/static`,
     // open: true,
     watchContentBase: true,
+    stats: {
+      children: false, // Suppress "Entrypoint undefined" warnings
+    },
   },
   stats: {
     children: false, // Suppress "Entrypoint undefined" warnings

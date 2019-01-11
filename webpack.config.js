@@ -20,32 +20,74 @@ const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+// Settings
+const mode = 'static'; // ci, laravel, shop, static
+const launchDev = true;
+const isDev = (process.env.NODE_ENV === 'development');
+const isLaravel = mode === 'shop' || mode === 'laravel';
+const isCi = mode === 'ci';
+const isShop = mode === 'shop';
+const isFramework = isLaravel || isCi;
 
 // function resolve(dir) {
 //   return path.join(__dirname, '..', dir);
 // }
 
-const isDev = (process.env.NODE_ENV === 'development');
+// Paths
 const basePath = process.cwd();
 
+const paths = {
+  root: '',
+};
+
+paths.resources = `${paths.root}resources/`;
+paths.assets = `${paths.resources}assets/`;
+paths.nunjucks = `${paths.resources}nunjucks/`;
+paths.sass = `${paths.assets}sass/`;
+paths.js = `${paths.assets}js/`;
+paths.images = `${paths.assets}images/`;
+paths.fonts = `${paths.assets}fonts/`;
+
+if (isShop) {
+  paths.sass = `${paths.sass}client/`;
+  paths.js = `${paths.js}client/`;
+}
+
+const dist = {
+  base: `${paths.root}static/`,
+  assets: 'assets/',
+  revManifest: '',
+};
+
+if (isLaravel) dist.base = `${paths.root}public/`;
+if (isCi) dist.base = `${paths.root}assets/`;
+if (isFramework) dist.assets = 'build/';
+
+dist.css = `${dist.assets}css/`;
+dist.js = `${dist.assets}js/`;
+dist.images = `${dist.assets}images/`;
+dist.fonts = `${dist.assets}fonts/`;
+
+
 const nunjucksOptions = JSON.stringify({
-  searchPaths: `${basePath}/resources/nunjucks/`,
+  searchPaths: path.join(basePath, paths.nunjucks),
 });
 
 const pages = glob.sync('**/*.nunjucks', {
-  cwd: path.join(basePath, 'resources/nunjucks/pages/'),
+  cwd: path.join(basePath, `${paths.nunjucks}/pages/`),
   root: '/',
 }).map(page => new HtmlWebpackPlugin({
   filename: page.replace('nunjucks', 'html'),
-  template: `resources/nunjucks/pages/${page}`,
+  template: `${paths.nunjucks}/pages/${page}`,
 }));
+
 
 module.exports = {
   entry: {
     app: [
       '@babel/polyfill',
-      './resources/assets/js/esign.js',
-      './resources/assets/sass/style.scss',
+      `./${paths.js}esign.js`,
+      `./${paths.sass}style.scss`,
     ],
   },
   module: {
@@ -103,7 +145,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: (isDev) ? 'assets/images/[name].[ext]' : 'assets/images/[name].[hash:8].[ext]',
+              name: (isDev) ? `${dist.images}[name].[ext]` : `${dist.images}[name].[hash:8].[ext]`,
             },
           },
         ],
@@ -111,8 +153,8 @@ module.exports = {
     ],
   },
   output: {
-    path: `${basePath}/static/`,
-    filename: 'assets/js/app.[hash:8].js',
+    path: path.join(basePath, `${dist.base}`),
+    filename: `${dist.js}app.[hash:8].js`,
   },
   optimization: {
     splitChunks: {
@@ -142,11 +184,11 @@ module.exports = {
     }),
     new StyleLintPlugin({ syntax: 'scss' }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/style.[chunkhash:8].css',
+      filename: `${dist.css}style.[chunkhash:8].css`,
     }),
     new CopyWebpackPlugin([
-      { from: './resources/assets/fonts', to: 'assets/fonts/[name].[hash:8].[ext]' },
-      { from: './resources/assets/images', to: 'assets/images/[name].[hash:8].[ext]' },
+      { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]` },
+      { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[name].[ext]` : `${dist.images}[name].[hash:8].[ext]` },
     ]),
     new ImageminPlugin({
       disable: isDev,
@@ -182,13 +224,13 @@ module.exports = {
       ],
     }),
     new ManifestPlugin({
-      fileName: 'rev-manifest.json',
+      fileName: `${dist.revManifest}rev-manifest.json`,
     }),
   ],
   devServer: {
     port: 3000,
-    contentBase: `${basePath}/static`,
-    // open: true,
+    contentBase: `${basePath}/${dist.base}`,
+    open: launchDev,
     watchContentBase: true,
     stats: {
       children: false, // Suppress "Entrypoint undefined" warnings
@@ -201,6 +243,8 @@ module.exports = {
 
 if (!isDev) {
   module.exports.plugins.push(
-    new CleanWebpackPlugin(['static/assets/']),
+    new CleanWebpackPlugin([
+      path.join(dist.base, dist.assets),
+    ]),
   );
 }

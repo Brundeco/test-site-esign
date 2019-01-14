@@ -1,6 +1,7 @@
 {% set title = 'Components' %}
 {% set description = '' %}
 {% set menuitem = 'components' %}
+{# No bodyclass needed? --> Leave blank to prevent unneeded classes are added by back-end dev later #}
 {% set bodyclass = 'components' %}
 {% set datapage = 'contact' %}
 

@@ -1,6 +1,7 @@
 {% set title = 'Nieuws' %}
 {% set description = '' %}
 {% set menuitem = 'news' %}
+{# No bodyclass needed? --> Leave blank to prevent unneeded classes are added by back-end dev later #}
 {% set bodyclass = 'news' %}
 
 {% extends "layouts/app.nunjucks" %}

@@ -19,6 +19,7 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 // Settings
 const mode = 'static'; // ci, laravel, shop, static
@@ -47,6 +48,7 @@ paths.sass = `${paths.assets}sass/`;
 paths.js = `${paths.assets}js/`;
 paths.images = `${paths.assets}images/`;
 paths.fonts = `${paths.assets}fonts/`;
+paths.svgSprite = `${paths.assets}svg-sprite/`;
 
 if (isShop) {
   paths.sass = `${paths.sass}client/`;
@@ -67,7 +69,7 @@ dist.css = `${dist.assets}css/`;
 dist.js = `${dist.assets}js/`;
 dist.images = `${dist.assets}images/`;
 dist.fonts = `${dist.assets}fonts/`;
-
+dist.svgSprite = `${dist.assets}svg-sprite/`;
 
 const nunjucksOptions = JSON.stringify({
   searchPaths: path.join(basePath, paths.nunjucks),
@@ -88,6 +90,7 @@ module.exports = {
       '@babel/polyfill',
       `./${paths.js}esign.js`,
       `./${paths.sass}style.scss`,
+      `./${paths.svgSprite}sprite.js`,
     ],
   },
   module: {
@@ -144,11 +147,29 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|svg|gif|webp)$/,
+        exclude: [
+          path.resolve(__dirname, paths.svgSprite),
+        ],
         use: [
           {
             loader: 'file-loader',
             options: {
               name: (isDev) ? `${dist.images}[name].[ext]` : `${dist.images}[name].[hash:8].[ext]`,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.*\.svg$/,
+        include: [
+          path.resolve(__dirname, paths.svgSprite),
+        ],
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              spriteFilename: `${dist.svgSprite}/icons.svg`,
             },
           },
         ],
@@ -228,6 +249,9 @@ module.exports = {
     }),
     new ManifestPlugin({
       fileName: `${dist.revManifest}rev-manifest.json`,
+    }),
+    new SpriteLoaderPlugin({
+      plainSprite: true,
     }),
   ],
   devServer: {

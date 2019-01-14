@@ -2,6 +2,7 @@
 {% set description = '' %}
 {% set menuitem = 'components' %}
 {% set bodyclass = 'components' %}
+{% set datapage = 'contact' %}
 
 {% extends "layouts/app.nunjucks" %}
 

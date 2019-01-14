@@ -1,6 +1,6 @@
 {% set site_title = title + ' - Template' %}
 <!doctype html>
-<html class="no-js" lang="nl">
+<html class="no-js" lang="nl" data-page="{{ datapage }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -127,12 +127,12 @@
     </div>
   </footer>
 
-  {% if bodyclass == 'contact' or bodyclass == 'components' %}
+  {% if datapage == 'contact' %}
     <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
+    <script>
+      var markerImg = 'http://localhost:8888/frontend-template/static/assets/images/marker.d51c4b4d.png';
+    </script>
   {% endif %}
-  <script>
-    var baseUrl = 'http://localhost:3000/frontend-template/public/';
-  </script>
   {# <script src="../assets/js/app.js"></script> #}
 </body>
 </html>

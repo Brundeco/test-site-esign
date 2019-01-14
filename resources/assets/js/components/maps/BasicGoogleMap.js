@@ -64,7 +64,7 @@ export default class BasicGoogleMap {
     const myLatlng = new this.googleMaps.LatLng(latitude, longitude);
 
     const markerIcon = {
-      url: `${this.baseUrl}assets/images/marker.png`,
+      url: window.markerImg,
       size: new this.googleMaps.Size(100, 128),
       origin: new this.googleMaps.Point(0, 0),
       anchor: new this.googleMaps.Point(25, 64),

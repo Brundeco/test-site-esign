@@ -1,4 +1,4 @@
-if(typeof(CKEDITOR) !== 'undefined') {
+if (typeof(CKEDITOR) !== 'undefined') {
   CKEDITOR.stylesSet.add( 'my_styles', [
     {
       name: 'Image left',

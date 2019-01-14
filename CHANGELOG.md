@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This major update introduces Webpack 4 as building tool instead of Gulp.
 
 ### Added
-- Webpack 4.27.0
+- Webpack 4.28.4
 - Postcss
 - Eslint
 - Stylelint

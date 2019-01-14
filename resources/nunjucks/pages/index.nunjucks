@@ -1,8 +1,11 @@
 {% set title = 'Home' %}
 {% set description = '' %}
 {% set menuitem = 'home' %}
-{# No bodyclass needed? --> Leave blank to prevent unneeded classes are added by back-end dev later #}
-{% set bodyclass = 'home' %}
+{#
+  Only add bodyclasses when needed,
+  leave blank to prevent unneeded classes being added by Back-end dev
+#}
+{% set bodyclass = '' %}
 
 {% extends "layouts/app.nunjucks" %}
 

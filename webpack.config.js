@@ -2,8 +2,6 @@ require('@babel/polyfill');
 
 const webpack = require('webpack');
 const path = require('path');
-const glob = require('glob');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -19,67 +17,18 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const settings = require('./webpack.settings');
 
-// Settings
-const mode = 'static'; // ci, laravel, shop, static
-const launchDev = true;
-const isDev = (process.env.NODE_ENV === 'development');
-const isLaravel = mode === 'shop' || mode === 'laravel';
-const isCi = mode === 'ci';
-const isShop = mode === 'shop';
-const isFramework = isLaravel || isCi;
-
-// function resolve(dir) {
-//   return path.join(__dirname, '..', dir);
-// }
-
-// Paths
-const basePath = process.cwd();
-
-const paths = {
-  root: '',
-};
-
-paths.resources = `${paths.root}resources/`;
-paths.assets = `${paths.resources}assets/`;
-paths.nunjucks = `${paths.resources}nunjucks/`;
-paths.sass = `${paths.assets}sass/`;
-paths.js = `${paths.assets}js/`;
-paths.images = `${paths.assets}images/`;
-paths.fonts = `${paths.assets}fonts/`;
-
-if (isShop) {
-  paths.sass = `${paths.sass}client/`;
-  paths.js = `${paths.js}client/`;
-}
-
-const dist = {
-  root: `${paths.root}static/`,
-  assets: 'assets/',
-  revManifest: '',
-};
-
-if (isLaravel) dist.root = `${paths.root}public/`;
-if (isCi) dist.root = `${paths.root}assets/`;
-if (isFramework) dist.assets = 'build/';
-
-dist.css = `${dist.assets}css/`;
-dist.js = `${dist.assets}js/`;
-dist.images = `${dist.assets}images/`;
-dist.fonts = `${dist.assets}fonts/`;
-
-
-const nunjucksOptions = JSON.stringify({
-  searchPaths: path.join(basePath, paths.nunjucks),
-});
-
-const pages = glob.sync('**/*.nunjucks', {
-  cwd: path.join(basePath, `${paths.nunjucks}/pages/`),
-  root: '/',
-}).map(page => new HtmlWebpackPlugin({
-  filename: page.replace('nunjucks', 'html'),
-  template: `${paths.nunjucks}/pages/${page}`,
-}));
+const {
+  basePath,
+  devServerContentBase,
+  devServerOpenBrowser,
+  isDev,
+  paths,
+  dist,
+  nunjucksOptions,
+  pages,
+} = settings;
 
 
 module.exports = {
@@ -232,8 +181,8 @@ module.exports = {
   ],
   devServer: {
     port: 3000,
-    contentBase: path.join(basePath, dist.root),
-    open: launchDev,
+    contentBase: devServerContentBase,
+    open: devServerOpenBrowser,
     watchContentBase: true,
     stats: {
       children: false, // Suppress "Entrypoint undefined" warnings

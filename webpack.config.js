@@ -88,7 +88,7 @@ module.exports = {
   entry: {
     app: [
       '@babel/polyfill',
-      `./${paths.js}esign.js`,
+      `./${paths.js}app.js`,
       `./${paths.sass}style.scss`,
       `./${paths.svgSprite}sprite.js`,
     ],

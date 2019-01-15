@@ -16,6 +16,7 @@ This major update introduces Webpack 4 as building tool instead of Gulp.
 
 ### Changed
 - Rewritten javascript to ES6 & Eslint style guide
+- esign.js > app.js
 - Node modules as vendor.js file
 - Listen to matchMedia javascript event for responsive changes
 

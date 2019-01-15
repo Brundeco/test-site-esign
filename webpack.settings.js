@@ -26,6 +26,7 @@ paths.sass = `${paths.assets}sass/`;
 paths.js = `${paths.assets}js/`;
 paths.images = `${paths.assets}images/`;
 paths.fonts = `${paths.assets}fonts/`;
+paths.svgSprite = `${paths.assets}svg-sprite/`;
 
 if (isShop) {
   paths.sass = `${paths.sass}client/`;
@@ -46,6 +47,7 @@ dist.css = `${dist.assets}css/`;
 dist.js = `${dist.assets}js/`;
 dist.images = `${dist.assets}images/`;
 dist.fonts = `${dist.assets}fonts/`;
+dist.svgSprite = `${dist.assets}svg-sprite/`;
 
 const devServerContentBase = path.join(basePath, dist.root);
 

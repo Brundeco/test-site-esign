@@ -13,6 +13,7 @@ This major update introduces Webpack 4 as building tool instead of Gulp.
 - Eslint
 - Stylelint
 - Hot reloading
+- Vendor split
 
 ### Changed
 - Rewritten javascript to ES6 & Eslint style guide

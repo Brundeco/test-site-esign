@@ -178,7 +178,7 @@ module.exports = {
   },
   output: {
     path: path.join(basePath, dist.root),
-    filename: `${dist.js}app.[hash:8].js`,
+    filename: `${dist.js}app.[contenthash].js`,
   },
   optimization: {
     splitChunks: {
@@ -208,7 +208,7 @@ module.exports = {
     }),
     new StyleLintPlugin({ syntax: 'scss' }),
     new MiniCssExtractPlugin({
-      filename: `${dist.css}style.[chunkhash:8].css`,
+      filename: `${dist.css}style.[contenthash].css`,
     }),
     new CopyWebpackPlugin([
       { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]` },

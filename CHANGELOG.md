@@ -8,14 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This major update introduces Webpack 4 as building tool instead of Gulp.
 
 ### Added
-- Webpack 4.27.0
+- Webpack 4.28.4
 - Postcss
 - Eslint
 - Stylelint
 - Hot reloading
+- Vendor split
 
 ### Changed
 - Rewritten javascript to ES6 & Eslint style guide
+- esign.js > app.js
 - Node modules as vendor.js file
 - Listen to matchMedia javascript event for responsive changes
 

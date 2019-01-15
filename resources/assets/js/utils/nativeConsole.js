@@ -22,4 +22,4 @@ const nativeConsole = (() => {
   }
 })();
 
-module.exports = nativeConsole;
+export { nativeConsole as default };

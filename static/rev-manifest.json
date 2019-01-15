@@ -1,7 +1,8 @@
 {
-  "app.css": "assets/css/style.ad918b14.css",
-  "app.js": "assets/js/app.13a8f807.js",
-  "vendor.js": "assets/js/vendor.app.13a8f807.js",
+  "app.css": "assets/css/style.6f3763e2221010ec8589.css",
+  "app.js": "assets/js/app.93c226a9e47ea902344e.js",
+  "vendor.js": "assets/js/vendor.app.5da7207fe73f8b4c6b6a.js",
+  "assets/svg-sprite//icons.svg": "assets/svg-sprite//icons.svg",
   "assets/images/example.png": "assets/images/example.1256cfb9.png",
   "assets/images/example.jpg": "assets/images/example.79a9f780.jpg",
   "assets/images/logo-esign-white.svg": "assets/images/logo-esign-white.106b33c9.svg",

@@ -1,7 +1,11 @@
 {% set title = 'Home' %}
 {% set description = '' %}
 {% set menuitem = 'home' %}
-{% set bodyclass = 'home' %}
+{#
+  Only add bodyclasses when needed,
+  leave blank to prevent unneeded classes being added by Back-end dev
+#}
+{% set bodyclass = '' %}
 
 {% extends "layouts/app.nunjucks" %}
 
@@ -18,6 +22,5 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
     </div>
   </div>
-
 </div>
 {% endblock %}

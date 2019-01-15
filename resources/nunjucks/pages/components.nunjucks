@@ -1,7 +1,12 @@
 {% set title = 'Components' %}
 {% set description = '' %}
 {% set menuitem = 'components' %}
-{% set bodyclass = 'components' %}
+{#
+  Only add bodyclasses when needed,
+  leave blank to prevent unneeded classes being added by Back-end dev
+#}
+{% set bodyclass = '' %}
+{% set datapage = 'contact' %}
 
 {% extends "layouts/app.nunjucks" %}
 

@@ -17,6 +17,7 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const settings = require('./webpack.settings');
 
 const {
@@ -35,8 +36,9 @@ module.exports = {
   entry: {
     app: [
       '@babel/polyfill',
-      `./${paths.js}esign.js`,
+      `./${paths.js}app.js`,
       `./${paths.sass}style.scss`,
+      `./${paths.svgSprite}sprite.js`,
     ],
   },
   module: {
@@ -93,6 +95,9 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|svg|gif|webp)$/,
+        exclude: [
+          path.resolve(__dirname, paths.svgSprite),
+        ],
         use: [
           {
             loader: 'file-loader',
@@ -102,11 +107,26 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.*\.svg$/,
+        include: [
+          path.resolve(__dirname, paths.svgSprite),
+        ],
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              spriteFilename: `${dist.svgSprite}/icons.svg`,
+            },
+          },
+        ],
+      },
     ],
   },
   output: {
     path: path.join(basePath, dist.root),
-    filename: `${dist.js}app.[hash:8].js`,
+    filename: `${dist.js}app.[contenthash].js`,
   },
   optimization: {
     splitChunks: {
@@ -136,7 +156,7 @@ module.exports = {
     }),
     new StyleLintPlugin({ syntax: 'scss' }),
     new MiniCssExtractPlugin({
-      filename: `${dist.css}style.[chunkhash:8].css`,
+      filename: `${dist.css}style.[contenthash].css`,
     }),
     new CopyWebpackPlugin([
       { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]` },
@@ -177,6 +197,9 @@ module.exports = {
     }),
     new ManifestPlugin({
       fileName: `${dist.revManifest}rev-manifest.json`,
+    }),
+    new SpriteLoaderPlugin({
+      plainSprite: true,
     }),
   ],
   devServer: {

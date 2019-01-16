@@ -18,6 +18,7 @@ const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
 const settings = require('./webpack.settings');
 
 const {
@@ -200,6 +201,11 @@ module.exports = {
     }),
     new SpriteLoaderPlugin({
       plainSprite: true,
+    }),
+    new WebpackNotifierPlugin({
+      title: process.env.npm_package_description,
+      contentImage: path.join(basePath, 'notification.png'),
+      excludeWarnings: true,
     }),
   ],
   devServer: {

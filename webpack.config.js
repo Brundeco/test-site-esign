@@ -30,8 +30,18 @@ const {
   dist,
   nunjucksOptions,
   pages,
+  useFontsDirectory,
 } = settings;
 
+const copy = [
+  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[name].[ext]` : `${dist.images}[name].[hash:8].[ext]` },
+];
+
+if (useFontsDirectory) {
+  copy.push(
+    { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]` },
+  );
+}
 
 module.exports = {
   entry: {
@@ -159,10 +169,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${dist.css}style.[contenthash].css`,
     }),
-    new CopyWebpackPlugin([
-      { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]` },
-      { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[name].[ext]` : `${dist.images}[name].[hash:8].[ext]` },
-    ]),
+    new CopyWebpackPlugin(copy),
     new ImageminPlugin({
       disable: isDev,
       test: /\.(jpe?g|png|gif|svg)$/i,

@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line
 
 const mode = 'static'; // ci, laravel, shop, static
 const devServerOpenBrowser = true;
+const useFontsDirectory = false;
 
 // Don't edit from here
 const isDev = (process.env.NODE_ENV === 'development');
@@ -72,6 +73,7 @@ const settings = {
   dist,
   nunjucksOptions,
   pages,
+  useFontsDirectory,
 };
 
 module.exports = settings;

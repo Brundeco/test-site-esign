@@ -39,7 +39,7 @@ a {
   color: $linkColor;
   transition: $transitionDefault;
   text-decoration: underline;
-  text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
   // @include smart-underline; cross browser text-decoration skip
 
   &:hover, &:focus {

@@ -133,6 +133,17 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff|woff2|ttf|otf|eot)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]`,
+            },
+          },
+        ],
+      },
     ],
   },
   output: {

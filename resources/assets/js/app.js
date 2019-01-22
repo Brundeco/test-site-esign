@@ -28,12 +28,16 @@ window.submitRecaptchaFormNewsletter = () => {
 // Enable this if you want to test ga calls in development
 // gaDevelopment();
 
-// Page specific
+// Page specific classes
 const pages = {
-  contact: new Contact(),
+  Contact,
 };
 
 const currentPage = document.documentElement.getAttribute('data-page');
-if (currentPage && pages[currentPage]) {
-  pages[currentPage].init();
+const pageClassName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
+
+if (pageClassName !== '' && typeof pages[pageClassName] === 'function') {
+  // Exceptional use of new
+  // eslint-disable-next-line no-new
+  new pages[pageClassName]();
 }

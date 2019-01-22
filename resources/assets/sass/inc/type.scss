@@ -39,7 +39,7 @@ a {
   color: $linkColor;
   transition: $transitionDefault;
   text-decoration: underline;
-  text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
   // @include smart-underline; cross browser text-decoration skip
 
   &:hover, &:focus {
@@ -67,8 +67,6 @@ a[href^=tel]{
 
 a:not([href]) {
   color: $black; text-decoration: none;
-  &:hover, &:focus {
-  }
 }
 
 img {
@@ -112,9 +110,9 @@ h4, .h4 {
   @include fs(16);
 }
 
-h5, .h5 {  }
+// h5, .h5 {  }
 
-h6, .h6 {  }
+// h6, .h6 {  }
 
 
 // Lists

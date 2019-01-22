@@ -116,7 +116,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: $smoothing;
   -moz-osx-font-smoothing: grayscale;
-  font-smoothing: $smoothing;
 }
 
 // Font size
@@ -171,13 +170,13 @@
     #{$property}: $min-value;
   }
 
-  @media screen and (min-width: $min-vw) {
+  @media (min-width: $min-vw) {
     @each $property in $properties {
       #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
     }
   }
 
-  @media screen and (min-width: $max-vw) {
+  @media (min-width: $max-vw) {
     @each $property in $properties {
       #{$property}: $max-value;
     }

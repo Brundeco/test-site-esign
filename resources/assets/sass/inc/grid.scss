@@ -15,7 +15,7 @@
     @if $media-query == $name and $declaration {
       $breakpoint-found: true;
 
-      @media only screen and #{$declaration} {
+      @media #{$declaration} {
         @content;
       }
     }
@@ -27,7 +27,7 @@
 }
 
 @mixin silent-relative() {
-  position:relative;
+  position: relative;
 }
 
 

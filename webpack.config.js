@@ -31,6 +31,7 @@ const {
   nunjucksOptions,
   pages,
   useFontsDirectory,
+  useVideosDirectory,
 } = settings;
 
 const copy = [
@@ -40,6 +41,12 @@ const copy = [
 if (useFontsDirectory) {
   copy.push(
     { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[path][name].[ext]` : `${dist.fonts}[path][name].[hash:8].[ext]` },
+  );
+}
+
+if (useVideosDirectory) {
+  copy.push(
+    { from: `./${paths.videos}`, to: (isDev) ? `${dist.videos}[path][name].[ext]` : `${dist.videos}[path][name].[hash:8].[ext]` },
   );
 }
 
@@ -140,6 +147,17 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]`,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(mp4|webm)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: (isDev) ? `${dist.videos}[path][name].[ext]` : `${dist.videos}[path][name].[hash:8].[ext]`,
             },
           },
         ],

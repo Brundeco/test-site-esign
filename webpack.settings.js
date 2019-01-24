@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line
 const mode = 'static'; // ci, laravel, shop, static
 const devServerOpenBrowser = true;
 const useFontsDirectory = false;
+const useVideosDirectory = false;
 
 // Don't edit from here
 const isDev = (process.env.NODE_ENV === 'development');
@@ -28,6 +29,7 @@ paths.js = `${paths.assets}js/`;
 paths.images = `${paths.assets}images/`;
 paths.fonts = `${paths.assets}fonts/`;
 paths.svgSprite = `${paths.assets}svg-sprite/`;
+paths.videos = `${paths.assets}videos/`;
 
 if (isShop) {
   paths.sass = `${paths.sass}client/`;
@@ -49,6 +51,7 @@ dist.js = `${dist.assets}js/`;
 dist.images = `${dist.assets}images/`;
 dist.fonts = `${dist.assets}fonts/`;
 dist.svgSprite = `${dist.assets}svg-sprite/`;
+dist.videos = `${dist.assets}videos/`;
 
 const devServerContentBase = path.join(basePath, dist.root);
 
@@ -74,6 +77,7 @@ const settings = {
   nunjucksOptions,
   pages,
   useFontsDirectory,
+  useVideosDirectory,
 };
 
 module.exports = settings;

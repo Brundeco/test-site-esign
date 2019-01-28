@@ -2,9 +2,11 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+Read the [frontend template docs](https://docs.esign.eu/books/development/page/front-end-template) for more detailed info about the template.
+
 ## [Unreleased]
 
-## [2.0.0] - Unreleased -b Webpack
+## [2.0.0] - 2019-01-22 - Webpack build system
 This major update introduces Webpack 4 as building tool instead of Gulp.
 
 ### Added

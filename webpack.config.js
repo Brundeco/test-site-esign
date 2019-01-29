@@ -109,7 +109,23 @@ module.exports = {
       },
       {
         test: /\.(njk|nunjucks)$/,
-        loader: ['html-loader', `nunjucks-html-loader?${nunjucksOptions}`],
+        use: [
+          {
+            loader: 'html-srcsets-loader',
+            options: {
+              attrs: [
+                'audio:src',
+                'img:src',
+                'img:srcset',
+                'video:src',
+                'source:srcset',
+              ],
+            },
+          },
+          {
+            loader: `nunjucks-html-loader?${nunjucksOptions}`,
+          },
+        ],
       },
       {
         test: /\.(jpe?g|png|svg|gif|webp)$/,

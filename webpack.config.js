@@ -74,6 +74,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+        },
       },
       {
         test: require.resolve('jquery'), // expose jQuery globally

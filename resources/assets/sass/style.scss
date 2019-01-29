@@ -63,7 +63,7 @@ body {
   position: relative;
 
   @media #{$medium} {
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     z-index: 2;
   }
 }
@@ -301,7 +301,7 @@ html.no-flexbox {
   padding: 20px 0;
 
   @media #{$medium} {
-    padding: 50px 0 150px;
+    padding: 50px 0;
   }
 }
 
@@ -319,8 +319,6 @@ html.no-flexbox {
 
   @media #{$medium} {
     height: 60px;
-    margin: -60px 0 0;
-    z-index: 5;
   }
 }
 

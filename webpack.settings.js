@@ -13,7 +13,7 @@ const isStatic = mode === 'static';
 const isLaravel = mode === 'shop' || mode === 'laravel';
 const isCi = mode === 'ci';
 const isShop = mode === 'shop';
-const isFramework = isLaravel || isCi;
+// const isFramework = isLaravel || isCi;
 
 // Paths
 const basePath = process.cwd();
@@ -43,9 +43,17 @@ const dist = {
   revManifest: '',
 };
 
-if (isLaravel) dist.root = `${paths.root}public/`;
-if (isCi) dist.root = `${paths.root}assets/`;
-if (isFramework) dist.assets = 'build/';
+if (isLaravel) {
+  dist.root = `${paths.root}public/`;
+  dist.assets = `${dist.root}build/`;
+  dist.revManifest = `${dist.root}public/`;
+}
+
+if (isCi) {
+  dist.root = paths.root;
+  dist.assets = `${dist.root}assets/build/`;
+  dist.revManifest = `${dist.root}assets/`;
+}
 
 dist.css = `${dist.assets}css/`;
 dist.js = `${dist.assets}js/`;

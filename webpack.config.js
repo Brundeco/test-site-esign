@@ -26,6 +26,7 @@ const {
   devServerContentBase,
   devServerOpenBrowser,
   isDev,
+  isStatic,
   paths,
   dist,
   nunjucksOptions,
@@ -111,26 +112,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.(njk|nunjucks)$/,
-        use: [
-          {
-            loader: 'html-srcsets-loader',
-            options: {
-              attrs: [
-                'audio:src',
-                'img:src',
-                'img:srcset',
-                'video:src',
-                'source:srcset',
-              ],
-            },
-          },
-          {
-            loader: `nunjucks-html-loader?${nunjucksOptions}`,
-          },
-        ],
-      },
-      {
         test: /\.(jpe?g|png|svg|gif|webp)$/,
         exclude: [
           path.resolve(__dirname, paths.svgSprite),
@@ -208,7 +189,6 @@ module.exports = {
     ],
   },
   plugins: [
-    ...pages,
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -276,6 +256,31 @@ module.exports = {
     children: false, // Suppress "Entrypoint undefined" warnings
   },
 };
+
+if (isStatic) {
+  module.exports.module.rules.push({
+    test: /\.(njk|nunjucks)$/,
+    use: [
+      {
+        loader: 'html-srcsets-loader',
+        options: {
+          attrs: [
+            'audio:src',
+            'img:src',
+            'img:srcset',
+            'video:src',
+            'source:srcset',
+          ],
+        },
+      },
+      {
+        loader: `nunjucks-html-loader?${nunjucksOptions}`,
+      },
+    ],
+  });
+
+  module.exports.plugins.push(...pages);
+}
 
 if (!isDev) {
   module.exports.plugins.push(

@@ -9,6 +9,7 @@ const useVideosDirectory = false;
 
 // Don't edit from here
 const isDev = (process.env.NODE_ENV === 'development');
+const isStatic = mode === 'static';
 const isLaravel = mode === 'shop' || mode === 'laravel';
 const isCi = mode === 'ci';
 const isShop = mode === 'shop';
@@ -72,6 +73,7 @@ const settings = {
   devServerContentBase,
   devServerOpenBrowser,
   isDev,
+  isStatic,
   paths,
   dist,
   nunjucksOptions,

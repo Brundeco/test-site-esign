@@ -7,7 +7,6 @@ export default class RecaptchaForm {
 
     this.$form.submit((e) => {
       e.preventDefault();
-      this.$form = $(this);
 
       if (this.$form.hasClass('validate')) {
         if (this.$form.validationEngine('validate') === false) {
@@ -40,7 +39,7 @@ export default class RecaptchaForm {
       processData: false,
       // Allows us to get file fields via JS
       contentType: false,
-      success(response) {
+      success: (response) => {
         $('li').removeClass('error');
 
         if (response.errors === false) {

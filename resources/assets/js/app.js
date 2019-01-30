@@ -34,10 +34,12 @@ const pages = {
 };
 
 const currentPage = document.documentElement.getAttribute('data-page');
-const pageClassName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
+if (currentPage) {
+  const pageClassName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
 
-if (pageClassName !== '' && typeof pages[pageClassName] === 'function') {
-  // Exceptional use of new
-  // eslint-disable-next-line no-new
-  new pages[pageClassName]();
+  if (pageClassName !== '' && typeof pages[pageClassName] === 'function') {
+    // Exceptional use of new
+    // eslint-disable-next-line no-new
+    new pages[pageClassName]();
+  }
 }

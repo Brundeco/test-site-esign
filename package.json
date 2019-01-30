@@ -11,6 +11,7 @@
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development webpack-dev-server --mode development",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --mode development --hot",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch --progress",
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production webpack --mode production --progress"
   },

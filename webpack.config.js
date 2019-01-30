@@ -281,6 +281,14 @@ if (isStatic) {
   });
 
   module.exports.plugins.push(...pages);
+} else {
+  // clean directories when not in static mode
+  module.exports.plugins.push(
+    new CleanWebpackPlugin([
+      path.join(dist.root, dist.css),
+      path.join(dist.root, dist.js),
+    ]),
+  );
 }
 
 if (!isDev) {

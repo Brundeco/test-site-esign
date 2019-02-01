@@ -194,7 +194,10 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
     }),
-    new StyleLintPlugin({ syntax: 'scss' }),
+    new StyleLintPlugin({
+      syntax: 'scss',
+      files: `./${paths.sass}**/*.s?(a|c)ss`,
+    }),
     new MiniCssExtractPlugin({
       filename: `${dist.css}style.[contenthash].css`,
     }),

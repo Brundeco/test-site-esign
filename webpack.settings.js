@@ -13,6 +13,7 @@ const isStatic = mode === 'static';
 const isLaravel = mode === 'shop' || mode === 'laravel';
 const isCi = mode === 'ci';
 const isShop = mode === 'shop';
+const isCraft = mode === 'craft';
 // const isFramework = isLaravel || isCi;
 
 // Paths
@@ -53,6 +54,12 @@ if (isCi) {
   dist.root = paths.root;
   dist.assets = `${dist.root}assets/build/`;
   dist.revManifest = `${dist.root}assets/`;
+}
+
+if (isCraft) {
+  dist.root = paths.root;
+  dist.assets = `${dist.root}web/build/`;
+  dist.revManifest = `${dist.root}web/`;
 }
 
 dist.css = `${dist.assets}css/`;

@@ -22,5 +22,9 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
     </div>
   </div>
+
+  <p>Inline background image example:</p>
+  <div style="background-image: url('${require(`../../assets/images/marker.png`)}'); height: 128px; width: 100px;">
+  </div>
 </div>
 {% endblock %}

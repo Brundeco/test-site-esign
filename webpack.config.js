@@ -275,6 +275,7 @@ if (isStatic) {
             'video:src',
             'source:srcset',
           ],
+          interpolate: true,
         },
       },
       {

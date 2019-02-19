@@ -44,6 +44,13 @@ const dist = {
   revManifest: '',
 };
 
+if (isLaravel || isCi) {
+  if (isDev) {
+    console.log('\x1b[31m%s\x1b[31m', 'Use npm run watch instead of npm run dev (CI || Laravel)') ;
+    process.exit();
+  }
+}
+
 if (isLaravel) {
   dist.root = `${paths.root}public/`;
   dist.assets = `${dist.root}build/`;

@@ -45,8 +45,8 @@ const dist = {
 };
 
 if (isLaravel || isCi) {
-  if (isDev) {
-    console.log('\x1b[31m%s\x1b[31m', 'Use npm run watch instead of npm run dev (CI || Laravel)') ;
+  if (process.env.npm_lifecycle_event === 'development') {
+    console.log('\x1b[31m%s\x1b[31m', 'Use npm run watch instead of npm run dev (CI || Laravel)', '\x1b[0m') ;
     process.exit();
   }
 }

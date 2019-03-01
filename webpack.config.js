@@ -137,6 +137,7 @@ module.exports = {
             options: {
               extract: true,
               spriteFilename: `${dist.svgSprite}/icons.svg`,
+              symbolId: filePath => `icon-${path.basename(filePath, '.svg')}`,
             },
           },
         ],

@@ -26,5 +26,8 @@
   <p>Inline background image example:</p>
   <div style="background-image: url('${require(`../../assets/images/marker.png`)}'); height: 128px; width: 100px;">
   </div>
+
+  <div class="marker">
+  </div>
 </div>
 {% endblock %}

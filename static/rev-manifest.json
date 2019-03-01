@@ -1,16 +1,18 @@
 {
   "app.css": "assets/css/style.e90e46a9f95e761864c3.css",
-  "app.js": "assets/js/app.836f7b8d005ebad1930e.js",
-  "app.js.map": "assets/js/app.836f7b8d005ebad1930e.js.map",
-  "vendor.js": "assets/js/vendor.app.ddfeec0c579d153d4156.js",
-  "vendor.js.map": "assets/js/vendor.app.ddfeec0c579d153d4156.js.map",
+  "app.js": "assets/js/app.b3addfbcc6bdd6d09b6c.js",
+  "app.js.map": "assets/js/app.b3addfbcc6bdd6d09b6c.js.map",
+  "vendor.js": "assets/js/vendor.app.6d93d62dc6f0329942d5.js",
+  "vendor.js.map": "assets/js/vendor.app.6d93d62dc6f0329942d5.js.map",
   "assets/svg-sprite//icons.svg": "assets/svg-sprite//icons.svg",
   "assets/images/logo-esign-white.svg": "assets/images/logo-esign-white.106b33c9.svg",
   "assets/images/style.scss": "assets/images/marker.d51c4b4d.png",
   "assets/images/logo.svg": "assets/images/logo.0ccbf385.svg",
+  "browserconfig.xml": "browserconfig.xml",
   "components.html": "components.html",
   "contact.html": "contact.html",
   "index.html": "index.html",
+  "manifest.json": "manifest.json",
   "news-detail.html": "news-detail.html",
   "news.html": "news.html"
 }

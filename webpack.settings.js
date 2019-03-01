@@ -32,6 +32,7 @@ paths.images = `${paths.assets}images/`;
 paths.fonts = `${paths.assets}fonts/`;
 paths.svgSprite = `${paths.assets}svg-sprite/`;
 paths.videos = `${paths.assets}videos/`;
+paths.manifest = `${paths.resources}manifest/`;
 
 if (isShop) {
   paths.sass = `${paths.sass}client/`;
@@ -42,6 +43,7 @@ const dist = {
   root: `${paths.root}static/`,
   assets: 'assets/',
   revManifest: '',
+  manifest: '',
 };
 
 if (isLaravel || isCi) {
@@ -55,18 +57,21 @@ if (isLaravel) {
   dist.root = `${paths.root}public/`;
   dist.assets = `${dist.root}build/`;
   dist.revManifest = `${dist.root}public/`;
+  dist.manifest = `${dist.root}public/`;
 }
 
 if (isCi) {
   dist.root = paths.root;
   dist.assets = `${dist.root}assets/build/`;
   dist.revManifest = `${dist.root}assets/`;
+  dist.manifest = `${dist.root}assets/`;
 }
 
 if (isCraft) {
   dist.root = paths.root;
   dist.assets = `${dist.root}web/build/`;
   dist.revManifest = `${dist.root}web/`;
+  dist.manifest = `${dist.root}web/`;
 }
 
 dist.css = `${dist.assets}css/`;

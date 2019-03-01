@@ -37,6 +37,7 @@ const {
 
 const copy = [
   { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[path][name].[ext]` : `${dist.images}[path][name].[hash:8].[ext]` },
+  { from: `./${paths.manifest}`, to: `${dist.manifest}[name].[ext]` },
 ];
 
 if (useFontsDirectory) {

@@ -36,19 +36,19 @@ const {
 } = settings;
 
 const copy = [
-  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[path][name].[ext]` : `${dist.images}[path][name].[hash:8].[ext]` },
+  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[path][name].[ext]` : `${dist.images}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
   { from: `./${paths.manifest}`, to: `${dist.manifest}[name].[ext]` },
 ];
 
 if (useFontsDirectory) {
   copy.push(
-    { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[path][name].[ext]` : `${dist.fonts}[path][name].[hash:8].[ext]` },
+    { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[path][name].[ext]` : `${dist.fonts}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
   );
 }
 
 if (useVideosDirectory) {
   copy.push(
-    { from: `./${paths.videos}`, to: (isDev) ? `${dist.videos}[path][name].[ext]` : `${dist.videos}[path][name].[hash:8].[ext]` },
+    { from: `./${paths.videos}`, to: (isDev) ? `${dist.videos}[path][name].[ext]` : `${dist.videos}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
   );
 }
 

@@ -59,10 +59,8 @@ if (isLaravel) {
 }
 
 if (isCi) {
-  dist.root = paths.root;
-  dist.assets = `${dist.root}assets/build/`;
-  dist.revManifest = `${dist.root}assets/`;
-  dist.manifest = `${dist.root}assets/`;
+  dist.root = `${paths.root}assets`;
+  dist.assets = 'build/';
 }
 
 if (isCraft) {

@@ -66,10 +66,8 @@ if (isCi) {
 }
 
 if (isCraft) {
-  dist.root = paths.root;
-  dist.assets = `${dist.root}web/build/`;
-  dist.revManifest = `${dist.root}web/`;
-  dist.manifest = `${dist.root}web/`;
+  dist.root = `${paths.root}web/`;
+  dist.assets = 'build/';
 }
 
 dist.css = `${dist.assets}css/`;

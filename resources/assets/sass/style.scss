@@ -101,6 +101,21 @@ body {
   display: inline-block; vertical-align: middle;
 }
 
+.icon-facebook {
+  width: 9px;
+  height: 18px;
+}
+
+.icon-twitter {
+  width: 20px;
+  height: 16px;
+}
+
+.icon-instagram {
+  width: 20px;
+  height: 20px;
+}
+
 .icon-hamburger, .icon-hamburger:before, .icon-hamburger:after {
   width: 24px; position: absolute; left: 0;
   height: 1px; border-top: 3px solid $accent;
@@ -460,10 +475,23 @@ section { position: relative; }
   line-height: 40px;
   display: block;
   border-radius: 40px;
-  background-color: $accent;
+  background-color: #efefef;
   text-decoration: none;
   text-align: center;
   overflow: hidden;
+
+  &:hover, &:focus {
+    background-color: #dfdfdf;
+  }
+}
+
+.social__link--facebook,
+.social__link--linkedin,
+.social__link--pinterest,
+.social__link--twitter {
+  svg {
+    fill: #fff;
+  }
 }
 
 .social__link--facebook {

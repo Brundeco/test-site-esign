@@ -259,6 +259,14 @@
       </a>
     </li>
     <li class="social__item">
+      <a href="#" class="social__link social__link--instagram" target="_blank">
+        <svg class="icon icon-instagram">
+            <use xlink:href="#icon-instagram" />
+        </svg>
+        <span class="vh">Volg ons op Instagram</span>
+      </a>
+    </li>
+    <li class="social__item">
       <a href="#" class="social__link social__link--pinterest" target="_blank">
         <svg class="icon icon-pinterest">
             <use xlink:href="#icon-pinterest" />

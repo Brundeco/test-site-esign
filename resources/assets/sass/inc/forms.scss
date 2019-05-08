@@ -155,7 +155,7 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
       content: "";
       display: block;
       position: absolute;
-      transform: $transitionDefault;
+      transition: $transitionDefault;
     }
 
     &:before {

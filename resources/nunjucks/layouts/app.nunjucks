@@ -110,22 +110,21 @@
 
     </main>
 
-  </div>
-
-  <footer class="page-footer">
-    <div class="container">
-      <div class="grid">
-        <div class="grid__item medium--one-half">
-          <p>&copy; 2019</p>
-        </div>
-        <div class="grid__item medium--one-half">
-          <p>
-            <a class="esign" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
-          </p>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="grid">
+          <div class="grid__item medium--one-half">
+            <p>&copy; 2019</p>
+          </div>
+          <div class="grid__item medium--one-half">
+            <p>
+              <a class="esign" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
     <defs>

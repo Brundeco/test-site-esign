@@ -275,6 +275,7 @@ if (isStatic) {
             'img:src',
             'img:srcset',
             'video:src',
+            'source:src',
             'source:srcset',
           ],
           interpolate: true,

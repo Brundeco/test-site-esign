@@ -59,6 +59,7 @@
     "nunjucks-html-loader": "^1.1.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "regenerator-runtime": "^0.13.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
@@ -75,7 +76,6 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
-    "jquery-touchswipe": "^1.6.19",
-    "regenerator-runtime": "^0.13.2"
+    "jquery-touchswipe": "^1.6.19"
   }
 }

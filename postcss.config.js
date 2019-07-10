@@ -3,9 +3,7 @@ const mqpacker = require('css-mqpacker'); // eslint-disable-line import/no-extra
 
 module.exports = {
   plugins: [
-    autoprefixer({
-      browsers: ['last 2 versions'],
-    }),
+    autoprefixer(),
     mqpacker({
       sort: true,
     }),

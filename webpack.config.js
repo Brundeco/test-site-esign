@@ -1,9 +1,7 @@
-require('@babel/polyfill');
-
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
+const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -37,7 +35,7 @@ const {
 
 const copy = [
   { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[path][name].[ext]` : `${dist.images}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
-  { from: `./${paths.manifest}`, to: `${dist.manifest}[name].[ext]` },
+  { from: `./${paths.manifest}`, to: `${dist.manifest}[name].[ext]`, ignore: ['*.DS_Store'] },
 ];
 
 if (useFontsDirectory) {
@@ -56,7 +54,8 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     app: [
-      '@babel/polyfill',
+      'core-js/stable',
+      'regenerator-runtime/runtime',
       `./${paths.js}app.js`,
       `./${paths.sass}style.scss`,
       `./${paths.svgSprite}sprite.js`,
@@ -196,8 +195,7 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
     }),
-    new StyleLintPlugin({
-      syntax: 'scss',
+    new StylelintBarePlugin({
       files: `./${paths.sass}**/*.s?(a|c)ss`,
     }),
     new MiniCssExtractPlugin({

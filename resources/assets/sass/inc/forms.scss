@@ -48,7 +48,7 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
 input[type="text"], input[type="search"], input[type="password"],
 input[type="email"], input[type="tel"], input[type="date"], textarea, select {
   padding: 6px; margin-bottom: 2px; display: block;
-  background: #fff; height: 35px; line-height: inherit;
+  background: $white; height: 35px; line-height: inherit;
   width: 100%; border: 1px solid $gray;
 
   &:focus {
@@ -79,7 +79,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 input[type="file"] {
-  background-color: #fff; padding: initial; border: initial; line-height: initial;
+  background-color: $white; padding: initial; border: initial; line-height: initial;
 }
 
 input[type="search"] {
@@ -94,7 +94,7 @@ input[type="reset"], input[type="submit"], .button {
   transition: $transitionDefault;
   outline: 0; line-height: 1.2em;
   padding: 12px 20px; margin: 10px 0 0; background-color: $accent;
-  text-decoration: none; color: #fff;
+  text-decoration: none; color: $white;
   text-transform: uppercase;
 
   i { margin: -5px 6px 0 5px; }
@@ -259,7 +259,7 @@ fieldset {
   }
 }
 
-.a-c {
+.text-center {
   .button, a.button, button {
     float: none; clear: none; display: inline-block;
   }

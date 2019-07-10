@@ -6,6 +6,13 @@ Read the [frontend template docs](https://docs.esign.eu/books/development/page/f
 
 ## [Unreleased]
 
+## [2.1.0] - 2019-07-10
+
+### Changed
+- Replaced deprecated package @babel/polyfill with core-js & regenerator-runtime
+- Replaced stylelint-webpack-plugin with stylelint-bare-webpack-plugin to fix style linting
+- Moved Browserslist option from postcss config file to package.json 
+
 ## [2.0.0] - 2019-01-22 - Webpack build system
 This major update introduces Webpack 4 as building tool instead of Gulp.
 

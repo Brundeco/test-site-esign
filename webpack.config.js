@@ -17,6 +17,8 @@ const imageminSvgo = require('imagemin-svgo');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const settings = require('./webpack.settings');
 
 const {
@@ -305,5 +307,6 @@ if (!isDev) {
         dist.assets,
       ],
     }),
+    new BundleAnalyzerPlugin(),
   );
 }

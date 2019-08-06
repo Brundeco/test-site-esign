@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -288,25 +288,20 @@ if (isStatic) {
   });
 
   module.exports.plugins.push(...pages);
-} else {
-  // clean directories when not in static mode
-  module.exports.plugins.push(
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        dist.css,
-        dist.js,
-      ],
-    }),
-  );
 }
 
-if (!isDev) {
+if (isDev) {
   module.exports.plugins.push(
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        dist.assets,
-      ],
-    }),
+    new CleanWebpackPlugin([
+      path.join(dist.root, dist.css),
+      path.join(dist.root, dist.js),
+    ]),
+  );
+} else {
+  module.exports.plugins.push(
+    new CleanWebpackPlugin([
+      path.join(dist.root, dist.assets),
+    ]),
     new BundleAnalyzerPlugin(),
   );
 }

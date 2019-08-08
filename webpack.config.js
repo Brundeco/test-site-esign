@@ -56,8 +56,6 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     app: [
-      'core-js/stable',
-      'regenerator-runtime/runtime',
       `./${paths.js}app.js`,
       `./${paths.sass}style.scss`,
       `./${paths.svgSprite}sprite.js`,
@@ -79,7 +77,16 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env'],
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: 'usage',
+                corejs: 3,
+                shippedProposals: true,
+              }
+            ]
+          ],
         },
       },
       {

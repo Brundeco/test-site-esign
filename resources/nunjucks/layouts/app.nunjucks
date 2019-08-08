@@ -137,7 +137,7 @@
   {% if datapage == 'contact' %}
     <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
     <script>
-      var markerImg = 'http://localhost:8888/frontend-template/static/assets/images/marker.d51c4b4d.png';
+      var markerImg = '${require(`../../assets/images/marker.png`)}';
     </script>
   {% endif %}
   {# <script src="../assets/js/app.js"></script> #}

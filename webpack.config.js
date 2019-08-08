@@ -138,7 +138,7 @@ module.exports = {
             loader: 'svg-sprite-loader',
             options: {
               extract: true,
-              spriteFilename: `${dist.svgSprite}/icons.svg`,
+              spriteFilename: `${dist.svgSprite}icons.svg`,
               symbolId: filePath => `icon-${path.basename(filePath, '.svg')}`,
             },
           },

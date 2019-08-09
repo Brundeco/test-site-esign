@@ -228,19 +228,8 @@ fieldset {
       list-style: none; background: none; list-style-image: none;
       margin: 0 0 10px; float: left; width: 100%; padding: 0 0 0 20px;
 
-      &.error {
-        input {
-          border-color: $error;
-        }
-      }
-
       &.space {
         margin-top: 25px;
-      }
-
-      @media #{$medium} {
-        &.one-half { width: 50%; }
-        &.one-fourth { width: 25%; }
       }
     }
   }
@@ -263,6 +252,19 @@ fieldset {
   .button, a.button, button {
     float: none; clear: none; display: inline-block;
   }
+}
+
+
+// Validation
+
+.input-group--has-error {
+  input, textarea {
+    border-color: $error;
+  }
+}
+
+.input-group__error {
+  color: $error;
 }
 
 // Recaptcha

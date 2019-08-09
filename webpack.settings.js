@@ -30,7 +30,7 @@ paths.sass = `${paths.assets}sass/`;
 paths.js = `${paths.assets}js/`;
 paths.images = `${paths.assets}images/`;
 paths.fonts = `${paths.assets}fonts/`;
-paths.svgSprite = `${paths.assets}svg-sprite/`;
+paths.svgSprite = `${paths.images}svg-sprite/`;
 paths.videos = `${paths.assets}videos/`;
 paths.manifest = `${paths.resources}manifest/`;
 

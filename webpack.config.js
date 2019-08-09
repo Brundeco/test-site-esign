@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const glob = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -58,8 +59,8 @@ module.exports = {
     app: [
       `./${paths.js}app.js`,
       `./${paths.sass}style.scss`,
-      `./${paths.svgSprite}sprite.js`,
     ],
+    sprite: glob.sync(`./${paths.svgSprite}*.svg`),
   },
   module: {
     rules: [
@@ -84,8 +85,8 @@ module.exports = {
                 useBuiltIns: 'usage',
                 corejs: 3,
                 shippedProposals: true,
-              }
-            ]
+              },
+            ],
           ],
         },
       },
@@ -177,7 +178,7 @@ module.exports = {
   },
   output: {
     path: path.join(basePath, dist.root),
-    filename: `${dist.js}app.[contenthash].js`,
+    filename: `${dist.js}[name].[contenthash].js`,
   },
   optimization: {
     splitChunks: {
@@ -250,6 +251,20 @@ module.exports = {
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
+    {
+      // Remove sprite.js & sprite.js.map from build
+      apply: (compiler) => {
+        compiler.plugin('emit', (compilation, callback) => {
+          const { assets } = compilation;
+          Object.keys(assets).filter(chunk => {
+           if (chunk.match(/sprite.*\.js$/) || chunk.match(/sprite.*\.map$/)) {
+             delete compilation.assets[chunk];
+           }
+          });
+          callback();
+        });
+      }
+    },
     new WebpackNotifierPlugin({
       title: process.env.npm_package_description,
       contentImage: path.join(basePath, 'notification.png'),

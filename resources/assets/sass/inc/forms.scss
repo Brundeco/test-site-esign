@@ -90,11 +90,15 @@ input[type="search"] {
 
 // Buttons
 input[type="reset"], input[type="submit"], .button {
-  float: left; display: block; clear: both;
+  display: inline-flex;
   transition: $transitionDefault;
-  outline: 0; line-height: 1.2em;
-  padding: 12px 20px; margin: 10px 0 0; background-color: $accent;
-  text-decoration: none; color: $white;
+  outline: 0;
+  line-height: 1.2em;
+  padding: 12px 20px;
+  margin: 0;
+  background-color: $accent;
+  text-decoration: none;
+  color: $white;
   text-transform: uppercase;
 
   i { margin: -5px 6px 0 5px; }

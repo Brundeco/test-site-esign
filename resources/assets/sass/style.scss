@@ -72,6 +72,10 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 
+  &--small {
+    max-width: 1000px;
+  }
+
   @media #{$large} {
     padding-left: 40px;
     padding-right: 40px;
@@ -527,6 +531,107 @@ section { position: relative; }
   height: 128px; width: 100px;
 }
 
+/* =============================================================================
+   CMS Styles
+   ========================================================================== */
+
+.cms-build {
+  @include clearfix;
+}
+
+.cms-block {
+  margin-bottom: $gutter * 2;
+}
+
+
+/* Image block */
+
+.cms-block--image {
+  text-align: center;
+
+  &.cms-block--pop-out {
+    img {
+      max-width: calc(100% + #{ $gutter * 2});
+      width: calc(100% + #{ $gutter * 2});
+      margin-left: -$gutter;
+    }
+
+    @media #{$medium} {
+      img {
+        max-width: calc(100% + #{ $gutter * 4});
+        width: calc(100% + #{ $gutter * 4});
+        margin-left: -$gutter * 2;
+      }
+    }
+  }
+
+  &.cms-block--left, &.cms-block--right {
+    & + .cms-block {
+      &:after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+  }
+
+  &.cms-block--left {
+    @media #{$medium} {
+      width: 33%;
+      float: left;
+      margin-right: $gutter * 2;
+
+      &.cms-block--pop-out {
+        img {
+          max-width: calc(100% + #{ $gutter * 2});
+          width: calc(100% + #{ $gutter * 2});
+          margin-left: -$gutter * 2;
+        }
+      }
+    }
+  }
+
+  &.cms-block--right {
+    @media #{$medium} {
+      width: 33%;
+      float: right;
+      margin-left: $gutter * 2;
+
+      &.cms-block--pop-out {
+        img {
+          max-width: calc(100% + #{ $gutter * 2});
+          width: calc(100% + #{ $gutter * 2});
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Buttons block */
+
+.cms-block--buttons {
+  text-align: center;
+
+  .button {
+    margin: 0 $gutter/2 $gutter $gutter/2;
+  }
+
+  @media #{$medium} {
+    padding: 0 $gutter * 3;
+  }
+}
+
+/* Section block */
+
+.cms-block--section {
+  @include clearfix;
+  margin-bottom: $gutter;
+
+  @media #{$medium} {
+    margin-bottom: $gutter * 3;
+  }
+}
 
 
 /* =============================================================================

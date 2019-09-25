@@ -2,8 +2,8 @@
 {% set description = '' %}
 {% set menuitem = 'home' %}
 {#
-  Only add bodyclasses when needed,
-  leave blank to prevent unneeded classes being added by Back-end dev
+Only add bodyclasses when needed,
+leave blank to prevent unneeded classes being added by Back-end dev
 #}
 {% set bodyclass = '' %}
 

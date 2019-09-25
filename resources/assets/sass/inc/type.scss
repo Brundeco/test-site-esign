@@ -218,3 +218,9 @@ blockquote {
     padding-left: 40px;
   }
 }
+
+.rte {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}

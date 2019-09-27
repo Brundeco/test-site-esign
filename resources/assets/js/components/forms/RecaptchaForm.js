@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import { grecaptcha } from '../../constants/defaults';
 
 export default class RecaptchaForm {
   constructor(formId) {
@@ -16,10 +15,11 @@ export default class RecaptchaForm {
 
       const $recaptchaResponse = this.$form.find('[name="g-recaptcha-response"]');
       if ($recaptchaResponse.length && $recaptchaResponse.val() !== '') {
-        grecaptcha.reset();
+        // Use window.grecaptcha as recaptcha is async loaded
+        window.grecaptcha.reset();
       }
 
-      grecaptcha.execute(this.$form.find('.g-recaptcha').data('widgetid'));
+      window.grecaptcha.execute(this.$form.find('.g-recaptcha').data('widgetid'));
 
       return false;
     });
@@ -81,7 +81,7 @@ window.onloadReCaptchaCallback = () => {
       callback: $(el).data('callback'),
     };
 
-    const widgetid = grecaptcha.render(el, attributes);
+    const widgetid = window.grecaptcha.render(el, attributes);
     $(el).data('widgetid', widgetid);
   });
 };

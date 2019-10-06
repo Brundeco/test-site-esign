@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob'); // eslint-disable-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
-const mode = 'static'; // ci, laravel, shop, static
+const mode = 'laravel'; // ci, laravel, shop, static
 const devServerOpenBrowser = true;
 const useFontsDirectory = false;
 const useVideosDirectory = false;

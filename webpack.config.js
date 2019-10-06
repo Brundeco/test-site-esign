@@ -19,6 +19,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin");
 
 const settings = require('./webpack.settings');
 
@@ -212,6 +213,7 @@ module.exports = {
       filename: `${dist.css}style.[contenthash].css`,
     }),
     new CopyWebpackPlugin(copy),
+    new ImageminWebpWebpackPlugin(),
     new ImageminPlugin({
       disable: isDev,
       test: /\.(jpe?g|png|gif|svg)$/i,

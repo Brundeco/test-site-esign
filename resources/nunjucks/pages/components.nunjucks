@@ -6,7 +6,7 @@
   leave blank to prevent unneeded classes being added by Back-end dev
 #}
 {% set bodyclass = '' %}
-{% set datapage = 'contact' %}
+{% set datapage = 'components' %}
 
 {% extends "layouts/app.nunjucks" %}
 
@@ -237,56 +237,36 @@
 
   <hr/>
 
-  <h2>Components</h2>
+  <h3>Instagram / Json Fetcher</h3>
 
-  <h3>Social links</h3>
+  {#
+    Data keys defines the data you want to retrieve.
+    Default seperator: ";".
+    Level indicator: "."
+    Print with double underscore "__" at each side of the word
 
-  <ul class="social">
-    <li class="social__item">
-      <a href="#" class="social__link social__link--facebook" target="_blank">
-        <svg class="icon icon-facebook">
-            <use xlink:href="#icon-facebook" />
-        </svg>
-        <span class="vh">Volg ons op Facebook</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--twitter" target="_blank">
-        <svg class="icon icon-twitter">
-            <use xlink:href="#icon-twitter" />
-        </svg>
-        <span class="vh">Volg ons op Twitter</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--instagram" target="_blank">
-        <svg class="icon icon-instagram">
-            <use xlink:href="#icon-instagram" />
-        </svg>
-        <span class="vh">Volg ons op Instagram</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--pinterest" target="_blank">
-        <svg class="icon icon-pinterest">
-            <use xlink:href="#icon-pinterest" />
-        </svg>
-        <span class="vh">Volg ons op Pinterest</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--linkedin" target="_blank">
-        <svg class="icon icon-linkedin">
-            <use xlink:href="#icon-linkedin" />
-        </svg>
-        <span class="vh">Volg ons op LinkedIn</span>
-      </a>
-    </li>
-  </ul>
+    Example:
 
-  <h3>Google Maps</h3>
+    data-keys="id;address.street"
+    print street: __address.street__
 
-  <div id="map" class="map"></div>
+    Special case:
+    img src -> use data-src
+  #}
+
+  <div class="grid social-grid json-fetcher" data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
+    <div class="json-fetcher__template hide">
+      <div class="grid__item one-half large--one-quarter social-grid__item">
+        <a href="__url__" target="_blank" rel="nofollow">
+          <div class="visual">
+            <img data-src="__photo__" alt=""/>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
 
 </div>
 

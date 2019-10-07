@@ -457,6 +457,15 @@ section { position: relative; }
   }
 }
 
+// Social grid - e.g. instagram
+
+.social-grid {
+  margin-bottom: -$gutter;
+
+  &__item {
+    margin-bottom: $gutter;
+  }
+}
 
 // Social
 .social {

@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html class="no-js" lang="nl" data-page="contact">
+<html class="no-js" lang="nl" data-page="components">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -66,7 +66,7 @@
 
   
   
-<link href="assets/css/style.f9bd426cc8b143f637ca.css" rel="stylesheet"></head>
+<link href="assets/css/style.3b52d9bd5f46a46329f9.css" rel="stylesheet"></head>
 
 <body class="">
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -324,56 +324,23 @@
 
   <hr/>
 
-  <h2>Components</h2>
+  <h3>Instagram / Json Fetcher</h3>
 
-  <h3>Social links</h3>
+  
 
-  <ul class="social">
-    <li class="social__item">
-      <a href="#" class="social__link social__link--facebook" target="_blank">
-        <svg class="icon icon-facebook">
-            <use xlink:href="#icon-facebook" />
-        </svg>
-        <span class="vh">Volg ons op Facebook</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--twitter" target="_blank">
-        <svg class="icon icon-twitter">
-            <use xlink:href="#icon-twitter" />
-        </svg>
-        <span class="vh">Volg ons op Twitter</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--instagram" target="_blank">
-        <svg class="icon icon-instagram">
-            <use xlink:href="#icon-instagram" />
-        </svg>
-        <span class="vh">Volg ons op Instagram</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--pinterest" target="_blank">
-        <svg class="icon icon-pinterest">
-            <use xlink:href="#icon-pinterest" />
-        </svg>
-        <span class="vh">Volg ons op Pinterest</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--linkedin" target="_blank">
-        <svg class="icon icon-linkedin">
-            <use xlink:href="#icon-linkedin" />
-        </svg>
-        <span class="vh">Volg ons op LinkedIn</span>
-      </a>
-    </li>
-  </ul>
+  <div class="grid social-grid json-fetcher" data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
+    <div class="json-fetcher__template hide">
+      <div class="grid__item one-half large--one-quarter social-grid__item">
+        <a href="__url__" target="_blank" rel="nofollow">
+          <div class="visual">
+            <img data-src="__photo__" alt=""/>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 
-  <h3>Google Maps</h3>
-
-  <div id="map" class="map"></div>
+  <hr/>
 
 </div>
 
@@ -525,11 +492,6 @@
   </svg>
 
   
-    <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
-    <script>
-      var markerImg = 'assets/images/marker.d51c4b4d.png';
-    </script>
   
-  
-<script type="text/javascript" src="assets/js/vendor.4a92295a0c2cce0638ff.js"></script><script type="text/javascript" src="assets/js/app.f496355d9c13e17ebb5a.js"></script></body>
+<script type="text/javascript" src="assets/js/vendor.d38626a06608f77a4efb.js"></script><script type="text/javascript" src="assets/js/app.a55d9350e8c029f34f61.js"></script></body>
 </html>

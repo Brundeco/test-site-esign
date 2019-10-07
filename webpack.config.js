@@ -38,7 +38,7 @@ const {
 } = settings;
 
 const copy = [
-  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[path][name].[ext]` : `${dist.images}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'], force: true },
+  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[path][name].[ext]` : `${dist.images}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
   { from: `./${paths.manifest}`, to: `${dist.manifest}[name].[ext]`, ignore: ['*.DS_Store'] },
 ];
 

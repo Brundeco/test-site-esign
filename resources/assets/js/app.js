@@ -5,6 +5,7 @@ import RecaptchaForm from './components/forms/RecaptchaForm';
 import gaTracking from './components/tracking/gatracking';
 
 import Contact from './pages/Contact';
+import Components from './pages/Components';
 
 require('./utils/nativeConsole');
 // require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc
@@ -35,6 +36,7 @@ window.submitRecaptchaFormNewsletter = () => {
 // Page specific classes
 const pages = {
   Contact,
+  Components,
 };
 
 const currentPage = document.documentElement.getAttribute('data-page');

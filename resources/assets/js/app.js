@@ -6,6 +6,7 @@ import gaTracking from './components/tracking/gatracking';
 
 import Contact from './pages/Contact';
 import Components from './pages/Components';
+import cookieNotification from './components/cookie-notification/cookie-notification';
 
 require('./utils/nativeConsole');
 // require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc
@@ -18,6 +19,7 @@ htmlClassList.remove('no-js');
 // Layout setup
 navigation();
 responsiveVideos();
+cookieNotification();
 
 // Forms
 validation();

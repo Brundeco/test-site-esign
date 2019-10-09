@@ -78,6 +78,7 @@
   "dependencies": {
     "cookiejs": "^1.0.25",
     "jquery": "^3.4.1",
-    "jquery-touchswipe": "^1.6.19"
+    "jquery-touchswipe": "^1.6.19",
+    "whatwg-fetch": "^3.0.0"
   }
 }

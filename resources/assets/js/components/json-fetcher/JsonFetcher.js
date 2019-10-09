@@ -36,9 +36,9 @@ export default class JsonFetcher {
         }
       });
       templateClone.innerHTML = templateClone.innerHTML.replace('data-src', 'src');
-      this.element.append(templateClone.children[0]);
+      this.element.appendChild(templateClone.children[0]);
     });
-    this.template.remove();
+    this.template.parentNode.removeChild(this.template);
   }
 
   printError(error) {

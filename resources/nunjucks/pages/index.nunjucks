@@ -32,7 +32,7 @@ leave blank to prevent unneeded classes being added by Back-end dev
 
   <h2>Webp image example</h2>
   <picture>
-    <!--<source srcset="../../assets/images/marker.webp" type="image/webp">-->
+    <source srcset="../../assets/images/marker.png" type="image/webp">
     <img src="../../assets/images/marker.png" alt="marker">
   </picture>
 </div>

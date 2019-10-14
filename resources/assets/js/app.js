@@ -3,7 +3,6 @@ import navigation from './components/layout/navigation';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import RecaptchaForm from './components/forms/RecaptchaForm';
-import gaTracking from './components/tracking/gatracking';
 
 import Contact from './pages/Contact';
 import Components from './pages/Components';
@@ -24,9 +23,6 @@ cookieNotification();
 
 // Forms
 validation();
-
-// Tracking
-gaTracking();
 
 const newsletterForm = new RecaptchaForm('#form-newsletter');
 window.submitRecaptchaFormNewsletter = () => {

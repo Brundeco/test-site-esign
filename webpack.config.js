@@ -314,7 +314,7 @@ if (isStatic) {
 
   module.exports.plugins.push(...pages);
 
-  // Dirty .webp extension fix
+  // Static webp extension fix
   module.exports.plugins.push({
     apply: (compiler) => {
       compiler.hooks.compilation.tap('ReplaceWebpExtensionPlugin', (compilation) => {
@@ -322,7 +322,7 @@ if (isStatic) {
           'ReplaceWebpExtensionPlugin',
           (data, cb) => {
             data.html = data.html.replace( // eslint-disable-line no-param-reassign
-              /.(png|jpg|gif)" type="image\/webp"/,
+              /.(png|jpg)" type="image\/webp"/,
               '.webp" type="image/webp"',
             );
             cb(null, data);

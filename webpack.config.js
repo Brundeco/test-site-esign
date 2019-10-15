@@ -254,16 +254,15 @@ module.exports = {
     {
       // Remove sprite.js & sprite.js.map from build
       apply: (compiler) => {
-        compiler.plugin('emit', (compilation, callback) => {
-          const { assets } = compilation;
-          Object.keys(assets).filter(chunk => {
-           if (chunk.match(/sprite.*\.js$/) || chunk.match(/sprite.*\.map$/)) {
-             delete compilation.assets[chunk];
-           }
+        compiler.plugin('emit', ({ assets }, callback) => {
+          Object.keys(assets).forEach((chunk) => {
+            if (chunk.match(/sprite.*\.js$/) || chunk.match(/sprite.*\.map$/)) {
+              delete assets[chunk]; // eslint-disable-line no-param-reassign
+            }
           });
           callback();
         });
-      }
+      },
     },
     new WebpackNotifierPlugin({
       title: process.env.npm_package_description,

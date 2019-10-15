@@ -87,7 +87,7 @@ const pages = glob.sync('**/*.nunjucks', {
 }).map(page => new HtmlWebpackPlugin({
   filename: page.replace('nunjucks', 'html'),
   template: `${paths.nunjucks}/pages/${page}`,
-  excludeChunks: ['sprite']
+  excludeChunks: ['sprite'],
 }));
 
 const settings = {

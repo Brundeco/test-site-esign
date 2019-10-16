@@ -34,14 +34,14 @@
 // Core
 @import "inc/vars";
 @import "inc/mixins";
-//@import "inc/animations";
-//@import "inc/custom-animations";
+// @import "inc/animations";
 
 // Styled patterns and elements
 @import "inc/grid";
 @import "inc/type";
 @import "inc/tables";
 @import "inc/forms";
+@import "inc/matrix";
 
 // Plugins
 @import "plugins/validation-engine";
@@ -72,14 +72,14 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 
-  &--small {
-    max-width: 1000px;
-  }
-
   @media #{$large} {
     padding-left: 40px;
     padding-right: 40px;
   }
+}
+
+.container--small {
+  max-width: 1000px;
 }
 
 // Typekit async loading (all elements using $ typekit font)
@@ -150,10 +150,16 @@ body {
 
 // Responsive video
 .video-container {
-  position: relative; padding: 0 0 56.25%; height: 0; overflow: hidden; margin: 0 0 15px;
+  position: relative;
+  padding: 0 0 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 0 0 15px;
 
   iframe {
-    position: absolute; top:0; left: 0; width: 100%; height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
   }
 }
 
@@ -171,20 +177,6 @@ body {
     display: none;
   }
 }
-
-html.no-flexbox {
-  .equal-h {
-    height: 100%;
-    > div { float: left; }
-  }
-}
-
-// Vertical align (not recommended)
-// .va-wrap, .va-m, .va-b { display: table; width: 100%; height: 100%; }
-// .va-wrap { table-layout: fixed; }
-// .va-m, .va-b { display: table-cell; }
-// .va-m { vertical-align: middle; }
-// .va-b { vertical-align: bottom; }
 
 // Block link
 .block-link {
@@ -241,11 +233,13 @@ html.no-flexbox {
     float: left;
 
     li {
-      float: left; margin: 0 0 0 20px;
+      float: left;
+      margin: 0 0 0 20px;
     }
 
     a {
-      border-top: 0; padding: 0;
+      border-top: 0;
+      padding: 0;
     }
   }
 
@@ -310,7 +304,6 @@ html.no-flexbox {
 }
 
 // Cookie notification
-
 .cookie-notification {
   position: fixed;
   bottom: 0;
@@ -335,14 +328,7 @@ html.no-flexbox {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  font-size: 13px;
-
-  @media #{$medium} {
-    border-radius: 40px;
-    flex-wrap: wrap;
-    font-size: 16px;
-    padding: 10px $gutter;
-  }
+  @include fs(13);
 
   p {
     margin-bottom: 0;
@@ -355,14 +341,19 @@ html.no-flexbox {
   .button {
     border-radius: 20px;
     padding: 12px 20px;
+  }
 
-    @media #{$medium} {
+  @media #{$medium} {
+    border-radius: 40px;
+    flex-wrap: wrap;
+    font-size: 16px;
+    padding: 10px $gutter;
+
+    .button {
       border-radius: 40px;
       padding: 12px 40px;
     }
   }
-
-
 }
 
 .cookie-notification__actions {
@@ -403,10 +394,6 @@ html.no-flexbox {
 .page-footer {
   position: relative;
   padding: $gutter 0;
-
-  .grid {
-    margin-bottom: 0;
-  }
 }
 
 a.esign {
@@ -414,14 +401,23 @@ a.esign {
   background-image: url('../images/logo-esign.svg');
   background-size: 77px 20px; background-repeat: no-repeat;
   background-position: top left;
-  backface-visibility: hidden; transform: translate3d(0,0,0); text-indent: -9999px;
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
+  text-indent: -9999px;
   opacity: 0.6; transition-duration: 0.5s;
   display: block; outline: 0; z-index: 9999;
-  &:hover, &:focus { opacity: 1; }
+
+  &:hover, &:focus {
+    opacity: 1;
+  }
 
   @media #{$medium} {
-    width: 16px; position: absolute; right: 45px; bottom: 0;
-    &:hover, &:focus { opacity:1; width: 80px; }
+    width: 16px;
+    position: absolute; right: 45px; bottom: $gutter;
+
+    &:hover, &:focus {
+      width: 80px;
+    }
   }
 }
 
@@ -488,35 +484,6 @@ section { position: relative; }
 }
 
 
-// Slideshow
-.cycle-slideshow {
-  width: 100%; position: relative;
-}
-
-.cycle-pager {
-  width: 100%; text-align: center;
-
-  span {
-    display: inline-block; margin: 0 3px; font-size: 36px;
-    height: 20px; width: 20px; line-height: 14px;
-    cursor:pointer;
-    border: 2px solid #fff;
-    border-radius: 20px;
-    color: #fff;
-    overflow: hidden; text-indent: -500px;
-    transition: $transitionDefault;
-
-    &:hover, &:focus {
-      transition: none;
-    }
-  }
-
-  span:hover, span:focus, .cycle-pager-active {
-    text-indent: 0;
-  }
-}
-
-
 // Map
 .map {
   width: 100%;
@@ -530,76 +497,38 @@ section { position: relative; }
 }
 
 // Social grid - e.g. instagram
-
 .social-grid {
   margin-bottom: -$gutter;
-
-  &__item {
-    margin-bottom: $gutter;
-  }
 }
 
-// Social
-.social {
+.social-grid__item {
+  margin-bottom: $gutter;
+}
+
+// Social icons
+.social-icons {
   @include clearfix;
   list-style: none;
-  margin: 0 0 2em -5px;
+  margin: 0 0 1em -15px;
 }
 
-.social__item {
-  padding: 0 0 5px 5px;
+.social-icons__item {
+  padding: 0 0 5px 15px;
   float: left;
 }
 
-.social__link {
-  height: 40px; width: 40px;
-  line-height: 40px;
+.social-icons__link {
   display: block;
-  border-radius: 40px;
-  background-color: #efefef;
   text-decoration: none;
-  text-align: center;
-  overflow: hidden;
 
-  &:hover, &:focus {
-    background-color: #dfdfdf;
-  }
-}
-
-.social__link--facebook,
-.social__link--linkedin,
-.social__link--pinterest,
-.social__link--twitter {
   svg {
-    fill: #fff;
+    fill: #000;
   }
-}
 
-.social__link--facebook {
-  background-color: #3C5B9B;
   &:hover, &:focus {
-    background-color: darken(#3C5B9B, 8%);
-  }
-}
-
-.social__link--twitter {
-  background-color: #2DAAE1;
-  &:hover, &:focus {
-    background-color: darken(#2DAAE1, 8%);
-  }
-}
-
-.social__link--pinterest {
-  background-color: #CB2027;
-  &:hover, &:focus {
-    background-color: darken(#CB2027, 8%);
-  }
-}
-
-.social__link--linkedin {
-  background-color: #0173B2;
-  &:hover, &:focus {
-    background-color: darken(#0173B2, 8%);
+    svg {
+      fill: #333;
+    }
   }
 }
 
@@ -607,116 +536,10 @@ section { position: relative; }
 /* =============================================================================
    PAGES
    ========================================================================== */
+
 .marker {
   background-image: url('../../assets/images/marker.png');
   height: 128px; width: 100px;
-}
-
-/* =============================================================================
-   CMS Styles
-   ========================================================================== */
-
-.cms-build {
-  @include clearfix;
-  .cms-block {
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-}
-
-.cms-block {
-  margin-bottom: $gutter * 2;
-}
-
-
-/* Image block */
-
-.cms-block--image {
-  text-align: center;
-
-  &.cms-block--pop-out {
-    img {
-      max-width: calc(100% + #{ $gutter * 2});
-      width: calc(100% + #{ $gutter * 2});
-      margin-left: -$gutter;
-    }
-
-    @media #{$medium} {
-      img {
-        max-width: calc(100% + #{ $gutter * 4});
-        width: calc(100% + #{ $gutter * 4});
-        margin-left: -$gutter * 2;
-      }
-    }
-  }
-
-  &.cms-block--left, &.cms-block--right {
-    & + .cms-block {
-      &:after {
-        content: '';
-        display: table;
-        clear: both;
-      }
-    }
-  }
-
-  &.cms-block--left {
-    @media #{$medium} {
-      width: 33%;
-      float: left;
-      margin-right: $gutter * 2;
-
-      &.cms-block--pop-out {
-        img {
-          max-width: calc(100% + #{ $gutter * 2});
-          width: calc(100% + #{ $gutter * 2});
-          margin-left: -$gutter * 2;
-        }
-      }
-    }
-  }
-
-  &.cms-block--right {
-    @media #{$medium} {
-      width: 33%;
-      float: right;
-      margin-left: $gutter * 2;
-
-      &.cms-block--pop-out {
-        img {
-          max-width: calc(100% + #{ $gutter * 2});
-          width: calc(100% + #{ $gutter * 2});
-          margin-left: 0;
-        }
-      }
-    }
-  }
-}
-
-/* Buttons block */
-
-.cms-block--buttons {
-  text-align: center;
-
-  .button {
-    margin: 0 $gutter/2 $gutter $gutter/2;
-  }
-
-  @media #{$medium} {
-    padding: 0 $gutter * 3;
-  }
-}
-
-/* Section block */
-
-.cms-block--section {
-  @include clearfix;
-  margin-bottom: $gutter;
-
-  @media #{$medium} {
-    margin-bottom: $gutter * 3;
-  }
 }
 
 
@@ -739,7 +562,9 @@ section { position: relative; }
   }
 
   .ir {
-    text-indent: 0; overflow: visible; direction: inherit;
+    text-indent: 0;
+    overflow: visible;
+    direction: inherit;
   }
 
   a, a:visited {
@@ -749,5 +574,7 @@ section { position: relative; }
   tr, img { page-break-inside: avoid; }
   img { max-width: 100% !important; }
 
-  .page-footer, .main-nav { display: none; }
+  .page-footer, .main-nav {
+    display: none;
+  }
 }

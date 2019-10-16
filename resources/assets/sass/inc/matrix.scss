@@ -1,0 +1,111 @@
+/*============================================================================
+  MATRIX
+==============================================================================*/
+
+.matrix {
+  @include clearfix;
+}
+
+.matrix__block {
+  margin-bottom: $gutter * 2;
+
+  hr {
+    margin: 20px 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @media #{$medium} {
+    margin-bottom: $gutter * 3;
+  }
+}
+
+
+// Image block
+.matrix__block--image {
+  text-align: center;
+}
+
+.matrix__block--pop-out {
+  img {
+    max-width: calc(100% + #{ $gutter * 2});
+    margin-left: -$gutter;
+  }
+
+  @media #{$medium} {
+    img {
+      max-width: calc(100% + #{ $gutter * 4});
+      margin-left: -$gutter * 2;
+    }
+  }
+}
+
+.matrix__block--left, .matrix__block--right {
+  & + .matrix__block {
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+
+  @media #{$medium} {
+    margin-bottom: 20px;
+  }
+}
+
+.matrix__block--left {
+  @media #{$medium} {
+    width: 33%;
+    float: left;
+    margin-right: $gutter * 2;
+
+    &.matrix__block--pop-out {
+      img {
+        max-width: calc(100% + #{ $gutter * 2});
+      }
+    }
+  }
+}
+
+.matrix__block--right {
+  @media #{$medium} {
+    width: 33%;
+    float: right;
+    margin-left: $gutter * 2;
+
+    &.matrix__block--pop-out {
+      img {
+        max-width: calc(100% + #{ $gutter * 2});
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+
+// Buttons block
+.matrix__block--buttons {
+  text-align: center;
+
+  .button {
+    margin: 0 $gutter/2 $gutter $gutter/2;
+  }
+
+  @media #{$medium} {
+    padding: 0 $gutter * 3;
+  }
+}
+
+
+// Section block
+.matrix__block--section {
+  @include clearfix;
+  margin-bottom: $gutter;
+
+  @media #{$medium} {
+    margin-bottom: $gutter * 3;
+  }
+}

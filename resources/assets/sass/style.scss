@@ -561,18 +561,23 @@ section { position: relative; }
     text-shadow: none !important;
   }
 
-  .ir {
-    text-indent: 0;
-    overflow: visible;
-    direction: inherit;
-  }
-
   a, a:visited {
     text-decoration: underline;
   }
 
   tr, img { page-break-inside: avoid; }
   img { max-width: 100% !important; }
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .medium--one-half { width: 50%; }
+  .medium--two-thirds { width: 66.66%; }
+  .medium--one-third { width: 33.33%; }
+  .medium--three-quarters { width: 75%; }
+  .medium--one-quarter { width: 25%; }
 
   .page-footer, .main-nav {
     display: none;

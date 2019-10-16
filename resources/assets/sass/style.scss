@@ -618,6 +618,11 @@ section { position: relative; }
 
 .cms-build {
   @include clearfix;
+  .cms-block {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .cms-block {

@@ -19,24 +19,6 @@
   @include clearfix;
 }
 
-// Image replacement
-.ir {
-  display: block;
-  border: 0;
-  text-indent: -999em;
-  overflow: hidden;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  text-align: left;
-  direction: ltr;
-}
-
-// Hide from both screenreaders and browsers: h5bp.com/u
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
 // Hide only visually, but have it available for screenreaders: h5bp.com/v
 .vh {
   border: 0;
@@ -58,34 +40,6 @@
   overflow: visible;
   position: static;
   width: auto;
-}
-
-// Hide visually and from screenreaders, but maintain layout
-.invisible {
-  visibility: hidden;
-}
-
-// Zoom
-@mixin zoom($ratio: 1) {
-  zoom: $ratio;
-  -moz-transform: scale($ratio);
-  -moz-transform-origin: 0 0;
-}
-
-// Placeholder
-@mixin placeholder($color: $grayLight) {
-  ::-webkit-input-placeholder {
-    color: $color;
-  }
-  ::-moz-placeholder {
-    color: $color;
-  }
-  :-moz-placeholder {
-    color: $color;
-  }
-  :-ms-input-placeholder {
-    color: $color;
-  }
 }
 
 // Text Overflow
@@ -243,18 +197,6 @@
   @media all and (-webkit-min-device-pixel-ratio: 1.5) {
     background-image: url($at2x_path);
     background-size: $w $h;
-  }
-}
-
-// Selection
-@mixin selection($background: $grayDark, $color: $white) {
-  ::-moz-selection {
-    background-color: $background;
-    color: $color;
-  }
-  ::selection {
-    background-color: $background;
-    color: $color;
   }
 }
 

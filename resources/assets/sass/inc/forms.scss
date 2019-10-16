@@ -131,7 +131,7 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
   }
 }
 
-::placeholder { color: #999; font-style: italic; }
+::placeholder { color: $grayDark; font-style: italic; }
 
 // Hide clear text field ie 10+
 ::-ms-clear { display: none; }

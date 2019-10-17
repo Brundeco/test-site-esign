@@ -24,7 +24,7 @@
     <div class="grid__item medium--one-half">
       <h2>Contacteer ons</h2>
 
-      <form action="#" method="post" class="validate">
+      <form id="form-contact" action="#" method="post" class="validate">
         <div class="note note--error">
           <ul>
             <li>Naam is verplicht</li>
@@ -35,34 +35,51 @@
           <p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
         </div>
         <fieldset>
-          <ul>
-            <li class="input-group">
-              <label for="name">Naam</label>
-              <input type="text" name="name" id="name" required />
-            </li>
-            <li class="input-group">
-              <label for="email">E-mail</label>
-              <input type="email" name="email" id="email" required />
-            </li>
-            <li class="input-group">
-              <label for="phone">Telefoon</label>
-              <input type="tel" name="phone" id="phone" />
-            </li>
-            <li class="input-group">
-              <label for="message">Bericht</label>
-              <textarea name="message" id="message" required></textarea>
-            </li>
-            <li class="input-group">
-              <div class="checkbox">
-                <input type="checkbox" id="privacy" name="privacy" value="1" required />
-                <label for="privacy">I agree my data will be processed in accordance with the privacy policy.</label>
-              </div>
-            </li>
-            <li>
-              <input type="submit" value="Verzenden" class="submit" />
-            </li>
-          </ul>
+          <div class="input-group">
+            <label for="name">Naam*</label>
+            <input type="text" name="name" id="name" required />
+          </div>
+          <div class="input-group">
+            <label for="email">E-mail*</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="input-group">
+            <label for="phone">Telefoon</label>
+            <input type="tel" name="phone" id="phone" />
+          </div>
+          <div class="input-group">
+            <label for="message">Bericht*</label>
+            <textarea name="message" id="message" required></textarea>
+          </div>
+          <div class="input-group input-group--horizontal">
+            <div class="radio">
+              <input type="radio" id="radio-1" name="radio" value="1" required />
+              <label for="radio-1">Option 1</label>
+            </div>
+            <div class="radio">
+              <input type="radio" id="radio-2" name="radio" value="1" required />
+              <label for="radio-2">Option 2</label>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="radio">
+              <input type="radio" id="radio-1" name="radio" value="1" required />
+              <label for="radio-1">Option 1</label>
+            </div>
+            <div class="radio">
+              <input type="radio" id="radio-2" name="radio" value="1" required />
+              <label for="radio-2">Option 2</label>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="checkbox">
+              <input type="checkbox" id="privacy" name="privacy" value="1" required />
+              <label for="privacy">I agree my data will be processed in accordance with the privacy policy.*</label>
+            </div>
+          </div>
         </fieldset>
+
+        <input type="submit" value="Verzenden" class="submit" />
       </form>
 
     </div>

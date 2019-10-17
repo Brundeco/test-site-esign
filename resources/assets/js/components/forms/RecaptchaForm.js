@@ -8,7 +8,7 @@ export default class RecaptchaForm {
       e.preventDefault();
 
       if (this.$form.hasClass('validate')) {
-        if (this.$form.validationEngine('validate') === false) {
+        if (this.$form[0].checkValidity() === false) {
           return false;
         }
       }

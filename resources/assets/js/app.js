@@ -24,10 +24,12 @@ cookieNotification();
 // Forms
 validation();
 
-const newsletterForm = new RecaptchaForm('#form-newsletter');
-window.submitRecaptchaFormNewsletter = () => {
-  newsletterForm.submitCallback();
-};
+if (document.getElementById('form-newsletter')) {
+  const newsletterForm = new RecaptchaForm('#form-newsletter');
+  window.submitRecaptchaFormNewsletter = () => {
+    newsletterForm.submitCallback();
+  };
+}
 
 // Enable this if you want to test ga calls in development
 // gaDevelopment();

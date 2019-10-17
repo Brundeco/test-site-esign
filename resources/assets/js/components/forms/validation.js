@@ -29,7 +29,6 @@ export default function () {
     selectorInput: '[name]',
   };
 
-  // TODO: load correct language from html lang attribute
   Validation.lang = getLang();
 
   [...document.querySelectorAll('form.validate')].forEach((form) => {

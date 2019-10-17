@@ -181,7 +181,7 @@
 
   <div class="grid">
     <div class="grid__item medium--one-half">
-      <form action="#" method="post" class="validate">
+      <form action="#" method="post" class="validate" novalidate>
         <div class="note note--error">
           <ul>
             <li>Naam is verplicht</li>

@@ -234,25 +234,29 @@ fieldset {
       list-style: none; background: none; list-style-image: none;
       margin: 0 0 10px; float: left; width: 100%; padding: 0 0 0 20px;
 
-      &.error {
-        input {
-          border-color: $error;
-        }
-      }
-
       &.space {
         margin-top: 25px;
-      }
-
-      @media #{$medium} {
-        &.one-half { width: 50%; }
-        &.one-fourth { width: 25%; }
       }
     }
   }
 }
 
-.buttons {
+
+// Input group
+.input-group--has-error {
+  input, textarea {
+    border-color: $error;
+  }
+}
+
+.input-group__error {
+  color: $error;
+  @include fs(14);
+}
+
+
+// Button group
+.button-group {
   @include clearfix;
   button, input[type="reset"], input[type="submit"], .button, a.button {
     float: left; clear: none; margin-right: 15px;
@@ -265,11 +269,12 @@ fieldset {
   }
 }
 
-.text-center {
+.button-group--center {
   .button, a.button, button {
     float: none; clear: none; display: inline-block;
   }
 }
+
 
 // Recaptcha
 .grecaptcha-badge { display: none; }

@@ -1,13 +1,38 @@
-import $ from 'jquery';
-import { isMobile } from '../../utils/isMobile';
+import { Validation } from 'bunnyjs/src/Validation';
+import {
+  validationEn,
+  validationNl,
+  validationFr,
+  validationDe,
+} from './validationTranslations';
 
-require('../validationengine/languages/jquery.validationEngine-nl');
-require('../validationengine/jquery.validationEngine');
+const getLang = () => {
+  switch (document.documentElement.lang) {
+    case 'nl':
+      return validationNl;
+    case 'fr':
+      return validationFr;
+    case 'de':
+      return validationDe;
+    default:
+      return validationEn;
+  }
+};
 
 export default function () {
-  if (isMobile) {
-    $('.validate').validationEngine();
-  } else {
-    $('.validate').validationEngine({ scroll: false });
-  }
+  Validation.ui.config = {
+    classInputGroup: 'input-group',
+    classInputGroupError: 'input-group--has-error',
+    classLabel: 'input-group__label',
+    tagNameError: 'small',
+    classError: 'input-group__error',
+    selectorInput: '[name]',
+  };
+
+  // TODO: load correct language from html lang attribute
+  Validation.lang = getLang();
+
+  [...document.querySelectorAll('form.validate')].forEach((form) => {
+    Validation.init(form, true);
+  });
 }

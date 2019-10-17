@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminPngquant = require('imagemin-pngquant');
 const imageminOptipng = require('imagemin-optipng');
@@ -15,6 +16,7 @@ const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -245,6 +247,7 @@ module.exports = {
         }),
       ],
     }),
+    new ImageminWebpWebpackPlugin(),
     new ManifestPlugin({
       fileName: `${dist.revManifest}rev-manifest.json`,
     }),
@@ -309,6 +312,24 @@ if (isStatic) {
   });
 
   module.exports.plugins.push(...pages);
+
+  // Static webp extension fix
+  module.exports.plugins.push({
+    apply: (compiler) => {
+      compiler.hooks.compilation.tap('ReplaceWebpExtensionPlugin', (compilation) => {
+        HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
+          'ReplaceWebpExtensionPlugin',
+          (data, cb) => {
+            data.html = data.html.replace( // eslint-disable-line no-param-reassign
+              /.(png|jpg)" type="image\/webp"/,
+              '.webp" type="image/webp"',
+            );
+            cb(null, data);
+          },
+        );
+      });
+    },
+  });
 }
 
 if (isDev) {

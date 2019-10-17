@@ -23,11 +23,17 @@ leave blank to prevent unneeded classes being added by Back-end dev
     </div>
   </div>
 
-  <p>Inline background image example:</p>
+  <h2 class="h3">Inline background image example</h2>
   <div style="background-image: url('${require(`../../assets/images/marker.png`)}'); height: 128px; width: 100px;">
   </div>
 
   <div class="marker">
   </div>
+
+  <h2 class="h3">Webp image example</h2>
+  <picture>
+    <source srcset="../../assets/images/marker.png" type="image/webp">
+    <img src="../../assets/images/marker.png" alt="marker">
+  </picture>
 </div>
 {% endblock %}

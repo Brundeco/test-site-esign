@@ -1,6 +1,6 @@
 import RecaptchaForm from '../components/forms/RecaptchaForm';
 import BasicGoogleMap from '../components/maps/BasicGoogleMap';
-import initJsonFetcher from '../components/json-fetcher/init-json-fetcher';
+import JsonFetcher from '../components/layout/JsonFetcher';
 
 export default class Components {
   constructor() {
@@ -13,10 +13,9 @@ export default class Components {
     // Map
     const map = new BasicGoogleMap();
     map.init();
-    this.init();
-  }
 
-  init() {
-    initJsonFetcher();
+    // JsonFetcher
+    const jsonFetcher = new JsonFetcher(document.querySelector('.json-fetcher'));
+    jsonFetcher.init();
   }
 }

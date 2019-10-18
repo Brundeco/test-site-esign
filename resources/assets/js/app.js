@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import navigation from './components/layout/navigation';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
@@ -45,8 +44,6 @@ if (currentPage) {
   const pageClassName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
 
   if (pageClassName !== '' && typeof pages[pageClassName] === 'function') {
-    // Exceptional use of new
-    // eslint-disable-next-line no-new
-    new pages[pageClassName]();
+    new pages[pageClassName](); // eslint-disable-line no-new
   }
 }

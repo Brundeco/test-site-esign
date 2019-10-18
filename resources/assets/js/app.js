@@ -2,10 +2,10 @@ import navigation from './components/layout/navigation';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import RecaptchaForm from './components/forms/RecaptchaForm';
+import cookieNotification from './components/cookies/cookieNotification';
 
 import Contact from './pages/Contact';
 import Components from './pages/Components';
-import cookieNotification from './components/cookie-notification/cookie-notification';
 
 require('./utils/nativeConsole');
 // require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc

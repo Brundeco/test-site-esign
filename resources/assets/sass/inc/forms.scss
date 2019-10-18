@@ -260,6 +260,8 @@ fieldset {
 .input-group__error {
   color: $error;
   @include fs(14);
+  display: block;
+  margin-top: 10px;
 }
 
 

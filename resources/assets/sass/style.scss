@@ -43,7 +43,7 @@
 @import "inc/forms";
 @import "inc/matrix";
 
-// Plugins
+// Plugins (add plugins directory)
 
 
 /* =============================================================================
@@ -55,7 +55,8 @@ html {
 }
 
 body {
-  @include default-font; color: $black;
+  @include default-font;
+  color: $black;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
@@ -82,12 +83,6 @@ body {
   max-width: 1000px;
 }
 
-// Typekit async loading (all elements using $ typekit font)
-.wf-loading {
-  overflow: hidden;
-  body { visibility: hidden; }
-}
-
 ::selection {
   background-color: $selection;
   color: inherit;
@@ -100,7 +95,8 @@ body {
 
 // Icons
 .icon {
-  display: inline-block; vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .icon-facebook {
@@ -119,29 +115,51 @@ body {
 }
 
 .icon-hamburger, .icon-hamburger:before, .icon-hamburger:after {
-  width: 24px; position: absolute; left: 0;
-  height: 1px; border-top: 3px solid $accent;
+  width: 24px;
+  position: absolute;
+  left: 0;
+  height: 1px;
+  border-top: 3px solid $accent;
   transition: $transitionDefault;
 }
 
 .icon-hamburger {
   position: relative;
-  &:before, &:after { content: ""; margin-left: 0; }
-  &:before { margin-top: 3px; }
-  &:after { margin-top: 9px; }
+
+  &:before, &:after {
+    content: "";
+    margin-left: 0;
+  }
+
+  &:before {
+    margin-top: 3px;
+  }
+
+  &:after {
+    margin-top: 9px;
+  }
 }
 
 // Exceptions: only add what you need!
-// .mb0.mb0 { margin-bottom: 0; }
-// .mb20.mb20 { margin-bottom: 20px; }
-// .mb40.mb40 { margin-bottom: 40px; }
+// .mb0.mb0 {
+//   margin-bottom: 0;
+// }
+// .mb20.mb20 {
+//   margin-bottom: 20px;
+// }
+// .mb40.mb40 {
+//   margin-bottom: 40px;
+// }
 
-// .mt0.mt0 { margin-top: 0; }
-// .mt20.mt20 { margin-top: 20px; }
-// .mt40.mt40 { margin-top: 40px; }
-
-// .ttu { text-transform: uppercase; }
-// .ttl { text-transform: lowercase; }
+// .mt0.mt0 {
+//   margin-top: 0;
+// }
+// .mt20.mt20 {
+//   margin-top: 20px;
+// }
+// .mt40.mt40 {
+//   margin-top: 40px;
+// }
 
 // Google maps mw
 .gm-style img {
@@ -158,8 +176,10 @@ body {
 
   iframe {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -186,8 +206,13 @@ body {
 
 .block-link__target {
 	&:before {
-		content: ""; display: block;
-		position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 	}
 }
 
@@ -216,12 +241,17 @@ body {
 }
 
 .main-nav {
-  text-transform: uppercase; @include optimize-font; color: $black;
+  text-transform: uppercase;
+  @include optimize-font;
+  color: $black;
   margin-top: 20px;
 
   a {
-    text-decoration: none; color: $grayDark; padding: 12px 15px;
-    display: block; border-top: 1px solid $grayLight;
+    text-decoration: none;
+    color: $grayDark;
+    padding: 12px 15px;
+    display: block;
+    border-top: 1px solid $grayLight;
   }
 
   a:hover, a:focus, li.active a {
@@ -252,15 +282,21 @@ body {
 
 .main-nav__trigger {
   display: block;
-  position: absolute; top: 15px; right: 20px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
   padding: 12px 20px 12px 55px;
   background-color: transparent;
   color: $black; font-weight: 500;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   border: 1px solid #efefef;
 
   .icon-hamburger {
-    position: absolute; left: 10px; top: 18px;
+    position: absolute;
+    left: 10px;
+    top: 18px;
   }
 
   &:hover, &:focus {
@@ -278,10 +314,12 @@ body {
 }
 
 .main-nav__wrap {
-  display: none; margin: 0 0 15px;
+  display: none;
+  margin: 0 0 15px;
 
   @media #{$medium} {
-    margin: 0 0 0 -20px; display: block;
+    margin: 0 0 0 -20px;
+    display: block;
   }
 }
 
@@ -397,15 +435,18 @@ body {
 }
 
 a.esign {
-  width: 80px; height: 20px;
-  background-image: url('../images/logo-esign.svg');
-  background-size: 77px 20px; background-repeat: no-repeat;
-  background-position: top left;
+  width: 80px;
+  height: 20px;
+  background: url('../images/logo-esign.svg') no-repeat top left;
+  background-size: 77px 20px;
   backface-visibility: hidden;
   transform: translate3d(0,0,0);
   text-indent: -9999px;
-  opacity: 0.6; transition-duration: 0.5s;
-  display: block; outline: 0; z-index: 9999;
+  opacity: 0.6;
+  transition-duration: 0.5s;
+  display: block;
+  outline: 0;
+  z-index: 9999;
 
   &:hover, &:focus {
     opacity: 1;
@@ -413,7 +454,9 @@ a.esign {
 
   @media #{$medium} {
     width: 16px;
-    position: absolute; right: 45px; bottom: $gutter;
+    position: absolute;
+    right: 45px;
+    bottom: $gutter;
 
     &:hover, &:focus {
       width: 80px;
@@ -437,22 +480,27 @@ a.esign {
   margin: 20px 0;
 
   .button {
-    float: none; display: inline-block;
+    float: none;
+    display: inline-block;
   }
 }
 
 
 // Article
-section { position: relative; }
-
 .article-detail {
-  @include clearfix; margin: 0 0 20px;
+  @include clearfix;
+  margin: 0 0 20px;
 
   a {
-    img { display: block; @include opacity(100); }
+    img {
+      display: block;
+      @include opacity(100);
+    }
 
     &:hover, &:focus {
-      img { @include opacity(80); }
+      img {
+        @include opacity(80);
+      }
     }
   }
 }
@@ -465,7 +513,8 @@ section { position: relative; }
 // Note
 .note {
   @include clearfix;
-  margin: 0 0 20px; padding: 15px 20px 0;
+  margin: 0 0 20px;
+  padding: 15px 20px 0;
   background: #efefef;
 
   ul, p {
@@ -539,7 +588,8 @@ section { position: relative; }
 
 .marker {
   background-image: url('../../assets/images/marker.png');
-  height: 128px; width: 100px;
+  height: 128px;
+  width: 100px;
 }
 
 
@@ -548,7 +598,9 @@ section { position: relative; }
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  @page { margin: 2cm 0.5cm 1cm; }
+  @page {
+    margin: 2cm 0.5cm 1cm;
+  }
 
   html {
     font-size: 10px;
@@ -565,19 +617,34 @@ section { position: relative; }
     text-decoration: underline;
   }
 
-  tr, img { page-break-inside: avoid; }
-  img { max-width: 100% !important; }
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
 
   .container {
     padding-left: 0;
     padding-right: 0;
   }
 
-  .medium--one-half { width: 50%; }
-  .medium--two-thirds { width: 66.66%; }
-  .medium--one-third { width: 33.33%; }
-  .medium--three-quarters { width: 75%; }
-  .medium--one-quarter { width: 25%; }
+  .medium--one-half {
+    width: 50%;
+  }
+  .medium--two-thirds {
+    width: 66.66%;
+  }
+  .medium--one-third {
+    width: 33.33%;
+  }
+  .medium--three-quarters {
+    width: 75%;
+  }
+  .medium--one-quarter {
+    width: 25%;
+  }
 
   .page-footer, .main-nav {
     display: none;

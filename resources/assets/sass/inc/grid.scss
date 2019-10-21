@@ -248,7 +248,9 @@ ul.grid-uniform {
 }
 
 @if $push == true {
-  [class*="push--"]{ position:relative; }
+  [class*="push--"]{
+    position:relative;
+  }
 
   @include push-setup();
 
@@ -325,7 +327,9 @@ ul.grid-uniform {
 }
 
 @if $pull == true {
-  [class*="pull--"]{ position:relative; }
+  [class*="pull--"]{
+    position:relative;
+  }
 
   @include pull-setup();
 

@@ -4,7 +4,9 @@
 ==============================================================================*/
 
 legend {
-  border: 0; padding: 0; white-space: normal;
+  border: 0;
+  padding: 0;
+  white-space: normal;
   font-size: 18px;
 }
 
@@ -38,18 +40,26 @@ label, .label, input, select, textarea {
 
 
 label, .label {
-  display: block; margin-bottom: 8px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 button, input[type="button"], input[type="reset"], input[type="submit"] {
-  -webkit-appearance: button; cursor: pointer; border: none;
+  -webkit-appearance: button;
+  cursor: pointer;
+  border: none;
 }
 
 input[type="text"], input[type="search"], input[type="password"],
 input[type="email"], input[type="tel"], input[type="date"], textarea, select {
-  padding: 6px; margin-bottom: 2px; display: block;
-  background: $white; height: 35px; line-height: inherit;
-  width: 100%; border: 1px solid $gray;
+  padding: 6px;
+  margin-bottom: 2px;
+  display: block;
+  background: $white;
+  height: 35px;
+  line-height: inherit;
+  width: 100%;
+  border: 1px solid $gray;
 
   &:focus {
     outline: 0;
@@ -62,24 +72,33 @@ input[type="email"] {
 }
 
 textarea {
-  overflow: auto; vertical-align: top; resize: vertical;
-  width: 100%; height: 185px;
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+  width: 100%;
+  height: 185px;
 }
 
 button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0; padding: 0;
+  border: 0;
+  padding: 0;
 }
 
 input[type="checkbox"], input[type="radio"] {
   box-sizing: border-box;
-  width: auto; height: auto;
-  padding: 0; margin: 3px 0;
-  line-height: normal; border: none;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 3px 0;
+  line-height: normal;
+  border: none;
   cursor: pointer;
 }
 
 input[type="file"] {
-  background-color: $white; padding: initial; border: initial;
+  background-color: $white;
+  padding: initial;
+  border: initial;
   line-height: initial;
 }
 
@@ -102,7 +121,9 @@ input[type="reset"], input[type="submit"], .button {
   color: $white;
   text-transform: uppercase;
 
-  i { margin: -5px 6px 0 5px; }
+  i {
+    margin: -5px 6px 0 5px;
+  }
 
   &:hover, &:focus, &:active {
     background-color: $accentHover;
@@ -126,26 +147,39 @@ input[type="email"], input[type="tel"], textarea {
 
 button, input[type="reset"], input[type="submit"], .button, a.button, select {
   &:focus {
-    outline: 0; *outline: inherit;
+    outline: 0;
     box-shadow: 0 0 1px 1px rgba(200,200,200,0.1);
   }
 }
 
-::placeholder { color: $grayDark; font-style: italic; }
+::placeholder {
+  color: $grayDark;
+  font-style: italic;
+}
 
 // Hide clear text field ie 10+
-::-ms-clear { display: none; }
+::-ms-clear {
+  display: none;
+}
 
 
 // Hide the cancel button
-::-webkit-search-cancel-button { -webkit-appearance: none; }
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
 
 // Hide the magnifying glass
-::-webkit-search-results-button { -webkit-appearance: none; }
+::-webkit-search-results-button {
+  -webkit-appearance: none;
+}
 
 // Hide number input spinner
-::-webkit-inner-spin-button { -webkit-appearance: none; }
-::-webkit-outer-spin-button { -webkit-appearance: none; }
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
 
 // Style file upload button
 // ::-ms-browse, ::-webkit-file-upload-button { }
@@ -165,17 +199,21 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
     }
 
     &:before {
-      left: 0; top: 0;
-      width: 20px; height: 20px;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
       border: 1px solid $gray;
       background-color: #fff;
     }
 
     &:after {
-      top: 2px; left: 6px;
+      top: 2px;
+      left: 6px;
       border: solid $black;
       border-width: 0 3px 3px 0;
-      width: 8px; height: 13px;
+      width: 8px;
+      height: 13px;
       transform: rotate(45deg);
       opacity: 0;
     }
@@ -217,8 +255,10 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
     &:after {
       border: 0;
       transform: none;
-      top: 4px; left: 4px;
-      width: 12px; height: 12px;
+      top: 4px;
+      left: 4px;
+      width: 12px;
+      height: 12px;
       background-color: $black;
     }
   }
@@ -226,6 +266,8 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
 
 // Forms
 form {
+  margin-bottom: 20px;
+
   .grid {
     margin-bottom: 0;
   }
@@ -278,7 +320,9 @@ fieldset {
 .button-group {
   @include clearfix;
   button, input[type="reset"], input[type="submit"], .button, a.button {
-    float: left; clear: none; margin-right: 15px;
+    float: left;
+    clear: none;
+    margin-right: 15px;
 
     &.right {
       float: right;
@@ -290,10 +334,14 @@ fieldset {
 
 .button-group--center {
   .button, a.button, button {
-    float: none; clear: none; display: inline-block;
+    float: none;
+    clear: none;
+    display: inline-block;
   }
 }
 
 
 // Recaptcha
-.grecaptcha-badge { display: none; }
+.grecaptcha-badge {
+  display: none;
+}

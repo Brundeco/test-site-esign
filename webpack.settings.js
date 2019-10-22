@@ -84,10 +84,11 @@ const nunjucksOptions = JSON.stringify({
 const pages = glob.sync('**/*.nunjucks', {
   cwd: path.join(basePath, `${paths.nunjucks}/pages/`),
   root: '/',
-}).map(page => new HtmlWebpackPlugin({
+}).map((page) => new HtmlWebpackPlugin({
   filename: page.replace('nunjucks', 'html'),
   template: `${paths.nunjucks}/pages/${page}`,
   excludeChunks: ['sprite'],
+  minify: false,
 }));
 
 const settings = {

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const glob = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -60,6 +61,8 @@ module.exports = {
   entry: {
     app: [
       `./${paths.js}app.js`,
+    ],
+    style: [
       `./${paths.sass}style.scss`,
     ],
     sprite: glob.sync(`./${paths.svgSprite}*.svg`),
@@ -149,7 +152,7 @@ module.exports = {
             options: {
               extract: true,
               spriteFilename: `${dist.svgSprite}icons.svg`,
-              symbolId: filePath => `icon-${path.basename(filePath, '.svg')}`,
+              symbolId: (filePath) => `icon-${path.basename(filePath, '.svg')}`,
             },
           },
         ],
@@ -195,9 +198,8 @@ module.exports = {
     namedChunks: true,
     minimizer: [
       new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
+        sourceMap: true,
+        extractComments: false,
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
@@ -210,8 +212,11 @@ module.exports = {
     new StylelintBarePlugin({
       files: `./${paths.sass}**/*.s?(a|c)ss`,
     }),
+    new FixStyleOnlyEntriesPlugin({
+      extensions: ['less', 'scss', 'sass', 'css', 'svg'],
+    }),
     new MiniCssExtractPlugin({
-      filename: `${dist.css}style.[contenthash].css`,
+      filename: `${dist.css}[name].[contenthash].css`,
     }),
     new CopyWebpackPlugin(copy),
     new ImageminPlugin({
@@ -254,19 +259,6 @@ module.exports = {
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
-    {
-      // Remove sprite.js & sprite.js.map from build
-      apply: (compiler) => {
-        compiler.plugin('emit', ({ assets }, callback) => {
-          Object.keys(assets).forEach((chunk) => {
-            if (chunk.match(/sprite.*\.js$/) || chunk.match(/sprite.*\.map$/)) {
-              delete assets[chunk]; // eslint-disable-line no-param-reassign
-            }
-          });
-          callback();
-        });
-      },
-    },
     new WebpackNotifierPlugin({
       title: process.env.npm_package_description,
       contentImage: path.join(basePath, 'notification.png'),

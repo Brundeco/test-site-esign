@@ -10,7 +10,7 @@ export default class JsonFetcher {
 
   init() {
     fetch(this.api)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((res) => {
         this.parseResults(res);
       })

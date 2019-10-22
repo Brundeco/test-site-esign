@@ -168,28 +168,6 @@
 	}
 }
 
-// Height
-@mixin h($h) {
-  height: 0px + $h;
-  height: 0rem + $h / $doc-font-size;
-}
-
-// Margin
-@mixin m($mt:0, $mr:0, $mb:0, $ml:0) {
-  margin: (0px + $mt) (0px + $mr) (0px + $mb) (0px + $ml);
-  margin: (0rem + $mt / $doc-font-size) (0rem + $mr / $doc-font-size) (0rem + $mb / $doc-font-size) (0rem + $ml / $doc-font-size);
-}
-
-@mixin mt($m) {
-  margin-top: 0px + $m;
-  margin-top: 0rem + $m / $doc-font-size;
-}
-
-@mixin mb($m) {
-  margin-bottom: 0px + $m;
-  margin-bottom: 0rem + $m / $doc-font-size;
-}
-
 // Retina
 // A helper mixin for applying high-resolution background images (http://www.retinajs.com)
 @mixin at2x($path, $at2x_path, $w: auto, $h: auto) {

@@ -434,7 +434,7 @@ body {
   padding: $gutter 0;
 }
 
-a.esign {
+.page-footer__signature {
   width: 80px;
   height: 20px;
   background: url('../images/logo-esign.svg') no-repeat top left;
@@ -586,11 +586,6 @@ a.esign {
    PAGES
    ========================================================================== */
 
-.marker {
-  background-image: url('../../assets/images/marker.png');
-  height: 128px;
-  width: 100px;
-}
 
 
 /* =============================================================================

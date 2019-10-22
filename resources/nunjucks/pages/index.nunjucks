@@ -27,9 +27,6 @@ leave blank to prevent unneeded classes being added by Back-end dev
   <div style="background-image: url('${require(`../../assets/images/marker.png`)}'); height: 128px; width: 100px;">
   </div>
 
-  <div class="marker">
-  </div>
-
   <h2 class="h3">Webp image example</h2>
   <picture>
     <source srcset="../../assets/images/marker.png" type="image/webp">

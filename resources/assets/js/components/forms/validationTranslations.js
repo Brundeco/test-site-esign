@@ -1,6 +1,7 @@
 import hyperform from 'hyperform';
 
-// based on https://github.com/hyperform/hyperform-l10n/tree/master/dist
+// Find other translations
+// on https://github.com/hyperform/hyperform-l10n/tree/master/dist
 export const validationNl = {
   TextTooLong: 'Kort deze tekst in tot %l tekens of minder (u gebruikt nu %l tekens).',
   TextTooShort: 'Gebruik minstens %l tekens (u gebruikt momenteel %l tekens).',

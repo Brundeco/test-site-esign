@@ -3,25 +3,38 @@
   FORMS
 ==============================================================================*/
 
-legend {
-  border: 0;
-  padding: 0;
-  white-space: normal;
-  font-size: 18px;
+form {
+  margin-bottom: 30px;
+
+  .grid {
+    margin-bottom: 0;
+  }
 }
 
-button, input, select, textarea, .button {
+fieldset {
+  margin: 15px 0;
+}
+
+legend {
+  @include fs(12);
+  font-weight: 600;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+
+input, select, textarea, button, .button, label, .label {
   margin: 0;
-  vertical-align: baseline;
+  @include fs(16);
+  vertical-align: middle;
+  color: $black;
   transition: $transitionDefault;
 }
 
 button, input {
-  line-height: normal;
-}
-
-button, select {
-  text-transform: none;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
 }
 
 // When having a body font-size < 16px
@@ -32,31 +45,19 @@ button, select {
 //   }
 // }
 
-label, .label, input, select, textarea {
-  @include default-font();
-  vertical-align: middle;
-  color: $black;
-}
-
-
 label, .label {
   display: block;
   margin-bottom: 8px;
 }
 
-button, input[type="button"], input[type="reset"], input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-  border: none;
-}
-
 input[type="text"], input[type="search"], input[type="password"],
 input[type="email"], input[type="tel"], input[type="date"], textarea, select {
-  padding: 6px;
+  appearance: none;
+  padding: 0 15px;
   margin-bottom: 2px;
   display: block;
   background: $white;
-  height: 35px;
+  height: 45px;
   line-height: inherit;
   width: 100%;
   border: 1px solid $gray;
@@ -67,31 +68,25 @@ input[type="email"], input[type="tel"], input[type="date"], textarea, select {
   }
 }
 
-input[type="email"] {
-  display: block;
-}
-
 textarea {
   overflow: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
   vertical-align: top;
   resize: vertical;
-  width: 100%;
   height: 185px;
 }
 
-button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+select {
+  border-radius: $radius;
+  background: $white url('../images/select-arrow.svg') center right 15px no-repeat;
+  background-size: 12px 6px;
+  padding-right: 35px;
 }
 
 input[type="checkbox"], input[type="radio"] {
-  box-sizing: border-box;
-  width: auto;
-  height: auto;
   padding: 0;
   margin: 3px 0;
-  line-height: normal;
-  border: none;
   cursor: pointer;
 }
 
@@ -103,13 +98,16 @@ input[type="file"] {
 }
 
 input[type="search"] {
-  -webkit-appearance: textfield;
-  // -webkit-appearance: none; // Remove the rounded corners
+  appearance: textfield;
+  // appearance: none; // Remove the rounded corners
   box-sizing: content-box;
 }
 
 // Buttons
-input[type="reset"], input[type="submit"], .button {
+.button {
+  appearance: none;
+  cursor: pointer;
+  border: none;
   display: inline-flex;
   transition: $transitionDefault;
   outline: 0;
@@ -121,7 +119,7 @@ input[type="reset"], input[type="submit"], .button {
   color: $white;
   text-transform: uppercase;
 
-  i {
+  svg {
     margin: -5px 6px 0 5px;
   }
 
@@ -140,12 +138,16 @@ input[type="reset"], input[type="submit"], .button {
   }
 }
 
-button, input[type="text"], input[type="submit"], input[type="button"], input[type="reset"],
-input[type="email"], input[type="tel"], textarea {
-  -webkit-appearance: none;
+.button--secondary {
+  background-color: #000;
+  color: #fff;
+
+  &:hover, &:focus {
+    background-color: $accent;
+  }
 }
 
-button, input[type="reset"], input[type="submit"], .button, a.button, select {
+.button, select {
   &:focus {
     outline: 0;
     box-shadow: 0 0 1px 1px rgba(200,200,200,0.1);
@@ -165,30 +167,27 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
 
 // Hide the cancel button
 ::-webkit-search-cancel-button {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 // Hide the magnifying glass
 ::-webkit-search-results-button {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 // Hide number input spinner
 ::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
 }
 ::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
 }
-
-// Style file upload button
-// ::-ms-browse, ::-webkit-file-upload-button { }
 
 .checkbox, .radio {
   position: relative;
 
   label {
-    padding-left: 30px;
+    padding: 3px 0 0 30px;
     cursor: pointer;
 
     &:before, &:after {
@@ -264,22 +263,14 @@ button, input[type="reset"], input[type="submit"], .button, a.button, select {
   }
 }
 
-// Forms
-form {
-  margin-bottom: 20px;
-
-  .grid {
-    margin-bottom: 0;
-  }
-}
-
-fieldset {
-  margin-bottom: 20px;
-}
 
 // Input group
 .input-group {
   margin: 0 0 20px;
+
+  + fieldset {
+    margin-top: 30px;
+  }
 }
 
 .input-group--horizontal {
@@ -296,7 +287,7 @@ fieldset {
   }
 }
 
-.input-group--has-error {
+.input-group--error {
   input, textarea, select {
     border-color: $error;
   }
@@ -318,26 +309,20 @@ fieldset {
 
 // Button group
 .button-group {
-  @include clearfix;
-  button, input[type="reset"], input[type="submit"], .button, a.button {
-    float: left;
-    clear: none;
-    margin-right: 15px;
+  display: flex;
+  margin: 30px 0 0;
 
-    &.right {
-      float: right;
-      margin-right: 0;
-      margin-left: 15px;
-    }
+  .button + .button {
+    margin-left: 15px;
   }
 }
 
+.button-group--right {
+  justify-content: flex-end;
+}
+
 .button-group--center {
-  .button, a.button, button {
-    float: none;
-    clear: none;
-    display: inline-block;
-  }
+  justify-content: center;
 }
 
 

@@ -58,7 +58,9 @@
           </div>
         </div>
 
-        <input type="submit" value="Verzenden" />
+        <div class="button-group">
+          <input type="submit" value="Verzenden" class="button" />
+        </div>
       </form>
 
     </div>

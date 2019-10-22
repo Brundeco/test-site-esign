@@ -7,7 +7,6 @@ export default function () {
 
   [...document.querySelectorAll('form.validate')].forEach((form) => {
     hyperform(form, {
-      revalidate: 'onblur',
       classes: {
         warning: 'input-group__error',
       },

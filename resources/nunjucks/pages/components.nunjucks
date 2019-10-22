@@ -201,6 +201,33 @@
     </tbody>
   </table>
 
+  <hr/>
+
+  <h2>Buttons</h2>
+
+  <div class="button-group">
+    <a href="#" class="button">Link</a>
+    <button class="button">Action</button>
+    <input type="submit" value="Verzenden" class="button" />
+  </div>
+
+  <div class="button-group">
+    <a href="#" class="button button--secondary">Link</a>
+    <button class="button button--secondary">Action</button>
+    <input type="submit" value="Verzenden" class="button button--secondary" />
+  </div>
+
+  <div class="button-group button-group--right">
+    <a href="#" class="button">Link</a>
+    <button class="button">Action</button>
+    <input type="submit" value="Verzenden" class="button" />
+  </div>
+
+  <div class="button-group button-group--center">
+    <a href="#" class="button">Link</a>
+    <button class="button">Action</button>
+    <input type="submit" value="Verzenden" class="button" />
+  </div>
 
   <hr/>
 
@@ -232,29 +259,46 @@
           <input type="tel" name="phone" id="phone" />
         </div>
         <div class="input-group">
+          <label for="select">Onderwerp</label>
+          <select id="select" name="select">
+            <option value="">Selecteer onderwerp</option>
+            <option value="Optie 1">Optie 1</option>
+            <option value="Optie 2">Optie 2</option>
+          </select>
+        </div>
+        <div class="input-group">
           <label for="message">Bericht*</label>
           <textarea name="message" id="message" required></textarea>
         </div>
-        <div class="input-group input-group--horizontal">
-          <div class="radio">
-            <input type="radio" id="radio-1" name="radio" value="1" required />
-            <label for="radio-1">Option 1</label>
+
+        <fieldset>
+          <legend>Kies een optie</legend>
+          <div class="input-group input-group--horizontal">
+            <div class="radio">
+              <input type="radio" id="radio-1" name="radio" value="1" required />
+              <label for="radio-1">Optie 1</label>
+            </div>
+            <div class="radio">
+              <input type="radio" id="radio-2" name="radio" value="1" required />
+              <label for="radio-2">Optie 2</label>
+            </div>
           </div>
-          <div class="radio">
-            <input type="radio" id="radio-2" name="radio" value="1" required />
-            <label for="radio-2">Option 2</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Kies een optie</legend>
+          <div class="input-group">
+            <div class="radio">
+              <input type="radio" id="radio-1" name="radio" value="1" required />
+              <label for="radio-1">Optie 1</label>
+            </div>
+            <div class="radio">
+              <input type="radio" id="radio-2" name="radio" value="1" required />
+              <label for="radio-2">Optie 2</label>
+            </div>
           </div>
-        </div>
-        <div class="input-group">
-          <div class="radio">
-            <input type="radio" id="radio-1" name="radio" value="1" required />
-            <label for="radio-1">Option 1</label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radio-2" name="radio" value="1" required />
-            <label for="radio-2">Option 2</label>
-          </div>
-        </div>
+        </fieldset>
+
         <div class="input-group">
           <div class="checkbox">
             <input type="checkbox" id="privacy" name="privacy" value="1" required />
@@ -262,7 +306,9 @@
           </div>
         </div>
 
-        <input type="submit" value="Verzenden" />
+        <div class="button-group">
+          <input type="submit" value="Verzenden" class="button" />
+        </div>
       </form>
     </div>
   </div>

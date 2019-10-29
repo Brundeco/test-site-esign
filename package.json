@@ -78,6 +78,7 @@
     "webpack-notifier": "^1.8.0"
   },
   "dependencies": {
+    "body-scroll-lock": "^2.6.4",
     "cookiejs": "^1.0.25",
     "events": "^3.0.0",
     "hyperform": "^0.11.0",

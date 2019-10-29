@@ -14,21 +14,38 @@
 .modal--active {
   visibility: visible;
   opacity: 1;
+  z-index: 101;
 }
 
-.modal__inner {
+.modal--fullscreen {
+  .modal__dialog {
+    margin: 0;
+    max-width: none;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .modal__close {
+    position: fixed;
+    margin: 0;
+    top: $gutter;
+    right: $gutter;
+  }
+}
+
+.modal__va-wrap {
   display: table;
   table-layout: fixed;
   height: 100%;
   width: 100%;
 }
 
-.modal div[role="dialog"] {
+.modal__va-m {
   display: table-cell;
   vertical-align: middle;
 }
 
-.modal div[role="document"] {
+.modal__dialog {
   background-color: $white;
   max-width: 100%;
   margin: $gutter/2;

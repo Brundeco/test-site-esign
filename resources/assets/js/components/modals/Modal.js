@@ -1,3 +1,5 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+
 const EventEmitter = require('events');
 
 export default class Modal extends EventEmitter {
@@ -5,7 +7,6 @@ export default class Modal extends EventEmitter {
     super();
     this.element = element;
     this.id = element.getAttribute('id');
-    this.modalInner = null;
     this.modalDialog = null;
     this.modalDocument = null;
     this.closeButton = null;
@@ -28,14 +29,17 @@ export default class Modal extends EventEmitter {
   addA11Y() {
     this.element.setAttribute('aria-hidden', true);
 
-    // Create inner div
-    this.modalInner = document.createElement('div');
-    this.modalInner.classList.add('modal__inner');
+    // Create va-wrap ; va-m
+    this.modalVaWrap = document.createElement('div');
+    this.modalVaWrap.classList.add('modal__va-wrap');
+    this.modalVaM = document.createElement('div');
+    this.modalVaM.classList.add('modal__va-m');
 
     // Create modal wrapper
     this.modalDialog = document.createElement('div');
     const role = this.isAlert ? 'alertdialog' : 'dialog';
     this.modalDialog.setAttribute('role', role);
+    this.modalDialog.classList.add('modal__dialog');
     if (this.title) {
       this.modalDialog.setAttribute('aria-labelledby', this.title);
     }
@@ -47,8 +51,9 @@ export default class Modal extends EventEmitter {
     // Wrap content with content wrapper and then wrap content wrapper with modal wrapper
     const originalHtml = this.element.innerHTML;
     this.element.innerHTML = '';
-    this.element.append(this.modalInner);
-    this.modalInner.append(this.modalDialog);
+    this.element.append(this.modalVaWrap);
+    this.modalVaWrap.append(this.modalVaM);
+    this.modalVaM.append(this.modalDialog);
     this.modalDialog.append(this.modalDocument);
     this.modalDocument.innerHTML = originalHtml;
   }
@@ -70,6 +75,7 @@ export default class Modal extends EventEmitter {
     });
 
     this.addEventListeners();
+    disableBodyScroll(this.element);
     this.element.classList.add(this.activeClass);
     this.emit('show');
   }
@@ -79,14 +85,15 @@ export default class Modal extends EventEmitter {
     this.modalDialog.removeAttribute('tabindex');
 
     this.removeEventListeners();
+    enableBodyScroll(this.element);
     this.element.classList.remove(this.activeClass);
     this.emit('hide');
   }
 
   /* Event Listeners */
 
-  onModalDialogClick(e) {
-    if (e.target === this.modalDialog) {
+  onModalVaMClick(e) {
+    if (e.target === this.modalVaM) {
       this.hide();
     }
   }
@@ -110,9 +117,9 @@ export default class Modal extends EventEmitter {
 
   addEventListeners() {
     // Close modal
-    const onModalDialogClick = (e) => { this.onModalDialogClick(e); };
-    this.modalDialog.addEventListener('click', onModalDialogClick);
-    this.eventListeners.push({ ctx: this.modalDialog, type: 'click', fn: onModalDialogClick });
+    const onModalVaMClick = (e) => { this.onModalVaMClick(e); };
+    this.element.addEventListener('click', onModalVaMClick);
+    this.eventListeners.push({ ctx: this.modalDialog, type: 'click', fn: onModalVaMClick });
 
     const onCloseButtonClick = () => { this.hide(); };
     this.closeButton.addEventListener('click', onCloseButtonClick);
@@ -126,7 +133,6 @@ export default class Modal extends EventEmitter {
 
   removeEventListeners() {
     this.eventListeners.forEach((listener) => {
-      console.log(listener);
       listener.ctx.removeEventListener(listener.type, listener.fn);
     });
   }

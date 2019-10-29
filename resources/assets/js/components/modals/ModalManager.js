@@ -26,13 +26,27 @@ export default class ModalManager {
       modal.on('hide', () => {
         this.onModalHide();
       });
+
+      // bind modal show
+      modal.on('show', () => {
+        this.onModalShow(modal);
+      });
     });
 
     this.bindModalTriggers();
   }
 
   onModalHide() {
-    this.activeModalTrigger.focus();
+    if (!this.activeModal) {
+      this.activeModalTrigger.focus();
+    }
+    this.activeModal = null;
+    document.documentElement.classList.remove('has-active-modal');
+  }
+
+  onModalShow(modal) {
+    document.documentElement.classList.add('has-active-modal');
+    this.activeModal = modal;
   }
 
   bindModalTriggers() {
@@ -40,6 +54,10 @@ export default class ModalManager {
       trigger.addEventListener('click', () => {
         const modal = this.idModalMap.get(trigger.getAttribute('data-modal-id'));
         this.activeModalTrigger = trigger;
+
+        if (this.activeModal) {
+          this.activeModal.hide();
+        }
         modal.show();
       });
     });

@@ -61,6 +61,11 @@
   {# place typekit or google fonts css here #}
 
   {# not needed for webpack setup: #}
+  <style>
+    .modal {
+      visibility: hidden;
+    }
+  </style>
   {# <link rel="stylesheet" href="../assets/css/style.css"> #}
 
 

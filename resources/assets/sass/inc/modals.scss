@@ -1,0 +1,55 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, .3);
+  visibility: hidden;
+  opacity: 0;
+  overflow: auto;
+}
+
+.modal--active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__inner {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.modal div[role="dialog"] {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal div[role="document"] {
+  background-color: $white;
+  max-width: 100%;
+  margin: $gutter/2;
+  padding: $gutter;
+  position: relative;
+
+  @media #{$medium} {
+    padding: $gutter * 2;
+    max-width: 900px;
+    margin: $gutter * 2 auto;
+  }
+
+  @media #{$larger} {
+    padding: $gutter * 3;
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: $gutter/2;
+  padding: $gutter/2;
+}

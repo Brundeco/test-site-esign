@@ -79,6 +79,7 @@
   },
   "dependencies": {
     "cookiejs": "^1.0.25",
+    "events": "^3.0.0",
     "hyperform": "^0.11.0",
     "jquery": "^3.4.1",
     "jquery-touchswipe": "^1.6.19",

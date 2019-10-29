@@ -3,6 +3,7 @@ import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import RecaptchaForm from './components/forms/RecaptchaForm';
 import cookieNotification from './components/cookies/cookieNotification';
+import ModalManager from './components/modals/ModalManager';
 
 import Contact from './pages/Contact';
 import Components from './pages/Components';
@@ -19,6 +20,8 @@ htmlClassList.remove('no-js');
 navigation();
 responsiveVideos();
 cookieNotification();
+// eslint-disable-next-line
+const modalManager = new ModalManager();
 
 // Forms
 validation();

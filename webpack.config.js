@@ -2,11 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 const glob = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const StylelintBarePlugin = require('stylelint-bare-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminPngquant = require('imagemin-pngquant');
 const imageminOptipng = require('imagemin-optipng');
@@ -15,6 +17,7 @@ const imageminJpegRecompress = require('imagemin-jpeg-recompress');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminSvgo = require('imagemin-svgo');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -58,6 +61,8 @@ module.exports = {
   entry: {
     app: [
       `./${paths.js}app.js`,
+    ],
+    style: [
       `./${paths.sass}style.scss`,
     ],
     sprite: glob.sync(`./${paths.svgSprite}*.svg`),
@@ -75,7 +80,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?!(hyperform)\/).*/,
         loader: 'babel-loader',
         options: {
           presets: [
@@ -147,7 +152,7 @@ module.exports = {
             options: {
               extract: true,
               spriteFilename: `${dist.svgSprite}icons.svg`,
-              symbolId: filePath => `icon-${path.basename(filePath, '.svg')}`,
+              symbolId: (filePath) => `icon-${path.basename(filePath, '.svg')}`,
             },
           },
         ],
@@ -193,9 +198,8 @@ module.exports = {
     namedChunks: true,
     minimizer: [
       new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // set to true if you want JS source maps
+        sourceMap: true,
+        extractComments: false,
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
@@ -208,8 +212,11 @@ module.exports = {
     new StylelintBarePlugin({
       files: `./${paths.sass}**/*.s?(a|c)ss`,
     }),
+    new FixStyleOnlyEntriesPlugin({
+      extensions: ['less', 'scss', 'sass', 'css', 'svg'],
+    }),
     new MiniCssExtractPlugin({
-      filename: `${dist.css}style.[contenthash].css`,
+      filename: `${dist.css}[name].[contenthash].css`,
     }),
     new CopyWebpackPlugin(copy),
     new ImageminPlugin({
@@ -245,26 +252,13 @@ module.exports = {
         }),
       ],
     }),
+    new ImageminWebpWebpackPlugin(),
     new ManifestPlugin({
       fileName: `${dist.revManifest}rev-manifest.json`,
     }),
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
-    {
-      // Remove sprite.js & sprite.js.map from build
-      apply: (compiler) => {
-        compiler.plugin('emit', (compilation, callback) => {
-          const { assets } = compilation;
-          Object.keys(assets).filter(chunk => {
-           if (chunk.match(/sprite.*\.js$/) || chunk.match(/sprite.*\.map$/)) {
-             delete compilation.assets[chunk];
-           }
-          });
-          callback();
-        });
-      }
-    },
     new WebpackNotifierPlugin({
       title: process.env.npm_package_description,
       contentImage: path.join(basePath, 'notification.png'),
@@ -310,6 +304,24 @@ if (isStatic) {
   });
 
   module.exports.plugins.push(...pages);
+
+  // Static webp extension fix
+  module.exports.plugins.push({
+    apply: (compiler) => {
+      compiler.hooks.compilation.tap('ReplaceWebpExtensionPlugin', (compilation) => {
+        HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
+          'ReplaceWebpExtensionPlugin',
+          (data, cb) => {
+            data.html = data.html.replace( // eslint-disable-line no-param-reassign
+              /.(png|jpg)" type="image\/webp"/,
+              '.webp" type="image/webp"',
+            );
+            cb(null, data);
+          },
+        );
+      });
+    },
+  });
 }
 
 if (isDev) {

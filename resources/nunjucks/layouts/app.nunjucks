@@ -114,16 +114,58 @@
       <div class="container">
         <div class="grid">
           <div class="grid__item medium--one-half">
-            <p>&copy; 2019</p>
+            <ul class="social-icons">
+              <li class="social-icons__item">
+                <a href="#" class="social-icons__link" target="_blank">
+                  <svg class="icon icon-facebook">
+                      <use xlink:href="#icon-facebook" />
+                  </svg>
+                  <span class="vh">Volg ons op Facebook</span>
+                </a>
+              </li>
+              <li class="social-icons__item">
+                <a href="#" class="social-icons__link" target="_blank">
+                  <svg class="icon icon-twitter">
+                      <use xlink:href="#icon-twitter" />
+                  </svg>
+                  <span class="vh">Volg ons op Twitter</span>
+                </a>
+              </li>
+              <li class="social-icons__item">
+                <a href="#" class="social-icons__link" target="_blank">
+                  <svg class="icon icon-instagram">
+                      <use xlink:href="#icon-instagram" />
+                  </svg>
+                  <span class="vh">Volg ons op Instagram</span>
+                </a>
+              </li>
+            </ul>
           </div>
           <div class="grid__item medium--one-half">
             <p>
-              <a class="esign" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
+              <a class="page-footer__signature" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
             </p>
           </div>
         </div>
       </div>
     </footer>
+
+    <div class="container">
+      <div class="cookie-notification hide" id="cookie-notification">
+        <div class="cookie-notification__content">
+          <p>
+            Deze website maakt gebruik van cookies. Bekijk ons <a href="#">cookiebeleid</a>.
+          </p>
+          <div class="cookie-notification__actions">
+            <button type="button" class="button" id="accept-cookies">
+
+              Ok
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">

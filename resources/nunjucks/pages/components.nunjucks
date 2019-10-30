@@ -1,12 +1,9 @@
 {% set title = 'Components' %}
 {% set description = '' %}
 {% set menuitem = 'components' %}
-{#
-  Only add bodyclasses when needed,
-  leave blank to prevent unneeded classes being added by Back-end dev
-#}
+{# Only add bodyclass if necessary #}
 {% set bodyclass = '' %}
-{% set datapage = 'contact' %}
+{% set datapage = 'components' %}
 
 {% extends "layouts/app.nunjucks" %}
 
@@ -100,14 +97,21 @@
 
   <h2>Typography</h2>
 
-  <h1>Heading 1</h1>
+  <h1>Heading 1 (unique on page)</h1>
   <h2>Heading 2</h2>
   <h3>Heading 3</h3>
   <h4>Heading 4</h4>
   <h5>Heading 5</h5>
   <h6>Heading 6</h6>
 
-  <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. <strong>Etiam eu erat pulvinar</strong>, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit <em>elementum volutpat sit</em> amet vel ex.</p>
+  <p>
+    The <strong>Pythagorean theorem</strong> is often expressed as the following equation:<br/>
+    <var>a<sup>2</sup></var> + <var>b<sup>2</sup></var> = <var>c<sup>2</sup></var>
+  </p>
+
+  <p>Almost every developer's favorite <em>molecule</em> is C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>, also known as "caffeine".</p>
+
+  <p><a href="#">Normal link</a> - <a href="#" class="tdn">Not underlined link</a></p>
 
   <blockquote>
     <p>Eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
@@ -140,12 +144,45 @@
     <li>Unstyled list item 3</li>
   </ul>
 
+  <ul class="lined-list">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+  </ul>
+
   <dl>
     <dt>Dt item 1</dt>
     <dd>Dd item 1</dd>
     <dt>Dt item 2</dt>
     <dd>Dd item 2</dd>
   </dl>
+
+  <ul class="social-icons">
+    <li class="social-icons__item">
+      <a href="#" class="social-icons__link" target="_blank">
+        <svg class="icon icon-facebook">
+            <use xlink:href="#icon-facebook" />
+        </svg>
+        <span class="vh">Volg ons op Facebook</span>
+      </a>
+    </li>
+    <li class="social-icons__item">
+      <a href="#" class="social-icons__link" target="_blank">
+        <svg class="icon icon-twitter">
+            <use xlink:href="#icon-twitter" />
+        </svg>
+        <span class="vh">Volg ons op Twitter</span>
+      </a>
+    </li>
+    <li class="social-icons__item">
+      <a href="#" class="social-icons__link" target="_blank">
+        <svg class="icon icon-instagram">
+            <use xlink:href="#icon-instagram" />
+        </svg>
+        <span class="vh">Volg ons op Instagram</span>
+      </a>
+    </li>
+  </ul>
 
   <table>
     <thead>
@@ -174,6 +211,33 @@
     </tbody>
   </table>
 
+  <hr/>
+
+  <h2>Buttons</h2>
+
+  <div class="button-group">
+    <a href="#" class="button">Link</a>
+    <button class="button">Action</button>
+    <input type="submit" value="Verzenden" class="button" />
+  </div>
+
+  <div class="button-group">
+    <a href="#" class="button button--secondary">Link</a>
+    <button class="button button--secondary">Action</button>
+    <input type="submit" value="Verzenden" class="button button--secondary" />
+  </div>
+
+  <div class="button-group button-group--right">
+    <a href="#" class="button">Link</a>
+    <button class="button">Action</button>
+    <input type="submit" value="Verzenden" class="button" />
+  </div>
+
+  <div class="button-group button-group--center">
+    <a href="#" class="button">Link</a>
+    <button class="button">Action</button>
+    <input type="submit" value="Verzenden" class="button" />
+  </div>
 
   <hr/>
 
@@ -181,7 +245,7 @@
 
   <div class="grid">
     <div class="grid__item medium--one-half">
-      <form action="#" method="post" class="validate">
+      <form id="form-contact" action="#" method="post" class="validate">
         <div class="note note--error">
           <ul>
             <li>Naam is verplicht</li>
@@ -191,110 +255,114 @@
         <div class="note note--success">
           <p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
         </div>
-        <fieldset>
-          <ul>
-            <li class="error">
-              <label for="name">Naam</label>
-              <input type="text" name="name" id="name" class="validate[required]" />
-            </li>
-            <li class="error">
-              <label for="email">E-mail</label>
-              <input type="email" name="email" id="email" class="validate[required,custom[email]]" />
-            </li>
-            <li>
-              <label for="phone">Telefoon</label>
-              <input type="tel" name="phone" id="phone" class="" />
-            </li>
-            <li>
-              <label for="message">Bericht</label>
-              <textarea name="message" id="message" class="validate[required]"></textarea>
-            </li>
-            <li>
-              <div class="radio">
-                <input type="radio" id="radio-1" name="radio" value="1" class="validate[required]" data-prompt-position="topLeft:125" />
-                <label for="radio-1">Option 1</label>
-              </div>
-              <div class="radio">
-                <input type="radio" id="radio-2" name="radio" value="1" class="validate[required]" data-prompt-position="topLeft:125" />
-                <label for="radio-2">Option 2</label>
-              </div>
-            </li>
-            <li>
-              <div class="checkbox">
-                <input type="checkbox" id="privacy" name="privacy" value="1" class="validate[required]" data-prompt-position="topLeft:125" />
-                <label for="privacy">I agree my data will be processed in accordance with the privacy policy.</label>
-              </div>
-            </li>
-            <li>
-              <input type="submit" value="Verzenden" class="submit" />
-            </li>
-          </ul>
-        </fieldset>
-      </form>
 
+        <div class="input-group">
+          <label for="name">Naam*</label>
+          <input type="text" name="name" id="name" required />
+        </div>
+        <div class="input-group">
+          <label for="email">E-mail*</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="input-group">
+          <label for="phone">Telefoon</label>
+          <input type="tel" name="phone" id="phone" />
+        </div>
+        <div class="input-group">
+          <label for="select">Onderwerp</label>
+          <select id="select" name="select">
+            <option value="">Selecteer onderwerp</option>
+            <option value="Optie 1">Optie 1</option>
+            <option value="Optie 2">Optie 2</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="message">Bericht*</label>
+          <textarea name="message" id="message" required></textarea>
+        </div>
+
+        <fieldset>
+          <legend>Kies een optie</legend>
+          <div class="input-group input-group--horizontal">
+            <div class="radio">
+              <input type="radio" id="radio-1" name="radio" value="1" required />
+              <label for="radio-1">Optie 1</label>
+            </div>
+            <div class="radio">
+              <input type="radio" id="radio-2" name="radio" value="1" required />
+              <label for="radio-2">Optie 2</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Kies een optie</legend>
+          <div class="input-group">
+            <div class="radio">
+              <input type="radio" id="radio-1" name="radio" value="1" required />
+              <label for="radio-1">Optie 1</label>
+            </div>
+            <div class="radio">
+              <input type="radio" id="radio-2" name="radio" value="1" required />
+              <label for="radio-2">Optie 2</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="input-group">
+          <div class="checkbox">
+            <input type="checkbox" id="privacy" name="privacy" value="1" required />
+            <label for="privacy">I agree my data will be processed in accordance with the privacy policy.*</label>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <input type="submit" value="Verzenden" class="button" />
+        </div>
+      </form>
     </div>
   </div>
 
   <hr/>
 
-  <h2>Components</h2>
+  <h2>Instagram / Json Fetcher</h2>
 
-  <h3>Social links</h3>
+  {#
+    Data keys defines the data you want to retrieve.
+    Default seperator: ";".
+    Level indicator: "."
+    Print with double underscore "__" at each side of the word
 
-  <ul class="social">
-    <li class="social__item">
-      <a href="#" class="social__link social__link--facebook" target="_blank">
-        <svg class="icon icon-facebook">
-            <use xlink:href="#icon-facebook" />
-        </svg>
-        <span class="vh">Volg ons op Facebook</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--twitter" target="_blank">
-        <svg class="icon icon-twitter">
-            <use xlink:href="#icon-twitter" />
-        </svg>
-        <span class="vh">Volg ons op Twitter</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--instagram" target="_blank">
-        <svg class="icon icon-instagram">
-            <use xlink:href="#icon-instagram" />
-        </svg>
-        <span class="vh">Volg ons op Instagram</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--pinterest" target="_blank">
-        <svg class="icon icon-pinterest">
-            <use xlink:href="#icon-pinterest" />
-        </svg>
-        <span class="vh">Volg ons op Pinterest</span>
-      </a>
-    </li>
-    <li class="social__item">
-      <a href="#" class="social__link social__link--linkedin" target="_blank">
-        <svg class="icon icon-linkedin">
-            <use xlink:href="#icon-linkedin" />
-        </svg>
-        <span class="vh">Volg ons op LinkedIn</span>
-      </a>
-    </li>
-  </ul>
+    Example:
 
-  <h3>Google Maps</h3>
+    data-keys="id;address.street"
+    print street: __address.street__
 
-  <div id="map" class="map"></div>
+    Special case:
+    img src -> use data-src
+  #}
+
+  <div class="grid social-grid json-fetcher" data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
+    <div class="json-fetcher__template hide">
+      <div class="grid__item one-half large--one-quarter social-grid__item">
+        <a href="__url__" target="_blank" rel="nofollow">
+          <div class="visual">
+            <img data-src="__photo__" alt=""/>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
 
 </div>
 
 <div class="container container--small">
-  <div class="cms-build">
-    <div class="cms-block cms-block--text">
+  <div class="matrix">
+    <div class="matrix__block matrix__block--text">
       <div class="rte">
-        <h2>CMS Blocks</h2>
+        <h2>Matrix</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -305,12 +373,12 @@
       </div>
     </div>
 
-    <!-- options: cms-block--left; cms-block--right; cms-block--pop-out -->
-    <div class="cms-block cms-block--image cms-block--pop-out cms-block--left">
-      <img src="https://via.placeholder.com/900x500" alt=""/>
+    {# options: matrix__block--left; matrix__block--right; matrix__block--pop-out #}
+    <div class="matrix__block matrix__block--image matrix__block--pop-out matrix__block--left">
+      <img src="https://via.placeholder.com/345x220" alt=""/>
     </div>
 
-    <div class="cms-block cms-block--text">
+    <div class="matrix__block matrix__block--text">
       <div class="rte">
         <h2>blabla</h2>
         <p>
@@ -333,7 +401,7 @@
       </div>
     </div>
 
-    <div class="cms-block cms-block--quote">
+    <div class="matrix__block matrix__block--quote">
       <blockquote>
         <p>
           Fantastische reis samen met de kids. We gaan zeker nog eens terug naar deze plek!
@@ -342,11 +410,11 @@
       </blockquote>
     </div>
 
-    <div class="cms-block cms-block--section">
-      <div class="anchor" id="section-name"></div>
+    <div class="matrix__block matrix__block--section">
+      <hr/>
     </div>
 
-    <div class="cms-block cms-block--text">
+    <div class="matrix__block matrix__block--text">
       <div class="rte">
         <h2>Een andere section</h2>
         <p>
@@ -369,22 +437,18 @@
       </div>
     </div>
 
-    <div class="cms-block cms-block--buttons">
-      <a href="" class="button">Lorem</a>
-      <a href="" class="button">Ipsum</a>
-      <a href="" class="button">Dolor</a>
-      <a href="" class="button">Sit</a>
-      <a href="" class="button">Amet</a>
-      <a href="" class="button">Consectetur</a>
-      <a href="" class="button">Adipiscing</a>
-      <a href="" class="button">Elit</a>
+    <div class="matrix__block matrix__block--buttons">
+      <a href="#" class="button">Lorem</a>
+      <a href="#" class="button">Ipsum</a>
+      <a href="#" class="button">Dolor</a>
+      <a href="#" class="button">Sit</a>
+      <a href="#" class="button">Amet</a>
+      <a href="#" class="button">Consectetur</a>
+      <a href="#" class="button">Adipiscing</a>
+      <a href="#" class="button">Elit</a>
     </div>
 
-    <div class="cms-block cms-block--section">
-      <div class="anchor" id="other-section-name"></div>
-    </div>
-
-    <div class="cms-block cms-block--text">
+    <div class="matrix__block matrix__block--text">
       <div class="rte">
         <h2>Nog een andere section</h2>
         <p>
@@ -406,7 +470,6 @@
         </p>
       </div>
     </div>
-
   </div>
 </div>
 {% endblock %}

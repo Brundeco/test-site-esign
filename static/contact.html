@@ -66,7 +66,7 @@
 
   
   
-<link href="assets/css/style.f9bd426cc8b143f637ca.css" rel="stylesheet"></head>
+<link href="assets/css/style.d4cdac805df2b9942f4d.css" rel="stylesheet"></head>
 
 <body class="">
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -111,7 +111,7 @@
     <div class="grid__item medium--one-half">
       <h2>Contacteer ons</h2>
 
-      <form action="#" method="post" class="validate">
+      <form id="form-contact" action="#" method="post" class="validate">
         <div class="note note--error">
           <ul>
             <li>Naam is verplicht</li>
@@ -121,35 +121,33 @@
         <div class="note note--success">
           <p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
         </div>
-        <fieldset>
-          <ul>
-            <li class="error">
-              <label for="name">Naam</label>
-              <input type="text" name="name" id="name" class="validate[required]" />
-            </li>
-            <li class="error">
-              <label for="email">E-mail</label>
-              <input type="email" name="email" id="email" class="validate[required,custom[email]]" />
-            </li>
-            <li>
-              <label for="phone">Telefoon</label>
-              <input type="tel" name="phone" id="phone" class="" />
-            </li>
-            <li>
-              <label for="message">Bericht</label>
-              <textarea name="message" id="message" class="validate[required]"></textarea>
-            </li>
-            <li>
-              <div class="checkbox">
-                <input type="checkbox" id="privacy" name="privacy" value="1" class="validate[required]" data-prompt-position="topLeft:125" />
-                <label for="privacy">I agree my data will be processed in accordance with the privacy policy.</label>
-              </div>
-            </li>
-            <li>
-              <input type="submit" value="Verzenden" class="submit" />
-            </li>
-          </ul>
-        </fieldset>
+
+        <div class="input-group">
+          <label for="name">Naam*</label>
+          <input type="text" name="name" id="name" required />
+        </div>
+        <div class="input-group">
+          <label for="email">E-mail*</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="input-group">
+          <label for="phone">Telefoon</label>
+          <input type="tel" name="phone" id="phone" />
+        </div>
+        <div class="input-group">
+          <label for="message">Bericht*</label>
+          <textarea name="message" id="message" required></textarea>
+        </div>
+        <div class="input-group">
+          <div class="checkbox">
+            <input type="checkbox" id="privacy" name="privacy" value="1" required />
+            <label for="privacy">I agree my data will be processed in accordance with the privacy policy.*</label>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <input type="submit" value="Verzenden" class="button" />
+        </div>
       </form>
 
     </div>
@@ -164,16 +162,58 @@
       <div class="container">
         <div class="grid">
           <div class="grid__item medium--one-half">
-            <p>&copy; 2019</p>
+            <ul class="social-icons">
+              <li class="social-icons__item">
+                <a href="#" class="social-icons__link" target="_blank">
+                  <svg class="icon icon-facebook">
+                      <use xlink:href="#icon-facebook" />
+                  </svg>
+                  <span class="vh">Volg ons op Facebook</span>
+                </a>
+              </li>
+              <li class="social-icons__item">
+                <a href="#" class="social-icons__link" target="_blank">
+                  <svg class="icon icon-twitter">
+                      <use xlink:href="#icon-twitter" />
+                  </svg>
+                  <span class="vh">Volg ons op Twitter</span>
+                </a>
+              </li>
+              <li class="social-icons__item">
+                <a href="#" class="social-icons__link" target="_blank">
+                  <svg class="icon icon-instagram">
+                      <use xlink:href="#icon-instagram" />
+                  </svg>
+                  <span class="vh">Volg ons op Instagram</span>
+                </a>
+              </li>
+            </ul>
           </div>
           <div class="grid__item medium--one-half">
             <p>
-              <a class="esign" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
+              <a class="page-footer__signature" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
             </p>
           </div>
         </div>
       </div>
     </footer>
+
+    <div class="container">
+      <div class="cookie-notification hide" id="cookie-notification">
+        <div class="cookie-notification__content">
+          <p>
+            Deze website maakt gebruik van cookies. Bekijk ons <a href="#">cookiebeleid</a>.
+          </p>
+          <div class="cookie-notification__actions">
+            <button type="button" class="button" id="accept-cookies">
+
+              Ok
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
@@ -191,5 +231,5 @@
     </script>
   
   
-<script type="text/javascript" src="assets/js/vendor.4a92295a0c2cce0638ff.js"></script><script type="text/javascript" src="assets/js/app.f496355d9c13e17ebb5a.js"></script></body>
+<script src="assets/js/vendor.e65f5aa26f664ec0884f.js"></script><script src="assets/js/app.1fb695a8e277b78cecb9.js"></script></body>
 </html>

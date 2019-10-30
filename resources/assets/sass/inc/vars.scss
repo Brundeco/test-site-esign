@@ -44,6 +44,7 @@ $transitionDefault: 0.25s $easeOut;
 
 // Sizes
 $docFontSize: 10;
+$radius: 0;
 
 
 // Grid
@@ -52,7 +53,6 @@ $gutter: 20px !default;
 // Would you like push and pull classes enabled?
 $push: false !default;
 $pull: false !default;
-
 
 
 // Mediaqueries

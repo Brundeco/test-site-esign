@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob'); // eslint-disable-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
-const mode = 'static'; // ci, laravel, shop, static
+const mode = 'static'; // ci, laravel, shop, craft, static
 const devServerOpenBrowser = true;
 const useFontsDirectory = false;
 const useVideosDirectory = false;
@@ -14,7 +14,6 @@ const isLaravel = mode === 'shop' || mode === 'laravel';
 const isCi = mode === 'ci';
 const isShop = mode === 'shop';
 const isCraft = mode === 'craft';
-// const isFramework = isLaravel || isCi;
 
 // Paths
 const basePath = process.cwd();
@@ -84,10 +83,11 @@ const nunjucksOptions = JSON.stringify({
 const pages = glob.sync('**/*.nunjucks', {
   cwd: path.join(basePath, `${paths.nunjucks}/pages/`),
   root: '/',
-}).map(page => new HtmlWebpackPlugin({
+}).map((page) => new HtmlWebpackPlugin({
   filename: page.replace('nunjucks', 'html'),
   template: `${paths.nunjucks}/pages/${page}`,
-  excludeChunks: ['sprite']
+  excludeChunks: ['sprite'],
+  minify: false,
 }));
 
 const settings = {

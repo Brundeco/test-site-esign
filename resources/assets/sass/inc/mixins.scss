@@ -19,24 +19,6 @@
   @include clearfix;
 }
 
-// Image replacement
-.ir {
-  display: block;
-  border: 0;
-  text-indent: -999em;
-  overflow: hidden;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  text-align: left;
-  direction: ltr;
-}
-
-// Hide from both screenreaders and browsers: h5bp.com/u
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
 // Hide only visually, but have it available for screenreaders: h5bp.com/v
 .vh {
   border: 0;
@@ -58,34 +40,6 @@
   overflow: visible;
   position: static;
   width: auto;
-}
-
-// Hide visually and from screenreaders, but maintain layout
-.invisible {
-  visibility: hidden;
-}
-
-// Zoom
-@mixin zoom($ratio: 1) {
-  zoom: $ratio;
-  -moz-transform: scale($ratio);
-  -moz-transform-origin: 0 0;
-}
-
-// Placeholder
-@mixin placeholder($color: $grayLight) {
-  ::-webkit-input-placeholder {
-    color: $color;
-  }
-  ::-moz-placeholder {
-    color: $color;
-  }
-  :-moz-placeholder {
-    color: $color;
-  }
-  :-ms-input-placeholder {
-    color: $color;
-  }
 }
 
 // Text Overflow
@@ -214,28 +168,6 @@
 	}
 }
 
-// Height
-@mixin h($h) {
-  height: 0px + $h;
-  height: 0rem + $h / $doc-font-size;
-}
-
-// Margin
-@mixin m($mt:0, $mr:0, $mb:0, $ml:0) {
-  margin: (0px + $mt) (0px + $mr) (0px + $mb) (0px + $ml);
-  margin: (0rem + $mt / $doc-font-size) (0rem + $mr / $doc-font-size) (0rem + $mb / $doc-font-size) (0rem + $ml / $doc-font-size);
-}
-
-@mixin mt($m) {
-  margin-top: 0px + $m;
-  margin-top: 0rem + $m / $doc-font-size;
-}
-
-@mixin mb($m) {
-  margin-bottom: 0px + $m;
-  margin-bottom: 0rem + $m / $doc-font-size;
-}
-
 // Retina
 // A helper mixin for applying high-resolution background images (http://www.retinajs.com)
 @mixin at2x($path, $at2x_path, $w: auto, $h: auto) {
@@ -243,18 +175,6 @@
   @media all and (-webkit-min-device-pixel-ratio: 1.5) {
     background-image: url($at2x_path);
     background-size: $w $h;
-  }
-}
-
-// Selection
-@mixin selection($background: $grayDark, $color: $white) {
-  ::-moz-selection {
-    background-color: $background;
-    color: $color;
-  }
-  ::selection {
-    background-color: $background;
-    color: $color;
   }
 }
 

@@ -33,11 +33,11 @@
         </div>
 
         <div class="input-group">
-          <label for="name">Naam*</label>
+          <label for="name">Naam <span class="required">*</span></label>
           <input type="text" name="name" id="name" required />
         </div>
         <div class="input-group">
-          <label for="email">E-mail*</label>
+          <label for="email">E-mail <span class="required">*</span></label>
           <input type="email" name="email" id="email" required />
         </div>
         <div class="input-group">
@@ -45,7 +45,7 @@
           <input type="tel" name="phone" id="phone" />
         </div>
         <div class="input-group">
-          <label for="message">Bericht*</label>
+          <label for="message">Bericht <span class="required">*</span></label>
           <textarea name="message" id="message" required></textarea>
         </div>
         <div class="input-group">

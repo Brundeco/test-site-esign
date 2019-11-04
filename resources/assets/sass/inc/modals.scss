@@ -21,8 +21,13 @@
   .modal__dialog {
     margin: 0;
     max-width: none;
-    height: 100%;
+    height: 100vh;
     overflow-y: scroll;
+    display: flex;
+
+    div[role="document"] {
+      margin: auto;
+    }
   }
 
   .modal__close {
@@ -49,17 +54,23 @@
   background-color: $white;
   max-width: 100%;
   margin: $gutter/2;
-  padding: $gutter;
   position: relative;
 
   @media #{$medium} {
-    padding: $gutter * 2;
     max-width: 900px;
     margin: $gutter * 2 auto;
   }
 
-  @media #{$larger} {
-    padding: $gutter * 3;
+  div[role="document"] {
+    padding: $gutter;
+
+    @media #{$medium} {
+      padding: $gutter * 2;
+    }
+
+    @media #{$larger} {
+      padding: $gutter * 3;
+    }
   }
 }
 

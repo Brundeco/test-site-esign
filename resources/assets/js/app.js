@@ -1,6 +1,6 @@
 import navigation from './components/layout/navigation';
 import responsiveVideos from './components/layout/responsiveVideos';
-import validation from './components/forms/validation';
+// import validation from './components/forms/validation';
 import RecaptchaForm from './components/forms/RecaptchaForm';
 import cookieNotification from './components/cookies/cookieNotification';
 import ModalManager from './components/modals/ModalManager';
@@ -24,7 +24,7 @@ cookieNotification();
 const modalManager = new ModalManager();
 
 // Forms
-validation();
+// validation();
 
 if (document.getElementById('form-newsletter')) {
   const newsletterForm = new RecaptchaForm('#form-newsletter');

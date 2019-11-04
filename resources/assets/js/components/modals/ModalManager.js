@@ -8,6 +8,7 @@ export default class ModalManager {
     this.idModalMap = new Map();
     this.activeModal = null;
     this.activeModalTrigger = null;
+    this.isOpeningNewModal = false;
     this.init();
   }
 
@@ -37,15 +38,16 @@ export default class ModalManager {
   }
 
   onModalHide() {
-    if (!this.activeModal) {
+    if (!this.isOpeningNewModal) {
       this.activeModalTrigger.focus();
+      this.activeModal = null;
     }
-    this.activeModal = null;
     document.documentElement.classList.remove('has-active-modal');
   }
 
   onModalShow(modal) {
     document.documentElement.classList.add('has-active-modal');
+    this.isOpeningNewModal = false;
     this.activeModal = modal;
   }
 
@@ -53,10 +55,12 @@ export default class ModalManager {
     [...document.querySelectorAll(this.modalTriggersQuery)].forEach((trigger) => {
       trigger.addEventListener('click', () => {
         const modal = this.idModalMap.get(trigger.getAttribute('data-modal-id'));
-        this.activeModalTrigger = trigger;
+        this.isOpeningNewModal = true;
 
         if (this.activeModal) {
           this.activeModal.hide();
+        } else { // Only keep the activeModalTrigger when not in a modal
+          this.activeModalTrigger = trigger;
         }
         modal.show();
       });

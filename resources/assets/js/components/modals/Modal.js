@@ -51,10 +51,10 @@ export default class Modal extends EventEmitter {
     // Wrap content with content wrapper and then wrap content wrapper with modal wrapper
     const originalHtml = this.element.innerHTML;
     this.element.innerHTML = '';
-    this.element.append(this.modalVaWrap);
-    this.modalVaWrap.append(this.modalVaM);
-    this.modalVaM.append(this.modalDialog);
-    this.modalDialog.append(this.modalDocument);
+    this.element.appendChild(this.modalVaWrap);
+    this.modalVaWrap.appendChild(this.modalVaM);
+    this.modalVaM.appendChild(this.modalDialog);
+    this.modalDialog.appendChild(this.modalDocument);
     this.modalDocument.innerHTML = originalHtml;
   }
 
@@ -64,20 +64,19 @@ export default class Modal extends EventEmitter {
     this.element.setAttribute('aria-hidden', false);
     this.modalDialog.setAttribute('tabindex', -1);
     this.modalDialog.scrollTop = 0;
-
-    // Set focus
-    setTimeout(() => {
-      if (this.focusableElements.length) {
-        this.focusableElements[0].focus();
-      } else {
-        this.modalDialog.focus();
-      }
-    });
-
     this.addEventListeners();
     disableBodyScroll(this.element);
     this.element.classList.add(this.activeClass);
     this.emit('show');
+
+    // Set focus
+    setTimeout(() => {
+      if (this.focusableElements.length && this.isAlert) {
+        this.focusableElements[0].focus();
+      } else {
+        this.modalDialog.focus();
+      }
+    }, 50);
   }
 
   hide() {

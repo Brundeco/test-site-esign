@@ -1,5 +1,3 @@
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-
 const EventEmitter = require('events');
 
 export default class Modal extends EventEmitter {
@@ -12,6 +10,8 @@ export default class Modal extends EventEmitter {
     this.closeButton = null;
     this.isAlert = element.dataset.alert === 'true';
     this.title = element.dataset.title;
+    this.showHash = element.dataset.hideHash !== 'true';
+    this.backgroundScroll = element.dataset.backgroundScroll === 'true';
     this.focusableElements = null;
     this.activeClass = 'modal--active';
     this.eventListeners = [];
@@ -65,17 +65,12 @@ export default class Modal extends EventEmitter {
     this.modalDialog.setAttribute('tabindex', -1);
     this.modalDialog.scrollTop = 0;
     this.addEventListeners();
-    disableBodyScroll(this.element);
     this.element.classList.add(this.activeClass);
     this.emit('show');
 
     // Set focus
     setTimeout(() => {
-      if (this.focusableElements.length && this.isAlert) {
-        this.focusableElements[0].focus();
-      } else {
-        this.modalDialog.focus();
-      }
+      this.modalDialog.focus();
     }, 50);
   }
 
@@ -84,7 +79,6 @@ export default class Modal extends EventEmitter {
     this.modalDialog.removeAttribute('tabindex');
 
     this.removeEventListeners();
-    enableBodyScroll(this.element);
     this.element.classList.remove(this.activeClass);
     this.emit('hide');
   }

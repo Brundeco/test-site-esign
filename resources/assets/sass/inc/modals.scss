@@ -55,6 +55,7 @@
   max-width: 100%;
   margin: $gutter/2;
   position: relative;
+  outline: 0;
 
   @media #{$medium} {
     max-width: 900px;

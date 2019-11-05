@@ -1,3 +1,4 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import Modal from './Modal';
 
 export default class ModalManager {
@@ -25,7 +26,7 @@ export default class ModalManager {
 
       // bind modal hide
       modal.on('hide', () => {
-        this.onModalHide();
+        this.onModalHide(modal);
       });
 
       // bind modal show
@@ -35,26 +36,44 @@ export default class ModalManager {
     });
 
     this.bindModalTriggers();
+    this.bindWindowPopState();
   }
 
-  onModalHide() {
+  onModalHide(modal) {
     if (!this.isOpeningNewModal) {
-      this.activeModalTrigger.focus();
+      if (this.activeModalTrigger) {
+        this.activeModalTrigger.focus();
+      }
       this.activeModal = null;
     }
+    if (!modal.backgroundScroll) {
+      enableBodyScroll(modal.element);
+    }
     document.documentElement.classList.remove('has-active-modal');
+    this.removeHash();
   }
 
   onModalShow(modal) {
+    if (!modal.backgroundScroll) {
+      disableBodyScroll(modal.element);
+    }
     document.documentElement.classList.add('has-active-modal');
     this.isOpeningNewModal = false;
     this.activeModal = modal;
+    if (modal.showHash) {
+      this.setHash(`#${modal.id}`);
+    } else {
+      this.removeHash();
+    }
   }
 
   bindModalTriggers() {
+    const hashOnPageLoad = window.location.hash.substring(1, window.location.hash.length);
+
     [...document.querySelectorAll(this.modalTriggersQuery)].forEach((trigger) => {
+      const modalId = trigger.getAttribute('data-modal-id');
+      const modal = this.idModalMap.get(modalId);
       trigger.addEventListener('click', () => {
-        const modal = this.idModalMap.get(trigger.getAttribute('data-modal-id'));
         this.isOpeningNewModal = true;
 
         if (this.activeModal) {
@@ -64,7 +83,28 @@ export default class ModalManager {
         }
         modal.show();
       });
+
+      if (hashOnPageLoad === modalId) {
+        modal.show();
+      }
     });
+  }
+
+  bindWindowPopState() {
+    window.addEventListener('popstate', () => {
+      if (this.activeModal
+        && this.activeModal.element.querySelector(window.location.hash) == null) {
+        this.activeModal.hide();
+      } else if (window.location.hash) {
+        const el = document.querySelector(window.location.hash);
+        if (el != null && el.classList.contains('modal')) {
+          const modal = this.idModalMap.get(el.getAttribute('id'));
+          if (modal) {
+            modal.show();
+          }
+        }
+      }
+    }, false);
   }
 
   setHash(hash) {
@@ -76,17 +116,20 @@ export default class ModalManager {
   }
 
   removeHash() {
-    const { history, location } = window;
-    if (history.pushState) {
-      history.replaceState(history.state, '', '#');
-    } else {
-      // Prevent scrolling by storing the page's current scroll offset
-      const scrollV = document.body.scrollTop;
-      const scrollH = document.body.scrollLeft;
-      location.hash = '';
-      // Restore the scroll offset, should be flicker free
-      document.body.scrollTop = scrollV;
-      document.body.scrollLeft = scrollH;
+    const currentHash = window.location.hash.substring(1, window.location.hash.length);
+    if (currentHash.length) {
+      const { history, location } = window;
+      if (history.pushState) {
+        history.replaceState(history.state, '', '#');
+      } else {
+        // Prevent scrolling by storing the page's current scroll offset
+        const scrollV = document.body.scrollTop;
+        const scrollH = document.body.scrollLeft;
+        location.hash = '';
+        // Restore the scroll offset, should be flicker free
+        document.body.scrollTop = scrollV;
+        document.body.scrollLeft = scrollH;
+      }
     }
   }
 }

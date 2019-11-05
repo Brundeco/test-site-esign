@@ -78,8 +78,9 @@ textarea {
 }
 
 select {
+  cursor: pointer;
   border-radius: $radius;
-  background: $white url('../images/select-arrow.svg') center right 15px no-repeat;
+  background: $white url('../images/chevron-down.svg') center right 15px no-repeat;
   background-size: 12px 6px;
   padding-right: 35px;
 }
@@ -300,6 +301,11 @@ input[type="search"] {
   @include fs(14);
   display: block;
   margin-top: 10px;
+}
+
+.required {
+  display: inline-block;
+  color: $error;
 }
 
 

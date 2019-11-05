@@ -56,6 +56,24 @@
     </div>
   </div>
 
+  <div class="grid">
+    <div class="grid__item medium--one-third large--one-fifth">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+    <div class="grid__item medium--one-third large--one-fifth">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+    <div class="grid__item medium--one-third large--one-fifth">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+    <div class="grid__item medium--one-third large--one-fifth">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+    <div class="grid__item medium--one-third large--one-fifth">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+    </div>
+  </div>
+
   <ul class="grid">
     <li class="grid__item medium--one-half">
       <div class="box">
@@ -197,28 +215,28 @@
 
   <table>
     <thead>
-    <tr>
-      <th>Title 1</th>
-      <th>Title 2</th>
-      <th>Title 3</th>
-    </tr>
+      <tr>
+        <th>Title 1</th>
+        <th>Title 2</th>
+        <th>Title 3</th>
+      </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Item 1</td>
-      <td>Item 2</td>
-      <td>Item 3</td>
-    </tr>
-    <tr>
-      <td>Item 1</td>
-      <td>Item 2</td>
-      <td>Item 3</td>
-    </tr>
-    <tr>
-      <td>Item 1</td>
-      <td>Item 2</td>
-      <td>Item 3</td>
-    </tr>
+      <tr>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+      </tr>
+      <tr>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+      </tr>
+      <tr>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+      </tr>
     </tbody>
   </table>
 
@@ -268,12 +286,12 @@
         </div>
 
         <div class="input-group">
-          <label for="name">Naam*</label>
-          <input type="text" name="name" id="name" required/>
+          <label for="name">Naam <span class="required">*</span></label>
+          <input type="text" name="name" id="name" required />
         </div>
         <div class="input-group">
-          <label for="email">E-mail*</label>
-          <input type="email" name="email" id="email" required/>
+          <label for="email">E-mail <span class="required">*</span></label>
+          <input type="email" name="email" id="email" required />
         </div>
         <div class="input-group">
           <label for="phone">Telefoon</label>
@@ -288,12 +306,12 @@
           </select>
         </div>
         <div class="input-group">
-          <label for="message">Bericht*</label>
+          <label for="message">Bericht <span class="required">*</span></label>
           <textarea name="message" id="message" required></textarea>
         </div>
 
         <fieldset>
-          <legend>Kies een optie</legend>
+          <legend>Kies een optie <span class="required">*</span></legend>
           <div class="input-group input-group--horizontal">
             <div class="radio">
               <input type="radio" id="radio-1" name="radio" value="1" required/>
@@ -322,8 +340,8 @@
 
         <div class="input-group">
           <div class="checkbox">
-            <input type="checkbox" id="privacy" name="privacy" value="1" required/>
-            <label for="privacy">I agree my data will be processed in accordance with the privacy policy.*</label>
+            <input type="checkbox" id="privacy" name="privacy" value="1" required />
+            <label for="privacy">I agree my data will be processed in accordance with the privacy policy. <span class="required">*</span></label>
           </div>
         </div>
 
@@ -339,22 +357,21 @@
   <h2>Instagram / Json Fetcher</h2>
 
   {#
-  Data keys defines the data you want to retrieve.
-  Default seperator: ";".
-  Level indicator: "."
-  Print with double underscore "__" at each side of the word
+    Data keys defines the data you want to retrieve.
+    Default seperator: ";".
+    Level indicator: "."
+    Print with double underscore "__" at each side of the word
 
-  Example:
+    Example:
 
-  data-keys="id;address.street"
-  print street: __address.street__
+    data-keys="id;address.street"
+    print street: __address.street__
 
-  Special case:
-  img src -> use data-src
+    Special case:
+    img src -> use data-src
   #}
 
-  <div class="grid social-grid json-fetcher"
-       data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
+  <div class="grid social-grid json-fetcher" data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
     <div class="json-fetcher__template hide">
       <div class="grid__item one-half large--one-quarter social-grid__item">
         <a href="__url__" target="_blank" rel="nofollow">
@@ -476,8 +493,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
           laborum.
         </p>
       </div>
@@ -531,21 +547,17 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
-          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-          ea commodo
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
           laborum.
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
           laborum.
         </p>
       </div>
@@ -569,21 +581,17 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
-          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-          ea commodo
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
           laborum.
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
           laborum.
         </p>
       </div>

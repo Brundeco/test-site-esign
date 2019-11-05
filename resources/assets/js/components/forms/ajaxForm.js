@@ -3,7 +3,7 @@ import $ from 'jquery';
 // Send form via ajax
 export default function () {
   $('.form-ajax').submit((e) => {
-    const $form = $(this);
+    const $form = $(e.currentTarget);
     $form.find('button,input[type="submit"]').attr('disabled', 'disabled');
 
     $.post($form.attr('action'), $form.serializeArray(), (data) => {

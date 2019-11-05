@@ -50,6 +50,18 @@ $radius: 0;
 // Grid
 $gutter: 20px !default;
 
+// Grid widths
+$whole: true !default;
+$halves: true !default;
+$thirds: true !default;
+$quarters: true !default;
+$fifths: true !default;
+$sixths: false !default;
+$eighths: false !default;
+$tenths: false !default;
+$twelfths: false !default;
+$thirds: false !default;
+
 // Would you like push and pull classes enabled?
 $push: false !default;
 $pull: false !default;

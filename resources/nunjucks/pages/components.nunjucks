@@ -476,6 +476,7 @@
       </p>
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-1">Alert modal</button>
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
+      <button type="button" class="button js-modal-close">Close modal here</button>
     </div>
     <button type="button" class="modal__close js-modal-close">Close</button>
   </div>

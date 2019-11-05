@@ -7,7 +7,7 @@ export default class Modal extends EventEmitter {
     this.id = element.getAttribute('id');
     this.modalDialog = null;
     this.modalDocument = null;
-    this.closeButton = null;
+    this.closeTriggers = null;
     this.isAlert = element.dataset.alert === 'true';
     this.title = element.dataset.title;
     this.showHash = element.dataset.hideHash !== 'true';
@@ -23,7 +23,7 @@ export default class Modal extends EventEmitter {
     this.addA11Y();
     // Focusable elements (for TAB key)
     this.focusableElements = [...this.element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [contenteditable], [tabindex]:not([tabindex^="-"])')];
-    this.closeButton = this.element.querySelector('.js-modal-close');
+    this.closeTriggers = [...this.element.querySelectorAll('.js-modal-close')];
   }
 
   addA11Y() {
@@ -114,9 +114,11 @@ export default class Modal extends EventEmitter {
     this.element.addEventListener('click', onModalVaMClick);
     this.eventListeners.push({ ctx: this.modalDialog, type: 'click', fn: onModalVaMClick });
 
-    const onCloseButtonClick = () => { this.hide(); };
-    this.closeButton.addEventListener('click', onCloseButtonClick);
-    this.eventListeners.push({ ctx: this.closeButton, type: 'click', fn: onCloseButtonClick });
+    const onCloseTriggerClick = () => { this.hide(); };
+    this.closeTriggers.forEach((closeTrigger) => {
+      closeTrigger.addEventListener('click', onCloseTriggerClick);
+      this.eventListeners.push({ ctx: closeTrigger, type: 'click', fn: onCloseTriggerClick });
+    });
 
     // Keydown
     const onDocumentKeyDown = (e) => { this.onKeyDown(e); };

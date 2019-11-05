@@ -17,5 +17,8 @@ export default class Components {
     // JsonFetcher
     const jsonFetcher = new JsonFetcher(document.querySelector('.json-fetcher'));
     jsonFetcher.init();
+
+    // Custom modal
+    window.modalManager.createModal(document.querySelector('.js-specific-modal-name'));
   }
 }

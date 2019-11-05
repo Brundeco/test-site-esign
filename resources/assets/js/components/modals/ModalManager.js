@@ -3,9 +3,8 @@ import Modal from './Modal';
 
 export default class ModalManager {
   constructor() {
-    this.modalsQuery = '.js-modal';
+    this.defaultModalsQuery = '.js-modal';
     this.modalTriggersQuery = '.js-modal-trigger';
-    this.modalElements = [...document.querySelectorAll(this.modalsQuery)];
     this.idModalMap = new Map();
     this.activeModal = null;
     this.activeModalTrigger = null;
@@ -14,29 +13,33 @@ export default class ModalManager {
   }
 
   init() {
-    if (!this.modalElements.length) {
-      return;
-    }
-
-    this.modalElements.forEach((el) => {
-      const modal = new Modal(el);
-
-      // add to map
-      this.idModalMap.set(el.getAttribute('id'), modal);
-
-      // bind modal hide
-      modal.on('hide', () => {
-        this.onModalHide(modal);
-      });
-
-      // bind modal show
-      modal.on('show', () => {
-        this.onModalShow(modal);
-      });
+    [...document.querySelectorAll(this.defaultModalsQuery)].forEach((el) => {
+      this.createModal(el);
     });
 
     this.bindModalTriggers();
     this.bindWindowPopState();
+  }
+
+  createModal(modalElement) {
+    const modal = new Modal(modalElement);
+    const modalTriggers = [...document.querySelectorAll(`.js-modal-trigger[data-modal-id="${modal.id}"]`)];
+
+    // add to map
+    this.idModalMap.set(modal.id, modal);
+
+    // bind modal hide
+    modal.on('hide', () => {
+      this.onModalHide(modal);
+    });
+
+    // bind modal show
+    modal.on('show', () => {
+      this.onModalShow(modal);
+    });
+
+    // bind triggers
+    this.bindModalTriggers(modalTriggers);
   }
 
   onModalHide(modal) {
@@ -67,27 +70,29 @@ export default class ModalManager {
     }
   }
 
-  bindModalTriggers() {
+  bindModalTriggers(modalTriggers) {
     const hashOnPageLoad = window.location.hash.substring(1, window.location.hash.length);
 
-    [...document.querySelectorAll(this.modalTriggersQuery)].forEach((trigger) => {
-      const modalId = trigger.getAttribute('data-modal-id');
-      const modal = this.idModalMap.get(modalId);
-      trigger.addEventListener('click', () => {
-        this.isOpeningNewModal = true;
+    if (modalTriggers) {
+      modalTriggers.forEach((trigger) => {
+        const modalId = trigger.getAttribute('data-modal-id');
+        const modal = this.idModalMap.get(modalId);
+        trigger.addEventListener('click', () => {
+          this.isOpeningNewModal = true;
 
-        if (this.activeModal) {
-          this.activeModal.hide();
-        } else { // Only keep the activeModalTrigger when not in a modal
-          this.activeModalTrigger = trigger;
+          if (this.activeModal) {
+            this.activeModal.hide();
+          } else { // Only keep the activeModalTrigger when not in a modal
+            this.activeModalTrigger = trigger;
+          }
+          modal.show();
+        });
+
+        if (hashOnPageLoad === modalId) {
+          modal.show();
         }
-        modal.show();
       });
-
-      if (hashOnPageLoad === modalId) {
-        modal.show();
-      }
-    });
+    }
   }
 
   bindWindowPopState() {

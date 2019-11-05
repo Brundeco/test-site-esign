@@ -21,7 +21,7 @@ navigation();
 responsiveVideos();
 cookieNotification();
 // eslint-disable-next-line
-const modalManager = new ModalManager();
+window.modalManager = new ModalManager();
 
 // Forms
 validation();

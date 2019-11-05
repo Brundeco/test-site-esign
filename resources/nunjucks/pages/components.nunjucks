@@ -390,6 +390,7 @@
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-1">Alert modal</button>
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-3">Windowed modal</button>
+  <button type="button" class="button js-modal-trigger" data-modal-id="custom-modal">Custom modal</button>
 
   <div class="modal js-modal" id="modal-1" data-title="Alert 1" data-alert="true" data-background-scroll="true">
     <div class="h3">Alert 1</div>
@@ -444,7 +445,7 @@
     <button type="button" class="modal__close js-modal-close">Close</button>
   </div>
 
-  <div class="modal js-modal" id="modal-3" data-title="Normal modal" data-hide-hash="true">
+  <div class="modal js-modal" id="modal-3" data-title="Windowed modal" data-hide-hash="true">
     <div class="container">
       <div class="h3">Windowed modal</div>
       <p>
@@ -477,6 +478,13 @@
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-1">Alert modal</button>
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
       <button type="button" class="button js-modal-close">Close modal here</button>
+    </div>
+    <button type="button" class="modal__close js-modal-close">Close</button>
+  </div>
+
+  <div class="modal js-specific-modal-name" id="custom-modal" data-title="Custom modal initialized in Components.js">
+    <div class="container">
+      <div class="h3">Custom modal initialized in Components.js</div>
     </div>
     <button type="button" class="modal__close js-modal-close">Close</button>
   </div>

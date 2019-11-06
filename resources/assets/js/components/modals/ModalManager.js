@@ -19,11 +19,18 @@ export default class ModalManager {
 
     this.bindModalTriggers();
     this.bindWindowPopState();
+
+
+    // show modal on page load
+    const hashOnPageLoad = window.location.hash.substring(1, window.location.hash.length);
+    const modal = this.idModalMap.get(hashOnPageLoad);
+    if (modal) {
+      modal.show();
+    }
   }
 
   createModal(modalElement) {
     const modal = new Modal(modalElement);
-    const modalTriggers = [...document.querySelectorAll(`.js-modal-trigger[data-modal-id="${modal.id}"]`)];
 
     // add to map
     this.idModalMap.set(modal.id, modal);
@@ -37,9 +44,6 @@ export default class ModalManager {
     modal.on('show', () => {
       this.onModalShow(modal);
     });
-
-    // bind triggers
-    this.bindModalTriggers(modalTriggers);
   }
 
   onModalHide(modal) {
@@ -70,29 +74,22 @@ export default class ModalManager {
     }
   }
 
-  bindModalTriggers(modalTriggers) {
-    const hashOnPageLoad = window.location.hash.substring(1, window.location.hash.length);
-
-    if (modalTriggers) {
-      modalTriggers.forEach((trigger) => {
+  bindModalTriggers() {
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('js-modal-trigger')) {
+        const trigger = e.target;
         const modalId = trigger.getAttribute('data-modal-id');
         const modal = this.idModalMap.get(modalId);
-        trigger.addEventListener('click', () => {
-          this.isOpeningNewModal = true;
+        this.isOpeningNewModal = true;
 
-          if (this.activeModal) {
-            this.activeModal.hide();
-          } else { // Only keep the activeModalTrigger when not in a modal
-            this.activeModalTrigger = trigger;
-          }
-          modal.show();
-        });
-
-        if (hashOnPageLoad === modalId) {
-          modal.show();
+        if (this.activeModal) {
+          this.activeModal.hide();
+        } else { // Only keep the activeModalTrigger when not in a modal
+          this.activeModalTrigger = trigger;
         }
-      });
-    }
+        modal.show();
+      }
+    });
   }
 
   bindWindowPopState() {

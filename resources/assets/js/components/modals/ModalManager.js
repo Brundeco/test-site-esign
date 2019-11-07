@@ -39,6 +39,10 @@ export default class ModalManager {
       this.onModalHide(modal);
     });
 
+    modal.on('before-show', () => {
+      this.onModalBeforeShow(modal);
+    });
+
     // bind modal show
     modal.on('show', () => {
       this.onModalShow(modal);
@@ -57,14 +61,25 @@ export default class ModalManager {
     if (!modal.backgroundScroll) {
       enableBodyScroll(modal.element);
     }
+    setTimeout(() => {
+      document.body.style.paddingRight = 0;
+    });
     document.documentElement.classList.remove('has-active-modal');
     this.removeHash();
   }
 
-  onModalShow(modal) {
+  onModalBeforeShow(modal) {
     if (!modal.backgroundScroll) {
       disableBodyScroll(modal.element);
+      // scrollbar width as padding
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      setTimeout(() => {
+        document.body.style.paddingRight = `${scrollBarWidth}px`;
+      });
     }
+  }
+
+  onModalShow(modal) {
     document.documentElement.classList.add('has-active-modal');
     this.isOpeningNewModal = false;
     this.activeModal = modal;

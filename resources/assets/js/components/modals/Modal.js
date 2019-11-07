@@ -71,6 +71,7 @@ export default class Modal extends EventEmitter {
   /* Show / Hide functionality */
 
   show() {
+    this.emit('before-show');
     this.element.classList.add(this.beforeShowClass);
     if (this.beforeShowAnimation) {
       this.beforeShowAnimation.once('finished', () => {
@@ -104,6 +105,7 @@ export default class Modal extends EventEmitter {
   }
 
   hide() {
+    this.emit('before-hide');
     this.element.classList.add(this.beforeHideClass);
     if (this.beforeHideAnimation) {
       this.beforeHideAnimation.once('finished', () => {

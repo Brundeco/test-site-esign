@@ -4,7 +4,6 @@ import Modal from './Modal';
 export default class ModalManager {
   constructor() {
     this.defaultModalsQuery = '.js-modal';
-    this.modalTriggersQuery = '.js-modal-trigger';
     this.idModalMap = new Map();
     this.activeModal = null;
     this.activeModalTrigger = null;
@@ -44,6 +43,8 @@ export default class ModalManager {
     modal.on('show', () => {
       this.onModalShow(modal);
     });
+
+    return modal;
   }
 
   onModalHide(modal) {

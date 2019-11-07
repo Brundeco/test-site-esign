@@ -1,6 +1,8 @@
 import RecaptchaForm from '../components/forms/RecaptchaForm';
 import BasicGoogleMap from '../components/maps/BasicGoogleMap';
 import JsonFetcher from '../components/layout/JsonFetcher';
+import ModalAnimationExample from '../animations/ModalAnimationExample';
+import ModalAnimationExample2 from '../animations/ModalAnimationExample2';
 
 export default class Components {
   constructor() {
@@ -19,6 +21,10 @@ export default class Components {
     jsonFetcher.init();
 
     // Custom modal
-    window.modalManager.createModal(document.querySelector('.js-specific-modal-name'));
+    const customModal = window.modalManager.createModal(document.querySelector('.js-specific-modal-name'));
+    customModal.setBeforeShowAnimation(new ModalAnimationExample());
+    customModal.setAfterShowAnimation(new ModalAnimationExample2());
+    customModal.setBeforeHideAnimation(new ModalAnimationExample());
+    customModal.setAfterHideAnimation(new ModalAnimationExample2());
   }
 }

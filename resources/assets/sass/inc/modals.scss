@@ -38,6 +38,20 @@
   }
 }
 
+.modal--fade {
+  &.modal--before-show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .5s ease-out;
+  }
+
+  &.modal--before-hide {
+    visibility: visible;
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+}
+
 .modal__va-wrap {
   display: table;
   table-layout: fixed;

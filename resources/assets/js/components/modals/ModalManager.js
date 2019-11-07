@@ -85,10 +85,13 @@ export default class ModalManager {
 
         if (this.activeModal) {
           this.activeModal.hide();
+          setTimeout(() => {
+            modal.show();
+          }, this.activeModal.hideTimeout);
         } else { // Only keep the activeModalTrigger when not in a modal
           this.activeModalTrigger = trigger;
+          modal.show();
         }
-        modal.show();
       }
     });
   }

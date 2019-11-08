@@ -63,7 +63,7 @@ export default class ModalManager {
       enableBodyScroll(modal.element);
     }
     setTimeout(() => {
-      document.body.style.marginRight = 0;
+      document.body.style.paddingRight = 0;
     });
     document.documentElement.classList.remove('has-active-modal');
     this.removeHash();
@@ -74,7 +74,7 @@ export default class ModalManager {
       disableBodyScroll(modal.element);
       // scrollbar width as margin
       setTimeout(() => {
-        document.body.style.marginRight = `${this.scrollbarWidth}px`;
+        document.body.style.paddingRight = `${this.scrollbarWidth}px`;
       });
     }
   }

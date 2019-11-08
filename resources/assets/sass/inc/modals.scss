@@ -9,6 +9,11 @@
   visibility: hidden;
   opacity: 0;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  &:not(.modal--fullscreen) {
+    -webkit-overflow-scrolling: touch;
+  }
 
   &[data-background-scroll="true"] {
     overflow-y: auto;
@@ -22,11 +27,12 @@
 }
 
 .modal--fullscreen {
+  background: $white;
+  
   .modal__dialog {
     margin: 0;
     max-width: none;
     height: 100vh;
-    overflow: auto;
     display: flex;
 
     div[role="document"] {
@@ -44,14 +50,7 @@
 
 .modal--before-show {
   overflow-y: scroll;
-
-  &.modal--fullscreen {
-    overflow: hidden;
-
-    .modal__dialog {
-      overflow-y: scroll;
-    }
-  }
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal--fade {

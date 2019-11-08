@@ -114,7 +114,7 @@ export default class ModalManager {
   bindWindowPopState() {
     window.addEventListener('popstate', () => {
       if (this.activeModal
-        && this.activeModal.element.querySelector(window.location.hash) == null) {
+        && (window.location.hash === '' || this.activeModal.element.querySelector(window.location.hash) == null)) {
         this.activeModal.hide();
       } else if (window.location.hash) {
         const el = document.querySelector(window.location.hash);

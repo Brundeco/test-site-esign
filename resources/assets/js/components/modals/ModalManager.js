@@ -8,6 +8,7 @@ export default class ModalManager {
     this.activeModal = null;
     this.activeModalTrigger = null;
     this.isOpeningNewModal = false;
+    this.scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     this.init();
   }
 
@@ -71,10 +72,9 @@ export default class ModalManager {
   onModalBeforeShow(modal) {
     if (!modal.backgroundScroll) {
       disableBodyScroll(modal.element);
-      // scrollbar width as padding
-      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      // scrollbar width as margin
       setTimeout(() => {
-        document.body.style.marginRight = `${scrollBarWidth}px`;
+        document.body.style.marginRight = `${this.scrollbarWidth}px`;
       });
     }
   }

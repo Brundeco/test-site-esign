@@ -112,3 +112,7 @@
   margin: $gutter/2;
   padding: $gutter/2;
 }
+
+.js-modal-trigger * {
+  pointer-events: none;
+}

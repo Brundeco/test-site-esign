@@ -25,6 +25,10 @@ export default class Modal extends EventEmitter {
     this.afterHideAnimation = null;
     this.showTimeout = element.dataset.showTimeout || 0;
     this.hideTimeout = element.dataset.hideTimeout || 0;
+    this.showTimeoutReference = null;
+    this.hideTimeoutReference = null;
+    this.isOpening = false;
+    this.isClosing = false;
     this.init();
   }
 
@@ -71,25 +75,31 @@ export default class Modal extends EventEmitter {
   /* Show / Hide functionality */
 
   show() {
-    this.emit('before-show');
-    this.element.classList.add(this.beforeShowClass);
-    if (this.beforeShowAnimation) {
-      this.beforeShowAnimation.once('finished', () => {
-        this._show();
-      });
-      this.beforeShowAnimation.start();
-    } else {
-      setTimeout(() => {
-        this._show();
-      }, this.showTimeout);
+    if (!this.isOpening) {
+      clearTimeout(this.hideTimeoutReference);
+      this.isOpening = true;
+      this.isClosing = false;
+      this.emit('before-show');
+      this.element.classList.add(this.beforeShowClass);
+      this.element.classList.remove(this.beforeHideClass);
+      this.element.setAttribute('aria-hidden', false);
+      this.addEventListeners();
+      if (this.beforeShowAnimation) {
+        this.beforeShowAnimation.once('finished', () => {
+          this._show();
+        });
+        this.beforeShowAnimation.start();
+      } else {
+        this.showTimeoutReference = setTimeout(() => {
+          this._show();
+        }, this.showTimeout);
+      }
     }
   }
 
   _show() {
-    this.element.setAttribute('aria-hidden', false);
     this.modalDialog.setAttribute('tabindex', -1);
     this.modalDialog.scrollTop = 0;
-    this.addEventListeners();
     this.element.classList.remove(this.beforeShowClass);
     this.element.classList.add(this.activeClass);
     this.emit('show');
@@ -100,30 +110,35 @@ export default class Modal extends EventEmitter {
 
     // Set focus
     setTimeout(() => {
-      this.modalDialog.focus();
+      this.modalDialog.focus({ preventScroll: true });
     }, 50);
   }
 
   hide() {
-    this.emit('before-hide');
-    this.element.classList.add(this.beforeHideClass);
-    if (this.beforeHideAnimation) {
-      this.beforeHideAnimation.once('finished', () => {
-        this._hide();
-      });
-      this.beforeHideAnimation.start();
-    } else {
-      setTimeout(() => {
-        this._hide();
-      }, this.hideTimeout);
+    if (!this.isClosing) {
+      clearTimeout(this.showTimeoutReference);
+      this.element.setAttribute('aria-hidden', true);
+      this.isClosing = true;
+      this.isOpening = false;
+      this.emit('before-hide');
+      this.element.classList.add(this.beforeHideClass);
+      this.element.classList.remove(this.beforeShowClass);
+      this.removeEventListeners();
+      if (this.beforeHideAnimation) {
+        this.beforeHideAnimation.once('finished', () => {
+          this._hide();
+        });
+        this.beforeHideAnimation.start();
+      } else {
+        this.hideTimeoutReference = setTimeout(() => {
+          this._hide();
+        }, this.hideTimeout);
+      }
     }
   }
 
   _hide() {
-    this.element.setAttribute('aria-hidden', true);
     this.modalDialog.removeAttribute('tabindex');
-
-    this.removeEventListeners();
     this.element.classList.remove(this.beforeHideClass);
     this.element.classList.remove(this.activeClass);
     this.emit('hide');

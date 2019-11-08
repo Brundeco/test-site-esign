@@ -4,11 +4,16 @@ import Modal from './Modal';
 export default class ModalManager {
   constructor() {
     this.defaultModalsQuery = '.js-modal';
+    this.modalTriggerQuery = '.js-modal-trigger';
+    this.isOpeningModalClass = 'is-opening-modal';
+    this.isClosingModalClass = 'is-closing-modal';
+    this.hasActiveModalClass = 'has-active-modal';
     this.idModalMap = new Map();
     this.activeModal = null;
     this.activeModalTrigger = null;
-    this.isOpeningNewModal = false;
+    this.isOpeningModal = false;
     this.scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    this.showModalTimeoutReference = null;
     this.init();
   }
 
@@ -32,10 +37,12 @@ export default class ModalManager {
   createModal(modalElement) {
     const modal = new Modal(modalElement);
 
-    // add to map
     this.idModalMap.set(modal.id, modal);
 
-    // bind modal hide
+    modal.on('before-hide', () => {
+      this.onModalBeforeHide(modal);
+    });
+
     modal.on('hide', () => {
       this.onModalHide(modal);
     });
@@ -44,7 +51,6 @@ export default class ModalManager {
       this.onModalBeforeShow(modal);
     });
 
-    // bind modal show
     modal.on('show', () => {
       this.onModalShow(modal);
     });
@@ -52,59 +58,60 @@ export default class ModalManager {
     return modal;
   }
 
+  onModalBeforeHide() {
+    this.isOpeningModal = false;
+    this.isClosingModal = true;
+    clearTimeout(this.showModalTimeoutReference);
+    this.removeHash();
+  }
+
   onModalHide(modal) {
-    if (!this.isOpeningNewModal) {
+    this.isClosingModal = false;
+    this.activeModal = null;
+    if (!this.isOpeningModal) {
       if (this.activeModalTrigger) {
         this.activeModalTrigger.focus();
       }
-      this.activeModal = null;
     }
     if (!modal.backgroundScroll) {
       enableBodyScroll(modal.element);
     }
-    setTimeout(() => {
-      document.body.style.paddingRight = 0;
-    });
-    document.documentElement.classList.remove('has-active-modal');
-    this.removeHash();
+    document.body.style.marginRight = 0;
   }
 
   onModalBeforeShow(modal) {
     if (!modal.backgroundScroll) {
-      disableBodyScroll(modal.element);
       // scrollbar width as margin
-      setTimeout(() => {
-        document.body.style.paddingRight = `${this.scrollbarWidth}px`;
-      });
+      disableBodyScroll(modal.element);
+      document.body.style.marginRight = `${this.scrollbarWidth}px`;
     }
-  }
-
-  onModalShow(modal) {
-    document.documentElement.classList.add('has-active-modal');
-    this.isOpeningNewModal = false;
-    this.activeModal = modal;
     if (modal.showHash) {
       this.setHash(`#${modal.id}`);
     } else {
       this.removeHash();
     }
+    this.activeModal = modal;
+  }
+
+  onModalShow() {
+    this.isOpeningModal = false;
   }
 
   bindModalTriggers() {
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('js-modal-trigger')) {
-        const trigger = e.target;
-        const modalId = trigger.getAttribute('data-modal-id');
+        const modalTrigger = e.target;
+        this.isOpeningModal = true;
+        const modalId = modalTrigger.getAttribute('data-modal-id');
         const modal = this.idModalMap.get(modalId);
-        this.isOpeningNewModal = true;
 
-        if (this.activeModal) {
+        if (this.activeModal && !this.isClosingModal) {
           this.activeModal.hide();
-          setTimeout(() => {
+          this.showModalTimeoutReference = setTimeout(() => {
             modal.show();
           }, this.activeModal.hideTimeout);
         } else { // Only keep the activeModalTrigger when not in a modal
-          this.activeModalTrigger = trigger;
+          this.activeModalTrigger = modalTrigger;
           modal.show();
         }
       }

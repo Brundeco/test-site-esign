@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 100;
+  z-index: 1000000;
   background-color: rgba(0, 0, 0, .3);
   visibility: hidden;
   opacity: 0;
@@ -23,7 +23,7 @@
 .modal--active {
   visibility: visible;
   opacity: 1;
-  z-index: 101;
+  z-index: 1000001;
 }
 
 .modal--fullscreen {
@@ -49,21 +49,24 @@
 }
 
 .modal--before-show {
+  visibility: visible;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
 
+.modal--before-hide {
+  pointer-events: none;
+}
+
 .modal--fade {
   &.modal--before-show {
-    visibility: visible;
     opacity: 1;
     transition: opacity .5s ease-out;
   }
 
   &.modal--before-hide {
-    visibility: visible;
     opacity: 0;
-    transition: opacity .2s ease-out;
+    transition: opacity .5s ease-out;
   }
 }
 
@@ -114,4 +117,14 @@
 
 .js-modal-trigger * {
   pointer-events: none;
+}
+
+.js-modal-close {
+  pointer-events: none;
+}
+
+.modal--active, .modal--before-show {
+  &:not(.modal--before-hide) .js-modal-close {
+    pointer-events: auto;
+  }
 }

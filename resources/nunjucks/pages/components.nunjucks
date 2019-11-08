@@ -388,7 +388,7 @@
   <h3>Modals</h3>
 
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-1">Alert modal</button>
-  <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
+  <button type="button" class="button js-modal-trigger" data-modal-id="modal-2" style="position: fixed; top: 10px; right: 0;">Fullscreen modal</button>
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-3">Windowed modal</button>
   <button type="button" class="button js-modal-trigger" data-modal-id="custom-modal">Custom modal</button>
 
@@ -407,7 +407,7 @@
     <button type="button" class="modal__close js-modal-close">Close</button>
   </div>
 
-  <div class="modal modal--fullscreen modal--fade js-modal" id="modal-2" data-title="Fullscreen modal" data-show-timeout="500" data-hide-timeout="200">
+  <div class="modal modal--fullscreen modal--fade js-modal" id="modal-2" data-title="Fullscreen modal" data-show-timeout="500" data-hide-timeout="500">
     <div class="container">
       <div class="h3">Fullscreen modal</div>
       <p>
@@ -445,7 +445,7 @@
     <button type="button" class="modal__close js-modal-close">Close</button>
   </div>
 
-  <div class="modal modal--fade js-modal" id="modal-3" data-title="Windowed modal" data-hide-hash="true" data-show-timeout="500" data-hide-timeout="200">
+  <div class="modal modal--fade js-modal" id="modal-3" data-title="Windowed modal" data-hide-hash="true" data-show-timeout="500" data-hide-timeout="500">
     <div class="container">
       <div class="h3">Windowed modal</div>
       <p>

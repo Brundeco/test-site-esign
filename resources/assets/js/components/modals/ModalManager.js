@@ -74,16 +74,14 @@ export default class ModalManager {
       }
     }
     if (!modal.backgroundScroll) {
-      enableBodyScroll(modal.element);
+      enableBodyScroll(modal.element, { reserveScrollBarGap: true });
     }
-    document.body.style.marginRight = 0;
   }
 
   onModalBeforeShow(modal) {
     if (!modal.backgroundScroll) {
       // scrollbar width as margin
-      disableBodyScroll(modal.element);
-      document.body.style.marginRight = `${this.scrollbarWidth}px`;
+      disableBodyScroll(modal.element, { reserveScrollBarGap: true });
     }
     if (modal.showHash) {
       this.setHash(`#${modal.id}`);

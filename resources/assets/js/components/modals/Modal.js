@@ -19,16 +19,14 @@ export default class Modal extends EventEmitter {
     this.activeClass = 'modal--active';
     this.beforeShowClass = 'modal--before-show';
     this.beforeHideClass = 'modal--before-hide';
-    this.beforeShowAnimation = null;
-    this.afterShowAnimation = null;
-    this.beforeHideAnimation = null;
-    this.afterHideAnimation = null;
+    this.animation = null;
     this.showTimeout = element.dataset.showTimeout || 0;
     this.hideTimeout = element.dataset.hideTimeout || 0;
     this.showTimeoutReference = null;
     this.hideTimeoutReference = null;
     this.isOpening = false;
     this.isClosing = false;
+    this.state = null;
     this.init();
   }
 
@@ -75,20 +73,28 @@ export default class Modal extends EventEmitter {
   /* Show / Hide functionality */
 
   show() {
+    if (this.isClosing && this.animation) {
+      if (this.state === 'before-hide') {
+        this.animation.cancelBeforeHide();
+      } else {
+        this.animation.cancelAfterHide();
+      }
+    }
     if (!this.isOpening) {
+      this.state = 'before-show';
       clearTimeout(this.hideTimeoutReference);
       this.isOpening = true;
       this.isClosing = false;
-      this.emit('before-show');
       this.element.classList.add(this.beforeShowClass);
       this.element.classList.remove(this.beforeHideClass);
       this.element.setAttribute('aria-hidden', false);
       this.addEventListeners();
-      if (this.beforeShowAnimation) {
-        this.beforeShowAnimation.once('finished', () => {
+      this.emit('before-show');
+      if (this.animation) {
+        this.animation.once('before-show-finished', () => {
           this._show();
         });
-        this.beforeShowAnimation.start();
+        this.animation.beforeShow();
       } else {
         this.showTimeoutReference = setTimeout(() => {
           this._show();
@@ -98,14 +104,20 @@ export default class Modal extends EventEmitter {
   }
 
   _show() {
+    this.state = 'after-show';
     this.modalDialog.setAttribute('tabindex', -1);
     this.modalDialog.scrollTop = 0;
     this.element.classList.remove(this.beforeShowClass);
     this.element.classList.add(this.activeClass);
     this.emit('show');
 
-    if (this.afterShowAnimation) {
-      this.afterShowAnimation.start();
+    if (this.animation) {
+      this.animation.once('after-show-finished', () => {
+        this.isOpening = false;
+      });
+      this.animation.afterShow();
+    } else {
+      this.isOpening = false;
     }
 
     // Set focus
@@ -115,7 +127,15 @@ export default class Modal extends EventEmitter {
   }
 
   hide() {
+    if (this.isOpening && this.animation) {
+      if (this.state === 'before-show') {
+        this.animation.cancelBeforeShow();
+      } else {
+        this.animation.cancelAfterShow();
+      }
+    }
     if (!this.isClosing) {
+      this.state = 'before-hide';
       clearTimeout(this.showTimeoutReference);
       this.element.setAttribute('aria-hidden', true);
       this.isClosing = true;
@@ -124,11 +144,11 @@ export default class Modal extends EventEmitter {
       this.element.classList.add(this.beforeHideClass);
       this.element.classList.remove(this.beforeShowClass);
       this.removeEventListeners();
-      if (this.beforeHideAnimation) {
-        this.beforeHideAnimation.once('finished', () => {
+      if (this.animation) {
+        this.animation.once('before-hide-finished', () => {
           this._hide();
         });
-        this.beforeHideAnimation.start();
+        this.animation.beforeHide();
       } else {
         this.hideTimeoutReference = setTimeout(() => {
           this._hide();
@@ -138,13 +158,19 @@ export default class Modal extends EventEmitter {
   }
 
   _hide() {
+    this.state = 'after-hide';
     this.modalDialog.removeAttribute('tabindex');
     this.element.classList.remove(this.beforeHideClass);
     this.element.classList.remove(this.activeClass);
     this.emit('hide');
 
-    if (this.afterHideAnimation) {
-      this.afterHideAnimation.start();
+    if (this.animation) {
+      this.animation.once('after-hide-finished', () => {
+        this.isClosing = false;
+      });
+      this.animation.afterHide();
+    } else {
+      this.isClosing = false;
     }
   }
 
@@ -199,27 +225,7 @@ export default class Modal extends EventEmitter {
 
   /* Animations */
 
-  setBeforeShowAnimation(animation) {
-    this.beforeShowAnimation = animation;
-  }
-
-  setAfterShowAnimation(animation) {
-    this.afterShowAnimation = animation;
-  }
-
-  setBeforeHideAnimation(animation) {
-    this.beforeHideAnimation = animation;
-  }
-
-  setAfterHideAnimation(animation) {
-    this.afterHideAnimation = animation;
-  }
-
-  setShowTimeout(duration) {
-    this.showTimeout = duration;
-  }
-
-  setHideTimeout(duration) {
-    this.hideTimeout = duration;
+  setAnimation(animation) {
+    this.animation = animation;
   }
 }

@@ -99,10 +99,10 @@ export default class ModalManager {
         const modal = this.idModalMap.get(modalId);
 
         if (this.activeModal && !this.isClosingModal) {
-          this.activeModal.hide();
-          this.showModalTimeoutReference = setTimeout(() => {
+          this.activeModal.once('hide', () => {
             modal.show();
-          }, this.activeModal.hideTimeout);
+          });
+          this.activeModal.hide();
         } else { // Only keep the activeModalTrigger when not in a modal
           this.activeModalTrigger = modalTrigger;
           modal.show();

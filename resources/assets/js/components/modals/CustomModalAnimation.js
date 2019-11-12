@@ -8,7 +8,7 @@ export default class CustomModalAnimation extends EventEmitter {
     this.modalBg = document.createElement('div');
     this.modal.style.background = 'transparent';
     this.modal.style.opacity = 0;
-    this.modal.style.transition = 'all .6s ease-out';
+    this.modal.style.transition = 'all .2s ease-out';
     this.modalBg.setAttribute('id', 'custom-modal-bg');
     this.modalBg.style.background = 'black';
     this.modalBg.style.transition = 'all .2s ease-out';
@@ -25,9 +25,7 @@ export default class CustomModalAnimation extends EventEmitter {
   /* Before show */
 
   beforeShow() {
-    setTimeout(() => {
-      this.modalBg.style.height = '100vh';
-    }, 20);
+    this.modalBg.style.height = '100vh';
 
     this.beforeShowTimeout = setTimeout(() => {
       this.emit('before-show-finished');
@@ -45,7 +43,7 @@ export default class CustomModalAnimation extends EventEmitter {
 
     this.afterShowTimeout = setTimeout(() => {
       this.emit('after-show-finished');
-    }, 600);
+    }, 200);
   }
 
   cancelAfterShow() {
@@ -55,7 +53,6 @@ export default class CustomModalAnimation extends EventEmitter {
   /* Before hide */
 
   beforeHide() {
-    this.modal.style.transition = 'all .2s ease-out';
     this.modal.style.opacity = 0;
 
     this.beforeHideTimeout = setTimeout(() => {
@@ -70,7 +67,6 @@ export default class CustomModalAnimation extends EventEmitter {
   /* After hide */
 
   afterHide() {
-    this.modalBg = document.getElementById('custom-modal-bg');
     this.modalBg.style.height = '0';
     this.afterHideTimeout = setTimeout(() => {
       this.emit('after-hide-finished');

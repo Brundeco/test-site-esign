@@ -1,3 +1,5 @@
+import 'classlist-polyfill';
+
 import navigation from './components/layout/navigation';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';

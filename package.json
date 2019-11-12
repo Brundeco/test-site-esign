@@ -78,6 +78,7 @@
     "webpack-notifier": "^1.8.0"
   },
   "dependencies": {
+    "classlist-polyfill": "^1.2.0",
     "cookiejs": "^1.0.25",
     "hyperform": "^0.11.0",
     "jquery": "^3.4.1",

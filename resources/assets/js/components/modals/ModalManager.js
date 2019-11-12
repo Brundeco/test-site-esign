@@ -4,15 +4,10 @@ import Modal from './Modal';
 export default class ModalManager {
   constructor() {
     this.defaultModalsQuery = '.js-modal';
-    this.modalTriggerQuery = '.js-modal-trigger';
-    this.isOpeningModalClass = 'is-opening-modal';
-    this.isClosingModalClass = 'is-closing-modal';
-    this.hasActiveModalClass = 'has-active-modal';
     this.idModalMap = new Map();
     this.activeModal = null;
     this.activeModalTrigger = null;
     this.isOpeningModal = false;
-    this.scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     this.showModalTimeoutReference = null;
     this.init();
   }

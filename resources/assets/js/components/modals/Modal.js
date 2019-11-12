@@ -73,27 +73,24 @@ export default class Modal extends EventEmitter {
   /* Show / Hide functionality */
 
   show() {
-    if (this.isClosing && this.animation) {
-      if (this.state === 'before-hide') {
-        this.animation.cancelBeforeHide();
-      } else {
-        this.animation.cancelAfterHide();
-      }
-    }
     if (!this.isOpening) {
+      this.isOpening = true;
+      if (this.isClosing && this.animation) {
+        if (this.state === 'before-hide') {
+          this.animation.cancelBeforeHide();
+        } else {
+          this.animation.cancelAfterHide();
+        }
+      }
+      this.isClosing = false;
       this.state = 'before-show';
       clearTimeout(this.hideTimeoutReference);
-      this.isOpening = true;
-      this.isClosing = false;
       this.element.classList.add(this.beforeShowClass);
       this.element.classList.remove(this.beforeHideClass);
       this.element.setAttribute('aria-hidden', false);
       this.addEventListeners();
       this.emit('before-show');
       if (this.animation) {
-        this.animation.once('before-show-finished', () => {
-          this._show();
-        });
         this.animation.beforeShow();
       } else {
         this.showTimeoutReference = setTimeout(() => {
@@ -112,9 +109,6 @@ export default class Modal extends EventEmitter {
     this.emit('show');
 
     if (this.animation) {
-      this.animation.once('after-show-finished', () => {
-        this.isOpening = false;
-      });
       this.animation.afterShow();
     } else {
       this.isOpening = false;
@@ -127,27 +121,24 @@ export default class Modal extends EventEmitter {
   }
 
   hide() {
-    if (this.isOpening && this.animation) {
-      if (this.state === 'before-show') {
-        this.animation.cancelBeforeShow();
-      } else {
-        this.animation.cancelAfterShow();
-      }
-    }
     if (!this.isClosing) {
+      this.isClosing = true;
+      if (this.isOpening && this.animation) {
+        if (this.state === 'before-show') {
+          this.animation.cancelBeforeShow();
+        } else {
+          this.animation.cancelAfterShow();
+        }
+      }
+      this.isOpening = false;
       this.state = 'before-hide';
       clearTimeout(this.showTimeoutReference);
       this.element.setAttribute('aria-hidden', true);
-      this.isClosing = true;
-      this.isOpening = false;
       this.emit('before-hide');
       this.element.classList.add(this.beforeHideClass);
       this.element.classList.remove(this.beforeShowClass);
       this.removeEventListeners();
       if (this.animation) {
-        this.animation.once('before-hide-finished', () => {
-          this._hide();
-        });
         this.animation.beforeHide();
       } else {
         this.hideTimeoutReference = setTimeout(() => {
@@ -165,9 +156,6 @@ export default class Modal extends EventEmitter {
     this.emit('hide');
 
     if (this.animation) {
-      this.animation.once('after-hide-finished', () => {
-        this.isClosing = false;
-      });
       this.animation.afterHide();
     } else {
       this.isClosing = false;
@@ -226,6 +214,25 @@ export default class Modal extends EventEmitter {
   /* Animations */
 
   setAnimation(animation) {
+    if (this.animation) {
+      this.animation.removeEventListeners();
+    }
     this.animation = animation;
+
+    this.animation.on('before-hide-finished', () => {
+      this._hide();
+    });
+
+    this.animation.on('after-hide-finished', () => {
+      this.isClosing = false;
+    });
+
+    this.animation.on('before-show-finished', () => {
+      this._show();
+    });
+
+    this.animation.on('after-show-finished', () => {
+      this.isOpening = false;
+    });
   }
 }

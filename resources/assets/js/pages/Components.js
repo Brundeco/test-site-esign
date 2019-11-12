@@ -1,7 +1,7 @@
 import RecaptchaForm from '../components/forms/RecaptchaForm';
 import BasicGoogleMap from '../components/maps/BasicGoogleMap';
 import JsonFetcher from '../components/layout/JsonFetcher';
-import CustomModalAnimation from '../animations/CustomModalAnimation';
+import CustomModalAnimation from '../components/modals/CustomModalAnimation';
 
 export default class Components {
   constructor() {

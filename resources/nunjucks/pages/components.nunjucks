@@ -390,7 +390,7 @@
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-1">Alert modal</button>
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-3">Windowed modal</button>
-  <button type="button" class="button js-modal-trigger" data-modal-id="custom-modal" style="position: fixed; top: 10px; right: 0;">Custom modal</button>
+  <button type="button" class="button js-modal-trigger" data-modal-id="custom-modal">Custom modal</button>
 
   <div class="modal js-modal" id="modal-1" data-title="Alert 1" data-alert="true" data-background-scroll="true">
     <div class="h3">Alert 1</div>

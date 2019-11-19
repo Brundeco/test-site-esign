@@ -19,9 +19,9 @@ export default class ModalManager {
 
     this.bindModalTriggers();
     this.bindWindowPopState();
+  }
 
-
-    // show modal on page load
+  checkModalOnPageLoad() {
     const hashOnPageLoad = window.location.hash.substring(1, window.location.hash.length);
     const modal = this.idModalMap.get(hashOnPageLoad);
     if (modal) {

@@ -50,3 +50,5 @@ if (currentPage) {
     new pages[pageClassName](); // eslint-disable-line no-new
   }
 }
+
+window.modalManager.checkModalOnPageLoad();

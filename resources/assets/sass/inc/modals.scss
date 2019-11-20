@@ -11,6 +11,10 @@
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
+  &:not(.modal--active):not(.modal--before-show) {
+    pointer-events: none;
+  }
+
   &:not(.modal--fullscreen) {
     -webkit-overflow-scrolling: touch;
   }
@@ -117,14 +121,4 @@
 
 .js-modal-trigger * {
   pointer-events: none;
-}
-
-.js-modal-close {
-  pointer-events: none;
-}
-
-.modal--active, .modal--before-show {
-  &:not(.modal--before-hide) .js-modal-close {
-    pointer-events: auto;
-  }
 }

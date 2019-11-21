@@ -51,7 +51,8 @@ label, .label {
 }
 
 input[type="text"], input[type="search"], input[type="password"],
-input[type="email"], input[type="tel"], input[type="date"], textarea, select {
+input[type="email"], input[type="tel"], input[type="date"],
+input[type="number"], textarea, select {
   appearance: none;
   padding: 0 15px;
   margin-bottom: 2px;

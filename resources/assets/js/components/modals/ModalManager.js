@@ -22,11 +22,13 @@ export default class ModalManager {
   }
 
   checkModalOnPageLoad() {
-    const hashOnPageLoad = window.location.hash.substring(1, window.location.hash.length);
-    const modal = this.idModalMap.get(hashOnPageLoad);
-    if (modal) {
-      modal.show();
-    }
+    setTimeout(() => {
+      const hashOnPageLoad = window.location.hash.substring(1, window.location.hash.length);
+      const modal = this.idModalMap.get(hashOnPageLoad);
+      if (modal) {
+        modal.show();
+      }
+    });
   }
 
   createModal(modalElement) {
@@ -70,13 +72,24 @@ export default class ModalManager {
     }
     if (!modal.backgroundScroll) {
       enableBodyScroll(modal.element, { reserveScrollBarGap: true });
+      setTimeout(() => {
+        [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
+          el.style.transform = `translateX(0px)`; // eslint-disable-line
+        });
+      });
     }
   }
 
   onModalBeforeShow(modal) {
     if (!modal.backgroundScroll) {
       // scrollbar width as margin
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       disableBodyScroll(modal.element, { reserveScrollBarGap: true });
+      setTimeout(() => {
+        [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
+          el.style.transform = `translateX(-${scrollBarWidth}px)`; // eslint-disable-line
+        });
+      });
     }
     if (modal.showHash) {
       this.setHash(`#${modal.id}`);
@@ -93,6 +106,7 @@ export default class ModalManager {
   bindModalTriggers() {
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('js-modal-trigger')) {
+        e.preventDefault();
         const modalTrigger = e.target;
         this.isOpeningModal = true;
         const modalId = modalTrigger.getAttribute('data-modal-id');
@@ -114,14 +128,16 @@ export default class ModalManager {
   bindWindowPopState() {
     window.addEventListener('popstate', () => {
       const windowHash = window.location.hash;
-      if (this.activeModal && (windowHash === '#' || this.activeModal.element.querySelector(windowHash) != null)) {
-        this.activeModal.hide();
-      } else if (windowHash.length > 1) {
-        const el = document.querySelector(window.location.hash);
-        if (el != null && el.classList.contains('modal')) {
-          const modal = this.idModalMap.get(el.getAttribute('id'));
-          if (modal) {
-            modal.show();
+      if (this.activeModal && this.activeModal.element.querySelector(windowHash) == null) {
+        if (windowHash === '#') {
+          this.activeModal.hide();
+        } else if (windowHash.length > 1) {
+          const el = document.querySelector(window.location.hash);
+          if (el != null && el.classList.contains('modal')) {
+            const modal = this.idModalMap.get(el.getAttribute('id'));
+            if (modal) {
+              modal.show();
+            }
           }
         }
       }

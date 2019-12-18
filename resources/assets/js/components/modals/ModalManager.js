@@ -128,16 +128,15 @@ export default class ModalManager {
   bindWindowPopState() {
     window.addEventListener('popstate', () => {
       const windowHash = window.location.hash;
-      if (this.activeModal && this.activeModal.element.querySelector(windowHash) == null) {
-        if (windowHash === '#') {
-          this.activeModal.hide();
-        } else if (windowHash.length > 1) {
-          const el = document.querySelector(window.location.hash);
-          if (el != null && el.classList.contains('modal')) {
-            const modal = this.idModalMap.get(el.getAttribute('id'));
-            if (modal) {
-              modal.show();
-            }
+      if (this.activeModal && (windowHash === '' || this.activeModal.element.querySelector(windowHash) == null)) {
+        this.activeModal.hide();
+      }
+      if (windowHash.length > 1) {
+        const el = document.querySelector(window.location.hash);
+        if (el != null && el.classList.contains('modal')) {
+          const modal = this.idModalMap.get(el.getAttribute('id'));
+          if (modal) {
+            modal.show();
           }
         }
       }

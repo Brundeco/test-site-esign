@@ -48,6 +48,8 @@
   .modal__close {
     position: fixed;
     margin: 0;
+    top: $gutter;
+    right: $gutter;
 
     @media #{$maxMedium} {
       top: 38px; // align with menu toggle
@@ -113,8 +115,8 @@
 
 .modal__close {
   position: absolute;
-  top: $gutter;
-  right: $gutter;
+  top: $gutter/3;
+  right: $gutter/3;
   margin: $gutter/2;
   background: transparent;
   outline: none;

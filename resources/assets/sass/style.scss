@@ -348,7 +348,14 @@ body {
       margin-bottom: 0.5em;
 
       a {
+        color: $black;
         text-decoration: none;
+      }
+
+      &.active {
+        a {
+          color: $accent;
+        }
       }
     }
   }

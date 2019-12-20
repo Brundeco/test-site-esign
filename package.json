@@ -55,7 +55,7 @@
     "imagemin-webp-webpack-plugin": "gitlab:esign/imagemin-webp-webpack-plugin",
     "imagemin-webpack-plugin": "^2.4.2",
     "imagemin-zopfli": "^6.0.0",
-    "mini-css-extract-plugin": "^0.8.0",
+    "mini-css-extract-plugin": "0.4.2",
     "node-sass": "^4.12.0",
     "nunjucks-html-loader": "^1.1.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -79,8 +79,8 @@
   },
   "dependencies": {
     "body-scroll-lock": "^2.6.4",
+    "classlist-polyfill": "^1.2.0",
     "cookiejs": "^1.0.25",
-    "events": "^3.0.0",
     "hyperform": "^0.11.0",
     "jquery": "^3.4.1",
     "jquery-touchswipe": "^1.6.19",

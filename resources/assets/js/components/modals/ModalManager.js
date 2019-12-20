@@ -24,7 +24,7 @@ export default class ModalManager {
       if (this.activeModal) {
         const modalScrollBarWidth = window.innerWidth - this.activeModal.element.clientWidth;
         [...this.activeModal.element.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
-          el.style.transform = `translateX(-${modalScrollBarWidth}px)`; // eslint-disable-line
+          el.style.transform += `translateX(-${modalScrollBarWidth}px)`; // eslint-disable-line
         });
       }
     });
@@ -83,7 +83,7 @@ export default class ModalManager {
       enableBodyScroll(modal.element, { reserveScrollBarGap: true });
       setTimeout(() => {
         [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
-          el.style.transform = `translateX(0px)`; // eslint-disable-line
+          el.style.right = ''; // eslint-disable-line
         });
       });
     }
@@ -96,12 +96,15 @@ export default class ModalManager {
       disableBodyScroll(modal.element, { reserveScrollBarGap: true });
       setTimeout(() => {
         [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
-          el.style.transform = `translateX(-${scrollBarWidth}px)`; // eslint-disable-line
+          const right = parseInt(window.getComputedStyle(el, null).getPropertyValue('right'), 10);
+          el.style.right = `${scrollBarWidth + right}px`; // eslint-disable-line
         });
 
         const modalScrollBarWidth = window.innerWidth - modal.element.clientWidth;
         [...modal.element.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
-          el.style.transform = `translateX(-${modalScrollBarWidth}px)`; // eslint-disable-line
+          el.style.right = ''; // eslint-disable-line
+          const right = parseInt(window.getComputedStyle(el, null).getPropertyValue('right'), 10);
+          el.style.right = `${modalScrollBarWidth + right}px`; // eslint-disable-line
         });
       });
     }

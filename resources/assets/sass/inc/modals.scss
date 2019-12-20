@@ -9,7 +9,7 @@
   visibility: hidden;
   opacity: 0;
   -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
+  overflow-y: scroll;
 
   &:not(.modal--active):not(.modal--before-show) {
     pointer-events: none;
@@ -17,6 +17,10 @@
 
   &:not(.modal--fullscreen) {
     -webkit-overflow-scrolling: touch;
+  }
+
+  &[data-background-scroll="true"] {
+    overflow-y: auto;
   }
 }
 
@@ -54,7 +58,7 @@
 .modal--before-show {
   visibility: visible;
   -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .modal--before-hide {

@@ -18,6 +18,10 @@ html, body {
   padding: 0;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
 address, cite, code, del, dfn, em, img, q, s, samp, small, strike,
 sub, sup, var, dd, dl, dt, li, ol, ul, fieldset,

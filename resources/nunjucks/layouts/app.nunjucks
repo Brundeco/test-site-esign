@@ -96,7 +96,7 @@
             <img src="../../assets/images/logo.svg" alt="" width="150" />
           </a>
           <nav class="main-nav">
-            <button class="main-nav__trigger js-modal-trigger" data-modal-id="navigation">
+            <button class="main-nav__trigger js-modal-trigger js-compensate-for-scrollbar" data-modal-id="navigation">
               <svg class="icon icon-menu">
                 <use xlink:href="#icon-menu"/>
               </svg>

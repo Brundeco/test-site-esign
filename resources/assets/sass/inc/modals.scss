@@ -8,8 +8,8 @@
   background-color: rgba(0, 0, 0, .3);
   visibility: hidden;
   opacity: 0;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
 
   &:not(.modal--active):not(.modal--before-show) {
     pointer-events: none;
@@ -17,10 +17,6 @@
 
   &:not(.modal--fullscreen) {
     -webkit-overflow-scrolling: touch;
-  }
-
-  &[data-background-scroll="true"] {
-    overflow-y: auto;
   }
 }
 
@@ -41,21 +37,24 @@
 
     div[role="document"] {
       margin: auto;
+      padding: $gutter*2 0;
     }
   }
 
   .modal__close {
     position: fixed;
     margin: 0;
-    top: $gutter;
-    right: $gutter;
+
+    @media #{$maxMedium} {
+      top: 38px; // align with menu toggle
+    }
   }
 }
 
 .modal--before-show {
   visibility: visible;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
 }
 
 .modal--before-hide {
@@ -99,24 +98,48 @@
   }
 
   div[role="document"] {
-    padding: $gutter;
+    padding: $gutter 0;
+    width: 100%;
 
-    @media #{$medium} {
-      padding: $gutter * 2;
-    }
-
-    @media #{$larger} {
-      padding: $gutter * 3;
+    @media #{$large} {
+      padding: $gutter*2 0;
     }
   }
 }
 
 .modal__close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: $gutter;
+  right: $gutter;
   margin: $gutter/2;
-  padding: $gutter/2;
+  background: transparent;
+  outline: none;
+  transition: none;
+
+  svg {
+    transition: $transitionDefault;
+    transition-property: fill;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    svg {
+      fill: $accent;
+    }
+  }
+
+  &:focus {
+    svg {
+      fill: $accentHover;
+    }
+  }
+
+  &:active {
+    svg {
+      fill: $accentActive;
+    }
+  }
 }
 
 .js-modal-trigger * {

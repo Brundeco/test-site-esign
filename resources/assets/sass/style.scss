@@ -72,11 +72,11 @@ body {
   position: relative;
   max-width: 1480px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 $gutter;
 
   @media #{$large} {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: $gutter*2;
+    padding-right: $gutter*2;
   }
 }
 
@@ -111,6 +111,16 @@ body {
 }
 
 .icon-instagram {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-menu {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-close {
   width: 20px;
   height: 20px;
 }
@@ -224,89 +234,90 @@ body {
 
 .page-header {
   @include clearfix;
-  padding: 20px 0;
+  padding: $gutter 0;
+}
+
+.page-header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .page-header__logo {
   text-decoration: none;
-  @include opacity(100);
-  float: left;
+  margin-right: $gutter;
+  flex-shrink: 0;
 
-  img {
-    display: block;
-  }
-
-  &:hover, &:focus {
-    @include opacity(80);
+  @media #{$maxMedium} {
+    width: 100px;
   }
 }
 
 .main-nav {
-  text-transform: uppercase;
+  @include display-font;
   @include optimize-font;
-  color: $black;
-  margin-top: 20px;
 
   a {
+    color: $black;
     text-decoration: none;
-    color: $grayDark;
-    padding: 12px 15px;
-    display: block;
-    border-top: 1px solid $grayLight;
   }
 
   a:hover, a:focus, li.active a {
-    color: $black;
+    color: $accent;
   }
 
-  @media #{$medium} {
-    margin: 35px 0 0 40px;
-    float: left;
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: -$gutter/2;
 
     li {
-      float: left;
-      margin: 0 0 0 20px;
+      margin: 0 0 $gutter/2 $gutter*1.5;
+
+      &.active a, a {
+        text-decoration: none;
+
+        &:hover, &:focus {
+          color: $accent;
+        }
+      }
     }
 
-    a {
-      border-top: 0;
-      padding: 0;
-    }
-  }
-
-  @media #{$large} {
-    li {
-      margin-left: 45px;
+    @media #{$maxMedium} {
+      display: none;
     }
   }
 }
 
 .main-nav__trigger {
   display: block;
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  padding: 12px 20px 12px 55px;
-  background-color: transparent;
-  color: $black; font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: 1px solid #efefef;
+  position: fixed;
+  right: $gutter;
+  transform: translateY(-50%);
+  transition: none;
+  background: transparent;
+  outline: 0;
+  z-index: 10;
 
-  .icon-hamburger {
-    position: absolute;
-    left: 10px;
-    top: 18px;
+  svg {
+    transition: $transitionDefault;
+    transition-property: fill;
+    fill: $accent;
   }
 
-  &:hover, &:focus {
-    background-color: transparent;
-    box-shadow: none;
+  &:hover,:focus {
+    cursor: pointer;
+
+    svg {
+      fill: $accentHover;
+    }
   }
 
   &:active {
-    transform: none;
+    svg {
+      fill: $accentActive;
+    }
   }
 
   @media #{$medium} {
@@ -314,13 +325,66 @@ body {
   }
 }
 
-.main-nav__wrap {
-  display: none;
-  margin: 0 0 15px;
+.mobile-nav__content {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - #{4*$gutter}); // based on padding on modal div[role="document"]
+}
 
-  @media #{$medium} {
-    margin: 0 0 0 -20px;
-    display: block;
+.mobile-nav__main {
+  @include display-font;
+  text-align: center;
+  font-size: 1.5em;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      margin-bottom: 0.5em;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.mobile-nav__socials {
+  margin-top: $gutter;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    li {
+      margin-right: $gutter;
+
+      a {
+        svg {
+          fill: $accent;
+          transition: $transitionDefault;
+          transition-property: fill;
+        }
+
+        &:hover, &:focus, &:active {
+          svg {
+            fill: $accentHover;
+          }
+        }
+      }
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
   }
 }
 

@@ -393,18 +393,24 @@
   <button type="button" class="button js-modal-trigger" data-modal-id="custom-modal">Custom modal</button>
 
   <div class="modal js-modal" id="modal-1" data-title="Alert 1" data-alert="true" data-background-scroll="true">
-    <div class="h3">Alert 1</div>
-    <p>You can keep scrolling in background with data-background-scroll="true"</p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <input type="text" placeholder="input"/>
-    <input type="text" placeholder="input"/>
-    <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
-    <button type="button" class="modal__close js-modal-close">Close</button>
+    <div class="container">
+      <div class="h3">Alert 1</div>
+      <p>You can keep scrolling in background with data-background-scroll="true"</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <input type="text" placeholder="input"/>
+      <input type="text" placeholder="input"/>
+      <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
+    </div>
+    <button type="button" class="modal__close js-modal-close">
+      <svg class="icon icon-close">
+        <use xlink:href="#icon-close"/>
+      </svg>
+    </button>
   </div>
 
   <div class="modal modal--fullscreen modal--fade js-modal" id="modal-2" data-title="Fullscreen modal" data-show-timeout="500" data-hide-timeout="500">
@@ -442,7 +448,11 @@
       </p>
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-3">Windowed modal</button>
     </div>
-    <button type="button" class="modal__close js-modal-close">Close</button>
+    <button type="button" class="modal__close js-modal-close js-compensate-for-scrollbar">
+      <svg class="icon icon-close">
+        <use xlink:href="#icon-close"/>
+      </svg>
+    </button>
   </div>
 
   <div class="modal modal--fade js-modal" id="modal-3" data-title="Windowed modal" data-hide-hash="true" data-show-timeout="500" data-hide-timeout="500">
@@ -479,7 +489,11 @@
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
       <button type="button" class="button js-modal-close">Close modal here</button>
     </div>
-    <button type="button" class="modal__close js-modal-close">Close</button>
+    <button type="button" class="modal__close js-modal-close">
+      <svg class="icon icon-close">
+        <use xlink:href="#icon-close"/>
+      </svg>
+    </button>
   </div>
 
   <div class="modal js-specific-modal-name" id="custom-modal" data-title="Custom modal initialized in Components.js">
@@ -487,7 +501,11 @@
       <div class="h3">Custom modal initialized in Components.js</div>
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
     </div>
-    <button type="button" class="modal__close js-modal-close">Close</button>
+    <button type="button" class="modal__close js-modal-close">
+      <svg class="icon icon-close">
+        <use xlink:href="#icon-close"/>
+      </svg>
+    </button>
   </div>
 
   <hr/>

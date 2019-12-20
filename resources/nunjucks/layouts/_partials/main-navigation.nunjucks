@@ -1,0 +1,6 @@
+<ul>
+  <li{% if menuitem == 'home' %} class="active"{% endif %}><a href="index.html">Home</a></li>
+  <li{% if menuitem == 'components' %} class="active"{% endif %}><a href="components.html">Components</a></li>
+  <li{% if menuitem == 'news' %} class="active"{% endif %}><a href="news.html">News</a></li>
+  <li{% if menuitem == 'contact' %} class="active"{% endif %}><a href="contact.html">Contact</a></li>
+</ul>

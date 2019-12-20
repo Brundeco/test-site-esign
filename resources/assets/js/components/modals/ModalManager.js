@@ -19,6 +19,15 @@ export default class ModalManager {
 
     this.bindModalTriggers();
     this.bindWindowPopState();
+
+    window.addEventListener('resize', () => {
+      if (this.activeModal) {
+        const modalScrollBarWidth = window.innerWidth - this.activeModal.element.clientWidth;
+        [...this.activeModal.element.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
+          el.style.transform = `translateX(-${modalScrollBarWidth}px)`; // eslint-disable-line
+        });
+      }
+    });
   }
 
   checkModalOnPageLoad() {
@@ -88,6 +97,11 @@ export default class ModalManager {
       setTimeout(() => {
         [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
           el.style.transform = `translateX(-${scrollBarWidth}px)`; // eslint-disable-line
+        });
+
+        const modalScrollBarWidth = window.innerWidth - modal.element.clientWidth;
+        [...modal.element.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
+          el.style.transform = `translateX(-${modalScrollBarWidth}px)`; // eslint-disable-line
         });
       });
     }

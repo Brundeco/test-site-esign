@@ -350,6 +350,14 @@ body {
       a {
         color: $black;
         text-decoration: none;
+
+        &:hover, &:focus {
+          color: $accentHover;
+        }
+
+        &:active {
+          color: $accentActive;
+        }
       }
 
       &.active {
@@ -376,14 +384,19 @@ body {
 
       a {
         svg {
-          fill: $accent;
           transition: $transitionDefault;
           transition-property: fill;
         }
 
-        &:hover, &:focus, &:active {
+        &:hover, &:focus {
           svg {
             fill: $accentHover;
+          }
+        }
+
+        &:active {
+          svg {
+            fill: $accentActive;
           }
         }
       }

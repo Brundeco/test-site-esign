@@ -19,15 +19,6 @@ export default class ModalManager {
 
     this.bindModalTriggers();
     this.bindWindowPopState();
-
-    window.addEventListener('resize', () => {
-      if (this.activeModal) {
-        const modalScrollBarWidth = window.innerWidth - this.activeModal.element.clientWidth;
-        [...this.activeModal.element.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
-          el.style.transform += `translateX(-${modalScrollBarWidth}px)`; // eslint-disable-line
-        });
-      }
-    });
   }
 
   checkModalOnPageLoad() {

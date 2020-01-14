@@ -12,7 +12,7 @@ import Components from './pages/Components';
 
 require('./utils/nativeConsole');
 // require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc
-
+// import objectFitImages from 'object-fit-images';
 // Set js class
 const htmlClassList = document.documentElement.classList;
 htmlClassList.add('js');

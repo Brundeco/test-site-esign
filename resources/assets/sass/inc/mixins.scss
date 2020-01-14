@@ -225,3 +225,19 @@
     }
   }
 }
+//in app.js
+//import objectFitImages from 'object-fit-images';
+@mixin object-fit($fit: fill, $position: null){
+  -o-object-fit: $fit;
+  object-fit: $fit;
+  @if $position {
+    -o-object-position: $position;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}
+//usage
+//@include object-fit(cover, center);
+//@include object-fit(contain, center);

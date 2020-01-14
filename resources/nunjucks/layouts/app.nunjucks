@@ -88,7 +88,7 @@
 
   <div class="page-wrap">
 
-    <header class="page-header">
+    <header class="page-header page-header--fixed">
 
       <div class="container">
         <div class="page-header__content">
@@ -108,7 +108,7 @@
 
     </header>
 
-    <main id="main" class="main">
+    <main id="main" class="main main--fixed-navigation">
 
       {% block content %}{% endblock %}
 

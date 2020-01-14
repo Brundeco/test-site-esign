@@ -237,6 +237,20 @@ body {
   padding: $gutter 0;
 }
 
+.page-header--fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  border: 1px solid $black;
+  transition: $transitionDefault;
+}
+
+.page-header--collapsed {
+  padding: 10px 0;
+}
+
 .page-header__content {
   display: flex;
   justify-content: space-between;
@@ -509,6 +523,13 @@ body {
   }
 }
 
+.main--fixed-navigation {
+  //nav height + extra padding
+  padding-top: 120px;
+  @media #{$medium} {
+    padding-top: 140px;
+  }
+}
 
 /* =============================================================================
    FOOTER

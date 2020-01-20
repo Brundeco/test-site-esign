@@ -221,3 +221,18 @@ blockquote {
     padding-left: 40px;
   }
 }
+
+.rte {
+  margin-bottom: 20px;
+
+  p {
+    + h2, + h3 {
+      margin-top: 3em;
+    }
+  }
+}
+
+::selection {
+  background-color: $selection;
+  color: inherit;
+}

@@ -1,0 +1,36 @@
+.page-footer {
+  position: relative;
+  padding: $gutter 0;
+}
+
+.page-footer__signature {
+  width: 80px;
+  height: 20px;
+  background: url("../images/logo-esign.svg") no-repeat top left;
+  background-size: 77px 20px;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  text-indent: -9999px;
+  opacity: 0.6;
+  transition-duration: 0.5s;
+  display: block;
+  outline: 0;
+  z-index: 9999;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  @media #{$medium} {
+    width: 16px;
+    position: absolute;
+    right: 45px;
+    bottom: $gutter;
+
+    &:hover,
+    &:focus {
+      width: 80px;
+    }
+  }
+}

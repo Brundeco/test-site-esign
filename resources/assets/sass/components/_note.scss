@@ -1,0 +1,21 @@
+.note {
+  @include clearfix;
+  margin: 0 0 20px;
+  padding: 15px 20px 0;
+  background: #efefef;
+
+  ul,
+  p {
+    margin-bottom: 1em;
+  }
+}
+
+.note--success {
+  color: $success;
+  background-color: $successBg;
+}
+
+.note--error {
+  color: $error;
+  background-color: $errorBg;
+}

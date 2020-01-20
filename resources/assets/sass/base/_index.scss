@@ -1,7 +1,11 @@
+/*============================================================================
+  IMPORT BASE STYLES
+==============================================================================*/
+
 @import 'reset';
 @import 'typography';
 @import 'tables';
 @import 'animations';
-@import 'print';
 @import 'forms';
 @import 'font-feature-settings.scss';
+@import 'print';

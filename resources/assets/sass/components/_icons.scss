@@ -1,0 +1,58 @@
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon-facebook {
+  width: 9px;
+  height: 18px;
+}
+
+.icon-twitter {
+  width: 20px;
+  height: 16px;
+}
+
+.icon-instagram {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-menu {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-close {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-hamburger,
+.icon-hamburger:before,
+.icon-hamburger:after {
+  width: 24px;
+  position: absolute;
+  left: 0;
+  height: 1px;
+  border-top: 3px solid $accent;
+  transition: $transitionDefault;
+}
+
+.icon-hamburger {
+  position: relative;
+
+  &:before,
+  &:after {
+    content: "";
+    margin-left: 0;
+  }
+
+  &:before {
+    margin-top: 3px;
+  }
+
+  &:after {
+    margin-top: 9px;
+  }
+}

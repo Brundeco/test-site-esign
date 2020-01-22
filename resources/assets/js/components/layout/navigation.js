@@ -1,16 +1,13 @@
-
 export default function () {
-  const $header = $('.page-header--fixed');
+  const header = document.querySelector('.page-header--fixed');
   let lastScrollTop = 0;
-  $(window).scroll(function () {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
-    if (st > lastScrollTop) {
-      $header.addClass('page-header--collapsed');
-    } else {
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+      header.classList.add('page-header--collapsed');
+    } else if (scrollTop < 50) {
+      header.classList.remove('page-header--collapsed');
     }
-    if (st < 50) {
-      $header.removeClass('page-header--collapsed');
-    }
-    lastScrollTop = st;
+    lastScrollTop = scrollTop;
   });
 }

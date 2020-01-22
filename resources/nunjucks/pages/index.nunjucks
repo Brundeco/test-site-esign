@@ -26,6 +26,7 @@
 
   <h2 class="h3">Webp image example</h2>
   <picture>
+    {# Change image extension to webp when images are loaded from build folder #}
     <source srcset="../../assets/images/marker.png" type="image/webp">
     <img src="../../assets/images/marker.png" alt="marker">
   </picture>

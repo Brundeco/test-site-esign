@@ -57,7 +57,7 @@ if (useVideosDirectory) {
 }
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: (isDev) ? 'source-map' : 'nosources-source-map',
   entry: {
     app: [
       `./${paths.js}app.js`,
@@ -121,10 +121,21 @@ module.exports = {
             loader: 'css-loader',
             options: {
               url: !isDev,
+              sourceMap: true,
             },
           },
-          'postcss-loader',
-          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
       {

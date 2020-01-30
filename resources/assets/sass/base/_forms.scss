@@ -28,6 +28,8 @@ input, select, textarea, button, .button, label, .label {
   vertical-align: middle;
   color: $black;
   transition: $transitionDefault;
+  font-family: $defaultFont;
+  font-weight: $defaultFontWeight;
 }
 
 button, input {

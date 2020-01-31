@@ -2,6 +2,7 @@
   <div class="container">
     <div class="mobile-nav__content">
       <div class="mobile-nav__main">
+        {% set nav = 'mobile-nav' %}
         {% include './main-navigation.nunjucks' %}
       </div>
       <div class="mobile-nav__socials">

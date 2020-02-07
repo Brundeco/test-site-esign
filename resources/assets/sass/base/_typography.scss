@@ -4,16 +4,16 @@
 ==============================================================================*/
 
 // Font Stacks
-@mixin default-font($size: 16, $weight: 400, $lineHeight: 1.5em) {
-  font-family: 'Montserrat', Helvetica, Arial, Verdana, sans-serif;
+@mixin default-font($size: 16, $weight: $defaultFontWeight, $lineHeight: 1.5em) {
+  font-family: $defaultFont;
   @include fs($size);
   line-height: $lineHeight;
   font-weight: $weight;
 }
 
 @mixin display-font() {
-  font-family: 'Poppins', Museo Sans, Helvetica, Arial, Verdana, sans-serif;
-  font-weight: 500;
+  font-family: $displayFont;
+  font-weight: $displayFontWeight;
 }
 
 

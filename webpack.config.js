@@ -80,7 +80,12 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules\/(?!(hyperform)\/).*/,
+        exclude: {
+          test: path.resolve(__dirname, 'node_modules'),
+          exclude: [
+            path.resolve(__dirname, 'node_modules/hyperform')
+          ]
+        },
         loader: 'babel-loader',
         options: {
           presets: [

@@ -33,6 +33,7 @@ const {
   isStatic,
   paths,
   dist,
+  filenames,
   nunjucksOptions,
   pages,
   useFontsDirectory,
@@ -40,19 +41,19 @@ const {
 } = settings;
 
 const copy = [
-  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}[path][name].[ext]` : `${dist.images}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
-  { from: `./${paths.manifest}`, to: `${dist.manifest}[name].[ext]`, ignore: ['*.DS_Store'] },
+  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}${filenames.devPathIncluded}` : `${dist.images}${filenames.prodPathIncluded}`, ignore: filenames.ignore },
+  { from: `./${paths.manifest}`, to: `${dist.manifest}${filenames.dev}`, ignore: filenames.ignore },
 ];
 
 if (useFontsDirectory) {
   copy.push(
-    { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}[path][name].[ext]` : `${dist.fonts}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
+    { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}${filenames.devPathIncluded}` : `${dist.fonts}${filenames.prodPathIncluded}`, ignore: filenames.ignore },
   );
 }
 
 if (useVideosDirectory) {
   copy.push(
-    { from: `./${paths.videos}`, to: (isDev) ? `${dist.videos}[path][name].[ext]` : `${dist.videos}[path][name].[hash:8].[ext]`, ignore: ['*.DS_Store'] },
+    { from: `./${paths.videos}`, to: (isDev) ? `${dist.videos}${filenames.devPathIncluded}` : `${dist.videos}${filenames.prodPathIncluded}`, ignore: filenames.ignore },
   );
 }
 
@@ -83,8 +84,8 @@ module.exports = {
         exclude: {
           test: path.resolve(__dirname, 'node_modules'),
           exclude: [
-            path.resolve(__dirname, 'node_modules/hyperform')
-          ]
+            path.resolve(__dirname, 'node_modules/hyperform'),
+          ],
         },
         loader: 'babel-loader',
         options: {
@@ -152,7 +153,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: (isDev) ? `${dist.images}[name].[ext]` : `${dist.images}[name].[hash:8].[ext]`,
+              name: (isDev) ? `${dist.images}${filenames.dev}` : `${dist.images}${filenames.prod}`,
             },
           },
         ],
@@ -179,7 +180,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: (isDev) ? `${dist.fonts}[name].[ext]` : `${dist.fonts}[name].[hash:8].[ext]`,
+              name: (isDev) ? `${dist.fonts}${filenames.dev}` : `${dist.fonts}${filenames.prod}`,
             },
           },
         ],
@@ -190,7 +191,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: (isDev) ? `${dist.videos}[path][name].[ext]` : `${dist.videos}[path][name].[hash:8].[ext]`,
+              name: (isDev) ? `${dist.videos}${filenames.dev}` : `${dist.videos}${filenames.prod}`,
             },
           },
         ],

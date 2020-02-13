@@ -74,6 +74,14 @@ dist.fonts = `${dist.assets}fonts/`;
 dist.svgSprite = `${dist.assets}svg-sprite/`;
 dist.videos = `${dist.assets}videos/`;
 
+const filenames = {
+  dev: '[name].[ext]',
+  devPathIncluded: '[path][name].[ext]',
+  prod: '[name].[hash:8].[ext]',
+  prodPathIncluded: '[path][name].[hash:8].[ext]',
+  ignore: ['*.DS_Store'],
+};
+
 const devServerContentBase = path.join(basePath, dist.root);
 
 const nunjucksOptions = JSON.stringify({
@@ -98,6 +106,7 @@ const settings = {
   isStatic,
   paths,
   dist,
+  filenames,
   nunjucksOptions,
   pages,
   useFontsDirectory,

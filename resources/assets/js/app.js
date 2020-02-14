@@ -18,12 +18,12 @@ const htmlClassList = document.documentElement.classList;
 htmlClassList.add('js');
 htmlClassList.remove('no-js');
 
+// eslint-disable-next-line
+window.modalManager = new ModalManager();
 // Layout setup
 navigation();
 responsiveVideos();
 cookieNotification();
-// eslint-disable-next-line
-window.modalManager = new ModalManager();
 
 // Forms
 validation();

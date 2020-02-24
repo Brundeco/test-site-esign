@@ -29,10 +29,10 @@ cookieNotification();
 validation();
 
 if (document.getElementById('form-newsletter')) {
-  const newsletterForm = new RecaptchaForm('#form-newsletter');
-  window.submitRecaptchaFormNewsletter = () => {
-    newsletterForm.submitCallback();
-  };
+    const newsletterForm = new RecaptchaForm('#form-newsletter');
+    window.submitRecaptchaFormNewsletter = () => {
+        newsletterForm.submitCallback();
+    };
 }
 
 // Enable this if you want to test ga calls in development
@@ -40,17 +40,17 @@ if (document.getElementById('form-newsletter')) {
 
 // Page specific classes
 const pages = {
-  Contact,
-  Components,
+    Contact,
+    Components,
 };
 
 const currentPage = document.documentElement.getAttribute('data-page');
 if (currentPage) {
-  const pageClassName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
+    const pageClassName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
 
-  if (pageClassName !== '' && typeof pages[pageClassName] === 'function') {
-    new pages[pageClassName](); // eslint-disable-line no-new
-  }
+    if (pageClassName !== '' && typeof pages[pageClassName] === 'function') {
+        new pages[pageClassName](); // eslint-disable-line no-new
+    }
 }
 
 window.modalManager.checkModalOnPageLoad();

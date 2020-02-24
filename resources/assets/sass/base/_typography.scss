@@ -1,4 +1,3 @@
-
 /*============================================================================
   TYPOGRAPHY
 ==============================================================================*/
@@ -15,7 +14,6 @@
   font-family: $displayFont;
   font-weight: $displayFontWeight;
 }
-
 
 // Body
 p {
@@ -42,20 +40,24 @@ a {
   text-decoration-skip-ink: auto;
   // @include smart-underline; cross browser text-decoration skip
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: $linkColorHover;
   }
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     outline: 0;
     color: $linkColorActive;
   }
 }
 
-a[href^=tel], .tdn {
-  text-decoration:none;
+a[href^="tel"],
+.tdn {
+  text-decoration: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 }
@@ -73,10 +75,20 @@ img {
   vertical-align: middle;
 }
 
-
 // Headings
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
   @include display-font;
   @include optimize-font;
   color: $accent;
@@ -89,25 +101,30 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     font-weight: inherit;
     color: $accent;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: $accentHover;
     }
   }
 }
 
-h1, .h1 {
+h1,
+.h1 {
   @include fluid-type(font-size, $mediumSize, $largerSize, 28px, 40px);
 }
 
-h2, .h2 {
+h2,
+.h2 {
   @include fluid-type(font-size, $mediumSize, $largerSize, 20px, 28px);
 }
 
-h3, .h3 {
+h3,
+.h3 {
   @include fluid-type(font-size, $mediumSize, $largeSize, 16px, 22px);
 }
 
-h4, .h4 {
+h4,
+.h4 {
   @include fs(16);
 }
 
@@ -115,10 +132,10 @@ h4, .h4 {
 
 // h6, .h6 {  }
 
-
 // Lists
 
-ul, ol {
+ul,
+ol {
   margin: 0 0 1.5em 16px;
 
   li {
@@ -127,7 +144,10 @@ ul, ol {
   }
 }
 
-ul ul, ul ol, ol ol, ol ul {
+ul ul,
+ul ol,
+ol ol,
+ol ul {
   margin-bottom: 0;
 }
 
@@ -143,7 +163,8 @@ ol {
   list-style: decimal;
 }
 
-.unstyled, nav ul {
+.unstyled,
+nav ul {
   margin: 0 0 1.5em;
   padding: 0;
   list-style: none;
@@ -157,7 +178,7 @@ ol {
   @extend .unstyled;
 
   li {
-    border-bottom: 1px solid #E3E3E3;
+    border-bottom: 1px solid #e3e3e3;
     padding: 5px 0;
 
     &:first-child {
@@ -179,7 +200,8 @@ dl {
   margin: 0 0 1.5em;
 }
 
-dt, dd {
+dt,
+dd {
   line-height: 1.5em;
 }
 
@@ -190,7 +212,6 @@ dt {
 dd {
   margin-bottom: 0.5em;
 }
-
 
 // Misc
 hr {
@@ -226,7 +247,8 @@ blockquote {
   margin-bottom: 20px;
 
   p {
-    + h2, + h3 {
+    + h2,
+    + h3 {
       margin-top: 3em;
     }
   }

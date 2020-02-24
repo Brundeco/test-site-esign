@@ -1,39 +1,39 @@
 const EventEmitter = require('events');
 
 export default class ModalAnimationTemplate extends EventEmitter {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    /* Before show */
+  /* Before show */
 
-    beforeShow() {
-        this.emit('before-show-finished');
-    }
+  beforeShow() {
+    this.emit('before-show-finished');
+  }
 
-    cancelBeforeShow() {}
+  cancelBeforeShow() {}
 
-    /* After show */
+  /* After show */
 
-    afterShow() {
-        this.emit('after-show-finished');
-    }
+  afterShow() {
+    this.emit('after-show-finished');
+  }
 
-    cancelAfterShow() {}
+  cancelAfterShow() {}
 
-    /* Before hide */
+  /* Before hide */
 
-    beforeHide() {
-        this.emit('before-hide-finished');
-    }
+  beforeHide() {
+    this.emit('before-hide-finished');
+  }
 
-    cancelBeforeHide() {}
+  cancelBeforeHide() {}
 
-    /* After hide */
+  /* After hide */
 
-    afterHide() {
-        this.emit('after-hide-finished');
-    }
+  afterHide() {
+    this.emit('after-hide-finished');
+  }
 
-    cancelAfterHide() {}
+  cancelAfterHide() {}
 }

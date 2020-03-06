@@ -124,6 +124,10 @@ export default class Modal extends EventEmitter {
     // Set focus
     setTimeout(() => {
       this.modalDialog.focus({ preventScroll: true });
+      const autofocus = this.modalDialog.querySelector('[autofocus]');
+      if (autofocus) {
+        this.modalDialog.querySelector('[autofocus]').focus({ preventScroll: true });
+      }
     }, 50);
   }
 

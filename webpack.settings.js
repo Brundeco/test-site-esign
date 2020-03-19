@@ -24,7 +24,7 @@ const paths = {
 
 paths.resources = `${paths.root}resources/`;
 paths.assets = `${paths.resources}assets/`;
-paths.nunjucks = `${paths.resources}nunjucks/`;
+paths.views = `${paths.resources}views/`;
 paths.sass = `${paths.assets}sass/`;
 paths.js = `${paths.assets}js/`;
 paths.images = `${paths.assets}images/`;
@@ -84,23 +84,22 @@ const filenames = {
 
 const devServerContentBase = path.join(basePath, dist.root);
 
-const nunjucksOptions = JSON.stringify({
-  searchPaths: path.join(basePath, paths.nunjucks),
-});
-
 const bladeOptions = {
   viewDir: './resources/views',
+  extension: '.blade.php',
 };
 
-const pages = glob.sync('**/*.nunjucks', {
-  cwd: path.join(basePath, `${paths.nunjucks}/pages/`),
+const pages = glob.sync('**/*.blade.php', {
+  cwd: path.join(basePath, `${paths.views}/pages/`),
   root: '/',
 }).map((page) => new HtmlWebpackPlugin({
-  filename: page.replace('nunjucks', 'html'),
-  template: `${paths.nunjucks}/pages/${page}`,
+  filename: page.replace('.blade.php', '.html'),
+  template: `${paths.views}pages/${page}`,
   excludeChunks: ['sprite'],
   minify: false,
 }));
+
+console.log(pages);
 
 const settings = {
   basePath,

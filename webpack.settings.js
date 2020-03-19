@@ -88,6 +88,10 @@ const nunjucksOptions = JSON.stringify({
   searchPaths: path.join(basePath, paths.nunjucks),
 });
 
+const bladeOptions = {
+  viewDir: './resources/views',
+};
+
 const pages = glob.sync('**/*.nunjucks', {
   cwd: path.join(basePath, `${paths.nunjucks}/pages/`),
   root: '/',
@@ -107,7 +111,7 @@ const settings = {
   paths,
   dist,
   filenames,
-  nunjucksOptions,
+  bladeOptions,
   pages,
   useFontsDirectory,
   useVideosDirectory,

@@ -1,12 +1,13 @@
-{% set title = 'Home' %}
-{% set description = '' %}
-{% set menuitem = 'home' %}
-{# Only add bodyclass if necessary #}
-{% set bodyclass = '' %}
+@extends('layouts.app')
 
-{% extends "layouts/app.nunjucks" %}
+@php
+  $title = 'Home';
+  $menuItem = 'home';
+  // $description = 'description';
+  // $bodyClass = 'body-class';
+@endphp
 
-{% block content %}
+@section('content')
 <div class="container">
 
   <h1>Front-end template webpack</h1>
@@ -26,9 +27,9 @@
 
   <h2 class="h3">Webp image example</h2>
   <picture>
-    {# Change image extension to webp when images are loaded from build folder #}
+    {{-- Change image extension to webp when images are loaded from build folder --}}
     <source srcset="../../assets/images/marker.png" type="image/webp">
     <img src="../../assets/images/marker.png" alt="marker">
   </picture>
 </div>
-{% endblock %}
+@endsection

@@ -1,31 +1,30 @@
-{% set title = 'Nieuws' %}
-{% set description = '' %}
-{% set menuitem = 'news' %}
-{# Only add bodyclass if necessary #}
-{% set bodyclass = '' %}
+@extends('layouts.app')
 
-{% extends "layouts/app.nunjucks" %}
+@php
+  $title = 'Nieuws';
+  $menuItem = 'news';
+@endphp
 
-{% block content %}
+@section('content')
 <div class="container">
 
   <h1>News</h1>
 
   <ul class="articles-list">
-    {% for i in range(0, 3) -%}
-    <li>
-      <div class="article-teaser">
-        <h2><a href="news-detail.html">Lorem ipsum</a></h2>
-        <p>03/02/2017</p>
+    @for ($i = 0; $i < 3; $i++)
+      <li>
+        <div class="article-teaser">
+          <h2><a href="news-detail.html">Lorem ipsum</a></h2>
+          <p>03/02/2017</p>
 
-        <div class="article-teaser__body">
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+          <div class="article-teaser__body">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+          </div>
+
+          <p><a href="news-detail.html" class="button-more">Read more</a></p>
         </div>
-
-        <p><a href="news-detail.html" class="button-more">Read more</a></p>
-      </div>
-    </li>
-   {%- endfor %}
+      </li>
+    @endfor
   </ul>
 
   <div class="pagination">
@@ -39,4 +38,4 @@
   </div>
 
 </div>
-{% endblock %}
+@endsection

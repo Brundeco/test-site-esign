@@ -315,8 +315,8 @@ if (isStatic) {
         },
       },
       {
-        loader: 'webpack-blade-loader',
-        options: bladeOptions,
+        loader: 'webpack-blade-native-loader',
+        options: bladeOptions
       },
     ],
   });

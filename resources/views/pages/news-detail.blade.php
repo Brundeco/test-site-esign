@@ -1,12 +1,11 @@
-{% set title = 'Nieuws detail' %}
-{% set description = '' %}
-{% set menuitem = 'news' %}
-{# Only add bodyclass if necessary #}
-{% set bodyclass = '' %}
+@extends('layouts.app')
 
-{% extends "layouts/app.nunjucks" %}
+@php
+  $title = 'Nieuws detail';
+  $menuItem = 'news';
+@endphp
 
-{% block content %}
+@section('content')
 <div class="container">
 
   <article class="article-detail">
@@ -27,4 +26,4 @@
   </article>
 
 </div>
-{% endblock %}
+@endsection

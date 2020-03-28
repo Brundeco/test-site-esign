@@ -1,11 +1,16 @@
-{% set site_title = title + ' - Template' %}
+@php
+  $siteTitle = "$title - Template";
+  $description = $description ?? null;
+  $dataPage = $dataPage ?? null;
+  $bodyClass = $bodyClass ?? null;
+@endphp
 <!doctype html>
-<html class="no-js" lang="nl" data-page="{{ datapage }}">
+<html class="no-js" lang="nl" data-page="{{ $dataPage }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{ site_title }}</title>
-  <meta name="description" content="{{ description }}">
+  <title>{{ $siteTitle }}</title>
+  <meta name="description" content="{{ $description }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Made by Esign -->
@@ -15,19 +20,19 @@
   <meta name="robots" content="all,index,follow">
   <meta http-equiv="cleartype" content="on">
 
-  {# <meta property="fb:app_id" content=""> #}
-  <meta property="og:title" content="{{ site_title }}">
-  <meta property="og:description" content="{{ description }}" >
+  {{-- <meta property="fb:app_id" content=""> --}}
+  <meta property="og:title" content="{{ $siteTitle }}">
+  <meta property="og:description" content="{{ $description }}" >
   <meta property="og:url" content="nl">
   <meta property="og:image" content="../assets/images/share-image.jpg" >
   <meta property="og:site_name" content="Template">
   <meta property="og:type" content="website">
-  {# <meta property="article:author" content=""> #}
+  {{-- <meta property="article:author" content=""> --}}
 
-  {# <meta name="twitter:site" content="@"> #}
+  {{-- <meta name="twitter:site" content="@"> --}}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ site_title }}">
-  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:title" content="{{ $siteTitle }}">
+  <meta name="twitter:description" content="{{ $description }}">
   <meta name="twitter:image" content="../../assets/images/share-image.jpg">
 
   <link rel="shortcut icon" href="../../assets/images/icons/favicon.ico" type="image/x-icon">
@@ -51,27 +56,27 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="../../assets/images/icons/ms-icon-144x144.png">
 
-  {# <link rel="dns-prefetch" href="//fonts.googleapis.com"> #}
-  {# <link rel="dns-prefetch" href="//use.typekit.net"> #}
+  {{-- <link rel="dns-prefetch" href="//fonts.googleapis.com"> --}}
+  {{-- <link rel="dns-prefetch" href="//use.typekit.net"> --}}
   <link rel="dns-prefetch" href="//google-analytics.com">
   <link rel="dns-prefetch" href="//www.google-analytics.com">
-  <link rel="dns-prefetch" href="//www.google.com">{# (recaptcha) #}
-  {# <link rel="dns-prefetch" href="//ebugs.esign.eu"> #}
+  <link rel="dns-prefetch" href="//www.google.com">{{-- (recaptcha) --}}
+  {{-- <link rel="dns-prefetch" href="//ebugs.esign.eu"> --}}
 
-  {# place typekit or google fonts css here #}
+  {{-- place typekit or google fonts css here --}}
 
-  {# not needed for webpack setup: #}
+  {{-- not needed for webpack setup: --}}
   <style>
     .modal {
       visibility: hidden;
     }
   </style>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Poppins:500,600&display=swap" rel="stylesheet">
-  {# <link rel="stylesheet" href="../assets/css/style.css"> #}
+  {{-- <link rel="stylesheet" href="../assets/css/style.css"> --}}
 
 
-  {# google analytics #}
-  {# <script>
+  {{-- google analytics --}}
+  {{-- <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -80,10 +85,10 @@
     ga('create', 'UA-xxxxxxxx-x', 'auto');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
-  </script> #}
+  </script> --}}
 </head>
 
-<body class="{{ bodyclass }}">
+<body class="{{ $bodyClass }}">
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="page-wrap">
@@ -103,8 +108,8 @@
           </button>
 
           <nav class="main-nav">
-            {% set nav = 'main-nav' %}
-            {% include './_partials/main-navigation.nunjucks' %}
+            @php $nav = 'main-nav'; @endphp
+            @include('layouts/_partials/main-navigation')
           </nav>
         </div>
       </div>
@@ -113,7 +118,7 @@
 
     <main id="main" class="main main--fixed-navigation">
 
-      {% block content %}{% endblock %}
+      @yield('content')
 
     </main>
 
@@ -173,26 +178,26 @@
       </div>
     </div>
 
-    {% include './_partials/modal-navigation.nunjucks' %}
+    @include('layouts/_partials/modal-navigation')
   </div>
 
 
   <div class="hide">
-    {#
+    {{--
       SVG Template:
       <svg class="icon icon-">
         <use xlink:href="#icon-"/>
       </svg>
-    #}
-    {% include './_partials/svg-sprite.nunjucks' %}
+    --}}
+    @include('layouts/_partials/svg-sprite')
   </div>
 
-  {% if datapage == 'contact' %}
+  @if ($dataPage == 'contact')
     <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
     <script>
       var markerImg = '${require(`../../assets/images/marker.png`)}';
     </script>
-  {% endif %}
-  {# <script src="../assets/js/app.js"></script> #}
+  @endif
+  {{-- <script src="../assets/js/app.js"></script> --}}
 </body>
 </html>

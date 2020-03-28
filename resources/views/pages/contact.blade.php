@@ -1,13 +1,12 @@
-{% set title = 'Contact' %}
-{% set description = '' %}
-{% set menuitem = 'contact' %}
-{# Only add bodyclass if necessary #}
-{% set bodyclass = '' %}
-{% set datapage = 'contact' %}
+@extends('layouts.app')
 
-{% extends "layouts/app.nunjucks" %}
+@php
+  $title = 'Contact';
+  $menuItem = 'contact';
+  $dataPage = 'contact';
+@endphp
 
-{% block content %}
+@section('content')
 <div class="container">
 
   <div id="map" class="map"></div>
@@ -64,4 +63,4 @@
   </div>
 
 </div>
-{% endblock %}
+@endsection

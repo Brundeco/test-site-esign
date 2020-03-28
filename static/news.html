@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Home - Template</title>
+  <title>Nieuws - Template</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
   <meta http-equiv="cleartype" content="on">
 
   
-  <meta property="og:title" content="Home - Template">
+  <meta property="og:title" content="Nieuws - Template">
   <meta property="og:description" content="" >
   <meta property="og:url" content="nl">
   <meta property="og:image" content="../assets/images/share-image.jpg" >
@@ -25,7 +25,7 @@
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Home - Template">
+  <meta name="twitter:title" content="Nieuws - Template">
   <meta name="twitter:description" content="">
   <meta name="twitter:image" content="../../assets/images/share-image.jpg">
 
@@ -94,13 +94,13 @@
 
           <nav class="main-nav">
                         <ul class="main-nav__list">
-  <li class=active>
+  <li>
     <a href="index.html" class="main-nav__link">Home</a>
   </li>
   <li>
     <a href="components.html" class="main-nav__link">Components</a>
   </li>
-  <li>
+  <li class=active>
     <a href="news.html" class="main-nav__link">News</a>
   </li>
   <li>
@@ -118,27 +118,57 @@
 
       <div class="container">
 
-  <h1>Front-end template webpack</h1>
+  <h1>News</h1>
 
-  <div class="grid">
-    <div class="grid__item medium--one-half">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
-    </div>
+  <ul class="articles-list">
+          <li>
+        <div class="article-teaser">
+          <h2><a href="news-detail.html">Lorem ipsum</a></h2>
+          <p>03/02/2017</p>
+
+          <div class="article-teaser__body">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+          </div>
+
+          <p><a href="news-detail.html" class="button-more">Read more</a></p>
+        </div>
+      </li>
+          <li>
+        <div class="article-teaser">
+          <h2><a href="news-detail.html">Lorem ipsum</a></h2>
+          <p>03/02/2017</p>
+
+          <div class="article-teaser__body">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+          </div>
+
+          <p><a href="news-detail.html" class="button-more">Read more</a></p>
+        </div>
+      </li>
+          <li>
+        <div class="article-teaser">
+          <h2><a href="news-detail.html">Lorem ipsum</a></h2>
+          <p>03/02/2017</p>
+
+          <div class="article-teaser__body">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+          </div>
+
+          <p><a href="news-detail.html" class="button-more">Read more</a></p>
+        </div>
+      </li>
+      </ul>
+
+  <div class="pagination">
+    <p>
+      <span class="prev arrow"><a href="news.html" class="pagination-pager">&laquo;</a></span>
+      <a href="news.html" class="pagination-pager">1</a>
+      <span class="pagination-pager active">2</span>
+      <a href="news.html" class="pagination-pager">3</a>
+      <span class="next arrow"><a href="news.html" class="pagination-pager">&raquo;</a></span>
+    </p>
   </div>
 
-  <h2 class="h3">Inline background image example</h2>
-  <div style="background-image: url('assets/images/marker.png'); height: 128px; width: 100px;">
-  </div>
-
-  <h2 class="h3">Webp image example</h2>
-  <picture>
-    
-    <source srcset="assets/images/marker.webp" type="image/webp">
-    <img src="assets/images/marker.png" alt="marker">
-  </picture>
 </div>
 
     </main>
@@ -204,13 +234,13 @@
     <div class="mobile-nav__content">
       <div class="mobile-nav__main">
                 <ul class="mobile-nav__list">
-  <li class=active>
+  <li>
     <a href="index.html" class="mobile-nav__link">Home</a>
   </li>
   <li>
     <a href="components.html" class="mobile-nav__link">Components</a>
   </li>
-  <li>
+  <li class=active>
     <a href="news.html" class="mobile-nav__link">News</a>
   </li>
   <li>

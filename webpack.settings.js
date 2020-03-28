@@ -85,8 +85,7 @@ const filenames = {
 const devServerContentBase = path.join(basePath, dist.root);
 
 const bladeOptions = {
-  viewDir: './resources/views',
-  extension: '.blade.php',
+  viewDir: 'resources/views',
 };
 
 const pages = glob.sync('**/*.blade.php', {
@@ -98,8 +97,6 @@ const pages = glob.sync('**/*.blade.php', {
   excludeChunks: ['sprite'],
   minify: false,
 }));
-
-console.log(pages);
 
 const settings = {
   basePath,

@@ -2,8 +2,8 @@
   <div class="container">
     <div class="mobile-nav__content">
       <div class="mobile-nav__main">
-        {% set nav = 'mobile-nav' %}
-        {% include './main-navigation.nunjucks' %}
+        @php $nav = 'mobile-nav'; @endphp
+        @include('layouts/_partials/main-navigation')
       </div>
       <div class="mobile-nav__socials">
         <ul>

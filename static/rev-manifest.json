@@ -22,6 +22,10 @@
   "components.html": "components.html",
   "contact.html": "contact.html",
   "cookies.html": "cookies.html",
+  "errors-404.html": "errors-404.html",
+  "errors-500.html": "errors-500.html",
+  "errors-503.html": "errors-503.html",
+  "errors-csrf.html": "errors-csrf.html",
   "index.html": "index.html",
   "manifest.json": "manifest.json",
   "privacy.html": "privacy.html"

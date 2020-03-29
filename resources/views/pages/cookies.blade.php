@@ -88,9 +88,9 @@
     <table>
       <thead>
       <tr>
-        <td>Naam</td>
-        <td>Type</td>
-        <td>Bewaarduur</td>
+        <th>Naam</th>
+        <th>Type</th>
+        <th>Bewaarduur</th>
       </tr>
       </thead>
       <tbody>
@@ -110,9 +110,9 @@
     <table>
       <thead>
       <tr>
-        <td>Naam</td>
-        <td>Type</td>
-        <td>Bewaarduur</td>
+        <th>Naam</th>
+        <th>Type</th>
+        <th>Bewaarduur</th>
       </tr>
       </thead>
       <tbody>
@@ -130,9 +130,9 @@
     <table>
       <thead>
       <tr>
-        <td>Naam</td>
-        <td>Type</td>
-        <td>Bewaarduur</td>
+        <th>Naam</th>
+        <th>Type</th>
+        <th>Bewaarduur</th>
       </tr>
       </thead>
       <tbody>
@@ -156,7 +156,7 @@
     </p>
 
     <p>
-      Bij browser - Microsoft Internet Explorer
+      <strong>Bij browser - Microsoft Internet Explorer</strong>
     </p>
     <ul>
       <li>In Internet Explorer, klik op 'Internetopties' in het menu 'Extra'.</li>
@@ -165,7 +165,7 @@
     </ul>
 
     <p>
-      Bij browser - Mozilla Firefox
+      <strong>Bij browser - Mozilla Firefox</strong>
     </p>
     <ul>
       <li>Klik op 'Firefox' in de linkerbovenhoek van uw browser en klik vervolgens op 'Opties'.</li>
@@ -174,7 +174,7 @@
     </ul>
 
     <p>
-      Bij browser - Google Chrome
+      <strong>Bij browser - Google Chrome</strong>
     </p>
     <ul>
       <li>Klik op de drie puntjes naast de browserbalk bovenaan in uw browservenster en kies 'Opties'.</li>
@@ -184,7 +184,7 @@
     </ul>
 
     <p>
-    Bij browser - Safari
+      <strong>Bij browser - Safari</strong>
     </p>
     <ul>
       <li>Kies ‘Voorkeuren’ in het taakmenu. (Het taakmenu bevindt zich rechtsboven in het Safari-venster en ziet eruit als een tandwiel of klik op ‘Safari’ in het uitgebreide taakmenu.)</li>
@@ -197,7 +197,7 @@
     </p>
 
     <p>
-      Bij browser - Microsoft Internet Explorer
+      <strong>Bij browser - Microsoft Internet Explorer</strong>
     </p>
     <ul>
       <li>Selecteer in Internet Explorer de knop Extra en selecteer Internetopties.</li>
@@ -205,7 +205,7 @@
     </ul>
 
     <p>
-      Bij browser - Mozilla Firefox
+      <strong>Bij browser - Mozilla Firefox</strong>
     </p>
     <ul>
       <li>Klik op de menuknop en kies ‘Voorkeuren’.</li>
@@ -216,7 +216,7 @@
     </ul>
 
     <p>
-      Bij browser - Google Chrome
+      <strong>Bij browser - Google Chrome</strong>
     </p>
     <ul>
       <li>Selecteer ‘Meer Instellingen’ in de browserwerkbalk.</li>
@@ -227,7 +227,7 @@
     </ul>
 
     <p>
-      Bij browser - Safari
+      <strong>Bij browser - Safari</strong>
     </p>
     <ul>
       <li>Kies ‘Voorkeuren’ in het taakmenu. (Het taakmenu bevindt zich rechtsboven in het Safari-venster en ziet eruit als een tandwiel of klik op ‘Safari’ in het uitgebreide taakmenu.)</li>

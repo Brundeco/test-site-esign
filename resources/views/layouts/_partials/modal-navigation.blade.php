@@ -2,8 +2,7 @@
   <div class="container">
     <div class="mobile-nav__content">
       <div class="mobile-nav__main">
-        @php $nav = 'mobile-nav'; @endphp
-        @include('layouts/_partials/main-navigation')
+        @include('layouts/_partials/main-navigation', ['nav' => 'mobile-nav'])
       </div>
       <div class="mobile-nav__socials">
         <ul>

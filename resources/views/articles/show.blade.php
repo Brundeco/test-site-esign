@@ -11,7 +11,7 @@
   <article class="article-detail">
     <header class="article-detail__header">
       <h1>Lorem ipsum</h1>
-      <time datetime="2017-01-01">01/01/2017</time>
+      <time datetime="2017-01-01">{{ date('d/m/Y') }}</time>
     </header>
 
     <div class="article-detail__image">

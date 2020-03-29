@@ -6,7 +6,7 @@
     <a href="components.html" class="{{ $nav }}__link">Components</a>
   </li>
   <li{!! $menuItem == 'news' ? ' class=active' : '' !!}>
-    <a href="news.html" class="{{ $nav }}__link">News</a>
+    <a href="articles.html" class="{{ $nav }}__link">News</a>
   </li>
   <li{!! $menuItem == 'contact' ? ' class=active' : '' !!}>
     <a href="contact.html" class="{{ $nav }}__link">Contact</a>

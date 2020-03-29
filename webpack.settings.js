@@ -89,11 +89,20 @@ const bladeOptions = {
 };
 
 const pages = glob.sync('**/*.blade.php', {
-  cwd: path.join(basePath, `${paths.views}/pages/`),
+  cwd: path.join(basePath, `${paths.views}/`),
   root: '/',
-}).map((page) => new HtmlWebpackPlugin({
-  filename: page.replace('.blade.php', '.html'),
-  template: `${paths.views}pages/${page}`,
+})
+.filter(filename => filename.indexOf('_') === -1)
+.filter(filename => filename.indexOf('layouts') !== 0)
+.map((page) => new HtmlWebpackPlugin({
+  filename: (page => {
+    return page.replace('.blade.php', '.html')
+      .replace('/', '-')
+      .replace('-index', '')
+      .replace('pages-', '')
+      .replace('home', 'index');
+  })(page),
+  template: `${paths.views}${page}`,
   excludeChunks: ['sprite'],
   minify: false,
 }));

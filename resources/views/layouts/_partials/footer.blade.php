@@ -1,7 +1,7 @@
 <footer class="page-footer">
   <div class="container">
     <div class="grid">
-      <div class="grid__item medium--one-half">
+      <div class="grid__item medium--one-third">
         <ul class="social-icons">
           <li class="social-icons__item">
             <a href="#" class="social-icons__link" target="_blank">
@@ -29,7 +29,13 @@
           </li>
         </ul>
       </div>
-      <div class="grid__item medium--one-half">
+      <div class="grid__item medium--one-third">
+        <ul>
+          <li><a href="privacy.html">Privacyverklaring</a></li>
+          <li><a href="cookies.html">Cookieverklaring</a></li>
+        </ul>
+      </div>
+      <div class="grid__item medium--one-third">
         <p>
           <a class="page-footer__signature" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
         </p>

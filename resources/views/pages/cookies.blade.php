@@ -1,5 +1,5 @@
 @php
-  $title = 'Cookies';
+  $title = 'Cookieverklaring';
 
   // Cookie policy template variables
   $displayName = 'Esign';
@@ -252,7 +252,7 @@
     </ul>
 
     <p>
-      De uitoefening van deze rechten gebeurt conform de modaliteiten zoals bepaald in onze <a href="{{ $urlPrivacy }}">Privacyverklaring</a>. Meer informatie over de rechten van bezoekers vindt u ook in de <a href="{{ $urlPrivacy }}">Privacyverklaring</a>. Mocht u na het lezen van deze Cookieverklaring toch nog vragen of opmerkingen rond cookies hebben, kan u steeds contact opnemen via {{ $email }}.
+      De uitoefening van deze rechten gebeurt conform de modaliteiten zoals bepaald in onze <a href="{{ $urlPrivacy }}">Privacyverklaring</a>. Meer informatie over de rechten van bezoekers vindt u ook in de <a href="{{ $urlPrivacy }}">Privacyverklaring</a>. Mocht u na het lezen van deze Cookieverklaring toch nog vragen of opmerkingen rond cookies hebben, kan u steeds contact opnemen via <a href="mailto:{{ $email }}">{{ $email }}</a>.
     </p>
 
   </div>

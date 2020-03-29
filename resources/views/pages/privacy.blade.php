@@ -80,7 +80,7 @@
       {{ $postal }} {{ $city }}<br>
       {{ $country }}<br>
       Btw-nummer: {{ $companyNumber }}<br>
-      E-mail: {{ $email }}<br>
+      E-mail: <a href="mailto:{{ $email }}">{{ $email }}</a><br>
       Telefoon: {{ $phone }}
     </p>
 
@@ -163,7 +163,7 @@
     <h3>Recht op inzage/rectificatie/wissen van uw persoonsgegevens</h3>
 
     <p>
-      Bij bewijs van uw identiteit als Gebruiker, beschikt u over een recht om van {{ $displayName }} uitsluitsel te krijgen over het al dan niet verwerken van uw persoonsgegevens. Wanneer {{ $displayName }} uw gegevens verwerkt, heeft u bovendien het recht om inzage te verkrijgen in de verzamelde persoonsgegevens. Indien u wenst uw recht op inzage te gebruiken, zal {{ $displayName }} hieraan gevolg geven binnen één (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via het versturen van een e-mail naar {{ $email }}.
+      Bij bewijs van uw identiteit als Gebruiker, beschikt u over een recht om van {{ $displayName }} uitsluitsel te krijgen over het al dan niet verwerken van uw persoonsgegevens. Wanneer {{ $displayName }} uw gegevens verwerkt, heeft u bovendien het recht om inzage te verkrijgen in de verzamelde persoonsgegevens. Indien u wenst uw recht op inzage te gebruiken, zal {{ $displayName }} hieraan gevolg geven binnen één (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via het versturen van een e-mail naar <a href="mailto:{{ $email }}">{{ $email }}</a>.
     </p>
 
     <p>
@@ -202,7 +202,7 @@
     </p>
 
     <p>
-      Indien Gebruiker wenst om deze rechten uit te oefenen, zal {{ $displayName }} hieraan gevolg geven binnen één  (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via een e-mail naar {{ $email }}.
+      Indien Gebruiker wenst om deze rechten uit te oefenen, zal {{ $displayName }} hieraan gevolg geven binnen één  (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via een e-mail naar <a href="mailto:{{ $email }}">{{ $email }}</a>.
     </p>
 
     <h3>Recht op gegevensoverdraagbaarheid</h3>
@@ -212,7 +212,7 @@
     </p>
 
     <p>
-      Indien Gebruiker wenst om dit recht uit te oefenen, zal {{ $displayName }} hieraan gevolg geven binnen één (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via een e-mail naar {{ $email }}.
+      Indien Gebruiker wenst om dit recht uit te oefenen, zal {{ $displayName }} hieraan gevolg geven binnen één (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via een e-mail naar <a href="mailto:{{ $email }}">{{ $email }}</a>.
     </p>
 
     <h3>Recht op het intrekken van mijn toestemming/recht om klacht in te dienen</h3>
@@ -222,7 +222,7 @@
     </p>
 
     <p>
-      Indien Gebruiker wenst dit recht uit te oefenen, zal {{ $displayName }} hieraan gevolg geven binnen één (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via e-mail naar {{ $email }}.
+      Indien Gebruiker wenst dit recht uit te oefenen, zal {{ $displayName }} hieraan gevolg geven binnen één (1) maand na het ontvangen van de aanvraag. De aanvraag gebeurt via aangetekende zending of via e-mail naar <a href="mailto:{{ $email }}">{{ $email }}</a>.
     </p>
   </div>
 @endsection

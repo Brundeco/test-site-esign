@@ -1,3 +1,4 @@
+
 @php
   $title = 'Privacyverklaring';
 
@@ -103,7 +104,7 @@
     </p>
 
     <p>
-      Gegevensverwerking is essentieel voor de werking van het platform/de website/de applicatie en de daarbij horende diensten. De verwerking gebeurt uitsluitend voor volgende welbepaalde doeleinden:
+      Gegevensverwerking is essentieel voor de werking van {{ strtolower($type) }} en de daarbij horende diensten. De verwerking gebeurt uitsluitend voor volgende welbepaalde doeleinden:
     </p>
 
     <ul>
@@ -139,7 +140,7 @@
     </p>
 
     <p>
-      Als u het platform/de website van {{ $displayName }} wil consulteren, is het aan te raden dat u cookies ingeschakeld hebt. Hoe u cookies daarentegen kan uitschakelen, staat eveneens te lezen in onze <a href="{{ $urlCookies }}">Cookieverklaring</a>.
+      Als u {{ strtolower($type) }} van {{ $displayName }} wil consulteren, is het aan te raden dat u cookies ingeschakeld hebt. Hoe u cookies daarentegen kan uitschakelen, staat eveneens te lezen in onze <a href="{{ $urlCookies }}">Cookieverklaring</a>.
     </p>
 
     <h2>Wat zijn mijn rechten?</h2>

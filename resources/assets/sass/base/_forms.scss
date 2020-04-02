@@ -320,6 +320,10 @@ input[type="search"] {
   .button {
     margin-bottom: $gutter;
 	margin-right: $gutter;
+	
+	&:last-of-type {
+		margin-right: 0;
+	}
   }
 }
 

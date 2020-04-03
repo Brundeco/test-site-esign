@@ -73,12 +73,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Font size
-@mixin fs($size) {
-  font-size: 0px + $size;
-  font-size: 0rem + $size / $docFontSize;
-}
-
 // Line height
 @mixin lh($lh) {
   line-height: 0px + $lh;

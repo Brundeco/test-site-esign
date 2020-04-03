@@ -2,7 +2,7 @@
   <div class="container">
     <div class="mobile-nav__content">
       <div class="mobile-nav__main">
-        @include('layouts/_partials/main-navigation', ['nav' => 'mobile-nav'])
+        @include('_components/nav/main', ['nav' => 'mobile-nav'])
       </div>
       <div class="mobile-nav__socials">
         <ul>

@@ -14,7 +14,7 @@
   <div class="page-wrap">
 
     @section('header')
-      @include('layouts/_partials/header')
+      @include('_components/base/header')
     @show
 
     <main id="main" class="main main--fixed-navigation">
@@ -24,7 +24,7 @@
     </main>
 
     @section('footer')
-      @include('layouts/_partials/footer')
+      @include('_components/base/footer')
     @show
 
     <div class="container">
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    @include('layouts/_partials/modal-navigation')
+    @include('_components/nav/modal')
   </div>
 
 

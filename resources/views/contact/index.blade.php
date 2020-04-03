@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts/app')
 
 @php
   $title = 'Contact';
@@ -20,7 +20,7 @@
     <div class="grid__item medium--one-half">
       <h2>Contacteer ons</h2>
 
-      @include('contact._partials.form')
+      @include('_components/forms/contact')
 
     </div>
   </div>

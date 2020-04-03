@@ -1,5 +1,5 @@
 @php $title = '500'; @endphp
-@extends('layouts.app')
+@extends('layouts/app')
 
 @section('content')
   <div class="container">

@@ -11,8 +11,7 @@ export default class ModalAnimationTemplate extends EventEmitter {
     this.emit('before-show-finished');
   }
 
-  cancelBeforeShow() {
-  }
+  cancelBeforeShow() {}
 
   /* After show */
 
@@ -20,8 +19,7 @@ export default class ModalAnimationTemplate extends EventEmitter {
     this.emit('after-show-finished');
   }
 
-  cancelAfterShow() {
-  }
+  cancelAfterShow() {}
 
   /* Before hide */
 
@@ -29,8 +27,7 @@ export default class ModalAnimationTemplate extends EventEmitter {
     this.emit('before-hide-finished');
   }
 
-  cancelBeforeHide() {
-  }
+  cancelBeforeHide() {}
 
   /* After hide */
 
@@ -38,6 +35,5 @@ export default class ModalAnimationTemplate extends EventEmitter {
     this.emit('after-hide-finished');
   }
 
-  cancelAfterHide() {
-  }
+  cancelAfterHide() {}
 }

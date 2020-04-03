@@ -21,7 +21,13 @@ legend {
   text-transform: uppercase;
 }
 
-input, select, textarea, button, .button, label, .label {
+input,
+select,
+textarea,
+button,
+.button,
+label,
+.label {
   margin: 0;
   font-size: rem(16px);
   vertical-align: middle;
@@ -31,7 +37,8 @@ input, select, textarea, button, .button, label, .label {
   font-weight: $defaultFontWeight;
 }
 
-button, input {
+button,
+input {
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
@@ -46,14 +53,21 @@ button, input {
 //   }
 // }
 
-label, .label {
+label,
+.label {
   display: block;
   margin-bottom: 8px;
 }
 
-input[type="text"], input[type="search"], input[type="password"],
-input[type="email"], input[type="tel"], input[type="date"],
-input[type="number"], textarea, select {
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
   appearance: none;
   padding: 0 15px;
   margin-bottom: 2px;
@@ -82,12 +96,13 @@ textarea {
 select {
   cursor: pointer;
   border-radius: $radius;
-  background: $white url('../images/chevron-down.svg') center right 15px no-repeat;
+  background: $white url("../images/chevron-down.svg") center right 15px no-repeat;
   background-size: 12px 6px;
   padding-right: 35px;
 }
 
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   padding: 0;
   margin: 3px 0;
   cursor: pointer;
@@ -126,13 +141,15 @@ input[type="search"] {
     margin: -5px 6px 0 5px;
   }
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: $accentHover;
     color: #fff;
   }
 
   &:active {
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
     transform: translateY(1px);
   }
 }
@@ -141,15 +158,17 @@ input[type="search"] {
   background-color: #000;
   color: #fff;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: $accent;
   }
 }
 
-.button, select {
+.button,
+select {
   &:focus {
     outline: 0;
-    box-shadow: 0 0 1px 1px rgba(200,200,200,0.1);
+    box-shadow: 0 0 1px 1px rgba(200, 200, 200, 0.1);
   }
 }
 
@@ -162,7 +181,6 @@ input[type="search"] {
 ::-ms-clear {
   display: none;
 }
-
 
 // Hide the cancel button
 ::-webkit-search-cancel-button {
@@ -182,14 +200,16 @@ input[type="search"] {
   appearance: none;
 }
 
-.checkbox, .radio {
+.checkbox,
+.radio {
   position: relative;
 
   label {
     padding: 3px 0 0 30px;
     cursor: pointer;
 
-    &:before, &:after {
+    &:before,
+    &:after {
       content: "";
       display: block;
       position: absolute;
@@ -217,7 +237,8 @@ input[type="search"] {
     }
   }
 
-  input[type="checkbox"], input[type="radio"] {
+  input[type="checkbox"],
+  input[type="radio"] {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -246,7 +267,8 @@ input[type="search"] {
 
 .radio {
   label {
-    &:before, &:after {
+    &:before,
+    &:after {
       border-radius: 100%;
     }
 
@@ -262,7 +284,6 @@ input[type="search"] {
   }
 }
 
-
 // Input group
 .input-group {
   margin: 0 0 20px;
@@ -275,23 +296,28 @@ input[type="search"] {
 .input-group--horizontal {
   display: flex;
 
-  .radio, .checkbox {
+  .radio,
+  .checkbox {
     label {
       margin-bottom: 0;
     }
   }
 
-  .radio + .radio, .checkbox + .checkbox {
+  .radio + .radio,
+  .checkbox + .checkbox {
     margin-left: 20px;
   }
 }
 
 .input-group--error {
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     border-color: $error;
   }
 
-  .checkbox, .radio {
+  .checkbox,
+  .radio {
     label:before {
       border-color: $error;
     }
@@ -310,7 +336,6 @@ input[type="search"] {
   color: $error;
 }
 
-
 // Button group
 .button-group {
   display: flex;
@@ -319,11 +344,11 @@ input[type="search"] {
 
   .button {
     margin-bottom: $gutter;
-	margin-right: $gutter;
+    margin-right: $gutter;
 
-	&:last-of-type {
-		margin-right: 0;
-	}
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 }
 
@@ -334,7 +359,6 @@ input[type="search"] {
 .button-group--center {
   justify-content: center;
 }
-
 
 // Recaptcha
 .grecaptcha-badge {

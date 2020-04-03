@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   z-index: 1000000;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
   visibility: hidden;
   opacity: 0;
   -webkit-overflow-scrolling: touch;
@@ -41,7 +41,7 @@
 
     div[role="document"] {
       margin: auto;
-      padding: $gutter*2 0;
+      padding: $gutter * 2 0;
     }
   }
 
@@ -70,12 +70,12 @@
 .modal--fade {
   &.modal--before-show {
     opacity: 1;
-    transition: opacity .5s ease-out;
+    transition: opacity 0.5s ease-out;
   }
 
   &.modal--before-hide {
     opacity: 0;
-    transition: opacity .5s ease-out;
+    transition: opacity 0.5s ease-out;
   }
 }
 
@@ -108,7 +108,7 @@
     width: 100%;
 
     @media #{$large} {
-      padding: $gutter*2 0;
+      padding: $gutter * 2 0;
     }
   }
 }

@@ -1,5 +1,5 @@
 // Log ga calls in development
-export default function () {
+export default function() {
   if (typeof window.ga === typeof undefined) {
     window.ga = (...args) => {
       const msg = `[GA DEV] Call with arguments "${args.join('", "')}"`;

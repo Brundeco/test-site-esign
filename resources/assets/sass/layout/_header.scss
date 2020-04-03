@@ -104,9 +104,7 @@
 .mobile-nav__content {
   display: flex;
   flex-direction: column;
-  min-height: calc(
-    100vh - #{4 * $gutter}
-  ); // based on padding on modal div[role="document"]
+  min-height: calc(100vh - #{4 * $gutter}); // based on padding on modal div[role="document"]
 }
 
 .mobile-nav__main {

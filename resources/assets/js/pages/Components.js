@@ -20,7 +20,9 @@ export default class Components {
     jsonFetcher.init();
 
     // Custom modal
-    const customModal = window.modalManager.createModal(document.querySelector('.js-specific-modal-name'));
+    const customModal = window.modalManager.createModal(
+      document.querySelector('.js-specific-modal-name'),
+    );
     customModal.setAnimation(new CustomModalAnimation());
   }
 }

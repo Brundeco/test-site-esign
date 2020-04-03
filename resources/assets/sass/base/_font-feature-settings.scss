@@ -1,15 +1,20 @@
-
 /*============================================================================
   VARIABLES
 ==============================================================================*/
 
-html, body {
+html,
+body {
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
   -moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
   font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
   -moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
   font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 1;
@@ -39,20 +44,29 @@ time {
   font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0;
 }
 
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="numer"], input[type="range"], input[type="tel"], input[type="week"] {
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="numer"],
+input[type="range"],
+input[type="tel"],
+input[type="week"] {
   -webkit-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 0, "onum" 0, "lnum" 1, "zero" 1;
   -moz-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 0, "onum" 0, "lnum" 1, "zero" 1;
   font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 0, "onum" 0, "lnum" 1, "zero" 1;
 }
 
 table {
-  border-collapse: collapse; border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
   -webkit-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
   -moz-font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
   font-feature-settings: "kern" 0, "liga" 1, "pnum" 0, "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
 }
 
-table thead, table tfoot {
+table thead,
+table tfoot {
   -webkit-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
   -moz-font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
   font-feature-settings: "kern" 1, "liga" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;

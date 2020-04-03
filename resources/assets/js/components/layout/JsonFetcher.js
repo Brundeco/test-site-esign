@@ -10,19 +10,19 @@ export default class JsonFetcher {
 
   init() {
     fetch(this.api)
-      .then((res) => res.json())
-      .then((res) => {
+      .then(res => res.json())
+      .then(res => {
         this.parseResults(res);
       })
-      .catch((error) => {
+      .catch(error => {
         this.printError(error);
       });
   }
 
   parseResults(json) {
-    json.forEach((item) => {
+    json.forEach(item => {
       const templateClone = this.template.cloneNode(true);
-      this.keys.forEach((key) => {
+      this.keys.forEach(key => {
         try {
           const keyParts = key.split('.');
           let index = 0;

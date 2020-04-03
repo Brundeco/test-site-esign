@@ -4,7 +4,7 @@ export default class RecaptchaForm {
   constructor(formId) {
     this.$form = $(formId);
 
-    this.$form.submit((e) => {
+    this.$form.submit(e => {
       e.preventDefault();
 
       if (this.$form.hasClass('validate')) {
@@ -42,33 +42,36 @@ export default class RecaptchaForm {
       processData: false,
       // Allows us to get file fields via JS
       contentType: false,
-    }).then((response) => {
-      $('li').removeClass('error');
+    })
+      .then(response => {
+        $('li').removeClass('error');
 
-      if (response.errors === false) {
-        this.$form.html(response.result);
+        if (response.errors === false) {
+          this.$form.html(response.result);
 
-        // Trigger GA or GTM event
-        if (typeof window.ga === 'function') {
-          window.ga('send', 'pageview', url);
+          // Trigger GA or GTM event
+          if (typeof window.ga === 'function') {
+            window.ga('send', 'pageview', url);
+          }
         }
-      }
 
-      $buttons.removeAttr('disabled');
-    }).catch((responseData) => {
-      const response = responseData.responseJSON;
-      // eslint-disable-next-line no-console
-      console.log(`Error: ${responseData.responseText}`);
+        $buttons.removeAttr('disabled');
+      })
+      .catch(responseData => {
+        const response = responseData.responseJSON;
+        // eslint-disable-next-line no-console
+        console.log(`Error: ${responseData.responseText}`);
 
-      this.$form.find('.result').html(response.result);
-      if (response.fields) {
-        $.each(response.fields, (i, field) => {
-          $(`input[name="${field}"],textarea[name="${field}"]`).addClass('error');
-        });
-      }
-    }).then(() => {
-      $buttons.prop('disabled', false);
-    });
+        this.$form.find('.result').html(response.result);
+        if (response.fields) {
+          $.each(response.fields, (i, field) => {
+            $(`input[name="${field}"],textarea[name="${field}"]`).addClass('error');
+          });
+        }
+      })
+      .then(() => {
+        $buttons.prop('disabled', false);
+      });
   }
 }
 

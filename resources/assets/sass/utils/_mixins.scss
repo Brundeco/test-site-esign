@@ -1,4 +1,3 @@
-
 /*============================================================================
   MIXINS
 ==============================================================================*/
@@ -6,7 +5,8 @@
 // Micro clearfix hack for clearing floats - h5bp.com/q
 @mixin clearfix {
   *zoom: 1;
-  &:before, &:after {
+  &:before,
+  &:after {
     display: table;
     content: " ";
   }
@@ -33,7 +33,8 @@
 
 // Extends the .visuallyhidden class to allow the element to be focusable
 // when navigated to via the keyboard: h5bp.com/p
-.vh.focusable:active, .vh.focusable:focus {
+.vh.focusable:active,
+.vh.focusable:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -52,7 +53,7 @@
 }
 
 // GPU Rendering
-@mixin enable-webkit-gpu($perspective:1000) {
+@mixin enable-webkit-gpu($perspective: 1000) {
   // Enable gpu rendering (ios hack)
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -66,7 +67,7 @@
 }
 
 // Optimize font
-@mixin optimize-font($smoothing:antialiased) {
+@mixin optimize-font($smoothing: antialiased) {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: $smoothing;
   -moz-osx-font-smoothing: grayscale;
@@ -93,15 +94,15 @@
   add in app.js:
   import objectFitImages from 'object-fit-images';
 */
-@mixin object-fit($fit: fill, $position: null){
+@mixin object-fit($fit: fill, $position: null) {
   -o-object-fit: $fit;
   object-fit: $fit;
   @if $position {
     -o-object-position: $position;
     object-position: $position;
-    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    font-family: "object-fit: #{$fit}; object-position: #{$position}";
   } @else {
-    font-family: 'object-fit: #{$fit}';
+    font-family: "object-fit: #{$fit}";
   }
 }
 
@@ -129,7 +130,9 @@
 
   @media (min-width: $min-vw) {
     @each $property in $properties {
-      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+      #{$property}: calc(
+        #{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}
+      );
     }
   }
 
@@ -145,30 +148,36 @@
 }
 
 // Underline text
-@mixin smart-underline($background: #fff, $text: #000, $selection: $selection, $position: 95%, $width: 1px){
-	color: inherit;
-	text-decoration: none;
-	background:
-		linear-gradient($background, $background),
-		linear-gradient($background, $background),
-		linear-gradient($text, $text);
-	background-size: .05em $width, .05em $width, $width $width;
-	background-repeat: no-repeat, no-repeat, repeat-x;
-	text-shadow: 0.03em 0 $background, -0.03em 0 $background, 0 0.03em $background, 0 -0.03em $background, 0.06em 0 $background, -0.06em 0 $background, 0.09em 0 $background, -0.09em 0 $background, 0.12em 0 $background, -0.12em 0 $background, 0.15em 0 $background, -0.15em 0 $background;
-	background-position: 0 $position, 100% $position;
+@mixin smart-underline($background: #fff, $text: #000, $selection: $selection, $position: 95%, $width: 1px) {
+  color: inherit;
+  text-decoration: none;
+  background: linear-gradient($background, $background), linear-gradient($background, $background),
+    linear-gradient($text, $text);
+  background-size: 0.05em $width, 0.05em $width, $width $width;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  text-shadow: 0.03em 0 $background, -0.03em 0 $background, 0 0.03em $background, 0 -0.03em $background,
+    0.06em 0 $background, -0.06em 0 $background, 0.09em 0 $background, -0.09em 0 $background, 0.12em 0 $background,
+    -0.12em 0 $background, 0.15em 0 $background, -0.15em 0 $background;
+  background-position: 0 $position, 100% $position;
 
-	&::selection {
-		text-shadow: 0.03em 0 $selection, -0.03em 0 $selection, 0 0.03em $selection, 0 -0.03em $selection, 0.06em 0 $selection, -0.06em 0 $selection, 0.09em 0 $selection, -0.09em 0 $selection, 0.12em 0 $selection, -0.12em 0 $selection, 0.15em 0 $selection, -0.15em 0 $selection;
-		background: $selection;
-	}
+  &::selection {
+    text-shadow: 0.03em 0 $selection, -0.03em 0 $selection, 0 0.03em $selection, 0 -0.03em $selection,
+      0.06em 0 $selection, -0.06em 0 $selection, 0.09em 0 $selection, -0.09em 0 $selection, 0.12em 0 $selection,
+      -0.12em 0 $selection, 0.15em 0 $selection, -0.15em 0 $selection;
+    background: $selection;
+  }
 
-	&:before, &:after, *, *:before, *:after {
-		text-shadow: none;
-	}
+  &:before,
+  &:after,
+  *,
+  *:before,
+  *:after {
+    text-shadow: none;
+  }
 
-	&:visited{
-		color: inherit;
-	}
+  &:visited {
+    color: inherit;
+  }
 }
 
 // Retina
@@ -198,18 +207,18 @@
 
   width: 0;
   height: 0;
-  content: '';
+  content: "";
   z-index: 2;
   border-#{opposite-position($direction)}: ($size * 1.5) solid $color;
 
   $perpendicular-borders: $size solid transparent;
 
   @if $direction == top or $direction == bottom {
-    border-left:   $perpendicular-borders;
-    border-right:  $perpendicular-borders;
+    border-left: $perpendicular-borders;
+    border-right: $perpendicular-borders;
   } @else if $direction == right or $direction == left {
     border-bottom: $perpendicular-borders;
-    border-top:    $perpendicular-borders;
+    border-top: $perpendicular-borders;
   }
 }
 

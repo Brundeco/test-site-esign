@@ -1,46 +1,46 @@
-if (typeof(CKEDITOR) !== 'undefined') {
-  CKEDITOR.stylesSet.add( 'my_styles', [
+if (typeof CKEDITOR !== 'undefined') {
+  CKEDITOR.stylesSet.add('my_styles', [
     {
       name: 'Image left',
       element: 'img',
       attributes: {
-        'class': 'left'
-      }
+        class: 'left',
+      },
     },
     {
       name: 'Image right',
       element: 'img',
       attributes: {
-        'class': 'right'
-      }
+        class: 'right',
+      },
     },
     {
       name: 'Align left',
       element: ['div', 'p'],
       attributes: {
-        'class': 'align-left'
-      }
+        class: 'align-left',
+      },
     },
     {
       name: 'Align right',
       element: ['div', 'p'],
       attributes: {
-        'class': 'align-right'
-      }
+        class: 'align-right',
+      },
     },
     {
       name: 'Align center',
       element: ['div', 'p'],
       attributes: {
-        'class': 'align-center'
-      }
+        class: 'align-center',
+      },
     },
     {
       name: 'Clearfix',
       element: ['div', 'p', 'ul'],
       attributes: {
-        'class': 'clearfix'
-      }
-    }
+        class: 'clearfix',
+      },
+    },
   ]);
 }

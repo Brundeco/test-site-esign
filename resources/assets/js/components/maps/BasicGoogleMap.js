@@ -7,7 +7,8 @@ const defaultMapData = {
   title: 'Esign',
   lat: 51.0325538,
   long: 3.7333816,
-  externUrl: 'https://www.google.be/maps/place/Esign+-+Web+%26+Graphics/@51.0325538,3.7333816,19z/data=!3m1!4b1!4m5!3m4!1s0x47c373970c763623:0xde317546f86febc9!8m2!3d51.0325538!4d3.7339288',
+  externUrl:
+    'https://www.google.be/maps/place/Esign+-+Web+%26+Graphics/@51.0325538,3.7333816,19z/data=!3m1!4b1!4m5!3m4!1s0x47c373970c763623:0xde317546f86febc9!8m2!3d51.0325538!4d3.7339288',
 };
 
 export default class BasicGoogleMap {
@@ -30,10 +31,9 @@ export default class BasicGoogleMap {
     const zoom = 15;
     const disable = true;
     const scroll = false;
-    const styledMap = new this.googleMaps.StyledMapType(
-      googleMapsStyles,
-      { name: 'Styled Map' },
-    );
+    const styledMap = new this.googleMaps.StyledMapType(googleMapsStyles, {
+      name: 'Styled Map',
+    });
     const mapCenter = new this.googleMaps.LatLng(latitude, longitude);
     const mapOptions = {
       zoom,

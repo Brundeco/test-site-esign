@@ -41,7 +41,11 @@ export default class Modal extends EventEmitter {
       this.modalDialog = this.element.querySelector('.modal__dialog');
     }
     // Focusable elements (for TAB key)
-    this.focusableElements = [...this.element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [contenteditable], [tabindex]:not([tabindex^="-"])')];
+    this.focusableElements = [
+      ...this.element.querySelectorAll(
+        'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [contenteditable], [tabindex]:not([tabindex^="-"])',
+      ),
+    ];
     this.closeTriggers = [...this.element.querySelectorAll('.js-modal-close')];
   }
 
@@ -182,11 +186,13 @@ export default class Modal extends EventEmitter {
   }
 
   onKeyDown(e) {
-    if (e.keyCode === 27) { // ESC
+    if (e.keyCode === 27) {
+      // ESC
       this.hide();
     }
 
-    if (e.keyCode === 9) { // TAB
+    if (e.keyCode === 9) {
+      // TAB
       const focusedIndex = this.focusableElements.indexOf(document.activeElement);
       if (e.shiftKey && (focusedIndex === 0 || focusedIndex === -1)) {
         this.focusableElements[this.focusableElements.length - 1].focus();
@@ -200,24 +206,30 @@ export default class Modal extends EventEmitter {
 
   addEventListeners() {
     // Close modal
-    const onModalVaMClick = (e) => { this.onModalVaMClick(e); };
+    const onModalVaMClick = e => {
+      this.onModalVaMClick(e);
+    };
     this.element.addEventListener('click', onModalVaMClick);
     this.eventListeners.push({ ctx: this.modalDialog, type: 'click', fn: onModalVaMClick });
 
-    const onCloseTriggerClick = () => { this.hide(); };
-    this.closeTriggers.forEach((closeTrigger) => {
+    const onCloseTriggerClick = () => {
+      this.hide();
+    };
+    this.closeTriggers.forEach(closeTrigger => {
       closeTrigger.addEventListener('click', onCloseTriggerClick);
       this.eventListeners.push({ ctx: closeTrigger, type: 'click', fn: onCloseTriggerClick });
     });
 
     // Keydown
-    const onDocumentKeyDown = (e) => { this.onKeyDown(e); };
+    const onDocumentKeyDown = e => {
+      this.onKeyDown(e);
+    };
     document.addEventListener('keydown', onDocumentKeyDown);
     this.eventListeners.push({ ctx: document, type: 'keydown', fn: onDocumentKeyDown });
   }
 
   removeEventListeners() {
-    this.eventListeners.forEach((listener) => {
+    this.eventListeners.forEach(listener => {
       listener.ctx.removeEventListener(listener.type, listener.fn);
     });
   }

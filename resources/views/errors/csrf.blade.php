@@ -1,5 +1,6 @@
+@extends('layouts.app')
+
 @php $title = 'Verzoek verlopen'; @endphp
-@extends('layouts/app')
 
 @section('content')
   <div class="container">

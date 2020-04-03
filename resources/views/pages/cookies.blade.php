@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 @php
   $title = 'Cookieverklaring';
 
@@ -8,7 +10,6 @@
   $urlPrivacy = 'privacy.html';
   $email = 'hello@esign.eu';
 @endphp
-@extends('layouts/app')
 
 @section('content')
   <div class="container">

@@ -6,7 +6,7 @@
 @endphp
 <!doctype html>
 <html class="no-js" lang="nl" data-page="{{ $dataPage }}">
-@include('layouts/_partials/head')
+@include('layouts._partials.head')
 
 <body class="{{ $bodyClass }}">
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -14,7 +14,7 @@
   <div class="page-wrap">
 
     @section('header')
-      @include('_components/base/header')
+      @include('_components.base.header')
     @show
 
     <main id="main" class="main main--fixed-navigation">
@@ -24,7 +24,7 @@
     </main>
 
     @section('footer')
-      @include('_components/base/footer')
+      @include('_components.base.footer')
     @show
 
     <div class="container">
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    @include('_components/nav/modal')
+    @include('_components.nav.modal')
   </div>
 
 
@@ -54,7 +54,7 @@
         <use xlink:href="#icon-"/>
       </svg>
     --}}
-    @include('layouts/_partials/svg_sprite')
+    @include('layouts._partials.svg_sprite')
   </div>
 
   @if ($dataPage == 'contact')

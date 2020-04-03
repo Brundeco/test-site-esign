@@ -1,3 +1,4 @@
+@extends('layouts.app')
 
 @php
   $title = 'Privacyverklaring';
@@ -49,7 +50,6 @@
     'Marketing doeleinden',
   ];
 @endphp
-@extends('layouts/app')
 
 @section('content')
   <div class="container">

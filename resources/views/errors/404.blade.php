@@ -1,5 +1,6 @@
+@extends('layouts.app')
+
 @php $title = '404'; @endphp
-@extends('layouts/app')
 
 @section('content')
   <div class="container">

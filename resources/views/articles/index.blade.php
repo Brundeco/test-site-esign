@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 
 @php
   $title = 'Nieuws';
@@ -12,7 +12,7 @@
 
   <ul class="articles-list">
     @for ($i = 0; $i < 3; $i++)
-      @include('_components/articles/tile')
+      @include('_components.articles.tile')
     @endfor
   </ul>
 

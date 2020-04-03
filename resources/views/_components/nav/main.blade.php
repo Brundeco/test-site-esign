@@ -1,3 +1,4 @@
+@php $menuItem = $menuItem ?? null; @endphp
 <ul class="{{ $nav }}__list">
   <li{!! $menuItem == 'home' ? ' class=active' : '' !!}>
     <a href="index.html" class="{{ $nav }}__link">Home</a>

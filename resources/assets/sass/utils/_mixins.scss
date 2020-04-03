@@ -72,12 +72,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Font size
-@mixin fs($size) {
-  font-size: 0px + $size;
-  font-size: 0rem + $size / $docFontSize;
-}
-
 // Line height
 @mixin lh($lh) {
   line-height: 0px + $lh;
@@ -117,7 +111,7 @@
 //  `strip-unit()` function by Hugo Giraudel
 //
 //  Usage:
-//  @include fluid-type(font-size, $mediumSize, $largerSize, 18px, 45px);
+//  @include fluid-type(font-size, $mediumSize, $largerSize, rem(18px), rem(45px));
 //  @include fluid-type(padding-bottom padding-top, $mediumSize, $largerSize, 2em, 4em);
 //
 // =========================================================================

@@ -10,6 +10,7 @@ export default class Modal extends EventEmitter {
     this.modalDialog = null;
     this.modalDocument = null;
     this.closeTriggers = null;
+    this.accessibilityWrap = element.dataset.accessibilityWrap !== 'false';
     this.isAlert = element.dataset.alert === 'true';
     this.title = element.dataset.title;
     this.showHash = element.dataset.hideHash !== 'true';
@@ -32,7 +33,13 @@ export default class Modal extends EventEmitter {
 
   init() {
     // DOM Setup
-    this.addA11Y();
+    if (this.accessibilityWrap) {
+      this.addA11Y();
+    } else {
+      this.modalVaWrap = this.element.querySelector('.modal__va-wrap');
+      this.modalVaM = this.element.querySelector('.modal__va-m');
+      this.modalDialog = this.element.querySelector('.modal__dialog');
+    }
     // Focusable elements (for TAB key)
     this.focusableElements = [
       ...this.element.querySelectorAll(
@@ -121,6 +128,10 @@ export default class Modal extends EventEmitter {
     // Set focus
     setTimeout(() => {
       this.modalDialog.focus({ preventScroll: true });
+      const autofocus = this.modalDialog.querySelector('[autofocus]');
+      if (autofocus) {
+        this.modalDialog.querySelector('[autofocus]').focus({ preventScroll: true });
+      }
     }, 50);
   }
 

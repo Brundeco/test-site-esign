@@ -344,10 +344,7 @@ select {
 
   .button {
     margin-bottom: $gutter;
-
-    + .button {
-      margin-left: $gutter;
-    }
+    margin-right: $gutter;
   }
 }
 

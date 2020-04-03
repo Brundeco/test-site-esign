@@ -96,15 +96,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 h1, .h1 {
-  @include fluid-type(font-size, $mediumSize, $largerSize, rem(28px), rem(40px));
+  @include fluid-type(font-size, rem($mediumSize), rem($largerSize), rem(28px), rem(40px));
 }
 
 h2, .h2 {
-  @include fluid-type(font-size, $mediumSize, $largerSize, rem(20px), rem(28px));
+  @include fluid-type(font-size, rem($mediumSize), rem($largerSize), rem(20px), rem(28px));
 }
 
 h3, .h3 {
-  @include fluid-type(font-size, $mediumSize, $largeSize, rem(16px), rem(22px));
+  @include fluid-type(font-size, rem($mediumSize), rem($largeSize), rem(16px), rem(22px));
 }
 
 h4, .h4 {

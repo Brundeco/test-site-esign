@@ -354,6 +354,6 @@ if (isDev) {
     new CleanWebpackPlugin([
       path.join(dist.root, dist.assets),
     ]),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
   );
 }

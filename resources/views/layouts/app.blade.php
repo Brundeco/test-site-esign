@@ -54,7 +54,7 @@
         <use xlink:href="#icon-"/>
       </svg>
     --}}
-    @include('layouts/_partials/svg-sprite')
+    @include('layouts/_partials/svg_sprite')
   </div>
 
   @if ($dataPage == 'contact')

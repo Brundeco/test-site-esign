@@ -5,7 +5,7 @@
   width: 100%;
   margin-bottom: $gutter;
   padding: 0 $gutter;
-  z-index: 99999;
+  z-index: layer('cookie');
   display: inline-block;
 
   .button {

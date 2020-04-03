@@ -223,7 +223,7 @@ input[type="search"] {
     left: 1px;
     width: 1px;
     height: 1px;
-    z-index: -1;
+    z-index: layer('cellar');
     outline: 0;
 
     &:focus + label {
@@ -320,7 +320,7 @@ input[type="search"] {
   .button {
     margin-bottom: $gutter;
 	margin-right: $gutter;
-	
+
 	&:last-of-type {
 		margin-right: 0;
 	}

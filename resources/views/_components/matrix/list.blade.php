@@ -11,7 +11,7 @@
     @include('_components.matrix.types.image', ['classes' => 'matrix__block--pop-out matrix__block--right'])
     @include('_components.matrix.types.text')
     @include('_components.matrix.types.text')
-    @include('_components.matrix.types.buttons')
+    @include('_components.matrix.types.button')
     @include('_components.matrix.types.image', ['classes' => 'matrix__block--pop-out'])
     @include('_components.matrix.types.text')
     @include('_components.matrix.types.section')

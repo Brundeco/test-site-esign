@@ -1,7 +1,7 @@
 {{-- Some randomization to get some different output --}}
 {{-- Usually supported markup tags: p, ul, ol, li, h2, h3, strong, em, a[href,target] --}}
-@component('_components.matrix.base')
-  <div class="container container--small rte">
+@component('_components.matrix.base', ['type' => 'text'])
+  <div class="rte">
     {{-- 50% channce of showing this paragraph --}}
     @if (rand(0, 1))
       <p>CodeIgniter website sit magna Laravel SEO lorem. <strong>Dolore</strong> eiusmod adipiscing JavaScript consectetur eiusmod sed Laravel do. Ipsum ECMA adipiscing CSS3 online marketing consectetur do et HTML5.</p>

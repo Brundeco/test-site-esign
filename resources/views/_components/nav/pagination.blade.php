@@ -1,9 +1,25 @@
-<div class="pagination">
-  <p>
-    <span class="prev arrow"><a href="articles.html" class="pagination-pager">&laquo;</a></span>
-    <a href="articles.html" class="pagination-pager">1</a>
-    <span class="pagination-pager active">2</span>
-    <a href="articles.html" class="pagination-pager">3</a>
-    <span class="next arrow"><a href="articles.html" class="pagination-pager">&raquo;</a></span>
-  </p>
-</div>
+<nav>
+  <ul class="pagination">
+    {{-- Previous Page Link --}}
+    <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+      <span class="page-link" aria-hidden="true">&lsaquo;</span>
+    </li>
+
+    {{-- Pagination Elements --}}
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">1</span>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="articles.html">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="articles.html">3</a>
+    </li>
+
+    {{-- Next Page Link --}}
+    <li class="page-item">
+      <a class="page-link" href="articles.html" rel="next"
+         aria-label="Next &raquo;">&rsaquo;</a>
+    </li>
+  </ul>
+</nav>

@@ -1,4 +1,5 @@
 {{-- Some randomization to get some different output --}}
+{{-- Usually supported markup tags: p, ul, ol, li, h2, h3, strong, em, a[href,target] --}}
 @component('_components.matrix.base')
   <div class="container container--small rte">
     {{-- 50% channce of showing this paragraph --}}

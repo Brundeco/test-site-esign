@@ -2,6 +2,9 @@
 
 @php
   $title = 'Privacyverklaring';
+  $breadcrumbs = [
+    ['label' => $title, 'url' => '#'],
+  ];
 
   // Privacy policy template variables
   $displayName = 'Esign';
@@ -53,7 +56,10 @@
 
 @section('content')
   <div class="container">
-    <h1>Privacyverklaring</h1>
+
+    @include('_components.base.breadcrumbs')
+
+    <h1>{{ $title }}</h1>
 
     <h2>Waarom deze privacyverklaring</h2>
 

@@ -4,14 +4,19 @@
   $title = 'Contact';
   $menuItem = 'contact';
   $dataPage = 'contact';
+  $breadcrumbs = [
+      ['label' => $title, 'url' => '#'],
+  ];
 @endphp
 
 @section('content')
 <div class="container">
 
+  @include('_components.base.breadcrumbs')
+
   <div id="map" class="map"></div>
 
-  <h1>Contact</h1>
+  <h1>{{ $title }}</h1>
 
   <div class="grid">
     <div class="grid__item medium--one-half">

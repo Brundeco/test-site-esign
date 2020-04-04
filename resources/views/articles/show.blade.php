@@ -3,10 +3,16 @@
 @php
   $title = 'Nieuws detail';
   $menuItem = 'news';
+  $breadcrumbs = [
+      ['label' => 'Nieuws', 'url' => 'articles.html'],
+      ['label' => 'Lorem ipsum', 'url' => '#'],
+  ];
 @endphp
 
 @section('content')
 <div class="container">
+
+  @include('_components.base.breadcrumbs')
 
   <article class="article-detail">
     <header class="article-detail__header">

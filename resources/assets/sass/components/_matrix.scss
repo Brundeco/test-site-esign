@@ -7,7 +7,6 @@
 }
 
 .matrix__block {
-  margin-bottom: $gutter * 2;
 
   hr {
     margin: 20px 0;
@@ -16,12 +15,23 @@
   &:last-of-type {
     margin-bottom: 0;
   }
+}
+
+.matrix__block--quote, .matrix__block--image, .matrix__block--buttons {
+  margin-top: $gutter * 2;
+  margin-bottom: $gutter * 2;
 
   @media #{$medium} {
+    margin-top: $gutter * 3;
     margin-bottom: $gutter * 3;
   }
 }
 
+.matrix__block--quote {
+  @media #{$medium} {
+    padding-left: 30px;
+  }
+}
 
 // Image block
 .matrix__block--image {
@@ -29,14 +39,14 @@
 }
 
 .matrix__block--pop-out {
-  img {
-    max-width: calc(100% + #{ $gutter * 2});
+  figure {
+    width: calc(100% + #{ $gutter * 2});
     margin-left: -$gutter;
   }
 
   @media #{$medium} {
-    img {
-      max-width: calc(100% + #{ $gutter * 4});
+    figure {
+      width: calc(100% + #{ $gutter * 4});
       margin-left: -$gutter * 2;
     }
   }
@@ -52,6 +62,7 @@
   }
 
   @media #{$medium} {
+    margin-top: 20px;
     margin-bottom: 20px;
   }
 }
@@ -63,8 +74,8 @@
     margin-right: $gutter * 2;
 
     &.matrix__block--pop-out {
-      img {
-        max-width: calc(100% + #{ $gutter * 2});
+      figure {
+        width: calc(100% + #{ $gutter * 2});
       }
     }
   }
@@ -77,14 +88,13 @@
     margin-left: $gutter * 2;
 
     &.matrix__block--pop-out {
-      img {
-        max-width: calc(100% + #{ $gutter * 2});
+      figure {
+        width: calc(100% + #{ $gutter * 2});
         margin-left: 0;
       }
     }
   }
 }
-
 
 // Buttons block
 .matrix__block--buttons {

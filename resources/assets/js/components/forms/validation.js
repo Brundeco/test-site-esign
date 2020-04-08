@@ -2,10 +2,10 @@ import hyperform from 'hyperform';
 
 import { setHyperformLang } from './validationTranslations';
 
-export default function () {
+export default function() {
   setHyperformLang();
 
-  [...document.querySelectorAll('form.validate')].forEach((form) => {
+  [...document.querySelectorAll('form.validate')].forEach(form => {
     hyperform(form, {
       classes: {
         warning: 'input-group__error',

@@ -13,7 +13,7 @@ export default class ModalManager {
   }
 
   init() {
-    [...document.querySelectorAll(this.defaultModalsQuery)].forEach((el) => {
+    [...document.querySelectorAll(this.defaultModalsQuery)].forEach(el => {
       this.createModal(el);
     });
 
@@ -73,7 +73,7 @@ export default class ModalManager {
     if (!modal.backgroundScroll) {
       enableBodyScroll(modal.element, { reserveScrollBarGap: true });
       setTimeout(() => {
-        [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
+        [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach(el => {
           el.style.right = ''; // eslint-disable-line
         });
       });
@@ -86,13 +86,13 @@ export default class ModalManager {
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       disableBodyScroll(modal.element, { reserveScrollBarGap: true });
       setTimeout(() => {
-        [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
+        [...document.querySelectorAll('.js-compensate-for-scrollbar')].forEach(el => {
           const right = parseInt(window.getComputedStyle(el, null).getPropertyValue('right'), 10);
           el.style.right = `${scrollBarWidth + right}px`; // eslint-disable-line
         });
 
         const modalScrollBarWidth = window.innerWidth - modal.element.clientWidth;
-        [...modal.element.querySelectorAll('.js-compensate-for-scrollbar')].forEach((el) => {
+        [...modal.element.querySelectorAll('.js-compensate-for-scrollbar')].forEach(el => {
           el.style.right = ''; // eslint-disable-line
           const right = parseInt(window.getComputedStyle(el, null).getPropertyValue('right'), 10);
           el.style.right = `${modalScrollBarWidth + right}px`; // eslint-disable-line
@@ -112,7 +112,7 @@ export default class ModalManager {
   }
 
   bindModalTriggers() {
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
       if (e.target.classList.contains('js-modal-trigger')) {
         e.preventDefault();
         const modalTrigger = e.target;
@@ -125,7 +125,8 @@ export default class ModalManager {
             modal.show();
           });
           this.activeModal.hide();
-        } else { // Only keep the activeModalTrigger when not in a modal
+        } else {
+          // Only keep the activeModalTrigger when not in a modal
           this.activeModalTrigger = modalTrigger;
           modal.show();
         }
@@ -134,21 +135,28 @@ export default class ModalManager {
   }
 
   bindWindowPopState() {
-    window.addEventListener('popstate', () => {
-      const windowHash = window.location.hash;
-      if (this.activeModal && (windowHash === '' || this.activeModal.element.querySelector(windowHash) == null)) {
-        this.activeModal.hide();
-      }
-      if (windowHash.length > 1) {
-        const el = document.querySelector(window.location.hash);
-        if (el != null && el.classList.contains('modal')) {
-          const modal = this.idModalMap.get(el.getAttribute('id'));
-          if (modal) {
-            modal.show();
+    window.addEventListener(
+      'popstate',
+      () => {
+        const windowHash = window.location.hash;
+        if (
+          this.activeModal &&
+          (windowHash === '' || this.activeModal.element.querySelector(windowHash) == null)
+        ) {
+          this.activeModal.hide();
+        }
+        if (windowHash.length > 1) {
+          const el = document.querySelector(window.location.hash);
+          if (el != null && el.classList.contains('modal')) {
+            const modal = this.idModalMap.get(el.getAttribute('id'));
+            if (modal) {
+              modal.show();
+            }
           }
         }
-      }
-    }, false);
+      },
+      false,
+    );
   }
 
   setHash(hash) {

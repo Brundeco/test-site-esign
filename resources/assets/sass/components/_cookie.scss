@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  @include fs(13);
+  font-size: rem(13px);
 
   p {
     margin-bottom: 0;
@@ -40,7 +40,7 @@
   @media #{$medium} {
     border-radius: 40px;
     flex-wrap: wrap;
-    font-size: 16px;
+    font-size: rem(16px);
     padding: 10px $gutter;
 
     .button {

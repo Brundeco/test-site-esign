@@ -3,13 +3,31 @@ const nativeConsole = (() => {
   let method;
   const noop = () => {};
   const methods = [
-    'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-    'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-    'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-    'timeStamp', 'trace', 'warn',
+    'assert',
+    'clear',
+    'count',
+    'debug',
+    'dir',
+    'dirxml',
+    'error',
+    'exception',
+    'group',
+    'groupCollapsed',
+    'groupEnd',
+    'info',
+    'log',
+    'markTimeline',
+    'profile',
+    'profileEnd',
+    'table',
+    'time',
+    'timeEnd',
+    'timeStamp',
+    'trace',
+    'warn',
   ];
   let { length } = methods;
-  const console = (window.console) ? window.console : {};
+  const console = window.console ? window.console : {};
 
   // eslint-disable-next-line
   while (length--) {

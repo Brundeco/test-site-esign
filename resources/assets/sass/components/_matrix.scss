@@ -7,7 +7,6 @@
 }
 
 .matrix__block {
-
   hr {
     margin: 20px 0;
   }
@@ -17,7 +16,9 @@
   }
 }
 
-.matrix__block--quote, .matrix__block--image, .matrix__block--button {
+.matrix__block--quote,
+.matrix__block--image,
+.matrix__block--button {
   margin-top: $gutter * 2;
   margin-bottom: $gutter * 2;
 
@@ -40,22 +41,23 @@
 
 .matrix__block--pop-out {
   figure {
-    width: calc(100% + #{ $gutter * 2});
+    width: calc(100% + #{$gutter * 2});
     margin-left: -$gutter;
   }
 
   @media #{$medium} {
     figure {
-      width: calc(100% + #{ $gutter * 4});
+      width: calc(100% + #{$gutter * 4});
       margin-left: -$gutter * 2;
     }
   }
 }
 
-.matrix__block--left, .matrix__block--right {
+.matrix__block--left,
+.matrix__block--right {
   & + .matrix__block {
     &:after {
-      content: '';
+      content: "";
       display: table;
       clear: both;
     }
@@ -75,7 +77,7 @@
 
     &.matrix__block--pop-out {
       figure {
-        width: calc(100% + #{ $gutter * 2});
+        width: calc(100% + #{$gutter * 2});
       }
     }
   }
@@ -89,7 +91,7 @@
 
     &.matrix__block--pop-out {
       figure {
-        width: calc(100% + #{ $gutter * 2});
+        width: calc(100% + #{$gutter * 2});
         margin-left: 0;
       }
     }
@@ -108,7 +110,6 @@
     padding: 0 $gutter * 3;
   }
 }
-
 
 // Section block
 .matrix__block--section {

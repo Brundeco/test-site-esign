@@ -24,7 +24,7 @@ const paths = {
 
 paths.resources = `${paths.root}resources/`;
 paths.assets = `${paths.resources}assets/`;
-paths.nunjucks = `${paths.resources}nunjucks/`;
+paths.views = `${paths.resources}views/`;
 paths.sass = `${paths.assets}sass/`;
 paths.js = `${paths.assets}js/`;
 paths.images = `${paths.assets}images/`;
@@ -84,16 +84,25 @@ const filenames = {
 
 const devServerContentBase = path.join(basePath, dist.root);
 
-const nunjucksOptions = JSON.stringify({
-  searchPaths: path.join(basePath, paths.nunjucks),
-});
+const bladeOptions = {
+  viewDir: 'resources/views',
+};
 
-const pages = glob.sync('**/*.nunjucks', {
-  cwd: path.join(basePath, `${paths.nunjucks}/pages/`),
+const pages = glob.sync('**/*.blade.php', {
+  cwd: path.join(basePath, `${paths.views}/`),
   root: '/',
-}).map((page) => new HtmlWebpackPlugin({
-  filename: page.replace('nunjucks', 'html'),
-  template: `${paths.nunjucks}/pages/${page}`,
+})
+.filter(filename => filename.indexOf('_') === -1)
+.filter(filename => filename.indexOf('layouts') !== 0)
+.map((page) => new HtmlWebpackPlugin({
+  filename: (page => {
+    return page.replace('.blade.php', '.html')
+      .replace('/', '-')
+      .replace('-index', '')
+      .replace('pages-', '')
+      .replace('home', 'index');
+  })(page),
+  template: `${paths.views}${page}`,
   excludeChunks: ['sprite'],
   minify: false,
 }));
@@ -107,7 +116,7 @@ const settings = {
   paths,
   dist,
   filenames,
-  nunjucksOptions,
+  bladeOptions,
   pages,
   useFontsDirectory,
   useVideosDirectory,

@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="nl" data-page="contact">
+<html class="no-js" lang="nl" data-page="">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Contact - Template</title>
+  <title>Nieuws - Template</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
   <meta http-equiv="cleartype" content="on">
 
   
-  <meta property="og:title" content="Contact - Template">
+  <meta property="og:title" content="Nieuws - Template">
   <meta property="og:description" content="" >
   <meta property="og:url" content="nl">
   <meta property="og:image" content="../assets/images/share-image.jpg" >
@@ -25,7 +25,7 @@
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact - Template">
+  <meta name="twitter:title" content="Nieuws - Template">
   <meta name="twitter:description" content="">
   <meta name="twitter:image" content="../../assets/images/share-image.jpg">
 
@@ -100,10 +100,10 @@
   <li>
     <a href="components.html" class="main-nav__link">Components</a>
   </li>
-  <li>
+  <li class=active>
     <a href="articles.html" class="main-nav__link">News</a>
   </li>
-  <li class=active>
+  <li>
     <a href="contact.html" class="main-nav__link">Contact</a>
   </li>
 </ul>
@@ -125,99 +125,78 @@
               </a>
           </li>
       <li>
-            Contact
+            Nieuws
           </li>
   </ol>
 
-  <div id="map" class="map"></div>
+  <h1>Nieuws</h1>
 
-  <h1>Contact</h1>
+  
+  <p>No articles have been written yet.</p>
 
-  <div class="grid">
-    <div class="grid__item medium--one-half">
-      <h2>Adres</h2>
+  <ul class="articles-list">
+      <li>
+  <div class="article-teaser">
+    <h2><a href="articles-show.html">Lorem ipsum</a></h2>
+    <p>08/04/2020</p>
+
+    <div class="article-teaser__body">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
     </div>
-    <div class="grid__item medium--one-half">
-      <h2>Contacteer ons</h2>
 
-      <form id="form-contact" action="#" method="post" class="validate">
-  <div class="note note--error">
-  <ul>
-    <li>Naam is verplicht</li>
-    <li>Geldig emailadres is verplicht</li>
+    <p><a href="articles-show.html" class="button-more">Read more</a></p>
+  </div>
+</li>
+      <li>
+  <div class="article-teaser">
+    <h2><a href="articles-show.html">Lorem ipsum</a></h2>
+    <p>08/04/2020</p>
+
+    <div class="article-teaser__body">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+    </div>
+
+    <p><a href="articles-show.html" class="button-more">Read more</a></p>
+  </div>
+</li>
+      <li>
+  <div class="article-teaser">
+    <h2><a href="articles-show.html">Lorem ipsum</a></h2>
+    <p>08/04/2020</p>
+
+    <div class="article-teaser__body">
+      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium&#8230;</p>
+    </div>
+
+    <p><a href="articles-show.html" class="button-more">Read more</a></p>
+  </div>
+</li>
   </ul>
-</div>
-  <div class="note note--success">
-  <p>Het contactformulier werd succesvol verstuurd. Wij proberen dit zo snel mogelijk te behandelen.</p>
-</div>
+  <nav>
+  <ul class="pagination">
+    
+    <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+      <span class="page-link" aria-hidden="true">&lsaquo;</span>
+    </li>
 
-  <div class="input-group">
-    <label for="name">Naam <span class="required">*</span></label>
-    <input type="text" name="name" id="name" required />
-  </div>
-  <div class="input-group">
-    <label for="email">E-mail <span class="required">*</span></label>
-    <input type="email" name="email" id="email" required />
-  </div>
-  <div class="input-group">
-    <label for="phone">Telefoon</label>
-    <input type="tel" name="phone" id="phone"/>
-  </div>
-  <div class="input-group">
-    <label for="select">Onderwerp</label>
-    <select id="select" name="select">
-      <option value="">Selecteer onderwerp</option>
-      <option value="Optie 1">Optie 1</option>
-      <option value="Optie 2">Optie 2</option>
-    </select>
-  </div>
-  <div class="input-group">
-    <label for="message">Bericht <span class="required">*</span></label>
-    <textarea name="message" id="message" required></textarea>
-  </div>
+    
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">1</span>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="articles.html">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="articles.html">3</a>
+    </li>
 
-  <fieldset>
-    <legend>Kies een optie <span class="required">*</span></legend>
-    <div class="input-group input-group--horizontal">
-      <div class="radio">
-        <input type="radio" id="radio-1" name="radio" value="1" required/>
-        <label for="radio-1">Optie 1</label>
-      </div>
-      <div class="radio">
-        <input type="radio" id="radio-2" name="radio" value="1" required/>
-        <label for="radio-2">Optie 2</label>
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Kies een optie</legend>
-    <div class="input-group">
-      <div class="radio">
-        <input type="radio" id="radio-1" name="radio" value="1" required/>
-        <label for="radio-1">Optie 1</label>
-      </div>
-      <div class="radio">
-        <input type="radio" id="radio-2" name="radio" value="1" required/>
-        <label for="radio-2">Optie 2</label>
-      </div>
-    </div>
-  </fieldset>
-
-  <div class="input-group">
-    <div class="checkbox">
-      <input type="checkbox" id="privacy" name="privacy" value="1" required />
-      <label for="privacy">I agree my data will be processed in accordance with the <a href="privacy.html">privacy policy</a>. <span class="required">*</span></label>
-    </div>
-  </div>
-
-  <div class="button-group">
-    <input type="submit" value="Verzenden" class="button"/>
-  </div>
-</form>
-
-    </div>
-  </div>
+    
+    <li class="page-item">
+      <a class="page-link" href="articles.html" rel="next"
+         aria-label="Next &raquo;">&rsaquo;</a>
+    </li>
+  </ul>
+</nav>
 
 </div>
 
@@ -295,10 +274,10 @@
   <li>
     <a href="components.html" class="mobile-nav__link">Components</a>
   </li>
-  <li>
+  <li class=active>
     <a href="articles.html" class="mobile-nav__link">News</a>
   </li>
-  <li class=active>
+  <li>
     <a href="contact.html" class="mobile-nav__link">Contact</a>
   </li>
 </ul>
@@ -348,10 +327,6 @@
     <svg xmlns="http://www.w3.org/2000/svg"><defs><symbol viewBox="0 0 17.06 17.06" id="icon-close"><path d="M17.06 1.06L15.999 0 8.53 7.469 1.061 0 0 1.06l7.469 7.47L0 15.999l1.061 1.061L8.53 9.59l7.469 7.47 1.061-1.061L9.59 8.53l7.47-7.47z"/></symbol><symbol viewBox="289.854 405.702 15.573 30" id="icon-facebook"><path id="icon-facebook_f_1_" d="M299.963 435.702v-13.681h4.591l.688-5.333h-5.279v-3.393c0-1.548.424-2.594 2.647-2.594h2.818v-4.772a37.467 37.467 0 0 0-4.115-.211 6.419 6.419 0 0 0-6.854 7.04v3.922h-4.604v5.333h4.605v13.689h5.503z"/></symbol><symbol viewBox="282.703 406.008 30 30" id="icon-instagram"><g id="icon-instagram_Group_568" transform="translate(-733.338 -3908.721)"><path id="icon-instagram_Path_127" d="M1045.942 4323.541a10.955 10.955 0 0 0-.698-3.642 7.372 7.372 0 0 0-1.726-2.656 7.33 7.33 0 0 0-2.659-1.724 10.942 10.942 0 0 0-3.64-.701c-1.596-.073-2.11-.088-6.176-.088-4.066 0-4.579.016-6.19.088a10.947 10.947 0 0 0-3.64.701c-1 .38-1.905.973-2.653 1.737a7.372 7.372 0 0 0-1.729 2.645 10.947 10.947 0 0 0-.701 3.64c-.073 1.61-.088 2.111-.088 6.19 0 4.079.016 4.58.088 6.186.026 1.243.263 2.472.701 3.635a7.637 7.637 0 0 0 4.382 4.392c1.165.438 2.397.674 3.641.698 1.598.073 2.11.088 6.185.088 4.076 0 4.579-.016 6.185-.088a10.944 10.944 0 0 0 3.641-.698 7.63 7.63 0 0 0 4.388-4.392c.438-1.166.674-2.397.698-3.642.073-1.598.088-2.11.088-6.186s-.025-4.573-.097-6.183zm-2.685 12.25a8.262 8.262 0 0 1-.516 2.787 4.7 4.7 0 0 1-1.118 1.732c-.483.5-1.074.885-1.728 1.123a8.262 8.262 0 0 1-2.787.516c-1.579.073-2.053.088-6.072.088s-4.483-.016-6.072-.088a8.262 8.262 0 0 1-2.787-.516 4.723 4.723 0 0 1-1.726-1.123 4.576 4.576 0 0 1-1.121-1.737 8.266 8.266 0 0 1-.516-2.787c-.073-1.579-.088-2.053-.088-6.072s.016-4.483.088-6.072a8.286 8.286 0 0 1 .516-2.787 4.712 4.712 0 0 1 1.121-1.721 4.567 4.567 0 0 1 1.728-1.121 8.263 8.263 0 0 1 2.787-.517c1.579-.073 2.053-.088 6.072-.088s4.483.016 6.072.088a8.263 8.263 0 0 1 2.787.517c.651.242 1.24.625 1.726 1.121a4.572 4.572 0 0 1 1.123 1.728c.331.893.506 1.835.516 2.787.073 1.579.088 2.053.088 6.072s-.014 4.489-.087 6.072l-.006-.002zm-12.214-13.76a7.695 7.695 0 1 0-.015 15.39 7.695 7.695 0 0 0 .018-15.39h-.003zm0 12.705a5.01 5.01 0 1 1 5.007-5.014v.008a5.011 5.011 0 0 1-5.007 5.007v-.001zm7.985-14.796a1.794 1.794 0 1 0 1.794 1.794 1.792 1.792 0 0 0-1.791-1.794h-.003z"/></g></symbol><symbol viewBox="0 0 20 17.5" id="icon-menu"><path d="M9 8h11v1.5H9zM0 0v1.5h20V0zm4 17.5h16V16H4z"/></symbol><symbol viewBox="279.165 406.023 36.949 30" id="icon-twitter"><path id="icon-twitter_Path_124" d="M290.792 436.023c11.828.077 21.479-9.449 21.557-21.277v-.28c0-.324 0-.65-.016-.974a15.863 15.863 0 0 0 3.782-3.915 15.418 15.418 0 0 1-4.358 1.197 7.57 7.57 0 0 0 3.325-4.196 14.91 14.91 0 0 1-4.817 1.831 7.586 7.586 0 0 0-12.913 6.915 21.497 21.497 0 0 1-15.617-7.919 7.586 7.586 0 0 0 2.349 10.124 7.421 7.421 0 0 1-3.442-.945v.088a7.59 7.59 0 0 0 6.088 7.424 7.472 7.472 0 0 1-3.429.133 7.582 7.582 0 0 0 7.078 5.26 15.213 15.213 0 0 1-9.413 3.251c-.605 0-1.213-.045-1.8-.103a21.772 21.772 0 0 0 11.629 3.375"/></symbol></defs></svg>
   </div>
 
-      <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
-    <script>
-      var markerImg = 'assets/images/marker.d51c4b4d.png';
-    </script>
     
 <script src="assets/js/vendor.a3cf411bde9385fb1cec.js"></script><script src="assets/js/app.be064aeef341e126567e.js"></script></body>
 </html>

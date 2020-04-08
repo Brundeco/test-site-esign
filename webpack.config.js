@@ -34,7 +34,7 @@ const {
   paths,
   dist,
   filenames,
-  nunjucksOptions,
+  bladeOptions,
   pages,
   useFontsDirectory,
   useVideosDirectory,
@@ -298,7 +298,7 @@ module.exports = {
 
 if (isStatic) {
   module.exports.module.rules.push({
-    test: /\.(njk|nunjucks)$/,
+    test: /\.blade\.php$/,
     use: [
       {
         loader: 'html-srcsets-loader',
@@ -315,7 +315,8 @@ if (isStatic) {
         },
       },
       {
-        loader: `nunjucks-html-loader?${nunjucksOptions}`,
+        loader: 'webpack-blade-native-loader',
+        options: bladeOptions
       },
     ],
   });

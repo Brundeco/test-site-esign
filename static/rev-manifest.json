@@ -1,10 +1,12 @@
 {
-  "app.js": "assets/js/app.e3d483c5cd17c01b2b9f.js",
-  "app.js.map": "assets/js/app.e3d483c5cd17c01b2b9f.js.map",
-  "style.css": "assets/css/style.01cbaf3663eccaf46e41.css",
-  "vendor.js": "assets/js/vendor.50612446be70c72d28b2.js",
-  "vendor.js.map": "assets/js/vendor.50612446be70c72d28b2.js.map",
+  "app.js": "assets/js/app.be064aeef341e126567e.js",
+  "app.js.map": "assets/js/app.be064aeef341e126567e.js.map",
+  "style.css": "assets/css/style.064903630349825550fa.css",
+  "vendor.js": "assets/js/vendor.a3cf411bde9385fb1cec.js",
+  "vendor.js.map": "assets/js/vendor.a3cf411bde9385fb1cec.js.map",
   "assets/svg-sprite/icons.svg": "assets/svg-sprite/icons.svg",
+  "articles-show.html": "articles-show.html",
+  "articles.html": "articles.html",
   "assets/images/chevron-down.svg": "assets/images/chevron-down.1af5a897.svg",
   "assets/images/logo-esign-white.svg": "assets/images/logo-esign-white.106b33c9.svg",
   "assets/images/logo-esign.svg": "assets/images/logo-esign.79fa4889.svg",
@@ -19,8 +21,12 @@
   "browserconfig.xml": "browserconfig.xml",
   "components.html": "components.html",
   "contact.html": "contact.html",
+  "cookies.html": "cookies.html",
+  "errors-404.html": "errors-404.html",
+  "errors-500.html": "errors-500.html",
+  "errors-503.html": "errors-503.html",
+  "errors-csrf.html": "errors-csrf.html",
   "index.html": "index.html",
   "manifest.json": "manifest.json",
-  "news-detail.html": "news-detail.html",
-  "news.html": "news.html"
+  "privacy.html": "privacy.html"
 }

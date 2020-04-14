@@ -92,7 +92,7 @@ const pages = glob.sync('**/*.blade.php', {
   cwd: path.join(basePath, `${paths.views}/`),
   root: '/',
 })
-.filter(filename => filename.indexOf('_') === -1)
+.filter(filename => filename.indexOf('components') !== 0)
 .filter(filename => filename.indexOf('layouts') !== 0)
 .map((page) => new HtmlWebpackPlugin({
   filename: (page => {

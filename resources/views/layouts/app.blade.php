@@ -14,7 +14,7 @@
   <div class="page-wrap">
 
     @section('header')
-      @include('_components.base.header')
+      @include('components.base.header')
     @show
 
     <main id="main" class="main main--fixed-navigation">
@@ -24,11 +24,11 @@
     </main>
 
     @section('footer')
-      @include('_components.base.footer')
+      @include('components.base.footer')
     @show
 
-    @include('_components.base.cookie_notification')
-    @include('_components.nav.modal')
+    @include('components.base.cookie_notification')
+    @include('components.nav.modal')
   </div>
 
 

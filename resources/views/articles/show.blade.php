@@ -13,7 +13,7 @@
 <article>
   <div class="container container--small">
 
-    @include('_components.base.breadcrumbs')
+    @include('components.base.breadcrumbs')
 
     <div class="article-detail">
       <header class="article-detail__header">
@@ -38,7 +38,7 @@
   </div>
 
   {{-- Block based blog --}}
-  @include('_components.matrix.list')
+  @include('components.matrix.list')
 </article>
 
 @endsection

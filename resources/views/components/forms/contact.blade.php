@@ -1,6 +1,6 @@
 <form id="form-contact" action="#" method="post" class="validate">
-  @include('_components.forms.error')
-  @include('_components.forms.success')
+  @include('components.forms.error')
+  @include('components.forms.success')
 
   <div class="input-group">
     <label for="name">Naam <span class="required">*</span></label>

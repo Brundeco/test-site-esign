@@ -1,6 +1,6 @@
 {{-- Some randomization to get some different output --}}
 {{-- Usually supported markup: p, ul, ol, li, h2, h3, strong, em, a[href,target] --}}
-@component('_components.matrix.base', ['type' => 'text'])
+@component('components.matrix.base', ['type' => 'text'])
   <div class="rte">
     {{-- 50% channce of showing this paragraph --}}
     @if (rand(0, 1))

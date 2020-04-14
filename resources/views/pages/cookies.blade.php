@@ -17,7 +17,7 @@
 @section('content')
   <div class="container">
 
-    @include('_components.base.breadcrumbs')
+    @include('components.base.breadcrumbs')
 
     <h1>{{ $title }}</h1>
 

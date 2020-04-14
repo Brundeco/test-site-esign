@@ -13,7 +13,7 @@
       </button>
 
       <nav class="main-nav">
-        @include('_components.nav.main', ['nav' => 'main-nav'])
+        @include('components.nav.main', ['nav' => 'main-nav'])
       </nav>
     </div>
   </div>

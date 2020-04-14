@@ -12,7 +12,7 @@
 @section('content')
 <div class="container">
 
-  @include('_components.base.breadcrumbs')
+  @include('components.base.breadcrumbs')
 
   <div id="map" class="map"></div>
 
@@ -25,7 +25,7 @@
     <div class="grid__item medium--one-half">
       <h2>Contacteer ons</h2>
 
-      @include('_components.forms.contact')
+      @include('components.forms.contact')
 
     </div>
   </div>

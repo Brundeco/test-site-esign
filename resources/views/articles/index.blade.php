@@ -11,15 +11,15 @@
 @section('content')
 <div class="container">
 
-  @include('_components.base.breadcrumbs')
+  @include('components.base.breadcrumbs')
 
   <h1>{{ $title }}</h1>
 
   {{-- No content fallback --}}
   <p>No articles have been written yet.</p>
 
-  @include('_components.articles.list')
-  @include('_components.nav.pagination')
+  @include('components.articles.list')
+  @include('components.nav.pagination')
 
 </div>
 @endsection

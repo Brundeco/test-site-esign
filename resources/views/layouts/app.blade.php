@@ -27,7 +27,7 @@
       @include('components.base.footer')
     @show
 
-    @include('components.base.cookie_notification')
+    @include('components.base.cookie-notification')
     @include('components.nav.modal')
   </div>
 
@@ -39,7 +39,7 @@
         <use xlink:href="#icon-"/>
       </svg>
     --}}
-    @include('layouts._partials.svg_sprite')
+    @include('layouts._partials.svg-sprite')
   </div>
 
   @if ($dataPage == 'contact')

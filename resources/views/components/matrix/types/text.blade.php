@@ -16,7 +16,7 @@
       <p>ECMAScript Laravel webshop print Esign 😏 maintenance web design banners, business plan incididunt attractive website webshop. Lorem Esign JavaScript elit consectetur elit amet. HTML5 Ghent website et sed sed Ghent consectetur amet. Aliqua development CodeIgniter online marketing tempor jQuery JavaScript labore attractive website. Sit ECMAScript ECMAScript, webshop lorem sit sed et consectetur Stropkaai SEO do SEA et.</p>
     @endif
 
-    {{-- 100% channce of showing this paragraph --}}
+    {{-- 100% chance of showing this paragraph --}}
     <p>Labore JavaScript elit incididunt jQuery Esign jQuery PHP7 magna. Eiusmod SEA SEO adwords website, dolore consectetur sit adwords lorem attractive website. Elit ut Ghent Stropkaai 🤷🏼‍♂️ development et graphic design. Magna dolore sed aliqua et consectetur sed. <em>Adwords sit ecommerce dolor sed PHP7</em> business plan website SEA.</p>
 
     {{-- 25% chance of showing a list --}}

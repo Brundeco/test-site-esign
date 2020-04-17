@@ -1,10 +1,9 @@
 {
   "app.js": "assets/js/app.712442631520488ece2c.js",
   "app.js.map": "assets/js/app.712442631520488ece2c.js.map",
-  "style.css": "assets/css/style.a0e32ecae5a85d8c2db5.css",
-  "vendor.js": "assets/js/vendor.782d47b2c6e4c73ac762.js",
-  "vendor.js.map": "assets/js/vendor.782d47b2c6e4c73ac762.js.map",
-  "assets/svg-sprite/icons.svg": "assets/svg-sprite/icons.svg",
+  "style.css": "assets/css/style.a36a7a20d72d37a2874f.css",
+  "vendor.js": "assets/js/vendor.142fb37ca0e67b3fb438.js",
+  "vendor.js.map": "assets/js/vendor.142fb37ca0e67b3fb438.js.map",
   "articles-show.html": "articles-show.html",
   "articles.html": "articles.html",
   "assets/images/chevron-down.svg": "assets/images/chevron-down.1af5a897.svg",
@@ -18,15 +17,14 @@
   "assets/images/svg-sprite/instagram.svg": "assets/images/svg-sprite/instagram.9a1838df.svg",
   "assets/images/svg-sprite/menu.svg": "assets/images/svg-sprite/menu.267d2d88.svg",
   "assets/images/svg-sprite/twitter.svg": "assets/images/svg-sprite/twitter.4ccae847.svg",
+  "assets/svg-sprite/icons.svg": "assets/svg-sprite/icons.svg",
   "browserconfig.xml": "browserconfig.xml",
   "components.html": "components.html",
   "contact.html": "contact.html",
-  "cookies.html": "cookies.html",
   "errors-404.html": "errors-404.html",
   "errors-500.html": "errors-500.html",
   "errors-503.html": "errors-503.html",
   "errors-csrf.html": "errors-csrf.html",
   "index.html": "index.html",
-  "manifest.json": "manifest.json",
-  "privacy.html": "privacy.html"
+  "manifest.json": "manifest.json"
 }

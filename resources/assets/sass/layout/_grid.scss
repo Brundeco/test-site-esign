@@ -48,6 +48,38 @@ ul.grid-uniform {
   flex-direction: row-reverse;
 }
 
+.grid--justify-start {
+  justify-content: flex-start;
+}
+
+.grid--justify-center {
+  justify-content: center;
+}
+
+.grid--justify-end {
+  justify-content: flex-end;
+}
+
+.grid--justify-between {
+  justify-content: space-between;
+}
+
+.grid--justify-around {
+  justify-content: space-around;
+}
+
+.grid--align-start {
+  align-items: flex-start;
+}
+
+.grid--align-center {
+  align-items: center;
+}
+
+.grid--align-end {
+  align-items: flex-end;
+}
+
 // Grid gutter
 .grid--full {
   margin-left: 0;

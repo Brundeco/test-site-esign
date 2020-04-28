@@ -147,72 +147,29 @@
 
   <hr/>
 
-  <h3>Grid gutter 0</h3>
 
-  <div class="grid grid--gutter-0">
-    <div class="grid__item medium--one-half">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+  @foreach (['0', 'half', '2'] as $gridGutter)
+    <h3>Grid Gutter {{ $gridGutter }}</h3>
+    <div class="grid grid--gutter-{{ $gridGutter }}">
+      <div class="grid__item medium--one-half">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+      </div>
+      <div class="grid__item medium--one-half">
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+      <div class="grid__item medium--one-half">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+      </div>
+      <div class="grid__item medium--one-half">
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
     </div>
-    <div class="grid__item medium--one-half">
-      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-        at ex vel, efficitur pulvinar nibh.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-        at ex vel, efficitur pulvinar nibh.</p>
-    </div>
-  </div>
-
-  <hr/>
-
-  <h3>Grid gutter half</h3>
-
-  <div class="grid grid--gutter-half">
-    <div class="grid__item medium--one-half">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-        at ex vel, efficitur pulvinar nibh.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-        at ex vel, efficitur pulvinar nibh.</p>
-    </div>
-  </div>
-
-  <hr/>
-
-  <h3>Grid gutter 2</h3>
-
-  <div class="grid grid--gutter-2">
-    <div class="grid__item medium--one-half">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-        at ex vel, efficitur pulvinar nibh.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-    </div>
-    <div class="grid__item medium--one-half">
-      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-        at ex vel, efficitur pulvinar nibh.</p>
-    </div>
-  </div>
+    <hr>
+  @endforeach
 
   <hr />
   <h2>Device helpers</h2>

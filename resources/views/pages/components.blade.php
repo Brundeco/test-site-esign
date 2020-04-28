@@ -21,6 +21,49 @@
 
   <h1>{{ $title }}</h1>
 
+  <h2>Visual</h2>
+
+  <div class="grid">
+    <div class="grid__item one-whole">
+      <div class="visual visual--original">
+        <picture>
+          <source srcset="https://via.placeholder.com/800x400.jpg" type="image/webp">
+          <img src="https://via.placeholder.com/800x600.jpg" alt="">
+        </picture>
+      </div>
+      <p>Ratio: Original</p>
+    </div>
+    <div class="grid__item medium--one-third">
+      <div class="visual">
+        <picture>
+          <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
+          <img src="https://via.placeholder.com/800x600.jpg" alt="">
+        </picture>
+      </div>
+      <p>Ratio: 1:1</p>
+    </div>
+    <div class="grid__item medium--one-third">
+      <div class="visual visual--2x1">
+        <picture>
+          <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
+          <img src="https://via.placeholder.com/800x600.jpg" alt="">
+        </picture>
+      </div>
+      <p>Ratio: 2:1</p>
+    </div>
+    <div class="grid__item medium--one-third">
+      <div class="visual visual--3x4">
+        <picture>
+          <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
+          <img src="https://via.placeholder.com/800x600.jpg" alt="">
+        </picture>
+      </div>
+      <p>Ratio: 3:4</p>
+    </div>
+  </div>
+
+  <hr>
+
   <h2>Grid</h2>
 
   <h3>Halfs</h3>

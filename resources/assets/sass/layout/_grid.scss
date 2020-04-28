@@ -25,14 +25,11 @@
   }
 }
 
-@mixin silent-relative() {
-  position: relative;
-}
-
 // Grid setup
 .grid {
-  @include clearfix;
-  margin: 0 0 0 -#{$gutter};
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 -#{$gutter} -#{$gutter};
 }
 
 ul.grid,
@@ -42,49 +39,76 @@ ul.grid-uniform {
 }
 
 .grid__item {
-  float: left;
   padding-left: $gutter;
   width: 100%;
+  margin-bottom: $gutter;
 }
 
 // Grid reversed
 .grid--rev {
-  @extend .grid;
-  direction: rtl;
-  text-align: left;
+  flex-direction: row-reverse;
+}
 
-  > .grid__item {
-    direction: ltr;
-    text-align: left;
-    float: right;
-  }
+.grid--justify-start {
+  justify-content: flex-start;
+}
+
+.grid--justify-center {
+  justify-content: center;
+}
+
+.grid--justify-end {
+  justify-content: flex-end;
+}
+
+.grid--justify-between {
+  justify-content: space-between;
+}
+
+.grid--justify-around {
+  justify-content: space-around;
+}
+
+.grid--align-start {
+  align-items: flex-start;
+}
+
+.grid--align-center {
+  align-items: center;
+}
+
+.grid--align-end {
+  align-items: flex-end;
 }
 
 // Grid gutter
-.grid--full {
-  @extend .grid;
+.grid--gutter-0 {
   margin-left: 0;
+  margin-bottom: 0;
 
   > .grid__item {
     padding-left: 0;
+    margin-bottom: 0;
   }
 }
 
-.grid--half {
-  @extend .grid;
+.grid--gutter-half {
   margin-left: -$gutter/2;
+  margin-bottom: -$gutter/2;
 
   > .grid__item {
     padding-left: $gutter/2;
+    margin-bottom: $gutter/2;
   }
 }
 
-.grid--x2 {
-  @extend .grid;
+.grid--gutter-2 {
   margin-left: -$gutter * 2;
+  margin-bottom: -$gutter * 2;
 
   > .grid__item {
     padding-left: $gutter * 2;
+    margin-bottom: $gutter * 2;
   }
 }
 
@@ -274,13 +298,6 @@ ul.grid-uniform {
   .#{$namespace}text-center {
     text-align: center !important;
   }
-
-  .#{$namespace}left {
-    float: left !important;
-  }
-  .#{$namespace}right {
-    float: right !important;
-  }
 }
 
 // Regular, non-responsive width classes
@@ -300,208 +317,165 @@ ul.grid-uniform {
   // Whole
   @if $whole == true {
     .push--#{$namespace}one-whole {
-      left: 100%;
-      @include silent-relative();
+      margin-left: 100%;
     }
   }
 
   // Halves
   @if $halves == true {
     .push--#{$namespace}one-half {
-      left: 50%;
-      @include silent-relative();
+      margin-left: 50%;
     }
   }
 
   // Thirds
   @if $thirds == true {
     .push--#{$namespace}one-third {
-      left: 33.333%;
-      @include silent-relative();
+      margin-left: 33.333%;
     }
     .push--#{$namespace}two-thirds {
-      left: 66.666%;
-      @include silent-relative();
+      margin-left: 66.666%;
     }
   }
 
   // Quarters
   @if $quarters == true {
     .push--#{$namespace}one-quarter {
-      left: 25%;
-      @include silent-relative();
+      margin-left: 25%;
     }
     .push--#{$namespace}two-quarters {
-      left: 50%;
-      @include silent-relative();
+      margin-left: 50%;
     }
     .push--#{$namespace}three-quarters {
-      left: 75%;
-      @include silent-relative();
+      margin-left: 75%;
     }
   }
 
   // Fifths
   @if $fifths == true {
     .push--#{$namespace}one-fifth {
-      left: 20%;
-      @include silent-relative();
+      margin-left: 20%;
     }
     .push--#{$namespace}two-fifths {
-      left: 40%;
-      @include silent-relative();
+      margin-left: 40%;
     }
     .push--#{$namespace}three-fifths {
-      left: 60%;
-      @include silent-relative();
+      margin-left: 60%;
     }
     .push--#{$namespace}four-fifths {
-      left: 80%;
-      @include silent-relative();
+      margin-left: 80%;
     }
   }
 
   // Sixths
   @if $sixths == true {
     .push--#{$namespace}one-sixth {
-      left: 16.666%;
-      @include silent-relative();
+      margin-left: 16.666%;
     }
     .push--#{$namespace}two-sixths {
-      left: 33.333%;
-      @include silent-relative();
+      margin-left: 33.333%;
     }
     .push--#{$namespace}three-sixths {
-      left: 50%;
-      @include silent-relative();
+      margin-left: 50%;
     }
     .push--#{$namespace}four-sixths {
-      left: 66.666%;
-      @include silent-relative();
+      margin-left: 66.666%;
     }
     .push--#{$namespace}five-sixths {
-      left: 83.333%;
-      @include silent-relative();
+      margin-left: 83.333%;
     }
   }
 
   // Eighths
   @if $eighths == true {
     .push--#{$namespace}one-eighth {
-      left: 12.5%;
-      @include silent-relative();
+      margin-left: 12.5%;
     }
     .push--#{$namespace}two-eighths {
-      left: 25%;
-      @include silent-relative();
+      margin-left: 25%;
     }
     .push--#{$namespace}three-eighths {
-      left: 37.5%;
-      @include silent-relative();
+      margin-left: 37.5%;
     }
     .push--#{$namespace}four-eighths {
-      left: 50%;
-      @include silent-relative();
+      margin-left: 50%;
     }
     .push--#{$namespace}five-eighths {
-      left: 62.5%;
-      @include silent-relative();
+      margin-left: 62.5%;
     }
     .push--#{$namespace}six-eighths {
-      left: 75%;
-      @include silent-relative();
+      margin-left: 75%;
     }
     .push--#{$namespace}seven-eighths {
-      left: 87.5%;
-      @include silent-relative();
+      margin-left: 87.5%;
     }
   }
 
   // Tenths
   @if $tenths == true {
     .push--#{$namespace}one-tenth {
-      left: 10%;
-      @include silent-relative();
+      margin-left: 10%;
     }
     .push--#{$namespace}two-tenths {
-      left: 20%;
-      @include silent-relative();
+      margin-left: 20%;
     }
     .push--#{$namespace}three-tenths {
-      left: 30%;
-      @include silent-relative();
+      margin-left: 30%;
     }
     .push--#{$namespace}four-tenths {
-      left: 40%;
-      @include silent-relative();
+      margin-left: 40%;
     }
     .push--#{$namespace}five-tenths {
-      left: 50%;
-      @include silent-relative();
+      margin-left: 50%;
     }
     .push--#{$namespace}six-tenths {
-      left: 60%;
-      @include silent-relative();
+      margin-left: 60%;
     }
     .push--#{$namespace}seven-tenths {
-      left: 70%;
-      @include silent-relative();
+      margin-left: 70%;
     }
     .push--#{$namespace}eight-tenths {
-      left: 80%;
-      @include silent-relative();
+      margin-left: 80%;
     }
     .push--#{$namespace}nine-tenths {
-      left: 90%;
-      @include silent-relative();
+      margin-left: 90%;
     }
   }
 
   // Twelfths
   @if $twelfths == true {
     .push--#{$namespace}one-twelfth {
-      left: 8.333%;
-      @include silent-relative();
+      margin-left: 8.333%;
     }
     .push--#{$namespace}two-twelfths {
-      left: 16.666%;
-      @include silent-relative();
+      margin-left: 16.666%;
     }
     .push--#{$namespace}three-twelfths {
-      left: 25%;
-      @include silent-relative();
+      margin-left: 25%;
     }
     .push--#{$namespace}four-twelfths {
-      left: 33.333%;
-      @include silent-relative();
+      margin-left: 33.333%;
     }
     .push--#{$namespace}five-twelfths {
-      left: 41.666%;
-      @include silent-relative();
+      margin-left: 41.666%;
     }
     .push--#{$namespace}six-twelfths {
-      left: 50%;
-      @include silent-relative();
+      margin-left: 50%;
     }
     .push--#{$namespace}seven-twelfths {
-      left: 58.333%;
-      @include silent-relative();
+      margin-left: 58.333%;
     }
     .push--#{$namespace}eight-twelfths {
-      left: 66.666%;
-      @include silent-relative();
+      margin-left: 66.666%;
     }
     .push--#{$namespace}nine-twelfths {
-      left: 75%;
-      @include silent-relative();
+      margin-left: 75%;
     }
     .push--#{$namespace}ten-twelfths {
-      left: 83.333%;
-      @include silent-relative();
+      margin-left: 83.333%;
     }
     .push--#{$namespace}eleven-twelfths {
-      left: 91.666%;
-      @include silent-relative();
+      margin-left: 91.666%;
     }
   }
 }
@@ -525,208 +499,165 @@ ul.grid-uniform {
   // Whole
   @if $whole == true {
     .pull--#{$namespace}one-whole {
-      right: 100%;
-      @include silent-relative();
+      margin-right: 100%;
     }
   }
 
   // Halves
   @if $halves == true {
     .pull--#{$namespace}one-half {
-      right: 50%;
-      @include silent-relative();
+      margin-right: 50%;
     }
   }
 
   // Thirds
   @if $thirds == true {
     .pull--#{$namespace}one-third {
-      right: 33.333%;
-      @include silent-relative();
+      margin-right: 33.333%;
     }
     .pull--#{$namespace}two-thirds {
-      right: 66.666%;
-      @include silent-relative();
+      margin-right: 66.666%;
     }
   }
 
   // Quarters
   @if $quarters == true {
     .pull--#{$namespace}one-quarter {
-      right: 25%;
-      @include silent-relative();
+      margin-right: 25%;
     }
     .pull--#{$namespace}two-quarters {
-      right: 50%;
-      @include silent-relative();
+      margin-right: 50%;
     }
     .pull--#{$namespace}three-quarters {
-      right: 75%;
-      @include silent-relative();
+      margin-right: 75%;
     }
   }
 
   // Fifths
   @if $fifths == true {
     .pull--#{$namespace}one-fifth {
-      right: 20%;
-      @include silent-relative();
+      margin-right: 20%;
     }
     .pull--#{$namespace}two-fifths {
-      right: 40%;
-      @include silent-relative();
+      margin-right: 40%;
     }
     .pull--#{$namespace}three-fifths {
-      right: 60%;
-      @include silent-relative();
+      margin-right: 60%;
     }
     .pull--#{$namespace}four-fifths {
-      right: 80%;
-      @include silent-relative();
+      margin-right: 80%;
     }
   }
 
   // Sixths
   @if $sixths == true {
     .pull--#{$namespace}one-sixth {
-      right: 16.666%;
-      @include silent-relative();
+      margin-right: 16.666%;
     }
     .pull--#{$namespace}two-sixths {
-      right: 33.333%;
-      @include silent-relative();
+      margin-right: 33.333%;
     }
     .pull--#{$namespace}three-sixths {
-      right: 50%;
-      @include silent-relative();
+      margin-right: 50%;
     }
     .pull--#{$namespace}four-sixths {
-      right: 66.666%;
-      @include silent-relative();
+      margin-right: 66.666%;
     }
     .pull--#{$namespace}five-sixths {
-      right: 83.333%;
-      @include silent-relative();
+      margin-right: 83.333%;
     }
   }
 
   // Eighths
   @if $eighths == true {
     .pull--#{$namespace}one-eighth {
-      right: 12.5%;
-      @include silent-relative();
+      margin-right: 12.5%;
     }
     .pull--#{$namespace}two-eighths {
-      right: 25%;
-      @include silent-relative();
+      margin-right: 25%;
     }
     .pull--#{$namespace}three-eighths {
-      right: 37.5%;
-      @include silent-relative();
+      margin-right: 37.5%;
     }
     .pull--#{$namespace}four-eighths {
-      right: 50%;
-      @include silent-relative();
+      margin-right: 50%;
     }
     .pull--#{$namespace}five-eighths {
-      right: 62.5%;
-      @include silent-relative();
+      margin-right: 62.5%;
     }
     .pull--#{$namespace}six-eighths {
-      right: 75%;
-      @include silent-relative();
+      margin-right: 75%;
     }
     .pull--#{$namespace}seven-eighths {
-      right: 87.5%;
-      @include silent-relative();
+      margin-right: 87.5%;
     }
   }
 
   // Tenths
   @if $tenths == true {
     .pull--#{$namespace}one-tenth {
-      right: 10%;
-      @include silent-relative();
+      margin-right: 10%;
     }
     .pull--#{$namespace}two-tenths {
-      right: 20%;
-      @include silent-relative();
+      margin-right: 20%;
     }
     .pull--#{$namespace}three-tenths {
-      right: 30%;
-      @include silent-relative();
+      margin-right: 30%;
     }
     .pull--#{$namespace}four-tenths {
-      right: 40%;
-      @include silent-relative();
+      margin-right: 40%;
     }
     .pull--#{$namespace}five-tenths {
-      right: 50%;
-      @include silent-relative();
+      margin-right: 50%;
     }
     .pull--#{$namespace}six-tenths {
-      right: 60%;
-      @include silent-relative();
+      margin-right: 60%;
     }
     .pull--#{$namespace}seven-tenths {
-      right: 70%;
-      @include silent-relative();
+      margin-right: 70%;
     }
     .pull--#{$namespace}eight-tenths {
-      right: 80%;
-      @include silent-relative();
+      margin-right: 80%;
     }
     .pull--#{$namespace}nine-tenths {
-      right: 90%;
-      @include silent-relative();
+      margin-right: 90%;
     }
   }
 
   // Twelfths
   @if $twelfths == true {
     .pull--#{$namespace}one-twelfth {
-      right: 8.333%;
-      @include silent-relative();
+      margin-right: 8.333%;
     }
     .pull--#{$namespace}two-twelfths {
-      right: 16.666%;
-      @include silent-relative();
+      margin-right: 16.666%;
     }
     .pull--#{$namespace}three-twelfths {
-      right: 25%;
-      @include silent-relative();
+      margin-right: 25%;
     }
     .pull--#{$namespace}four-twelfths {
-      right: 33.333%;
-      @include silent-relative();
+      margin-right: 33.333%;
     }
     .pull--#{$namespace}five-twelfths {
-      right: 41.666%;
-      @include silent-relative();
+      margin-right: 41.666%;
     }
     .pull--#{$namespace}six-twelfths {
-      right: 50%;
-      @include silent-relative();
+      margin-right: 50%;
     }
     .pull--#{$namespace}seven-twelfths {
-      right: 58.333%;
-      @include silent-relative();
+      margin-right: 58.333%;
     }
     .pull--#{$namespace}eight-twelfths {
-      right: 66.666%;
-      @include silent-relative();
+      margin-right: 66.666%;
     }
     .pull--#{$namespace}nine-twelfths {
-      right: 75%;
-      @include silent-relative();
+      margin-right: 75%;
     }
     .pull--#{$namespace}ten-twelfths {
-      right: 83.333%;
-      @include silent-relative();
+      margin-right: 83.333%;
     }
     .pull--#{$namespace}eleven-twelfths {
-      right: 91.666%;
-      @include silent-relative();
+      margin-right: 91.666%;
     }
   }
 }

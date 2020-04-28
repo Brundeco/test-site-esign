@@ -23,7 +23,16 @@
 
   <h2>Grid</h2>
 
+  <h3>Halfs</h3>
   <div class="grid">
+    <div class="grid__item medium--one-half">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+    </div>
+    <div class="grid__item medium--one-half">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+        at ex vel, efficitur pulvinar nibh.</p>
+    </div>
     <div class="grid__item medium--one-half">
       <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
         sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
@@ -34,6 +43,7 @@
     </div>
   </div>
 
+  <h3>Thirds</h3>
   <div class="grid">
     <div class="grid__item medium--one-third">
       <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend.</p>
@@ -46,6 +56,7 @@
     </div>
   </div>
 
+  <h3>Quaters</h3>
   <div class="grid">
     <div class="grid__item medium--one-half large--one-quarter">
       <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar,
@@ -65,6 +76,7 @@
     </div>
   </div>
 
+  <h3>Fifths</h3>
   <div class="grid">
     <div class="grid__item medium--one-third large--one-fifth">
       <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
@@ -83,6 +95,41 @@
     </div>
   </div>
 
+  @foreach (['start', 'center', 'end', 'between', 'around'] as $justifyType)
+    <h3>Justify {{ $justifyType }}</h3>
+    <div class="grid grid--justify-{{ $justifyType }}">
+      <div class="grid__item medium--one-fifth">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+      </div>
+      <div class="grid__item medium--one-fifth">
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+    </div>
+  @endforeach
+
+  @foreach (['start', 'center', 'end'] as $alignType)
+    <h3>Align {{ $alignType }}</h3>
+    <div class="grid grid--align-{{ $alignType }}">
+      <div class="grid__item medium--one-third">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+      </div>
+      <div class="grid__item medium--one-third">
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+      <div class="grid__item medium--one-third">
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+    </div>
+  @endforeach
+
+  <h3>Grid ul</h3>
   <ul class="grid">
     <li class="grid__item medium--one-half">
       <div class="box">
@@ -100,6 +147,31 @@
 
   <hr/>
 
+
+  @foreach (['0', 'half', '2'] as $gridGutter)
+    <h3>Grid Gutter {{ $gridGutter }}</h3>
+    <div class="grid grid--gutter-{{ $gridGutter }}">
+      <div class="grid__item medium--one-half">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+      </div>
+      <div class="grid__item medium--one-half">
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+      <div class="grid__item medium--one-half">
+        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+      </div>
+      <div class="grid__item medium--one-half">
+        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+    </div>
+    <hr>
+  @endforeach
+
+  <hr />
   <h2>Device helpers</h2>
 
   <h3>Visibility</h3>

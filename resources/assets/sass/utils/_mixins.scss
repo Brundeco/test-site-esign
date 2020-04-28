@@ -231,9 +231,3 @@
     }
   }
 }
-
-// Mixin to calculate aspect ratio
-@mixin aspect-ratio($ratio: 1 1) {
-  $aspectRatio: percentage(nth($ratio, 2) / nth($ratio, 1));
-  padding-top: $aspectRatio;
-}

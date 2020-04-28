@@ -4,7 +4,7 @@
   overflow: hidden;
   height: 0;
   width: 100%;
-  @include aspect-ratio(1 1);
+  padding-top: aspect-ratio(1 1);
 
   img {
     position: absolute;
@@ -17,19 +17,20 @@
   }
 }
 
-.visual--2x1 {
-  @include aspect-ratio(2 1);
-}
-
-.visual--3x4 {
-  @include aspect-ratio(3 4);
-}
-
 .visual--original {
   padding-top: 0;
   height: 100%;
 
   img {
     position: relative;
+  }
+}
+
+// Generate ratio classes
+@each $ratio in $aspectRatios {
+  $height: nth($ratio, 2);
+  $width: nth($ratio, 1);
+  .visual--#{$width}x#{$height} {
+    padding-top: percentage($height / $width);
   }
 }

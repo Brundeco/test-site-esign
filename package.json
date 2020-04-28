@@ -75,7 +75,7 @@
     "svg-sprite-loader": "^4.2.1",
     "terser-webpack-plugin": "^2.3.4",
     "webpack": "^4.41.5",
-    "webpack-blade-native-loader": "^7.5.0",
+    "webpack-blade-native-loader": "^7.6.1",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.3",

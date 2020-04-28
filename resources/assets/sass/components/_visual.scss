@@ -4,7 +4,7 @@
   overflow: hidden;
   height: 0;
   width: 100%;
-  padding-top: 100%;
+  @include aspect-ratio(1 1);
 
   img {
     position: absolute;
@@ -18,11 +18,11 @@
 }
 
 .visual--2x1 {
-  padding-top: 50%;
+  @include aspect-ratio(2 1);
 }
 
 .visual--3x4 {
-  padding-top: 133.33%;
+  @include aspect-ratio(3 4);
 }
 
 .visual--original {

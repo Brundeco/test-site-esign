@@ -23,6 +23,13 @@ export default class RecaptchaForm {
 
       return false;
     });
+
+    this.$form.one('focusin', () => this.lFocus());
+  }
+
+  lFocus() {
+    const $script = $('#script-recaptcha');
+    $script.attr('src', $script.data('src'));
   }
 
   submitCallback() {

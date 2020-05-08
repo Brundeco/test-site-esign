@@ -9,9 +9,6 @@
   <!-- Esign is @ http://www.esign.eu/ -->
   <!-- Esign contact: info@esign.eu -->
 
-  <meta name="robots" content="all,index,follow">
-  <meta http-equiv="cleartype" content="on">
-
   {{-- <meta property="fb:app_id" content=""> --}}
   <meta property="og:title" content="{{ $siteTitle }}">
   <meta property="og:description" content="{{ $description }}" >
@@ -57,13 +54,15 @@
 
   {{-- place typekit or google fonts css here --}}
 
-  {{-- not needed for webpack setup: --}}
+  {{-- inline css: no flash --}}
   <style>
     .modal {
       visibility: hidden;
     }
   </style>
+  {{-- frontend template font, remove when you don't need it --}}
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Poppins:500,600&display=swap" rel="stylesheet">
+  {{-- not needed for webpack setup: --}}
   {{-- <link rel="stylesheet" href="../assets/css/style.css"> --}}
 
 

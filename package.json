@@ -86,10 +86,10 @@
   "dependencies": {
     "body-scroll-lock": "^2.6.4",
     "classlist-polyfill": "^1.2.0",
-    "cookiejs": "^1.0.26",
     "hyperform": "^0.11.0",
     "jquery": "^3.4.1",
     "jquery-touchswipe": "^1.6.19",
+    "js-cookie": "^2.2.1",
     "whatwg-fetch": "^3.0.0"
   }
 }

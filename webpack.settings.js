@@ -8,10 +8,9 @@ const useFontsDirectory = false;
 const useVideosDirectory = false;
 
 // Don't edit from here
-const isDev = (process.env.NODE_ENV === 'development');
+const isDev = process.env.NODE_ENV === 'development';
 const isStatic = mode === 'static';
 const isLaravel = mode === 'shop' || mode === 'laravel';
-const isCi = mode === 'ci';
 const isShop = mode === 'shop';
 const isCraft = mode === 'craft';
 
@@ -45,20 +44,19 @@ const dist = {
   manifest: '',
 };
 
-if (isLaravel || isCi) {
+if (isLaravel) {
   if (process.env.npm_lifecycle_event === 'development') {
-    console.log('\x1b[31m%s\x1b[31m', 'Use npm run watch instead of npm run dev (CI || Laravel)', '\x1b[0m');
+    console.log(
+      '\x1b[31m%s\x1b[31m',
+      'Use npm run watch instead of npm run dev (CI || Laravel)',
+      '\x1b[0m',
+    );
     process.exit();
   }
 }
 
 if (isLaravel) {
   dist.root = `${paths.root}public`;
-  dist.assets = 'build/';
-}
-
-if (isCi) {
-  dist.root = `${paths.root}assets`;
   dist.assets = 'build/';
 }
 
@@ -88,25 +86,30 @@ const bladeOptions = {
   viewDir: 'resources/views',
 };
 
-const pages = glob.sync('**/*.blade.php', {
-  cwd: path.join(basePath, `${paths.views}/`),
-  root: '/',
-})
-.filter(filename => filename.indexOf('_') === -1)
-.filter(filename => filename.indexOf('components') !== 0)
-.filter(filename => filename.indexOf('layouts') !== 0)
-.map((page) => new HtmlWebpackPlugin({
-  filename: (page => {
-    return page.replace('.blade.php', '.html')
-      .replace('/', '-')
-      .replace('-index', '')
-      .replace('pages-', '')
-      .replace('home', 'index');
-  })(page),
-  template: `${paths.views}${page}`,
-  excludeChunks: ['sprite'],
-  minify: false,
-}));
+const pages = glob
+  .sync('**/*.blade.php', {
+    cwd: path.join(basePath, `${paths.views}/`),
+    root: '/',
+  })
+  .filter(filename => filename.indexOf('_') === -1)
+  .filter(filename => filename.indexOf('components') !== 0)
+  .filter(filename => filename.indexOf('layouts') !== 0)
+  .map(
+    page =>
+      new HtmlWebpackPlugin({
+        filename: (page => {
+          return page
+            .replace('.blade.php', '.html')
+            .replace('/', '-')
+            .replace('-index', '')
+            .replace('pages-', '')
+            .replace('home', 'index');
+        })(page),
+        template: `${paths.views}${page}`,
+        excludeChunks: ['sprite'],
+        minify: false,
+      }),
+  );
 
 const settings = {
   basePath,

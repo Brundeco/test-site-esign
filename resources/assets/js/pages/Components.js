@@ -1,6 +1,5 @@
 import RecaptchaForm from '../components/forms/RecaptchaForm';
 import BasicGoogleMap from '../components/maps/BasicGoogleMap';
-import JsonFetcher from '../components/layout/JsonFetcher';
 import CustomModalAnimation from '../components/modals/CustomModalAnimation';
 
 export default class Components {
@@ -14,10 +13,6 @@ export default class Components {
     // Map
     const map = new BasicGoogleMap();
     map.init();
-
-    // JsonFetcher
-    const jsonFetcher = new JsonFetcher(document.querySelector('.json-fetcher'));
-    jsonFetcher.init();
 
     // Custom modal
     const customModal = window.modalManager.createModal(

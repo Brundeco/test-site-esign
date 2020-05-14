@@ -438,37 +438,6 @@
 
   <hr/>
 
-  <h2>Instagram / Json Fetcher</h2>
-
-  {{--
-    Data keys defines the data you want to retrieve.
-    Default seperator: ";".
-    Level indicator: "."
-    Print with double underscore "__" at each side of the word
-
-    Example:
-
-    data-keys="id;address.street"
-    print street: __address.street__
-
-    Special case:
-    img src -> use data-src
-  --}}
-
-  <div class="grid social-grid json-fetcher" data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
-    <div class="json-fetcher__template hide">
-      <div class="grid__item one-half large--one-quarter social-grid__item">
-        <a href="__url__" target="_blank" rel="nofollow">
-          <div class="visual">
-            <img data-src="__photo__" alt=""/>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <hr/>
-
   <h3>Modals</h3>
 
   <button type="button" class="button js-modal-trigger" data-modal-id="modal-1">Alert modal</button>

@@ -1,4 +1,4 @@
-<header class="page-header page-header--fixed">
+<header class="page-header">
 
   <div class="container">
     <div class="page-header__content">

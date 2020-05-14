@@ -1,16 +1,8 @@
 .main {
-  padding: 20px 0;
+  padding: $gutter 0 0 0;
   flex-grow: 1;
 
   @media #{$medium} {
-    padding: 50px 0;
-  }
-}
-
-.main--fixed-navigation {
-  //nav height + extra padding
-  padding-top: 120px;
-  @media #{$medium} {
-    padding-top: 140px;
+    padding: $gutter * 2 0 0 0;
   }
 }

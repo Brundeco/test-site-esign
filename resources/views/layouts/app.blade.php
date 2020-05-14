@@ -17,7 +17,7 @@
       @include('components.base.header')
     @show
 
-    <main id="main" class="main main--fixed-navigation">
+    <main id="main" class="main">
 
       @yield('content')
 

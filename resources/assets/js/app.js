@@ -1,6 +1,5 @@
 import 'classlist-polyfill';
 
-import navigation from './components/layout/navigation';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import RecaptchaForm from './components/forms/RecaptchaForm';
@@ -21,7 +20,6 @@ htmlClassList.remove('no-js');
 // eslint-disable-next-line
 window.modalManager = new ModalManager();
 // Layout setup
-navigation();
 responsiveVideos();
 cookieNotification();
 

@@ -23,6 +23,17 @@ export default class RecaptchaForm {
 
       return false;
     });
+
+    // Only initialize recaptcha when it is actually needed instead of on pageload
+    // Recaptcha script tag should have a [data-src] containing the value of the regular [src]
+    this.$form.one('focusin,input,change', () => this.lFocus());
+  }
+
+  lFocus() {
+    const $script = $('#script-recaptcha');
+    if (typeof $script.attr('src') === typeof undefined) {
+      $script.attr('src', $script.data('src'));
+    }
   }
 
   submitCallback() {

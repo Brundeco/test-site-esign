@@ -239,6 +239,7 @@ module.exports = {
     new ImageminPlugin({
       disable: isDev,
       test: /\.(jpe?g|png|gif|svg)$/i,
+      cacheFolder: paths.cache,
       plugins: [
         imageminPngquant({
           strip: true,

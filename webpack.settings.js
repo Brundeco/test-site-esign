@@ -31,6 +31,7 @@ paths.fonts = `${paths.assets}fonts/`;
 paths.svgSprite = `${paths.images}svg-sprite/`;
 paths.videos = `${paths.assets}videos/`;
 paths.manifest = `${paths.resources}manifest/`;
+paths.cache = `${paths.resources}cache/`;
 
 if (isShop) {
   paths.sass = `${paths.sass}client/`;

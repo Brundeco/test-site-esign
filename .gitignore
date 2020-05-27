@@ -265,3 +265,6 @@ yarn-error.log
 
 ### VisualStudioCode ###
 .vscode/*
+
+### Shopify ###
+config.yml

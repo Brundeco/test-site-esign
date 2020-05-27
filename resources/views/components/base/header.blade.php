@@ -10,6 +10,7 @@
         <svg class="icon icon-menu">
           <use xlink:href="#icon-menu"/>
         </svg>
+        <span class="vh">Menu</span>
       </button>
 
       <nav class="main-nav">

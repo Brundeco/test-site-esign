@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob'); // eslint-disable-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // eslint-disable-line import/no-extraneous-dependencies
 
-const mode = 'static'; // ci, laravel, shop, craft, static
+const mode = 'static'; // laravel, shop, craft, static, shopify
 const devServerOpenBrowser = true;
 const useFontsDirectory = false;
 const useVideosDirectory = false;
@@ -13,6 +13,7 @@ const isStatic = mode === 'static';
 const isLaravel = mode === 'shop' || mode === 'laravel';
 const isShop = mode === 'shop';
 const isCraft = mode === 'craft';
+const isShopify = mode === 'shopify';
 
 // Paths
 const basePath = process.cwd();
@@ -81,6 +82,20 @@ const filenames = {
   ignore: ['*.DS_Store'],
 };
 
+if (isShopify) {
+  dist.root = paths.root;
+  dist.assets = 'assets/';
+  dist.images = dist.assets;
+  dist.css = dist.assets;
+  dist.js = dist.assets;
+  dist.fonts = dist.assets;
+  dist.svgSprite = dist.assets;
+  dist.videos = dist.assets;
+
+  filenames.prod = '[name].[ext]';
+  filenames.prodPathIncluded = '[path][name].[ext]';
+}
+
 const devServerContentBase = path.join(basePath, dist.root);
 
 const bladeOptions = {
@@ -125,6 +140,7 @@ const settings = {
   pages,
   useFontsDirectory,
   useVideosDirectory,
+  isShopify,
 };
 
 module.exports = settings;

@@ -38,34 +38,49 @@ const {
   pages,
   useFontsDirectory,
   useVideosDirectory,
+  isShopify,
 } = settings;
 
+const jsFilename = isShopify ? `${dist.js}[name].js` : `${dist.js}[name].[contenthash].js`;
+const cssFilename = isShopify ? `${dist.css}[name].css` : `${dist.css}[name].[contenthash].css`;
+const spriteFilename = isShopify ? 'snippets/svg-sprite.liquid' : `${dist.svgSprite}icons.svg`;
+
 const copy = [
-  { from: `./${paths.images}`, to: (isDev) ? `${dist.images}${filenames.devPathIncluded}` : `${dist.images}${filenames.prodPathIncluded}`, ignore: filenames.ignore },
+  {
+    from: `./${paths.images}`,
+    to: isDev
+      ? `${dist.images}${filenames.devPathIncluded}`
+      : `${dist.images}${filenames.prodPathIncluded}`,
+    ignore: filenames.ignore,
+  },
   { from: `./${paths.manifest}`, to: `${dist.manifest}${filenames.dev}`, ignore: filenames.ignore },
 ];
 
 if (useFontsDirectory) {
-  copy.push(
-    { from: `./${paths.fonts}`, to: (isDev) ? `${dist.fonts}${filenames.devPathIncluded}` : `${dist.fonts}${filenames.prodPathIncluded}`, ignore: filenames.ignore },
-  );
+  copy.push({
+    from: `./${paths.fonts}`,
+    to: isDev
+      ? `${dist.fonts}${filenames.devPathIncluded}`
+      : `${dist.fonts}${filenames.prodPathIncluded}`,
+    ignore: filenames.ignore,
+  });
 }
 
 if (useVideosDirectory) {
-  copy.push(
-    { from: `./${paths.videos}`, to: (isDev) ? `${dist.videos}${filenames.devPathIncluded}` : `${dist.videos}${filenames.prodPathIncluded}`, ignore: filenames.ignore },
-  );
+  copy.push({
+    from: `./${paths.videos}`,
+    to: isDev
+      ? `${dist.videos}${filenames.devPathIncluded}`
+      : `${dist.videos}${filenames.prodPathIncluded}`,
+    ignore: filenames.ignore,
+  });
 }
 
 module.exports = {
-  devtool: (isDev) ? 'source-map' : 'nosources-source-map',
+  devtool: isDev ? 'source-map' : 'nosources-source-map',
   entry: {
-    app: [
-      `./${paths.js}app.js`,
-    ],
-    style: [
-      `./${paths.sass}style.scss`,
-    ],
+    app: [`./${paths.js}app.js`],
+    style: [`./${paths.sass}style.scss`],
     sprite: glob.sync(`./${paths.svgSprite}*.svg`),
   },
   module: {
@@ -83,9 +98,7 @@ module.exports = {
         test: /\.js$/,
         exclude: {
           test: path.resolve(__dirname, 'node_modules'),
-          exclude: [
-            path.resolve(__dirname, 'node_modules/hyperform'),
-          ],
+          exclude: [path.resolve(__dirname, 'node_modules/hyperform')],
         },
         loader: 'babel-loader',
         options: {
@@ -146,30 +159,26 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|svg|gif|webp)$/,
-        exclude: [
-          path.resolve(__dirname, paths.svgSprite),
-        ],
+        exclude: [path.resolve(__dirname, paths.svgSprite)],
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: (isDev) ? `${dist.images}${filenames.dev}` : `${dist.images}${filenames.prod}`,
+              name: isDev ? `${dist.images}${filenames.dev}` : `${dist.images}${filenames.prod}`,
             },
           },
         ],
       },
       {
         test: /\.*\.svg$/,
-        include: [
-          path.resolve(__dirname, paths.svgSprite),
-        ],
+        include: [path.resolve(__dirname, paths.svgSprite)],
         use: [
           {
             loader: 'svg-sprite-loader',
             options: {
               extract: true,
-              spriteFilename: `${dist.svgSprite}icons.svg`,
-              symbolId: (filePath) => `icon-${path.basename(filePath, '.svg')}`,
+              spriteFilename,
+              symbolId: filePath => `icon-${path.basename(filePath, '.svg')}`,
             },
           },
         ],
@@ -180,7 +189,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: (isDev) ? `${dist.fonts}${filenames.dev}` : `${dist.fonts}${filenames.prod}`,
+              name: isDev ? `${dist.fonts}${filenames.dev}` : `${dist.fonts}${filenames.prod}`,
             },
           },
         ],
@@ -191,7 +200,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: (isDev) ? `${dist.videos}${filenames.dev}` : `${dist.videos}${filenames.prod}`,
+              name: isDev ? `${dist.videos}${filenames.dev}` : `${dist.videos}${filenames.prod}`,
             },
           },
         ],
@@ -200,7 +209,7 @@ module.exports = {
   },
   output: {
     path: path.join(basePath, dist.root),
-    filename: `${dist.js}[name].[contenthash].js`,
+    filename: jsFilename,
   },
   optimization: {
     splitChunks: {
@@ -233,7 +242,7 @@ module.exports = {
       extensions: ['less', 'scss', 'sass', 'css', 'svg'],
     }),
     new MiniCssExtractPlugin({
-      filename: `${dist.css}[name].[contenthash].css`,
+      filename: cssFilename,
     }),
     new CopyWebpackPlugin(copy),
     new ImageminPlugin({
@@ -304,20 +313,13 @@ if (isStatic) {
       {
         loader: 'html-srcsets-loader',
         options: {
-          attrs: [
-            'audio:src',
-            'img:src',
-            'img:srcset',
-            'video:src',
-            'source:src',
-            'source:srcset',
-          ],
+          attrs: ['audio:src', 'img:src', 'img:srcset', 'video:src', 'source:src', 'source:srcset'],
           interpolate: true,
         },
       },
       {
         loader: 'webpack-blade-native-loader',
-        options: bladeOptions
+        options: bladeOptions,
       },
     ],
   });
@@ -326,12 +328,13 @@ if (isStatic) {
 
   // Static webp extension fix
   module.exports.plugins.push({
-    apply: (compiler) => {
-      compiler.hooks.compilation.tap('ReplaceWebpExtensionPlugin', (compilation) => {
+    apply: compiler => {
+      compiler.hooks.compilation.tap('ReplaceWebpExtensionPlugin', compilation => {
         HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
           'ReplaceWebpExtensionPlugin',
           (data, cb) => {
-            data.html = data.html.replace( // eslint-disable-line no-param-reassign
+            data.html = data.html.replace(
+              // eslint-disable-line no-param-reassign
               /.(png|jpg)" type="image\/webp"/,
               '.webp" type="image/webp"',
             );
@@ -343,18 +346,15 @@ if (isStatic) {
   });
 }
 
-if (isDev) {
-  module.exports.plugins.push(
-    new CleanWebpackPlugin([
-      path.join(dist.root, dist.css),
-      path.join(dist.root, dist.js),
-    ]),
-  );
-} else {
-  module.exports.plugins.push(
-    new CleanWebpackPlugin([
-      path.join(dist.root, dist.assets),
-    ]),
-    new BundleAnalyzerPlugin(),
-  );
+if (!isShopify) {
+  if (isDev) {
+    module.exports.plugins.push(
+      new CleanWebpackPlugin([path.join(dist.root, dist.css), path.join(dist.root, dist.js)]),
+    );
+  } else {
+    module.exports.plugins.push(
+      new CleanWebpackPlugin([path.join(dist.root, dist.assets)]),
+      new BundleAnalyzerPlugin(),
+    );
+  }
 }

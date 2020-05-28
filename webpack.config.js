@@ -333,8 +333,8 @@ if (isStatic) {
         HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
           'ReplaceWebpExtensionPlugin',
           (data, cb) => {
+            // eslint-disable-next-line no-param-reassign
             data.html = data.html.replace(
-              // eslint-disable-line no-param-reassign
               /.(png|jpg)" type="image\/webp"/,
               '.webp" type="image/webp"',
             );

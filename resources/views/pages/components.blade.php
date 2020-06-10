@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @php
-  $title = 'Components';
-  $menuItem = 'components';
-  $dataPage = 'components';
-  $breadcrumbs = [
-      ['label' => $title, 'url' => '#'],
-  ];
+$title = 'Components';
+$menuItem = 'components';
+$dataPage = 'components';
+$breadcrumbs = [
+['label' => $title, 'url' => '#'],
+];
 @endphp
 
 @section('content')
@@ -25,40 +25,39 @@
 
   <div class="grid">
     <div class="grid__item one-whole">
-      <div class="visual visual--original">
-        <picture>
-          <source srcset="https://via.placeholder.com/800x400.jpg" type="image/webp">
-          <img src="https://via.placeholder.com/800x600.jpg" alt="">
-        </picture>
-      </div>
+      <picture class="visual visual--original">
+        <source srcset="https://via.placeholder.com/800x400.jpg" type="image/webp">
+        <img src="https://via.placeholder.com/800x600.jpg" alt="">
+      </picture>
       <p>Ratio: Original</p>
     </div>
     <div class="grid__item medium--one-third">
-      <div class="visual">
-        <picture>
-          <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
-          <img src="https://via.placeholder.com/800x600.jpg" alt="">
-        </picture>
-      </div>
+      <picture class="visual">
+        <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
+        <img src="https://via.placeholder.com/800x600.jpg" alt="">
+      </picture>
       <p>Ratio: 1:1</p>
     </div>
     <div class="grid__item medium--one-third">
-      <div class="visual visual--2x1">
-        <picture>
-          <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
-          <img src="https://via.placeholder.com/800x600.jpg" alt="">
-        </picture>
-      </div>
+      <picture class="visual visual--2x1">
+        <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
+        <img src="https://via.placeholder.com/800x600.jpg" alt="">
+      </picture>
       <p>Ratio: 2:1</p>
     </div>
     <div class="grid__item medium--one-third">
-      <div class="visual visual--3x4">
-        <picture>
-          <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
-          <img src="https://via.placeholder.com/800x600.jpg" alt="">
-        </picture>
-      </div>
+      <picture class="visual visual--3x4">
+        <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
+        <img src="https://via.placeholder.com/800x600.jpg" alt="">
+      </picture>
       <p>Ratio: 3:4</p>
+    </div>
+      <div class="grid__item medium--one-third">
+      <picture class="visual visual--16x9">
+        <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
+        <img src="https://via.placeholder.com/800x600.jpg" alt="">
+      </picture>
+      <p>Ratio: 16:9</p>
     </div>
   </div>
 
@@ -122,54 +121,59 @@
   <h3>Fifths</h3>
   <div class="grid">
     <div class="grid__item medium--one-third large--one-fifth">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar,
+        dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
     </div>
     <div class="grid__item medium--one-third large--one-fifth">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar,
+        dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
     </div>
     <div class="grid__item medium--one-third large--one-fifth">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar,
+        dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
     </div>
     <div class="grid__item medium--one-third large--one-fifth">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar,
+        dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
     </div>
     <div class="grid__item medium--one-third large--one-fifth">
-      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar, dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Etiam eu erat pulvinar,
+        dignissim ante non, fringilla nisl. Aliquam vitae lorem eget velit elementum volutpat sit amet vel ex.</p>
     </div>
   </div>
 
   @foreach (['start', 'center', 'end', 'between', 'around'] as $justifyType)
-    <h3>Justify {{ $justifyType }}</h3>
-    <div class="grid grid--justify-{{ $justifyType }}">
-      <div class="grid__item medium--one-fifth">
-        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-      </div>
-      <div class="grid__item medium--one-fifth">
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-          at ex vel, efficitur pulvinar nibh.</p>
-      </div>
+  <h3>Justify {{ $justifyType }}</h3>
+  <div class="grid grid--justify-{{ $justifyType }}">
+    <div class="grid__item medium--one-fifth">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
     </div>
+    <div class="grid__item medium--one-fifth">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+        at ex vel, efficitur pulvinar nibh.</p>
+    </div>
+  </div>
   @endforeach
 
   @foreach (['start', 'center', 'end'] as $alignType)
-    <h3>Align {{ $alignType }}</h3>
-    <div class="grid grid--align-{{ $alignType }}">
-      <div class="grid__item medium--one-third">
-        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-      </div>
-      <div class="grid__item medium--one-third">
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-          at ex vel, efficitur pulvinar nibh.</p>
-      </div>
-      <div class="grid__item medium--one-third">
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-          at ex vel, efficitur pulvinar nibh.</p>
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-          at ex vel, efficitur pulvinar nibh.</p>
-      </div>
+  <h3>Align {{ $alignType }}</h3>
+  <div class="grid grid--align-{{ $alignType }}">
+    <div class="grid__item medium--one-third">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
     </div>
+    <div class="grid__item medium--one-third">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+        at ex vel, efficitur pulvinar nibh.</p>
+    </div>
+    <div class="grid__item medium--one-third">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+        at ex vel, efficitur pulvinar nibh.</p>
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+        at ex vel, efficitur pulvinar nibh.</p>
+    </div>
+  </div>
   @endforeach
 
   <h3>Grid ul</h3>
@@ -188,30 +192,30 @@
     </li>
   </ul>
 
-  <hr/>
+  <hr />
 
 
   @foreach (['0', 'half', '2'] as $gridGutter)
-    <h3>Grid Gutter {{ $gridGutter }}</h3>
-    <div class="grid grid--gutter-{{ $gridGutter }}">
-      <div class="grid__item medium--one-half">
-        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-      </div>
-      <div class="grid__item medium--one-half">
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-          at ex vel, efficitur pulvinar nibh.</p>
-      </div>
-      <div class="grid__item medium--one-half">
-        <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
-          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
-      </div>
-      <div class="grid__item medium--one-half">
-        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
-          at ex vel, efficitur pulvinar nibh.</p>
-      </div>
+  <h3>Grid Gutter {{ $gridGutter }}</h3>
+  <div class="grid grid--gutter-{{ $gridGutter }}">
+    <div class="grid__item medium--one-half">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
     </div>
-    <hr>
+    <div class="grid__item medium--one-half">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+        at ex vel, efficitur pulvinar nibh.</p>
+    </div>
+    <div class="grid__item medium--one-half">
+      <p><a href="index.html">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+        sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+    </div>
+    <div class="grid__item medium--one-half">
+      <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci, fringilla
+        at ex vel, efficitur pulvinar nibh.</p>
+    </div>
+  </div>
+  <hr>
   @endforeach
 
   <hr />
@@ -243,7 +247,7 @@
     <li>.breakpoint + --right</li>
   </ul>
 
-  <hr/>
+  <hr />
 
   <h2>Typography</h2>
 
@@ -255,7 +259,7 @@
   <h6>Heading 6</h6>
 
   <p>
-    The <strong>Pythagorean theorem</strong> is often expressed as the following equation:<br/>
+    The <strong>Pythagorean theorem</strong> is often expressed as the following equation:<br />
     <var>a<sup>2</sup></var> + <var>b<sup>2</sup></var> = <var>c<sup>2</sup></var>
   </p>
 
@@ -314,7 +318,7 @@
     <li class="social-icons__item">
       <a href="#" class="social-icons__link" target="_blank">
         <svg class="icon icon-facebook">
-          <use xlink:href="#icon-facebook"/>
+          <use xlink:href="#icon-facebook" />
         </svg>
         <span class="vh">Volg ons op Facebook</span>
       </a>
@@ -322,7 +326,7 @@
     <li class="social-icons__item">
       <a href="#" class="social-icons__link" target="_blank">
         <svg class="icon icon-twitter">
-          <use xlink:href="#icon-twitter"/>
+          <use xlink:href="#icon-twitter" />
         </svg>
         <span class="vh">Volg ons op Twitter</span>
       </a>
@@ -330,7 +334,7 @@
     <li class="social-icons__item">
       <a href="#" class="social-icons__link" target="_blank">
         <svg class="icon icon-instagram">
-          <use xlink:href="#icon-instagram"/>
+          <use xlink:href="#icon-instagram" />
         </svg>
         <span class="vh">Volg ons op Instagram</span>
       </a>
@@ -364,35 +368,35 @@
     </tbody>
   </table>
 
-  <hr/>
+  <hr />
 
   <h2>Buttons</h2>
 
   <div class="button-group">
     <a href="#" class="button">Link</a>
     <button class="button">Action</button>
-    <input type="submit" value="Verzenden" class="button"/>
+    <input type="submit" value="Verzenden" class="button" />
   </div>
 
   <div class="button-group">
     <a href="#" class="button button--secondary">Link</a>
     <button class="button button--secondary">Action</button>
-    <input type="submit" value="Verzenden" class="button button--secondary"/>
+    <input type="submit" value="Verzenden" class="button button--secondary" />
   </div>
 
   <div class="button-group button-group--right">
     <a href="#" class="button">Link</a>
     <button class="button">Action</button>
-    <input type="submit" value="Verzenden" class="button"/>
+    <input type="submit" value="Verzenden" class="button" />
   </div>
 
   <div class="button-group button-group--center">
     <a href="#" class="button">Link</a>
     <button class="button">Action</button>
-    <input type="submit" value="Verzenden" class="button"/>
+    <input type="submit" value="Verzenden" class="button" />
   </div>
 
-  <hr/>
+  <hr />
 
   <h2>Forms</h2>
 
@@ -421,7 +425,7 @@
         </div>
         <div class="input-group">
           <label for="phone">Telefoon</label>
-          <input type="tel" name="phone" id="phone"/>
+          <input type="tel" name="phone" id="phone" />
         </div>
         <div class="input-group">
           <label for="select">Onderwerp</label>
@@ -440,11 +444,11 @@
           <legend>Kies een optie <span class="required">*</span></legend>
           <div class="input-group input-group--horizontal">
             <div class="radio">
-              <input type="radio" id="radio-1" name="radio" value="1" required/>
+              <input type="radio" id="radio-1" name="radio" value="1" required />
               <label for="radio-1">Optie 1</label>
             </div>
             <div class="radio">
-              <input type="radio" id="radio-2" name="radio" value="1" required/>
+              <input type="radio" id="radio-2" name="radio" value="1" required />
               <label for="radio-2">Optie 2</label>
             </div>
           </div>
@@ -454,11 +458,11 @@
           <legend>Kies een optie</legend>
           <div class="input-group">
             <div class="radio">
-              <input type="radio" id="radio-1" name="radio" value="1" required/>
+              <input type="radio" id="radio-1" name="radio" value="1" required />
               <label for="radio-1">Optie 1</label>
             </div>
             <div class="radio">
-              <input type="radio" id="radio-2" name="radio" value="1" required/>
+              <input type="radio" id="radio-2" name="radio" value="1" required />
               <label for="radio-2">Optie 2</label>
             </div>
           </div>
@@ -467,19 +471,20 @@
         <div class="input-group">
           <div class="checkbox">
             <input type="checkbox" id="privacy" name="privacy" value="1" required />
-            <label for="privacy">I agree my data will be processed in accordance with the <a href="privacy.html">privacy policy</a>. <span class="required">*</span></label>
+            <label for="privacy">I agree my data will be processed in accordance with the <a href="privacy.html">privacy
+                policy</a>. <span class="required">*</span></label>
           </div>
         </div>
 
         <div class="button-group">
-          <input type="submit" value="Verzenden" class="button"/>
+          <input type="submit" value="Verzenden" class="button" />
         </div>
       </form>
 
     </div>
   </div>
 
-  <hr/>
+  <hr />
 
   <h2>Instagram / Json Fetcher</h2>
 
@@ -498,19 +503,20 @@
     img src -> use data-src
   --}}
 
-  <div class="grid social-grid json-fetcher" data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
+  <div class="grid social-grid json-fetcher"
+    data-api="https://apps.esign.eu/social/22/instagram/?limit=4&tag=weareesign" data-keys="url;photo">
     <div class="json-fetcher__template hide">
       <div class="grid__item one-half large--one-quarter social-grid__item">
         <a href="__url__" target="_blank" rel="nofollow">
           <div class="visual">
-            <img data-src="__photo__" alt=""/>
+            <img data-src="__photo__" alt="" />
           </div>
         </a>
       </div>
     </div>
   </div>
 
-  <hr/>
+  <hr />
 
   <h3>Modals</h3>
 
@@ -526,63 +532,71 @@
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
-      <input type="text" placeholder="input"/>
-      <input type="text" placeholder="input"/>
+      <input type="text" placeholder="input" />
+      <input type="text" placeholder="input" />
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-2">Fullscreen modal</button>
     </div>
     <button type="button" class="modal__close js-modal-close">
       <svg class="icon icon-close">
-        <use xlink:href="#icon-close"/>
+        <use xlink:href="#icon-close" />
       </svg>
     </button>
   </div>
 
-  <div class="modal modal--fullscreen modal--fade js-modal" id="modal-2" data-title="Fullscreen modal" data-show-timeout="500" data-hide-timeout="500">
+  <div class="modal modal--fullscreen modal--fade js-modal" id="modal-2" data-title="Fullscreen modal"
+    data-show-timeout="500" data-hide-timeout="500">
     <div class="container">
       <div class="h3">Fullscreen modal</div>
       <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-      <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-3">Windowed modal</button>
     </div>
     <button type="button" class="modal__close js-modal-close js-compensate-for-scrollbar">
       <svg class="icon icon-close">
-        <use xlink:href="#icon-close"/>
+        <use xlink:href="#icon-close" />
       </svg>
     </button>
   </div>
 
-  <div class="modal modal--fade js-modal" id="modal-3" data-title="Windowed modal" data-hide-hash="true" data-show-timeout="500" data-hide-timeout="500">
+  <div class="modal modal--fade js-modal" id="modal-3" data-title="Windowed modal" data-hide-hash="true"
+    data-show-timeout="500" data-hide-timeout="500">
     <div class="container">
       <div class="h3">Windowed modal</div>
       <p>
@@ -591,25 +605,29 @@
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <button type="button" class="button js-modal-trigger" data-modal-id="modal-1">Alert modal</button>
@@ -618,7 +636,7 @@
     </div>
     <button type="button" class="modal__close js-modal-close">
       <svg class="icon icon-close">
-        <use xlink:href="#icon-close"/>
+        <use xlink:href="#icon-close" />
       </svg>
     </button>
   </div>
@@ -630,12 +648,12 @@
     </div>
     <button type="button" class="modal__close js-modal-close">
       <svg class="icon icon-close">
-        <use xlink:href="#icon-close"/>
+        <use xlink:href="#icon-close" />
       </svg>
     </button>
   </div>
 
-  <hr/>
+  <hr />
 
 </div>
 
@@ -648,7 +666,8 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est
           laborum.
         </p>
       </div>
@@ -658,7 +677,7 @@
     <div class="matrix__block matrix__block--image matrix__block--pop-out matrix__block--left">
       <figure>
         <picture>
-          <img src="https://via.placeholder.com/345x220" alt=""/>
+          <img src="https://via.placeholder.com/345x220" alt="" />
         </picture>
         <figcaption>345x220</figcaption>
       </figure>
@@ -697,7 +716,7 @@
     </div>
 
     <div class="matrix__block matrix__block--section">
-      <hr/>
+      <hr />
     </div>
 
     <div class="matrix__block matrix__block--text">
@@ -707,17 +726,21 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est
+          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+          ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est
           laborum.
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est
           laborum.
         </p>
       </div>
@@ -741,17 +764,21 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est
+          laborum. Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+          ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est
           laborum.
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est
           laborum.
         </p>
       </div>

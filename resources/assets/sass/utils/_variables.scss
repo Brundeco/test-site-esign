@@ -33,6 +33,7 @@ $successBg: lighten($success, 55%);
 $selection: lighten($accent, 40%);
 
 // Visual ratios
+// 16x9 is used in responsive video
 $aspectRatios: (2, 1), (3, 4), (16, 9);
 
 // Easing

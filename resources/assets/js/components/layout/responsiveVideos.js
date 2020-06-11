@@ -7,7 +7,7 @@ export default function() {
 
   [...videos].forEach(video => {
     const container = document.createElement('div');
-    container.classList.add('video-container');
+    container.classList.add('visual', 'visual--16x9');
     video.parentNode.insertBefore(container, video);
     container.appendChild(video);
   });

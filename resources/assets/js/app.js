@@ -1,5 +1,6 @@
 import 'classlist-polyfill';
 
+import objectFitImages from 'object-fit-images';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import RecaptchaForm from './components/forms/RecaptchaForm';
@@ -10,8 +11,7 @@ import Contact from './pages/Contact';
 import Components from './pages/Components';
 
 require('./utils/nativeConsole');
-// require('jquery-touchswipe/jquery.touchSwipe'); // use with fancybox, cycle2, etc
-// import objectFitImages from 'object-fit-images';
+
 // Set js class
 const htmlClassList = document.documentElement.classList;
 htmlClassList.add('js');
@@ -19,9 +19,11 @@ htmlClassList.remove('no-js');
 
 // eslint-disable-next-line
 window.modalManager = new ModalManager();
+
 // Layout setup
 responsiveVideos();
 cookieNotification();
+objectFitImages();
 
 // Forms
 validation();

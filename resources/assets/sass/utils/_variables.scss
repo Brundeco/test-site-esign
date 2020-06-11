@@ -32,6 +32,9 @@ $successBg: lighten($success, 55%);
 // Selection
 $selection: lighten($accent, 40%);
 
+// Visual ratios
+$aspectRatios: (2, 1), (3, 4), (16, 9);
+
 // Easing
 $easeLinear: cubic-bezier(0, 0, 1, 1);
 $easeIn: cubic-bezier(0.42, 0, 1, 1);

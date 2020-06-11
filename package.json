@@ -88,8 +88,8 @@
     "classlist-polyfill": "^1.2.0",
     "hyperform": "^0.11.0",
     "jquery": "^3.4.1",
-    "jquery-touchswipe": "^1.6.19",
     "js-cookie": "^2.2.1",
+    "object-fit-images": "^3.2.4",
     "whatwg-fetch": "^3.0.0"
   }
 }

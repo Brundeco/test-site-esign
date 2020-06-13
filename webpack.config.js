@@ -354,7 +354,10 @@ if (!isShopify) {
   } else {
     module.exports.plugins.push(
       new CleanWebpackPlugin([path.join(dist.root, dist.assets)]),
-      new BundleAnalyzerPlugin(),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'disabled',
+        generateStatsFile: true,
+      }),
     );
   }
 }

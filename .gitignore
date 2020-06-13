@@ -268,3 +268,6 @@ yarn-error.log
 
 ### Shopify ###
 config.yml
+
+### Webpack output ###
+static

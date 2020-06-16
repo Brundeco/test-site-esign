@@ -13,6 +13,7 @@ export default class Form extends EventEmitter {
     recaptcha = false,
     resultSelector = '.result',
     generalErrorMessage = 'Something went wrong. Please try again later.',
+    replaceFormOnSuccess = true,
   }) {
     super();
     this.asynchronous = asynchronous;
@@ -21,6 +22,7 @@ export default class Form extends EventEmitter {
     this.buttonLoadingClass = buttonLoadingClass;
     this.resultSelector = resultSelector;
     this.generalErrorMessage = generalErrorMessage;
+    this.replaceFormOnSuccess = replaceFormOnSuccess;
     this.active = false;
 
     if (form instanceof HTMLElement) {
@@ -42,10 +44,10 @@ export default class Form extends EventEmitter {
       ev.preventDefault();
       const response = await this.sendAsynchronous();
 
-      if (!response.ok) {
-        this.handleFailure(response);
-      } else {
+      if (response.ok) {
         this.handleSuccess(response);
+      } else {
+        this.handleFailure(response);
       }
 
       this.setState(false);
@@ -59,7 +61,7 @@ export default class Form extends EventEmitter {
 
   method() {
     const method = this.form.getAttribute('method');
-    return method || 'get';
+    return method || 'GET';
   }
 
   resultContainer() {
@@ -78,19 +80,25 @@ export default class Form extends EventEmitter {
   }
 
   handleSuccess(response) {
-    // todo
+    const { result } = response;
+    this.showSuccessMessage(result)
   }
 
-  showValidationErrors() {
-    // todo
+  showValidationErrors(response) {
+    const { result } = response;
+    this.resultContainer().innerHTML = result;
   }
 
   showGeneralError() {
-    // todo
+    this.resultContainer().innerHTML = `<p>${this.generalErrorMessage}</p>`;
   }
 
-  showSuccessMessage() {
-    // todo
+  showSuccessMessage(successMarkup) {
+    if (this.replaceFormOnSuccess) {
+      this.form.outerHTML = successMarkup;
+    } else {
+      this.resultContainer().innerHTML = successMarkup;
+    }
   }
 
   data() {

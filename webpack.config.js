@@ -39,6 +39,7 @@ const {
   useFontsDirectory,
   useVideosDirectory,
   isShopify,
+  openAnalyzer,
 } = settings;
 
 const jsFilename = isShopify ? `${dist.js}[name].js` : `${dist.js}[name].[contenthash].js`;
@@ -354,7 +355,11 @@ if (!isShopify) {
   } else {
     module.exports.plugins.push(
       new CleanWebpackPlugin([path.join(dist.root, dist.assets)]),
-      new BundleAnalyzerPlugin(),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        openAnalyzer: openAnalyzer,
+        reportFilename: 'bundle-analyzer-report.html',
+      }),
     );
   }
 }

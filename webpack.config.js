@@ -115,19 +115,6 @@ module.exports = {
         },
       },
       {
-        test: require.resolve('jquery'), // expose jQuery globally
-        use: [
-          {
-            loader: 'expose-loader',
-            options: 'jQuery',
-          },
-          {
-            loader: 'expose-loader',
-            options: '$',
-          },
-        ],
-      },
-      {
         test: /\.scss$/,
         use: [
           {
@@ -231,10 +218,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-    }),
     new StylelintBarePlugin({
       files: `./${paths.sass}**/*.s?(a|c)ss`,
     }),

@@ -29,9 +29,7 @@ objectFitImages();
 validation();
 
 if (document.getElementById('form-newsletter')) {
-  form('#form-newsletter', {
-    recaptchaCallbackName: 'recaptchaCallbackFormNewsletter',
-  });
+  form('#form-newsletter');
 }
 
 // Enable this if you want to test ga calls in development

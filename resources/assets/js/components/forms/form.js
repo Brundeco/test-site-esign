@@ -18,7 +18,6 @@ class Form extends EventEmitter {
       buttonLoadingClass = 'button--loading',
       generalErrorMessage = 'Something went wrong. Please try again later.',
       recaptcha = true,
-      recaptchaCallbackName,
       recaptchaClass = 'g-recaptcha',
       recaptchaName = 'g-recaptcha-response',
       replaceFormOnSuccess = true,
@@ -30,7 +29,7 @@ class Form extends EventEmitter {
     this.buttonSelector = buttonSelector;
     this.generalErrorMessage = generalErrorMessage;
     this.recaptcha = recaptcha;
-    this.recaptchaCallbackName = recaptchaCallbackName;
+    this.recaptchaCallbackName = Form.uniqueRecaptchaCallbackName();
     this.recaptchaClass = recaptchaClass;
     this.recaptchaName = recaptchaName;
     this.recaptchaWidgetId = undefined;
@@ -46,6 +45,7 @@ class Form extends EventEmitter {
 
     if (this.recaptcha) {
       this.exposeRecaptchaCallback();
+      this.bindRecaptchaCallback();
     }
 
     this.bindListeners();
@@ -83,6 +83,25 @@ class Form extends EventEmitter {
     forms.push(form);
   }
 
+  static uniqueRecaptchaCallbackName() {
+    const randomize = () => {
+      const rand = Math.random()
+        .toString(36)
+        .substr(2, 5);
+      return `${rand[0].toUpperCase()}${rand.substr(1)}`;
+    };
+
+    const exists = candidate => {
+      return forms.find(form => form.recaptchaCallbackName === candidate);
+    };
+
+    let name = `recaptchaCallbackForm${randomize()}`;
+    while (exists(name)) {
+      name = `recaptchaCallbackForm${randomize()}`;
+    }
+    return name;
+  }
+
   renderRecaptcha() {
     // explicit recaptcha rendering (to support multiple instances)
     const recaptcha = this.recaptchaContainer();
@@ -97,7 +116,7 @@ class Form extends EventEmitter {
 
   static exposeRecaptchaOnLoadCallback() {
     if (!Form.recaptchaOnLoadCallbackExposed) {
-      window.onloadReCaptchaCallback = () => {
+      window.onloadRecaptchaCallback = () => {
         Form.recaptchaOnLoadCallback();
       };
       Form.recaptchaOnLoadCallbackExposed = true;
@@ -289,10 +308,16 @@ class Form extends EventEmitter {
     return this;
   }
 
+  bindRecaptchaCallback() {
+    this.recaptchaContainer().dataset.callback = this.recaptchaCallbackName;
+    return this;
+  }
+
   exposeRecaptchaCallback() {
     window[this.recaptchaCallbackName] = () => {
       this.recaptchaCallback();
     };
+    return this;
   }
 }
 

@@ -1,6 +1,5 @@
-// import RecaptchaForm from '../components/forms/RecaptchaForm';
 import BasicGoogleMap from '../components/maps/BasicGoogleMap';
-import form from '../components/forms/form';
+import { form } from '../components/forms/form';
 
 export default class Contact {
   constructor() {

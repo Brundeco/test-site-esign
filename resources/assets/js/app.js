@@ -3,7 +3,7 @@ import 'classlist-polyfill';
 import objectFitImages from 'object-fit-images';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
-import form from './components/forms/form';
+import { form } from './components/forms/form';
 import cookieNotification from './components/cookies/cookieNotification';
 import ModalManager from './components/modals/ModalManager';
 

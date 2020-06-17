@@ -5,7 +5,10 @@
  */
 const EventEmitter = require('events');
 
-export default class Form extends EventEmitter {
+let recaptchaOnLoadCallbackExposed = false;
+const forms = [];
+
+class Form extends EventEmitter {
   constructor(form, options = {}) {
     super();
     const {
@@ -16,6 +19,7 @@ export default class Form extends EventEmitter {
       resultSelector = '.result',
       generalErrorMessage = 'Something went wrong. Please try again later.',
       replaceFormOnSuccess = true,
+      recaptchaClass = 'g-recaptcha',
       recaptchaName = 'g-recaptcha-response',
       recaptchaCallbackName,
     } = options;
@@ -26,9 +30,11 @@ export default class Form extends EventEmitter {
     this.resultSelector = resultSelector;
     this.generalErrorMessage = generalErrorMessage;
     this.replaceFormOnSuccess = replaceFormOnSuccess;
+    this.recaptchaClass = recaptchaClass;
     this.recaptchaName = recaptchaName;
     this.recaptchaCallbackName = recaptchaCallbackName;
     this.active = false;
+    this.recaptchaWidgetId = undefined;
 
     if (form instanceof HTMLElement) {
       this.form = form;
@@ -41,6 +47,48 @@ export default class Form extends EventEmitter {
     }
 
     this.bindListeners();
+    Form.registerForm(this);
+    if (this.recaptcha) {
+      Form.exposeRecaptchaOnLoadCallback();
+    }
+  }
+
+  static get recaptchaOnLoadCallbackExposed() {
+    return recaptchaOnLoadCallbackExposed;
+  }
+
+  static set recaptchaOnLoadCallbackExposed(value) {
+    recaptchaOnLoadCallbackExposed = value;
+  }
+
+  static registerForm(form) {
+    forms.push(form);
+  }
+
+  renderRecaptcha() {
+    // explicit recaptcha rendering (to support multiple instances)
+    const recaptcha = this.recaptchaContainer();
+    const attributes = {
+      sitekey: recaptcha.dataset.sitekey,
+      size: recaptcha.dataset.size,
+      callback: recaptcha.dataset.callback,
+    };
+
+    this.recaptchaWidgetId = window.grecaptcha.render(recaptcha, attributes);
+  }
+
+  static exposeRecaptchaOnLoadCallback() {
+    if (!Form.recaptchaOnLoadCallbackExposed) {
+      window.onloadReCaptchaCallback = () => {
+        Form.recaptchaOnLoadCallback();
+      };
+    }
+  }
+
+  static recaptchaOnLoadCallback() {
+    forms.forEach(form => {
+      form.renderRecaptcha();
+    });
   }
 
   bindListeners() {
@@ -48,33 +96,37 @@ export default class Form extends EventEmitter {
   }
 
   async lFormSubmit(ev) {
-    console.log('lFormSubmit');
     this.setState(true);
+
+    if (this.recaptcha || this.async) {
+      ev.preventDefault();
+    }
 
     if (this.recaptcha) {
       const input = this.recaptchaInput();
       if (input && input.value !== '') {
         // Use window.grecaptcha as recaptcha is async loaded
-        window.grecaptcha.reset();
+        window.grecaptcha.reset(this.recaptchaWidgetId);
       }
-      window.grecaptcha.execute(this.recaptchaWidgetId());
+      window.grecaptcha.execute(this.recaptchaWidgetId);
       return this;
     }
 
     if (this.async) {
-      ev.preventDefault();
       await this.executeAsync();
     }
+
+    return this;
   }
 
   async recaptchaCallback() {
-    console.log('recaptchaCallback');
-    /*if (this.async) {
+    if (this.async) {
       await this.executeAsync();
       return this;
-    }*/
+    }
 
-    // this.form.submit();
+    this.form.submit();
+    return this;
   }
 
   async executeAsync() {
@@ -96,7 +148,6 @@ export default class Form extends EventEmitter {
   }
 
   method() {
-    return 'POST';
     const method = this.form.getAttribute('method');
     return method || 'GET';
   }
@@ -105,12 +156,12 @@ export default class Form extends EventEmitter {
     return this.form.querySelector(this.resultSelector);
   }
 
-  recaptchaInput() {
-    return this.form.querySelector(`[name="${this.recaptchaName}"]`);
+  recaptchaContainer() {
+    return this.form.querySelector(`.${this.recaptchaClass}`);
   }
 
-  recaptchaWidgetId() {
-    return this.recaptchaInput().dataset.widgetid;
+  recaptchaInput() {
+    return this.form.querySelector(`[name="${this.recaptchaName}"]`);
   }
 
   handleFailure(status, data) {
@@ -204,8 +255,13 @@ export default class Form extends EventEmitter {
 
   exposeRecaptchaCallback() {
     window[this.recaptchaCallbackName] = () => {
-      console.log('callback', this);
       this.recaptchaCallback();
-    }
+    };
   }
 }
+
+const formInit = (form, options = {}) => {
+  return new Form(form, options);
+};
+
+export { formInit as default, formInit as form, Form };

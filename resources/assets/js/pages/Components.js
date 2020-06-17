@@ -6,8 +6,6 @@ export default class Components {
   constructor() {
     // Recaptcha submit handler for each form
     form('#form-contact', {
-      async: true,
-      recaptcha: true,
       recaptchaCallbackName: 'recaptchaCallbackFormContact',
     });
 

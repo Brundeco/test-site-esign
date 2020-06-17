@@ -30,8 +30,6 @@ validation();
 
 if (document.getElementById('form-newsletter')) {
   form('#form-newsletter', {
-    async: true,
-    recaptcha: true,
     recaptchaCallbackName: 'recaptchaCallbackFormNewsletter',
   });
 }

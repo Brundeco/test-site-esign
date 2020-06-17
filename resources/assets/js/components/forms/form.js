@@ -6,35 +6,37 @@
 const EventEmitter = require('events');
 
 let recaptchaOnLoadCallbackExposed = false;
+let recaptchaScriptTagEnabled = false;
+let recaptchaScriptTagSelector = '#script-recaptcha';
 const forms = [];
 
 class Form extends EventEmitter {
   constructor(form, options = {}) {
     super();
     const {
-      async = false,
       buttonSelector = '[type="submit"]',
       buttonLoadingClass = 'button--loading',
-      recaptcha = false,
-      resultSelector = '.result',
       generalErrorMessage = 'Something went wrong. Please try again later.',
-      replaceFormOnSuccess = true,
+      recaptcha = true,
+      recaptchaCallbackName,
       recaptchaClass = 'g-recaptcha',
       recaptchaName = 'g-recaptcha-response',
-      recaptchaCallbackName,
+      replaceFormOnSuccess = true,
+      resultSelector = '.result',
+      xhr = true,
     } = options;
-    this.async = async;
-    this.recaptcha = recaptcha;
-    this.buttonSelector = buttonSelector;
+    this.active = false;
     this.buttonLoadingClass = buttonLoadingClass;
-    this.resultSelector = resultSelector;
+    this.buttonSelector = buttonSelector;
     this.generalErrorMessage = generalErrorMessage;
-    this.replaceFormOnSuccess = replaceFormOnSuccess;
+    this.recaptcha = recaptcha;
+    this.recaptchaCallbackName = recaptchaCallbackName;
     this.recaptchaClass = recaptchaClass;
     this.recaptchaName = recaptchaName;
-    this.recaptchaCallbackName = recaptchaCallbackName;
-    this.active = false;
     this.recaptchaWidgetId = undefined;
+    this.replaceFormOnSuccess = replaceFormOnSuccess;
+    this.resultSelector = resultSelector;
+    this.xhr = xhr;
 
     if (form instanceof HTMLElement) {
       this.form = form;
@@ -61,6 +63,22 @@ class Form extends EventEmitter {
     recaptchaOnLoadCallbackExposed = value;
   }
 
+  static get recaptchaScriptTagEnabled() {
+    return recaptchaScriptTagEnabled;
+  }
+
+  static set recaptchaScriptTagEnabled(value) {
+    recaptchaScriptTagEnabled = value;
+  }
+
+  static get recaptchaScriptTagSelector() {
+    return recaptchaScriptTagSelector;
+  }
+
+  static set recaptchaScriptTagSelector(value) {
+    recaptchaScriptTagSelector = value;
+  }
+
   static registerForm(form) {
     forms.push(form);
   }
@@ -82,6 +100,17 @@ class Form extends EventEmitter {
       window.onloadReCaptchaCallback = () => {
         Form.recaptchaOnLoadCallback();
       };
+      Form.recaptchaOnLoadCallbackExposed = true;
+    }
+  }
+
+  static enableRecaptchaScriptTag() {
+    if (!Form.recaptchaScriptTagEnabled) {
+      const script = document.querySelector(this.recaptchaScriptTagSelector);
+      if (!script.getAttribute('src')) {
+        script.setAttribute('src', script.dataset.src);
+      }
+      Form.recaptchaScriptTagEnabled = true;
     }
   }
 
@@ -92,13 +121,16 @@ class Form extends EventEmitter {
   }
 
   bindListeners() {
-    this.form.addEventListener('submit', ev => this.lFormSubmit(ev));
+    this.form.addEventListener('submit', ev => this.lSubmit(ev));
+    this.form.addEventListener('focusin', ev => this.lInteraction(ev));
+    this.form.addEventListener('input', ev => this.lInteraction(ev));
+    this.form.addEventListener('change', ev => this.lInteraction(ev));
   }
 
-  async lFormSubmit(ev) {
+  async lSubmit(ev) {
     this.setState(true);
 
-    if (this.recaptcha || this.async) {
+    if (this.recaptcha || this.xhr) {
       ev.preventDefault();
     }
 
@@ -112,16 +144,20 @@ class Form extends EventEmitter {
       return this;
     }
 
-    if (this.async) {
-      await this.executeAsync();
+    if (this.xhr) {
+      await this.executeXhr();
     }
 
     return this;
   }
 
+  lInteraction() {
+    Form.enableRecaptchaScriptTag();
+  }
+
   async recaptchaCallback() {
-    if (this.async) {
-      await this.executeAsync();
+    if (this.xhr) {
+      await this.executeXhr();
       return this;
     }
 
@@ -129,8 +165,8 @@ class Form extends EventEmitter {
     return this;
   }
 
-  async executeAsync() {
-    const response = await this.sendAsync();
+  async executeXhr() {
+    const response = await this.sendXhr();
     const json = await response.json();
 
     this.setState(false);
@@ -213,7 +249,7 @@ class Form extends EventEmitter {
     this.setSubmitButtonsActive(activeState);
   }
 
-  async sendAsync() {
+  async sendXhr() {
     return fetch(this.action(), {
       method: this.method(),
       headers: {

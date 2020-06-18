@@ -238,6 +238,9 @@ _ide_helper_models.php
 _ide_helper.php
 .phpstorm.meta.php
 .phpunit.result.cache
+/storage/*.key
+/.vagrant
+yarn-error.log
 
 ### CodeIgniter ###
 */config/development
@@ -254,14 +257,10 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
+### Webpack ###
 /public/hot
 /public/storage
-/storage/*.key
-/.idea
-/.vagrant
-npm-debug.log
-yarn-error.log
-.DS_Store
+/static/bundle-analyzer-report.html
 
 ### VisualStudioCode ###
 .vscode/*

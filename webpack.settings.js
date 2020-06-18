@@ -6,6 +6,7 @@ const mode = 'static'; // laravel, shop, craft, static, shopify
 const devServerOpenBrowser = true;
 const useFontsDirectory = false;
 const useVideosDirectory = false;
+const openAnalyzer = process.env.npm_config_dont_open_analyzer != 'true'; // Usage: `npm --open-analyzer run prod`
 
 // Don't edit from here
 const isDev = process.env.NODE_ENV === 'development';
@@ -141,6 +142,7 @@ const settings = {
   useFontsDirectory,
   useVideosDirectory,
   isShopify,
+  openAnalyzer,
 };
 
 module.exports = settings;

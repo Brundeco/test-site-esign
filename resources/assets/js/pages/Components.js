@@ -1,14 +1,11 @@
-import RecaptchaForm from '../components/forms/RecaptchaForm';
 import BasicGoogleMap from '../components/maps/BasicGoogleMap';
 import CustomModalAnimation from '../components/modals/CustomModalAnimation';
+import { form } from '../components/forms/form';
 
 export default class Components {
   constructor() {
     // Recaptcha submit handler for each form
-    const contactForm = new RecaptchaForm('#form-contact');
-    window.submitRecaptchaFormContact = () => {
-      contactForm.submitCallback();
-    };
+    form('#form-contact');
 
     // Map
     const map = new BasicGoogleMap();

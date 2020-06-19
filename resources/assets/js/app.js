@@ -3,7 +3,7 @@ import 'classlist-polyfill';
 import objectFitImages from 'object-fit-images';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
-import RecaptchaForm from './components/forms/RecaptchaForm';
+import { form } from './components/forms/form';
 import cookieNotification from './components/cookies/cookieNotification';
 import ModalManager from './components/modals/ModalManager';
 
@@ -29,10 +29,7 @@ objectFitImages();
 validation();
 
 if (document.getElementById('form-newsletter')) {
-  const newsletterForm = new RecaptchaForm('#form-newsletter');
-  window.submitRecaptchaFormNewsletter = () => {
-    newsletterForm.submitCallback();
-  };
+  form('#form-newsletter');
 }
 
 // Enable this if you want to test ga calls in development

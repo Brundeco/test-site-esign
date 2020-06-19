@@ -42,6 +42,9 @@
     @include('layouts._partials.svg-sprite')
   </div>
 
+  {{-- Lazy loaded recaptcha source (see the form component) --}}
+  <script id="script-recaptcha" data-src="https://www.google.com/recaptcha/api.js?hl=en&onload=onloadRecaptchaCallback&render=explicit" async defer></script>
+
   @if ($dataPage == 'contact')
     <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
     <script>

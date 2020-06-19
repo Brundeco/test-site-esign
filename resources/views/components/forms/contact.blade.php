@@ -62,6 +62,9 @@
     </div>
   </div>
 
+  {{-- DEV recaptcha key --}}
+  <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-size="invisible"></div>
+
   <div class="button-group">
     <input type="submit" value="Verzenden" class="button"/>
   </div>

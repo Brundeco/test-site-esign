@@ -40,8 +40,11 @@ npm run --quiet prod > /dev/null 2>&1
 echo "Copying codebase. This may take a minute..."
 rsync -a . ../new --exclude node_modules --exclude resources/assets
 
-# (A) Remove the default index.html file if it exists
-rm -f ../www/index.html
+# (A) Remove the default index.html file if it exists and it's in a real directory (no symlink)
+if [ ! -L www ] && [ -d www ]
+    then
+        rm -f ../www/index.html
+fi
 
 # (A) Remove the www -> src symlink, or Combell's document root folder
 rm -r ../www

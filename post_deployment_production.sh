@@ -41,7 +41,7 @@ echo "Copying codebase. This may take a minute..."
 rsync -a . ../new --exclude node_modules --exclude resources/assets
 
 # (A) Remove the default index.html file if it exists and it's in a real directory (no symlink)
-if [ ! -L www ] && [ -d www ]
+if [ ! -L ../www ] && [ -d ../www ]
     then
         rm -f ../www/index.html
 fi

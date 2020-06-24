@@ -43,7 +43,9 @@ const {
 } = settings;
 
 const jsFilename = isShopify ? `${dist.js}[name].js` : `${dist.js}[name].[contenthash].js`;
-const cssFilename = isShopify ? `${dist.css}[name].css` : `${dist.css}[name].[contenthash].css`;
+const cssFilename = isShopify
+  ? `${dist.css}[name].css.liquid`
+  : `${dist.css}[name].[contenthash].css`;
 const spriteFilename = isShopify ? 'snippets/svg-sprite.liquid' : `${dist.svgSprite}icons.svg`;
 
 const copy = [

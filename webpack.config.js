@@ -101,7 +101,11 @@ module.exports = {
         test: /\.js$/,
         exclude: {
           test: path.resolve(__dirname, 'node_modules'),
-          exclude: [path.resolve(__dirname, 'node_modules/hyperform')],
+          exclude: [
+            path.resolve(__dirname, 'node_modules/hyperform'),
+            path.resolve(__dirname, 'node_modules/swiper'),
+            path.resolve(__dirname, 'node_modules/dom7'),
+          ],
         },
         loader: 'babel-loader',
         options: {
@@ -342,7 +346,7 @@ if (!isShopify) {
       new CleanWebpackPlugin([path.join(dist.root, dist.assets)]),
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
-        openAnalyzer: openAnalyzer,
+        openAnalyzer,
         reportFilename: 'bundle-analyzer-report.html',
       }),
     );

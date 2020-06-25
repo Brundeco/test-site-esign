@@ -4,7 +4,7 @@
       <div class="grid__item medium--one-third">
         <ul class="social-icons">
           <li class="social-icons__item">
-            <a href="#" class="social-icons__link" target="_blank">
+            <a href="#" class="social-icons__link" target="_blank" rel="noopener noreferrer">
               <svg class="icon icon-facebook">
                 <use xlink:href="#icon-facebook" />
               </svg>
@@ -12,7 +12,7 @@
             </a>
           </li>
           <li class="social-icons__item">
-            <a href="#" class="social-icons__link" target="_blank">
+            <a href="#" class="social-icons__link" target="_blank" rel="noopener noreferrer">
               <svg class="icon icon-twitter">
                 <use xlink:href="#icon-twitter" />
               </svg>
@@ -20,7 +20,7 @@
             </a>
           </li>
           <li class="social-icons__item">
-            <a href="#" class="social-icons__link" target="_blank">
+            <a href="#" class="social-icons__link" target="_blank" rel="noopener noreferrer">
               <svg class="icon icon-instagram">
                 <use xlink:href="#icon-instagram" />
               </svg>
@@ -37,7 +37,7 @@
       </div>
       <div class="grid__item medium--one-third">
         <p>
-          <a class="page-footer__signature" href="https://www.esign.eu" target="_blank" title="Web agency Esign uit Gent: webdesign & website ontwikkeling op maat." rel="noopener">Site by Esign</a>
+          <a class="page-footer__signature" href="https://www.esign.eu" target="_blank" title="Highly technical and tasteful websites, webshops, web applications and online marketing, tailored to your story." rel="noopener noreferrer">Site by Esign</a>
         </p>
       </div>
     </div>

@@ -11,7 +11,7 @@
 
   {{-- <meta property="fb:app_id" content=""> --}}
   <meta property="og:title" content="{{ $siteTitle }}">
-  <meta property="og:description" content="{{ $description }}" >
+  <meta property="og:description" content="{{ $description }}">
   <meta property="og:url" content="nl">
   {{-- <meta property="og:image" content="${require(`../assets/images/share-image.jpg`)}"> --}}
   <meta property="og:site_name" content="Template">
@@ -50,6 +50,8 @@
   <link rel="dns-prefetch" href="//google-analytics.com">
   <link rel="dns-prefetch" href="//www.google-analytics.com">
   <link rel="dns-prefetch" href="//www.google.com">{{-- (recaptcha) --}}
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+
   {{-- <link rel="dns-prefetch" href="//ebugs.esign.eu"> --}}
 
   {{-- place typekit or google fonts css here --}}
@@ -61,22 +63,21 @@
     }
   </style>
   {{-- frontend template font, remove when you don't need it --}}
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Poppins:500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Poppins:500,600&display=swap"
+    rel="stylesheet">
   {{-- not needed for webpack setup: --}}
   {{-- <link rel="stylesheet" href="../assets/css/style.css"> --}}
 
 
-  {{-- google analytics --}}
-  {{-- <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-xxxxxxxx-x', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-  </script> --}}
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PSXBSK');
+  </script>
+  <!-- End Google Tag Manager -->
 
 
 </head>

@@ -1,20 +1,24 @@
 @php
-  $siteTitle = "$title - Template";
-  $description = $description ?? null;
-  $dataPage = $dataPage ?? null;
-  $bodyClass = $bodyClass ?? null;
+$siteTitle = "$title - Template";
+$description = $description ?? null;
+$dataPage = $dataPage ?? null;
+$bodyClass = $bodyClass ?? null;
 @endphp
 <!doctype html>
 <html class="no-js" lang="nl" data-page="{{ $dataPage }}">
 @include('layouts._partials.head')
 
 <body class="{{ $bodyClass }}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSXBSK" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="page-wrap">
 
     @section('header')
-      @include('components.base.header')
+    @include('components.base.header')
     @show
 
     <main id="main" class="main">
@@ -24,7 +28,7 @@
     </main>
 
     @section('footer')
-      @include('components.base.footer')
+    @include('components.base.footer')
     @show
 
     @include('components.base.cookie-notification')
@@ -43,14 +47,17 @@
   </div>
 
   {{-- Lazy loaded recaptcha source (see the form component) --}}
-  <script id="script-recaptcha" data-src="https://www.google.com/recaptcha/api.js?hl=en&onload=onloadRecaptchaCallback&render=explicit" async defer></script>
+  <script id="script-recaptcha"
+    data-src="https://www.google.com/recaptcha/api.js?hl=en&onload=onloadRecaptchaCallback&render=explicit" async defer>
+  </script>
 
   @if ($dataPage == 'contact')
-    <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
-    <script>
-      var markerImg = '${require(`../../assets/images/marker.png`)}';
-    </script>
+  <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
+  <script>
+    var markerImg = '${require(`../../assets/images/marker.png`)}';
+  </script>
   @endif
   {{-- <script src="../assets/js/app.js"></script> --}}
 </body>
+
 </html>

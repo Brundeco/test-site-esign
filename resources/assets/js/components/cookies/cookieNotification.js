@@ -72,6 +72,7 @@ export default class CookieNotification {
 
     this.hideCookieNotification();
     this.updatePreferences();
+    this.triggerGTMEvent();
   }
 
   hideCookieNotification() {
@@ -89,6 +90,13 @@ export default class CookieNotification {
       trigger.addEventListener('click', () => {
         this.showCookieNotification();
       });
+    });
+  }
+
+  triggerGTMEvent() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'cookieNotification',
     });
   }
 }

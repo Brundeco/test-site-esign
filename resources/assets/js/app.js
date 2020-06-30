@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import 'classlist-polyfill';
 
 import objectFitImages from 'object-fit-images';
 import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import { form } from './components/forms/form';
-import cookieNotification from './components/cookies/cookieNotification';
+import CookieNotification from './components/cookies/CookieNotification';
 import ModalManager from './components/modals/ModalManager';
 
 import Contact from './pages/Contact';
@@ -22,7 +23,7 @@ window.modalManager = new ModalManager();
 
 // Layout setup
 responsiveVideos();
-cookieNotification();
+window.cookieNotification = new CookieNotification();
 objectFitImages();
 
 // Forms

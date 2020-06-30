@@ -259,6 +259,67 @@ select {
   }
 }
 
+.checkbox__toggle {
+  &:focus,
+  &:active {
+    + label {
+      &:before {
+        border: 1px solid $grayDark;
+      }
+    }
+  }
+  + label {
+    padding-left: 60px;
+    user-select: none;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &:before {
+      position: absolute;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      background: $gray;
+      border-radius: 20px;
+      left: 0;
+      border: 0;
+      top: 0;
+      transition: background-color $transitionDefault;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: $white;
+      top: 2px;
+      z-index: 1;
+      left: 2px;
+      opacity: 1;
+      transform: none;
+      transition: all $transitionDefault;
+      border-width: 0;
+      border-color: $gray;
+    }
+  }
+
+  &:checked {
+    + label {
+      &:before {
+        background: $accentLight;
+      }
+      &:after {
+        left: 22px;
+      }
+    }
+  }
+}
+
 .radio {
   label {
     &:before,

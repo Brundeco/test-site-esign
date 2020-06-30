@@ -33,6 +33,7 @@
         <ul>
           <li><a href="privacy.html">Privacyverklaring</a></li>
           <li><a href="cookies.html">Cookieverklaring</a></li>
+          <li><span class="js-cookie-notification__trigger">Cookievoorkeuren aanpassen</span></li>
         </ul>
       </div>
       <div class="grid__item medium--one-third">

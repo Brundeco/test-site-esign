@@ -2,11 +2,12 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 460px;
   margin-bottom: $gutter;
   padding: 0 $gutter;
   z-index: 99999;
   display: inline-block;
+  border-radius: 0;
 
   .button {
     border: 1px solid $white;
@@ -17,15 +18,17 @@
   background-color: $white;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.12);
   width: 100%;
-  border-radius: 20px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: $gutter;
   font-size: rem(13px);
 
   p {
-    margin-bottom: 0;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   a {
@@ -38,10 +41,10 @@
   }
 
   @media #{$medium} {
-    border-radius: 40px;
+    border-radius: 0;
     flex-wrap: wrap;
     font-size: rem(16px);
-    padding: 10px $gutter;
+    padding: $gutter;
 
     .button {
       border-radius: 40px;
@@ -51,6 +54,8 @@
 }
 
 .cookie-notification__actions {
+  display: block;
+  width: 100%;
   @media #{$maxMedium} {
     text-align: center;
     margin-left: 10px;

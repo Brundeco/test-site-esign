@@ -476,6 +476,14 @@ $breadcrumbs = [
           </div>
         </div>
 
+        <div class="input-group">
+          <div class="checkbox">
+            <input type="checkbox" class="checkbox__toggle" id="toggle" name="toggle" value="1" required />
+            <label for="toggle" tabindex="0">I agree my data will be processed in accordance with the <a href="privacy.html">privacy
+                policy</a>. <span class="required">*</span></label>
+          </div>
+        </div>
+
         <div class="button-group">
           <input type="submit" value="Verzenden" class="button" />
         </div>

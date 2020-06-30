@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 460px;
+  width: 100%;
   margin-bottom: $gutter;
   padding: 0 $gutter;
   z-index: 99999;
@@ -11,6 +11,10 @@
 
   .button {
     border: 1px solid $white;
+  }
+
+  @media #{$medium} {
+    width: 460px;
   }
 }
 
@@ -25,32 +29,37 @@
   padding: $gutter;
   font-size: rem(13px);
 
-  p {
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-
   a {
     color: inherit;
   }
 
   .button {
-    border-radius: 20px;
-    padding: 12px 20px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .button--secondary {
+    background: $white;
+    border: 1px solid $accent;
+    color: $accent;
   }
 
   @media #{$medium} {
     border-radius: 0;
     flex-wrap: wrap;
     font-size: rem(16px);
-    padding: $gutter;
+    padding: $gutter * 1.5 $gutter;
 
     .button {
       border-radius: 40px;
       padding: 12px 40px;
     }
   }
+}
+.cookie-notification__title {
+  font-size: rem(20px);
+  color: $accent;
+  font-weight: 500;
 }
 
 .cookie-notification__actions {

@@ -269,7 +269,7 @@ select {
     }
   }
   + label {
-    padding-left: 60px;
+    padding-left: 55px;
     user-select: none;
 
     &:focus,
@@ -320,6 +320,12 @@ select {
   }
 }
 
+.checkbox__description {
+  margin-left: 55px;
+  display: block;
+  color: $gray;
+  font-size: rem(14px);
+}
 .radio {
   label {
     &:before,

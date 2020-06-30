@@ -20,11 +20,11 @@ export default class CookieNotification {
     this.checkboxMarketing = document.querySelector('.js-cookie__marketing');
     this.checkboxSocials = document.querySelector('.js-cookie__socials');
     this.cookieSettings = {};
-    this.cookieSettings.personal = true;
+    this.cookieSettings.analytics = true;
     this.cookieSettings.marketing = false;
     this.cookieSettings.socials = false;
     // Set different cookies
-    this.cookieVariables = ['personal', 'marketing', 'socials'];
+    this.cookieVariables = ['analytics', 'marketing', 'socials'];
     this.checkCookies();
     this.externalTriggers();
   }
@@ -52,12 +52,12 @@ export default class CookieNotification {
 
   clickEvents() {
     this.buttonCookieAll.addEventListener('click', () => {
-      this.createCookies({ personal: true, marketing: true, socials: true });
+      this.createCookies({ analytics: true, marketing: true, socials: true });
     });
 
     this.buttonCookieCustom.addEventListener('click', () => {
       this.createCookies({
-        personal: true,
+        analytics: true,
         marketing: this.checkboxMarketing.checked,
         socials: this.checkboxSocials.checked,
       });

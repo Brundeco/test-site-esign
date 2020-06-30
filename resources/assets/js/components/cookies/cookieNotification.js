@@ -23,7 +23,7 @@ export default class CookieNotification {
     this.cookieSettings.personal = true;
     this.cookieSettings.marketing = false;
     this.cookieSettings.socials = false;
-
+    // Set different cookies
     this.cookieVariables = ['personal', 'marketing', 'socials'];
     this.checkCookies();
     this.externalTriggers();

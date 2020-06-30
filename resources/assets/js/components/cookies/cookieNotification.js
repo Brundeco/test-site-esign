@@ -27,6 +27,7 @@ export default class CookieNotification {
     this.cookieVariables = ['analytics', 'marketing', 'socials'];
     this.checkCookies();
     this.externalTriggers();
+    this.triggerGTMEvent();
   }
 
   checkCookies() {

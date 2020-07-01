@@ -43,7 +43,6 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="msapplication-config" content="browserconfig.xml" />
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="twitter:widgets:csp" content="on">
   {{-- <meta name="msapplication-TileImage" content="${require(`../../assets/images/icons/ms-icon-144x144.png`)}"> --}}
 
   {{-- <link rel="dns-prefetch" href="//fonts.googleapis.com"> --}}

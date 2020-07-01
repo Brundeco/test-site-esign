@@ -28,7 +28,7 @@ $bodyClass = $bodyClass ?? null;
     @show
 
     @include('components.base.cookie-notification')
-    @include('layouts._partials.browser-support')
+    @include('components.base.browser-support')
     @include('components.nav.modal')
   </div>
 

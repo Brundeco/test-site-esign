@@ -1,7 +1,7 @@
 html {
   &.show-browser-support {
     .browser-support {
-      display: block;
+      display: block !important;
     }
   }
 }

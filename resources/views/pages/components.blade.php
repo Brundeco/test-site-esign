@@ -12,6 +12,17 @@ $breadcrumbs = [
 @section('content')
 <div class="container">
 
+  <blockquote class="twitter-tweet">
+    <p lang="en" dir="ltr" data-dnt="true">Made a demo using pixi.js<a
+        href="https://t.co/Hjnb85m8kz">https://t.co/Hjnb85m8kz</a> <a
+        href="https://t.co/QWti4WQqpZ">pic.twitter.com/QWti4WQqpZ</a></p>&mdash; Keita Yamada (@P5_keita) <a
+      href="https://twitter.com/P5_keita/status/1277967851744161795?ref_src=twsrc%5Etfw">June 30, 2020</a>
+  </blockquote>
+  <script async defer dsrc="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/LqaqRnCbfy0" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
   <ol>
     <li>
       <a href="index.html">Home</a>
@@ -52,7 +63,7 @@ $breadcrumbs = [
       </picture>
       <p>Ratio: 3:4</p>
     </div>
-      <div class="grid__item medium--one-third">
+    <div class="grid__item medium--one-third">
       <picture class="visual visual--16x9">
         <source srcset="https://via.placeholder.com/800x600.jpg" type="image/webp">
         <img src="https://via.placeholder.com/800x600.jpg" alt="">
@@ -379,6 +390,12 @@ $breadcrumbs = [
   </div>
 
   <div class="button-group">
+    <a href="#" class="button" data-gtm-track>Tracked Link</a>
+    <button class="button" data-gtm-track>Tracked Action</button>
+    <a href="#" class="button" data-gtm-track download>Tracked Download</a>
+  </div>
+
+  <div class="button-group">
     <a href="#" class="button button--secondary">Link</a>
     <button class="button button--secondary">Action</button>
     <input type="submit" value="Verzenden" class="button button--secondary" />
@@ -479,7 +496,8 @@ $breadcrumbs = [
         <div class="input-group">
           <div class="checkbox">
             <input type="checkbox" class="checkbox__toggle" id="toggle" name="toggle" value="1" required />
-            <label for="toggle" tabindex="0">I agree my data will be processed in accordance with the <a href="privacy.html">privacy
+            <label for="toggle" tabindex="0">I agree my data will be processed in accordance with the <a
+                href="privacy.html">privacy
                 policy</a>. <span class="required">*</span></label>
           </div>
         </div>

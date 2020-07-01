@@ -1,0 +1,30 @@
+.browser-support {
+  padding: $gutter * 1.5 $gutter * 2;
+  background: $white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  color: $black;
+  max-width: 650px;
+  z-index: 999999;
+  display: none;
+  box-shadow: 2px 2px 21px -10px rgba(0, 0, 0, 0.51);
+
+  .browser-support__body {
+    font-size: rem(16px);
+    display: block;
+    line-height: 1.5em;
+    margin-bottom: 0;
+    padding-right: $gutter;
+  }
+
+  .browser-support__close {
+    position: absolute;
+    right: $gutter;
+    top: $gutter;
+    cursor: pointer;
+    .icon {
+      fill: $accent;
+    }
+  }
+}

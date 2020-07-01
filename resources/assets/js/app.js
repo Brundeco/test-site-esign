@@ -9,6 +9,7 @@ import ModalManager from './components/modals/ModalManager';
 
 import Contact from './pages/Contact';
 import Components from './pages/Components';
+import browserSupport from './components/browserSupport/browserSupport';
 
 require('./utils/nativeConsole');
 
@@ -24,6 +25,7 @@ window.modalManager = new ModalManager();
 responsiveVideos();
 cookieNotification();
 objectFitImages();
+browserSupport();
 
 // Forms
 validation();

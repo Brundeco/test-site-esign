@@ -238,7 +238,7 @@ select {
     left: 1px;
     width: 1px;
     height: 1px;
-    z-index: layer('cellar');
+    z-index: layer("cellar");
     outline: 0;
 
     &:focus + label {

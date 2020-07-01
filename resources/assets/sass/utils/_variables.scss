@@ -108,3 +108,14 @@ $breakpoints: (
 $breakpoint-has-widths: ("medium", "large") !default;
 $breakpoint-has-push: ("medium") !default;
 $breakpoint-has-pull: ("medium") !default;
+
+
+$layers: (
+  'modal':        40,
+  'cookie':       30,
+  'footer':       20,
+  'header':       10,
+  'base':         1,
+  'auto':         0,
+  'cellar':       -1,
+);

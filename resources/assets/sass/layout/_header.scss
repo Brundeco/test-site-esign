@@ -32,7 +32,7 @@
   transition: none;
   background: transparent;
   outline: 0;
-  z-index: 10;
+  z-index: layer('header');
 
   svg {
     transition: $transitionDefault;

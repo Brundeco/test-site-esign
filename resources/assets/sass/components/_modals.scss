@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 1000000;
+  z-index: layer('modal');
   background-color: rgba(0, 0, 0, 0.3);
   visibility: hidden;
   opacity: 0;
@@ -27,7 +27,7 @@
 .modal--active {
   visibility: visible;
   opacity: 1;
-  z-index: 1000001;
+  z-index: layer('modal') + 1;
 }
 
 .modal--fullscreen {

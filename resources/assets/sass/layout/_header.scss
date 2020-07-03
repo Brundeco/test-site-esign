@@ -131,44 +131,9 @@
   }
 }
 
-.mobile-nav__socials {
+.mobile-nav__footer {
   margin-top: $gutter;
-
-  ul {
-    list-style: none;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    li {
-      margin-right: $gutter;
-
-      a {
-        svg {
-          transition: $transitionDefault;
-          transition-property: fill;
-        }
-
-        &:hover,
-        &:focus {
-          svg {
-            fill: $accentHover;
-          }
-        }
-
-        &:active {
-          svg {
-            fill: $accentActive;
-          }
-        }
-      }
-
-      &:last-of-type {
-        margin-right: 0;
-      }
-    }
-  }
+  text-align: center;
 }
 
 .skip-link {

@@ -372,28 +372,40 @@ $breadcrumbs = [
 
   <h2>Buttons</h2>
 
-  <div class="button-group">
-    <a href="#" class="button">Link</a>
-    <button class="button">Action</button>
-    <input type="submit" value="Verzenden" class="button" />
-  </div>
-
-  <div class="button-group">
-    <a href="#" class="button button--secondary">Link</a>
-    <button class="button button--secondary">Action</button>
-    <input type="submit" value="Verzenden" class="button button--secondary" />
-  </div>
-
-  <div class="button-group button-group--right">
-    <a href="#" class="button">Link</a>
-    <button class="button">Action</button>
-    <input type="submit" value="Verzenden" class="button" />
-  </div>
-
-  <div class="button-group button-group--center">
-    <a href="#" class="button">Link</a>
-    <button class="button">Action</button>
-    <input type="submit" value="Verzenden" class="button" />
+  <div class="grid">
+    <div class="grid__item">
+      <div class="button-group">
+        <a href="#" class="button">Link</a>
+        <button class="button">
+          <span>Action</span>
+          <svg class="icon icon-instagram">
+            <use xlink:href="#icon-instagram"></use>
+          </svg>
+        </button>
+        <input type="submit" value="Verzenden" class="button" />
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="button-group">
+        <a href="#" class="button button--secondary">Link</a>
+        <button class="button button--secondary">Action</button>
+        <input type="submit" value="Verzenden" class="button button--secondary" />
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="button-group button-group--right">
+        <a href="#" class="button">Link</a>
+        <button class="button">Action</button>
+        <input type="submit" value="Verzenden" class="button" />
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="button-group button-group--center button-group--gutter-0">
+        <a href="#" class="button">Link</a>
+        <button class="button">Action</button>
+        <input type="submit" value="Verzenden" class="button" />
+      </div>
+    </div>
   </div>
 
   <hr />

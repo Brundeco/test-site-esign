@@ -120,8 +120,9 @@ input[type="search"] {
 .button {
   appearance: none;
   cursor: pointer;
-  border: none;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: $transitionDefault;
   outline: 0;
   line-height: 1.2em;
@@ -131,30 +132,48 @@ input[type="search"] {
   text-decoration: none;
   color: $white;
   text-transform: uppercase;
+  border: 1px solid $accent;
 
-  svg {
-    margin: -5px 6px 0 5px;
+  span + .icon,
+  .icon + span {
+    margin-left: $gutter / 2;
+  }
+
+  .icon {
+    fill: $white;
   }
 
   &:hover,
   &:focus,
   &:active {
     background-color: $accentHover;
-    color: #fff;
+    border-color: $accentHover;
+    color: $white;
   }
 
   &:active {
     background-color: $accent;
+    border-color: $accent;
   }
 }
 
+.button--full {
+  width: 100%;
+}
+
 .button--secondary {
-  background-color: #000;
-  color: #fff;
+  background-color: transparent;
+  color: $accent;
+  border: 1px solid $accent;
 
   &:hover,
   &:focus {
-    background-color: $accent;
+    background-color: rgba($accent, 0.05);
+    color: $accentHover;
+  }
+
+  &:active {
+    background-color: rgba($accent, 0.1);
   }
 }
 
@@ -340,9 +359,15 @@ select {
     margin-bottom: $gutter;
     margin-right: $gutter;
 
-    &:last-of-type {
+    &:last-child {
       margin-right: 0;
     }
+  }
+}
+
+.button-group--gutter-0 {
+  .button {
+    margin-right: 0;
   }
 }
 

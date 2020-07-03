@@ -228,13 +228,15 @@ blockquote {
 }
 
 .rte {
-  margin-bottom: 20px;
-
-  p {
+  * {
     + h2,
     + h3 {
       margin-top: 3em;
     }
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
   }
 }
 

@@ -79,8 +79,13 @@ if (useVideosDirectory) {
   });
 }
 
+let devtool = isDev ? 'source-map' : 'nosources-source-map';
+if (isShopify) {
+  devtool = isDev ? 'inline-source-map' : 'inline-nosources-source-map';
+}
+
 module.exports = {
-  devtool: isDev ? 'source-map' : 'nosources-source-map',
+  devtool,
   entry: {
     app: [`./${paths.js}app.js`],
     style: [`./${paths.sass}style.scss`],

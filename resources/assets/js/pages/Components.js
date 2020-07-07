@@ -1,6 +1,7 @@
 import BasicGoogleMap from '../components/maps/BasicGoogleMap';
 import CustomModalAnimation from '../components/modals/CustomModalAnimation';
 import { form } from '../components/forms/form';
+import trackingEvents from '../components/gtm/trackingEvents';
 
 export default class Components {
   constructor() {
@@ -10,6 +11,9 @@ export default class Components {
     // Map
     const map = new BasicGoogleMap();
     map.init();
+
+    // Init tracking events gtm
+    trackingEvents();
 
     // Custom modal
     const customModal = window.modalManager.createModal(

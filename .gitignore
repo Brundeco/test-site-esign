@@ -267,3 +267,6 @@ application/logs/*
 
 ### Shopify ###
 config.yml
+
+### Webpack output ###
+static

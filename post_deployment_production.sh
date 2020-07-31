@@ -22,7 +22,7 @@ nvm install
 
 # Install npm dependencies, ignoring scripts as we're rebuilding next
 echo "Installing npm dependencies..."
-npm install --production --ignore-scripts  --silent
+npm install --ignore-scripts  --silent
 
 # Rebuild in case we switched npm versions
 echo "Rebuilding npm dependencies..."

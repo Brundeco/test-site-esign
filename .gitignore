@@ -257,9 +257,20 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
+/public/_media
+/storage/*.key
+/.idea
+/.vagrant
+npm-debug.log
+yarn-error.log
+.DS_Store
+
 ### Webpack ###
 /public/hot
 /public/storage
+/public/build
+/public/rev-manifest.json
+/public/bundle-analyzer-report.html
 /static/bundle-analyzer-report.html
 
 ### VisualStudioCode ###

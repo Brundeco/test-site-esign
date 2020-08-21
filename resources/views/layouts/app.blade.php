@@ -54,7 +54,6 @@ $bodyClass = $bodyClass ?? null;
     var markerImg = '${require(`../../assets/images/marker.png`)}';
   </script>
   @endif
-  {{-- <script src="../assets/js/app.js"></script> --}}
 </body>
 
 </html>

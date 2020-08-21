@@ -1,11 +1,3 @@
-html {
-  &.show-browser-support {
-    .browser-support {
-      display: block !important;
-    }
-  }
-}
-
 body {
   @include default-font;
   color: $black;

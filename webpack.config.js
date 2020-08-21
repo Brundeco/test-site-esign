@@ -88,6 +88,7 @@ module.exports = {
   devtool,
   entry: {
     app: [`./${paths.js}app.js`],
+    'browser-support': [`./${paths.js}components/browserSupport/browserSupport.js`],
     style: [`./${paths.sass}style.scss`],
     sprite: glob.sync(`./${paths.svgSprite}*.svg`),
   },

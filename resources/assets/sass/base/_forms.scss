@@ -133,6 +133,7 @@ input[type="search"] {
   color: $white;
   text-transform: uppercase;
   border: 1px solid $accent;
+  hyphens: auto;
 
   span + .icon,
   .icon + span {

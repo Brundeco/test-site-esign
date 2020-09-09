@@ -354,20 +354,21 @@ select {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: -$gutter;
+  margin-left: -$gutter;
 
   .button {
     margin-bottom: $gutter;
-    margin-right: $gutter;
-
-    &:last-child {
-      margin-right: 0;
-    }
+    margin-left: $gutter;
   }
 }
 
 .button-group--gutter-0 {
+  margin-left: 0;
+  margin-bottom: 0;
+
   .button {
-    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
   }
 }
 

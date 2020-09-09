@@ -17,9 +17,10 @@
   text-decoration: none;
   margin-right: $gutter;
   flex-shrink: 0;
+  width: 100px;
 
-  @media #{$maxMedium} {
-    width: 100px;
+  @media #{$nav} {
+    width: auto;
   }
 }
 
@@ -55,7 +56,7 @@
     }
   }
 
-  @media #{$medium} {
+  @media #{$nav} {
     display: none;
   }
 }
@@ -63,9 +64,10 @@
 .main-nav {
   @include display-font;
   @include optimize-font;
+  display: none;
 
-  @media #{$maxMedium} {
-    display: none;
+  @media #{$nav} {
+    display: block;
   }
 }
 

@@ -79,12 +79,18 @@ $largerSize: 1200px;
 $hugeSize: 1400px;
 $massiveSize: 1680px;
 
+// Navbar mediaquery
+$navBreakSize: 768px;
+
 $small: "(min-width: #{$smallSize})";
 $medium: "(min-width: #{$mediumSize})";
 $large: "(min-width: #{$largeSize})";
 $larger: "(min-width: #{$largerSize})";
 $huge: "(min-width: #{$hugeSize})";
 $massive: "(min-width: #{$massiveSize})";
+
+// Navbar mediaquery
+$nav: "(min-width: #{$navBreakSize})";
 
 // Mobile mediaqueries
 $maxMedium: "(max-width: 766px)";

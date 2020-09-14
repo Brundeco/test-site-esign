@@ -158,7 +158,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|svg|gif|webp)$/,
+        test: /\.(jpe?g|png|svg|gif|webp|ico)$/,
         exclude: [path.resolve(__dirname, paths.svgSprite)],
         use: [
           {

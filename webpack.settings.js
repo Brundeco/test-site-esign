@@ -71,6 +71,7 @@ if (isCraft) {
 dist.css = `${dist.assets}css/`;
 dist.js = `${dist.assets}js/`;
 dist.images = `${dist.assets}images/`;
+dist.icons = `${dist.images}icons/`;
 dist.fonts = `${dist.assets}fonts/`;
 dist.svgSprite = `${dist.assets}svg-sprite/`;
 dist.videos = `${dist.assets}videos/`;

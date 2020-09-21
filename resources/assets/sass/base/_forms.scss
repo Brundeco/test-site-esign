@@ -71,11 +71,11 @@ select {
   height: 45px;
   line-height: inherit;
   width: 100%;
-  border: 1px solid $gray;
+  border: 1px solid gray(400);
 
   &:focus {
     outline: 0;
-    border-color: $grayDark;
+    border-color: gray(900);
   }
 }
 
@@ -187,7 +187,7 @@ select {
 }
 
 ::placeholder {
-  color: $grayDark;
+  color: gray(900);
   font-style: italic;
 }
 
@@ -235,7 +235,7 @@ select {
       top: 0;
       width: 20px;
       height: 20px;
-      border: 1px solid $gray;
+      border: 1px solid gray(400);
       background-color: #fff;
     }
 
@@ -263,13 +263,13 @@ select {
 
     &:focus + label {
       &:before {
-        border-color: $grayDark;
+        border-color: gray(900);
       }
     }
 
     &:checked + label {
       &:before {
-        border-color: $grayDark;
+        border-color: gray(900);
       }
 
       &:after {

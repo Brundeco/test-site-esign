@@ -202,14 +202,14 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid $gray;
+  border-top: 1px solid gray(400);
   margin: 50px 0;
 }
 
 blockquote {
   line-height: inherit;
   padding-left: 20px;
-  border-left: 1px solid $gray;
+  border-left: 1px solid gray(400);
   margin-bottom: 1.5em;
   font-size: rem(20px);
   font-style: italic;

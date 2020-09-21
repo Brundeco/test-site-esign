@@ -1,9 +1,18 @@
 // Grays
 $black: #000;
-$grayDark: #777;
-$gray: #b4b4b4;
-$grayMiddle: #d2cecb;
-$grayLight: #f4f4f4;
+
+$grays: (
+  900: #1a202c,
+  800: #2d3748,
+  700: #4a5568,
+  600: #718096,
+  500: #a0aec0,
+  400: #cbd5e0,
+  300: #e2e8f0,
+  200: #edf2f7,
+  100: #f7fafc,
+);
+
 $white: #fff;
 
 // Accent colors

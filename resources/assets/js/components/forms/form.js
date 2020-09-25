@@ -3,6 +3,8 @@
  * Date: 16/06/2020
  * Time: 17:08
  */
+import formDataEntries from 'form-data-entries';
+
 const EventEmitter = require('events');
 
 let recaptchaOnLoadCallbackExposed = false;
@@ -255,11 +257,11 @@ class Form extends EventEmitter {
   }
 
   data() {
-    const formData = new FormData(this.form);
     const data = {};
-    formData.forEach((value, key) => {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of formDataEntries(this.form)) {
       data[key] = value;
-    });
+    }
     return data;
   }
 

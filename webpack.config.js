@@ -22,7 +22,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const settings = require('./webpack.settings');
 
@@ -242,7 +241,7 @@ module.exports = {
       filename: cssFilename,
     }),
     new CopyWebpackPlugin(copy),
-    /*new ImageminPlugin({
+    new ImageminPlugin({
       disable: isDev,
       test: /\.(jpe?g|png|gif|svg)$/i,
       cacheFolder: paths.cache,
@@ -275,8 +274,8 @@ module.exports = {
           removeViewBox: false,
         }),
       ],
-    }),*/
-    // new ImageminWebpWebpackPlugin(),
+    }),
+    new ImageminWebpWebpackPlugin(),
     new ManifestPlugin({
       fileName: `${dist.revManifest}rev-manifest.json`,
     }),
@@ -342,16 +341,6 @@ if (isStatic) {
     },
   });
 }
-
-module.exports.plugins.push(new FaviconsWebpackPlugin({
-  logo: `./${paths.images}marker.png`,
-  outputPath: 'assets/images/icons',
-  publicPath: '',
-  prefix: 'assets/images/icons',
-  inject: true,
-}));
-
-// module.exports.plugins.push(new FaviconsWebpackPlugin(`./${paths.images}marker.png`));
 
 if (!isShopify) {
   if (isDev) {

@@ -29,6 +29,6 @@ npm run --quiet prod > /dev/null 2>&1
 
 # If npm returned a non-zero exit code, fail the whole deploy. $? contains the exit code of the last command executed.
 ([ $? -eq 0 ] && echo "Npm build successful") || \
-{ echo "Something went wrong during npm run prod. Check deploy/npm-debug.log for more details."; exit 1; }
+{ echo "Something went wrong during npm run prod. Check npm-debug.log for more details."; exit 1; }
 
 echo "Your changes are now live."

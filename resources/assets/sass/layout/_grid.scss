@@ -671,3 +671,23 @@ ul.grid-uniform {
     }
   }
 }
+
+// Grid reverse
+@mixin reverse-setup($namespace: "") {
+  .#{$namespace}row-reverse {
+    flex-direction: row-reverse;
+  }
+  .#{$namespace}column-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+@if $reverse == true {
+  @include reverse-setup();
+
+  @each $name in $breakpoint-has-reverse {
+    @include grid-media-query($name) {
+      @include reverse-setup("#{$name}--");
+    }
+  }
+}

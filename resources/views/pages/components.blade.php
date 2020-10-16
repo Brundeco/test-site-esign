@@ -184,6 +184,26 @@ $breadcrumbs = [
     </div>
     @endforeach
 
+    @foreach (['row-reverse', 'column-reverse'] as $reverseType)
+    <h3>Grid {{ $reverseType }}</h3>
+    <div class="grid medium--{{ $reverseType }}">
+      <div class="grid__item medium--one-third">
+        <p><a href="index.html">1 Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Nullam eget mi eleifend,
+          sagittis magna ut, malesuada nunc. Cras in odio metus.</p>
+      </div>
+      <div class="grid__item medium--one-third">
+        <p>2 Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci,
+          fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+      <div class="grid__item medium--one-third">
+        <p>3 Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut orci orci,
+          fringilla
+          at ex vel, efficitur pulvinar nibh.</p>
+      </div>
+    </div>
+    @endforeach
+
     <h3>Grid ul</h3>
     <ul class="grid">
       <li class="grid__item medium--one-half">

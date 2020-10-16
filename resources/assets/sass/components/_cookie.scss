@@ -7,56 +7,48 @@
   padding: 0 $gutter;
   z-index: layer("cookie");
   display: inline-block;
-
-  .button {
-    border: 1px solid $white;
-  }
 }
 
 .cookie-notification__content {
   background-color: $white;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.12);
   width: 100%;
-  border-radius: 20px;
+  max-width: 500px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  font-size: rem(13px);
+  padding: $gutter / 2 $gutter;
+  font-size: rem(14px);
 
   p {
-    margin-bottom: 0;
+    margin-bottom: $gutter / 2;
+
+    @media #{$medium} {
+      margin-bottom: 0;
+      padding-left: $gutter / 2;
+    }
   }
 
   a {
     color: inherit;
   }
 
-  .button {
-    border-radius: 20px;
-    padding: 12px 20px;
-  }
-
   @media #{$medium} {
-    border-radius: 40px;
-    flex-wrap: wrap;
+    padding: $gutter;
     font-size: rem(16px);
-    padding: 10px $gutter;
-
-    .button {
-      border-radius: 40px;
-      padding: 12px 40px;
-    }
+    max-width: 700px;
+    flex-direction: row;
   }
 }
 
 .cookie-notification__actions {
   @media #{$maxMedium} {
     text-align: center;
-    margin-left: 10px;
+    width: 100%;
 
     .button {
-      margin-bottom: $gutter/2;
+      width: 100%;
 
       &:last-of-type {
         margin-bottom: 0;

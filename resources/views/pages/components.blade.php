@@ -481,12 +481,12 @@ $breadcrumbs = [
             <legend>Kies een optie</legend>
             <div class="input-group">
               <div class="radio">
-                <input type="radio" id="radio-1" name="radio" value="1" required />
-                <label for="radio-1">Optie 1</label>
+                <input type="radio" id="radio-3" name="radio" value="1" required />
+                <label for="radio-3">Optie 1</label>
               </div>
               <div class="radio">
-                <input type="radio" id="radio-2" name="radio" value="1" required />
-                <label for="radio-2">Optie 2</label>
+                <input type="radio" id="radio-4" name="radio" value="1" required />
+                <label for="radio-4">Optie 2</label>
               </div>
             </div>
           </fieldset>

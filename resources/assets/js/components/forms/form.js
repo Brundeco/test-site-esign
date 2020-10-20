@@ -19,6 +19,7 @@ class Form extends EventEmitter {
       buttonSelector = '[type="submit"]',
       buttonLoadingClass = 'button--loading',
       generalErrorMessage = 'Something went wrong. Please try again later.',
+      propagateGtm = true,
       recaptcha = true,
       recaptchaClass = 'g-recaptcha',
       recaptchaName = 'g-recaptcha-response',
@@ -30,6 +31,7 @@ class Form extends EventEmitter {
     this.buttonLoadingClass = buttonLoadingClass;
     this.buttonSelector = buttonSelector;
     this.generalErrorMessage = generalErrorMessage;
+    this.propagateGtm = propagateGtm;
     this.recaptcha = recaptcha;
     this.recaptchaCallbackName = Form.uniqueRecaptchaCallbackName();
     this.recaptchaClass = recaptchaClass;
@@ -233,6 +235,10 @@ class Form extends EventEmitter {
 
   handleSuccess(data) {
     const { result } = data;
+
+    if (this.propagateGtm) {
+      this.propagateGtmEvent();
+    }
     this.showSuccessMessage(result);
   }
 
@@ -254,6 +260,15 @@ class Form extends EventEmitter {
     } else {
       this.resultContainer().innerHTML = successMarkup;
     }
+  }
+
+  propagateGtmEvent() {
+    const formId = this.form.id;
+    window.dataLayer.push({
+      event: 'formSubmission',
+      formTitle: document.title,
+      formLabel: formId,
+    });
   }
 
   data() {

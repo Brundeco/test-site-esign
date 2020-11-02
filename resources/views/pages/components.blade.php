@@ -417,6 +417,13 @@ $breadcrumbs = [
           <input type="submit" value="Verzenden" class="button" />
         </div>
       </div>
+      <div class="grid__item">
+        <div class="button-group">
+          <a href="#" class="button" data-gtm-track>Tracked Link</a>
+          <button class="button" data-gtm-track>Tracked Action</button>
+          <a href="#" class="button" data-gtm-track download>Tracked Download</a>
+        </div>
+      </div>
     </div>
 
     <hr />
@@ -499,6 +506,8 @@ $breadcrumbs = [
                   policy</a>. <span class="required">*</span></label>
             </div>
           </div>
+
+          <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-size="invisible"></div>
 
           <div class="button-group">
             <input type="submit" value="Verzenden" class="button" />

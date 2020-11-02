@@ -32,9 +32,6 @@ if (document.getElementById('form-newsletter')) {
   form('#form-newsletter');
 }
 
-// Enable this if you want to test ga calls in development
-// gaDevelopment();
-
 // Page specific classes
 const pages = {
   Contact,

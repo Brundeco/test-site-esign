@@ -4,7 +4,6 @@ $description = $description ?? null;
 $dataPage = $dataPage ?? null;
 $bodyClass = $bodyClass ?? null;
 $googleTagManagerCode = 'GTM-xxxxxxx'; // 'GTM-xxxxxxx' or null
-$googleAnalyticsCode = null; // 'UA-xxxxxxxx-x' or null
 @endphp
 <!doctype html>
 <html class="no-js" lang="nl" data-page="{{ $dataPage }}">

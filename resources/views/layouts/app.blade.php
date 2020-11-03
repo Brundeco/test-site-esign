@@ -3,6 +3,8 @@ $siteTitle = "$title - Template";
 $description = $description ?? null;
 $dataPage = $dataPage ?? null;
 $bodyClass = $bodyClass ?? null;
+$googleTagManagerCode = 'GTM-xxxxxxx'; // 'GTM-xxxxxxx' or null
+$googleAnalyticsCode = null; // 'UA-xxxxxxxx-x' or null
 @endphp
 <!doctype html>
 <html class="no-js" lang="nl" data-page="{{ $dataPage }}">
@@ -53,6 +55,12 @@ $bodyClass = $bodyClass ?? null;
   <script>
     var markerImg = '${require(`../../assets/images/marker.png`)}';
   </script>
+  @endif
+
+  {{-- Google Tag Manager (noscript) --}}
+  @if ($googleTagManagerCode)
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $googleTagManagerCode }}"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   @endif
 </body>
 

@@ -206,6 +206,18 @@ class Form extends EventEmitter {
     return action || window.location;
   }
 
+  encoding() {
+    if (!this.form.hasAttribute('enctype')) {
+      return undefined;
+    }
+
+    return this.form.getAttribute('enctype');
+  }
+
+  hasMultipartEncoding() {
+    return this.encoding() === 'multipart/form-data';
+  }
+
   method() {
     const method = this.form.getAttribute('method');
     return method || 'GET';
@@ -280,6 +292,25 @@ class Form extends EventEmitter {
     return data;
   }
 
+  xhrBody() {
+    if (this.hasMultipartEncoding()) {
+      return new FormData(this.form);
+    }
+
+    return JSON.stringify(this.data());
+  }
+
+  xhrHeaders() {
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    if (!this.hasMultipartEncoding()) {
+      headers['Content-Type'] = 'application/json';
+    }
+    return headers;
+  }
+
   setState(activeState) {
     this.active = activeState;
     this.setSubmitButtonsActive(activeState);
@@ -288,11 +319,8 @@ class Form extends EventEmitter {
   async sendXhr() {
     return fetch(this.action(), {
       method: this.method(),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(this.data()),
+      headers: this.xhrHeaders(),
+      body: this.xhrBody(),
     });
   }
 

@@ -71,11 +71,13 @@ select {
 
 textarea {
   overflow: auto;
-  padding-top: 15px;
-  padding-bottom: 15px;
   vertical-align: top;
   resize: vertical;
   height: 185px;
+  min-height: 45px;
+  max-height: 600px;
+  line-height: 1.5em;
+  padding: calc((45px - 1.5em) / 2) 15px;
 }
 
 select {

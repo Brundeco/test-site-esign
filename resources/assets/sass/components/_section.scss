@@ -1,4 +1,8 @@
 .section {
   display: block;
   position: relative;
+  
+  + .section {
+  	margin-top: $gutter * 2;
+  }
 }

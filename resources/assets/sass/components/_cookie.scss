@@ -5,7 +5,7 @@
   width: 100%;
   margin-bottom: $gutter;
   padding: 0 $gutter;
-  z-index: 99999;
+  z-index: layer("cookie");
   display: inline-block;
   border-radius: 0;
 
@@ -24,6 +24,7 @@
   width: 100%;
   border-radius: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: $gutter;
@@ -67,10 +68,10 @@
   width: 100%;
   @media #{$maxMedium} {
     text-align: center;
-    margin-left: 10px;
+    width: 100%;
 
     .button {
-      margin-bottom: $gutter/2;
+      width: 100%;
 
       &:last-of-type {
         margin-bottom: 0;

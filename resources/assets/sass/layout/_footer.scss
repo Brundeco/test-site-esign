@@ -15,7 +15,7 @@
   transition-duration: 0.5s;
   display: block;
   outline: 0;
-  z-index: 9999;
+  z-index: layer("footer");
 
   &:hover,
   &:focus {

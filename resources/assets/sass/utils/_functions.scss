@@ -8,3 +8,21 @@
   $height: percentage(nth($ratio, 2) / nth($ratio, 1));
   @return $height;
 }
+
+// Gets the gray shade from the gray-map
+@function gray($shade) {
+  @if not map-has-key($grays, $shade) {
+    @warn "The gray shade `#{$shade}` was not found in the gray-map, you might find it in here https://www.bol.com/nl/f/fifty-shades-of-grey/9200000002313193/.";
+  }
+
+  @return map-get($grays, $shade);
+}
+
+// Gets the z-index layer from the layers-map
+@function layer($layer) {
+  @if not map-has-key($layers, $layer) {
+    @warn "The layer `#{$layer}` was not found in the layers-map.";
+  }
+
+  @return map-get($layers, $layer);
+}

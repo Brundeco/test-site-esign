@@ -79,10 +79,16 @@ if (useVideosDirectory) {
   });
 }
 
+let devtool = isDev ? 'source-map' : 'nosources-source-map';
+if (isShopify) {
+  devtool = isDev ? 'inline-source-map' : 'inline-nosources-source-map';
+}
+
 module.exports = {
-  devtool: isDev ? 'source-map' : 'nosources-source-map',
+  devtool,
   entry: {
     app: [`./${paths.js}app.js`],
+    'browser-support': [`./${paths.js}components/browserSupport/browserSupport.js`],
     style: [`./${paths.sass}style.scss`],
     sprite: glob.sync(`./${paths.svgSprite}*.svg`),
   },
@@ -152,7 +158,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|svg|gif|webp)$/,
+        test: /\.(jpe?g|png|svg|gif|webp|ico)$/,
         exclude: [path.resolve(__dirname, paths.svgSprite)],
         use: [
           {

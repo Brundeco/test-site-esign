@@ -3,6 +3,8 @@
  * Date: 16/06/2020
  * Time: 17:08
  */
+import formDataEntries from 'form-data-entries';
+
 const EventEmitter = require('events');
 
 let recaptchaOnLoadCallbackExposed = false;
@@ -17,6 +19,7 @@ class Form extends EventEmitter {
       buttonSelector = '[type="submit"]',
       buttonLoadingClass = 'button--loading',
       generalErrorMessage = 'Something went wrong. Please try again later.',
+      propagateGtm = true,
       recaptcha = true,
       recaptchaClass = 'g-recaptcha',
       recaptchaName = 'g-recaptcha-response',
@@ -28,6 +31,7 @@ class Form extends EventEmitter {
     this.buttonLoadingClass = buttonLoadingClass;
     this.buttonSelector = buttonSelector;
     this.generalErrorMessage = generalErrorMessage;
+    this.propagateGtm = propagateGtm;
     this.recaptcha = recaptcha;
     this.recaptchaCallbackName = Form.uniqueRecaptchaCallbackName();
     this.recaptchaClass = recaptchaClass;
@@ -202,6 +206,18 @@ class Form extends EventEmitter {
     return action || window.location;
   }
 
+  encoding() {
+    if (!this.form.hasAttribute('enctype')) {
+      return undefined;
+    }
+
+    return this.form.getAttribute('enctype');
+  }
+
+  hasMultipartEncoding() {
+    return this.encoding() === 'multipart/form-data';
+  }
+
   method() {
     const method = this.form.getAttribute('method');
     return method || 'GET';
@@ -231,6 +247,10 @@ class Form extends EventEmitter {
 
   handleSuccess(data) {
     const { result } = data;
+
+    if (this.propagateGtm) {
+      this.propagateGtmEvent();
+    }
     this.showSuccessMessage(result);
   }
 
@@ -254,13 +274,41 @@ class Form extends EventEmitter {
     }
   }
 
-  data() {
-    const formData = new FormData(this.form);
-    const data = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
+  propagateGtmEvent() {
+    const formId = this.form.id;
+    window.dataLayer.push({
+      event: 'formSubmission',
+      formTitle: document.title,
+      formLabel: formId,
     });
+  }
+
+  data() {
+    const data = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of formDataEntries(this.form)) {
+      data[key] = value;
+    }
     return data;
+  }
+
+  xhrBody() {
+    if (this.hasMultipartEncoding()) {
+      return new FormData(this.form);
+    }
+
+    return JSON.stringify(this.data());
+  }
+
+  xhrHeaders() {
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    if (!this.hasMultipartEncoding()) {
+      headers['Content-Type'] = 'application/json';
+    }
+    return headers;
   }
 
   setState(activeState) {
@@ -271,11 +319,8 @@ class Form extends EventEmitter {
   async sendXhr() {
     return fetch(this.action(), {
       method: this.method(),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(this.data()),
+      headers: this.xhrHeaders(),
+      body: this.xhrBody(),
     });
   }
 

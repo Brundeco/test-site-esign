@@ -1,6 +1,4 @@
 form {
-  margin-bottom: 30px;
-
   .grid {
     margin-bottom: 0;
   }
@@ -41,14 +39,6 @@ input {
   }
 }
 
-// When having a body font-size < 16px
-// Prevent zoom on touch devices in active inputs
-// @media #{$maxMedium} {
-//   input, textarea {
-//     font-size: rem(16px);
-//   }
-// }
-
 label,
 .label {
   display: block;
@@ -71,21 +61,23 @@ select {
   height: 45px;
   line-height: inherit;
   width: 100%;
-  border: 1px solid $gray;
+  border: 1px solid gray(400);
 
   &:focus {
     outline: 0;
-    border-color: $grayDark;
+    border-color: gray(900);
   }
 }
 
 textarea {
   overflow: auto;
-  padding-top: 15px;
-  padding-bottom: 15px;
   vertical-align: top;
   resize: vertical;
   height: 185px;
+  min-height: 45px;
+  max-height: 600px;
+  line-height: 1.5em;
+  padding: calc((45px - 1.5em) / 2) 15px;
 }
 
 select {
@@ -116,48 +108,6 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-// Buttons
-.button {
-  appearance: none;
-  cursor: pointer;
-  border: none;
-  display: inline-flex;
-  transition: $transitionDefault;
-  outline: 0;
-  line-height: 1.2em;
-  padding: 12px 20px;
-  margin: 0;
-  background-color: $accent;
-  text-decoration: none;
-  color: $white;
-  text-transform: uppercase;
-
-  svg {
-    margin: -5px 6px 0 5px;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: $accentHover;
-    color: #fff;
-  }
-
-  &:active {
-    background-color: $accent;
-  }
-}
-
-.button--secondary {
-  background-color: #000;
-  color: #fff;
-
-  &:hover,
-  &:focus {
-    background-color: $accent;
-  }
-}
-
 .button,
 select {
   &:focus {
@@ -167,7 +117,7 @@ select {
 }
 
 ::placeholder {
-  color: $grayDark;
+  color: gray(900);
   font-style: italic;
 }
 
@@ -215,7 +165,7 @@ select {
       top: 0;
       width: 20px;
       height: 20px;
-      border: 1px solid $gray;
+      border: 1px solid gray(400);
       background-color: #fff;
     }
 
@@ -238,18 +188,18 @@ select {
     left: 1px;
     width: 1px;
     height: 1px;
-    z-index: -1;
+    z-index: layer("cellar");
     outline: 0;
 
     &:focus + label {
       &:before {
-        border-color: $grayDark;
+        border-color: gray(900);
       }
     }
 
     &:checked + label {
       &:before {
-        border-color: $grayDark;
+        border-color: gray(900);
       }
 
       &:after {
@@ -264,10 +214,11 @@ select {
   &:active {
     + label {
       &:before {
-        border: 1px solid $grayDark;
+        border: 1px solid gray(700);
       }
     }
   }
+
   + label {
     padding-left: 55px;
     user-select: none;
@@ -282,7 +233,7 @@ select {
       display: inline-block;
       width: 40px;
       height: 20px;
-      background: $gray;
+      background: gray(500);
       border-radius: 20px;
       left: 0;
       border: 0;
@@ -304,7 +255,7 @@ select {
       transform: none;
       transition: all $transitionDefault;
       border-width: 0;
-      border-color: $gray;
+      border-color: gray(500);
     }
   }
 
@@ -323,9 +274,10 @@ select {
 .checkbox__description {
   margin-left: 55px;
   display: block;
-  color: $gray;
+  color: gray(500);
   font-size: rem(14px);
 }
+
 .radio {
   label {
     &:before,
@@ -395,30 +347,6 @@ select {
 .required {
   display: inline-block;
   color: $error;
-}
-
-// Button group
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: -$gutter;
-
-  .button {
-    margin-bottom: $gutter;
-    margin-right: $gutter;
-
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-}
-
-.button-group--right {
-  justify-content: flex-end;
-}
-
-.button-group--center {
-  justify-content: center;
 }
 
 // Recaptcha

@@ -4,28 +4,28 @@
       <div class="mobile-nav__main">
         @include('components.nav.main', ['nav' => 'mobile-nav'])
       </div>
-      <div class="mobile-nav__socials">
-        <ul>
-          <li>
-            <a href="#" target="_blank">
+      <div class="mobile-nav__footer">
+        <ul class="social-icons">
+          <li class="social-icons__item">
+            <a href="#" class="social-icons__link" target="_blank">
               <svg class="icon icon-facebook">
-                <use xlink:href="#icon-facebook"/>
+                <use xlink:href="#icon-facebook" />
               </svg>
               <span class="vh">Volg ons op Facebook</span>
             </a>
           </li>
-          <li>
-            <a href="#" target="_blank">
+          <li class="social-icons__item">
+            <a href="#" class="social-icons__link" target="_blank">
               <svg class="icon icon-twitter">
-                <use xlink:href="#icon-twitter"/>
+                <use xlink:href="#icon-twitter" />
               </svg>
               <span class="vh">Volg ons op Twitter</span>
             </a>
           </li>
-          <li>
-            <a href="#" target="_blank">
+          <li class="social-icons__item">
+            <a href="#" class="social-icons__link" target="_blank">
               <svg class="icon icon-instagram">
-                <use xlink:href="#icon-instagram"/>
+                <use xlink:href="#icon-instagram" />
               </svg>
               <span class="vh">Volg ons op Instagram</span>
             </a>

@@ -38,7 +38,9 @@
       </div>
       <div class="grid__item medium--one-third">
         <p>
-          <a class="page-footer__signature" href="https://www.esign.eu" target="_blank" title="Highly technical and tasteful websites, webshops, web applications and online marketing, tailored to your story." rel="noopener noreferrer">Site by Esign</a>
+          <a class="page-footer__signature" href="https://www.esign.eu" target="_blank"
+            title="Highly technical and tasteful websites, webshops, web applications and online marketing, tailored to your story."
+            rel="noopener">Site by Esign</a>
         </p>
       </div>
     </div>

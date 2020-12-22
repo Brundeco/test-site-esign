@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 $gutter;
+
+  @media #{$large} {
+    padding-left: $gutter * 2;
+    padding-right: $gutter * 2;
+  }
+}
+
+.container--small {
+  max-width: 1000px;
+}

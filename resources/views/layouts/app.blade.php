@@ -3,6 +3,7 @@ $siteTitle = "$title - Template";
 $description = $description ?? null;
 $dataPage = $dataPage ?? null;
 $bodyClass = $bodyClass ?? null;
+$googleTagManagerCode = 'GTM-xxxxxxx'; // 'GTM-xxxxxxx' or null
 @endphp
 <!doctype html>
 <html class="no-js" lang="nl" data-page="{{ $dataPage }}">
@@ -32,6 +33,7 @@ $bodyClass = $bodyClass ?? null;
     @show
 
     @include('components.base.cookie-notification')
+    @include('components.base.browser-support')
     @include('components.nav.modal')
   </div>
 
@@ -48,8 +50,8 @@ $bodyClass = $bodyClass ?? null;
 
   {{-- Lazy loaded recaptcha source (see the form component) --}}
   <script id="script-recaptcha"
-    data-src="https://www.google.com/recaptcha/api.js?hl=en&onload=onloadRecaptchaCallback&render=explicit" async defer>
-  </script>
+    data-src="https://www.google.com/recaptcha/api.js?hl=en&onload=onloadRecaptchaCallback&render=explicit" async defer
+  ></script>
 
   @if ($dataPage == 'contact')
   <script src="https://maps.googleapis.com/maps/api/js?language=nl"></script>
@@ -57,7 +59,12 @@ $bodyClass = $bodyClass ?? null;
     var markerImg = '${require(`../../assets/images/marker.png`)}';
   </script>
   @endif
-  {{-- <script src="../assets/js/app.js"></script> --}}
+
+  {{-- Google Tag Manager (noscript) --}}
+  @if ($googleTagManagerCode)
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $googleTagManagerCode }}"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  @endif
 </body>
 
 </html>

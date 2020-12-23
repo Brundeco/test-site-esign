@@ -29,6 +29,14 @@ export default class CookieNotification {
     this.checkCookies();
     this.externalTriggers();
     this.triggerGTMEvent();
+
+    const form = document.querySelector('.cookie-notication__form');
+    document.querySelectorAll('.js-toggle-cookie-form').forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        e.preventDefault();
+        form.classList.toggle('show');
+      });
+    });
   }
 
   checkCookies() {

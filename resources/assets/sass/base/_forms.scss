@@ -209,6 +209,17 @@ select {
   }
 }
 
+.checkbox--disabled {
+  pointer-events: none;
+
+  label {
+    &:after,
+    &:before {
+      opacity: 0.7;
+    }
+  }
+}
+
 .checkbox__toggle {
   &:focus,
   &:active {

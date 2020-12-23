@@ -17,6 +17,7 @@ export default class CookieNotification {
     this.cookieNotificationTriggers = document.querySelectorAll('.js-cookie-notification__trigger');
     this.buttonCookieAll = document.querySelector('.js-cookie-all');
     this.buttonCookieCustom = document.querySelector('.js-cookie-custom');
+    this.checkboxAnalytics = document.querySelector('.js-cookie__analytics');
     this.checkboxMarketing = document.querySelector('.js-cookie__marketing');
     this.checkboxSocials = document.querySelector('.js-cookie__socials');
     this.cookieSettings = {};
@@ -47,6 +48,7 @@ export default class CookieNotification {
   }
 
   updateStates() {
+    this.checkboxAnalytics.checked = this.cookieSettings.analytics === 'true';
     this.checkboxMarketing.checked = this.cookieSettings.marketing === 'true';
     this.checkboxSocials.checked = this.cookieSettings.socials === 'true';
   }
@@ -58,7 +60,7 @@ export default class CookieNotification {
 
     this.buttonCookieCustom.addEventListener('click', () => {
       this.createCookies({
-        analytics: true,
+        analytics: this.checkboxAnalytics.checked,
         marketing: this.checkboxMarketing.checked,
         socials: this.checkboxSocials.checked,
       });

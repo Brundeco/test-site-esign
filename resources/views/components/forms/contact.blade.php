@@ -2,6 +2,8 @@
   @include('components.forms.error')
   @include('components.forms.success')
 
+  <div class="result"></div>
+
   <div class="input-group">
     <label for="name">Naam <span class="required">*</span></label>
     <input type="text" name="name" id="name" required />

@@ -470,6 +470,17 @@ $breadcrumbs = [
             <textarea name="message" id="message" required></textarea>
           </div>
 
+          <div class="input-group">
+            <div class="checkbox checkbox--toggle">
+              <input type="checkbox" name="example"
+                id="example-1" value="1" />
+              <label for="example-1">Toggle example</label>
+              <span class="checkbox__description">
+                Checkbox description
+              </span>
+            </div>
+          </div>
+
           <fieldset>
             <legend>Kies een optie <span class="required">*</span></legend>
             <div class="input-group input-group--horizontal">

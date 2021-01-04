@@ -19,13 +19,11 @@ export default class CookieNotification {
     this.buttonCookieCustom = document.querySelector('.js-cookie-custom');
     this.checkboxAnalytics = document.querySelector('.js-cookie__analytics');
     this.checkboxMarketing = document.querySelector('.js-cookie__marketing');
-    this.checkboxSocials = document.querySelector('.js-cookie__socials');
     this.cookieSettings = {};
-    this.cookieSettings.analytics = true;
+    this.cookieSettings.analytics = false;
     this.cookieSettings.marketing = false;
-    this.cookieSettings.socials = false;
     // Set different cookies
-    this.cookieVariables = ['analytics', 'marketing', 'socials'];
+    this.cookieVariables = ['analytics', 'marketing'];
     this.checkCookies();
     this.externalTriggers();
     this.triggerGTMEvent();
@@ -58,19 +56,17 @@ export default class CookieNotification {
   updateStates() {
     this.checkboxAnalytics.checked = this.cookieSettings.analytics === 'true';
     this.checkboxMarketing.checked = this.cookieSettings.marketing === 'true';
-    this.checkboxSocials.checked = this.cookieSettings.socials === 'true';
   }
 
   clickEvents() {
     this.buttonCookieAll.addEventListener('click', () => {
-      this.createCookies({ analytics: true, marketing: true, socials: true });
+      this.createCookies({ analytics: true, marketing: true });
     });
 
     this.buttonCookieCustom.addEventListener('click', () => {
       this.createCookies({
         analytics: this.checkboxAnalytics.checked,
         marketing: this.checkboxMarketing.checked,
-        socials: this.checkboxSocials.checked,
       });
     });
   }

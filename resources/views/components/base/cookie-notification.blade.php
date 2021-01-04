@@ -55,20 +55,6 @@
         </div>
       </div>
 
-      <div class="input-group">
-        <div class="checkbox checkbox--toggle">
-          <input type="checkbox" class="js-cookie__socials" name="cookie__socials"
-            id="cookie__socials" value="1" required />
-          <label for="cookie__socials" tabindex="0">Social cookies</label>
-          <span class="checkbox__description">
-            Deze cookies worden geleverd door derden om bepaalde social media-functies
-            mogelijk te maken, zoals een Twitter 'Tweet'-knop, een LinkedIn' Share'-knop of
-            een YouTube-video. Met deze cookies kunnen sociale netwerkkanalen uw
-            surfgedrag volgen.
-          </span>
-        </div>
-      </div>
-
       <div class="cookie-notification__actions">
         <button type="button" class="button button--secondary | js-cookie-custom">
           Bewaar mijn keuze &nbsp; 🍪

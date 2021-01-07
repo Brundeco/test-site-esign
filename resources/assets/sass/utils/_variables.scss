@@ -79,6 +79,9 @@ $twelfths: false !default;
 $push: false !default;
 $pull: false !default;
 
+// Grid reverse
+$reverse: true !default;
+
 // Mediaqueries
 // If you want more breakpoints, add a nummeric suffix (e.g huge-2)
 $smallSize: 480px;
@@ -123,6 +126,7 @@ $breakpoints: (
 $breakpoint-has-widths: ("medium", "large") !default;
 $breakpoint-has-push: ("medium") !default;
 $breakpoint-has-pull: ("medium") !default;
+$breakpoint-has-reverse: ("medium", "large") !default;
 
 $layers: (
   "modal": 40,

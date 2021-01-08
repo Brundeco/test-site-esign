@@ -15,9 +15,9 @@ export NVM_DIR="$HOME/.nvm"
 echo "Installing node version according to .nvmrc ..."
 nvm install
 
-# Install npm dependencies, ignoring scripts as we're rebuilding next
+# Install npm dependencies
 echo "Installing npm dependencies..."
-npm install --production --ignore-scripts  --silent
+npm install --production --silent
 
 # Rebuild in case we switched npm versions
 echo "Rebuilding npm dependencies..."

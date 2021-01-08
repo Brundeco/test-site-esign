@@ -56,14 +56,14 @@ const copy = [
       : `${dist.images}${filenames.prodPathIncluded}`,
     globOptions: {
       ignore: filenames.ignore,
-    }
+    },
   },
   {
     from: `./${paths.manifest}`,
     to: `${dist.manifest}${filenames.dev}`,
     globOptions: {
       ignore: filenames.ignore,
-    }
+    },
   },
 ];
 

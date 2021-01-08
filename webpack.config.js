@@ -54,9 +54,17 @@ const copy = [
     to: isDev
       ? `${dist.images}${filenames.devPathIncluded}`
       : `${dist.images}${filenames.prodPathIncluded}`,
-    ignore: filenames.ignore,
+    globOptions: {
+      ignore: filenames.ignore,
+    },
   },
-  { from: `./${paths.manifest}`, to: `${dist.manifest}${filenames.dev}`, ignore: filenames.ignore },
+  {
+    from: `./${paths.manifest}`,
+    to: `${dist.manifest}${filenames.dev}`,
+    globOptions: {
+      ignore: filenames.ignore,
+    },
+  },
 ];
 
 if (useFontsDirectory) {
@@ -240,7 +248,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: cssFilename,
     }),
-    new CopyWebpackPlugin(copy),
+    new CopyWebpackPlugin({
+      patterns: copy,
+    }),
     new ImageminPlugin({
       disable: isDev,
       test: /\.(jpe?g|png|gif|svg)$/i,

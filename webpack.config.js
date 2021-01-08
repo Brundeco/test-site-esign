@@ -73,7 +73,9 @@ if (useFontsDirectory) {
     to: isDev
       ? `${dist.fonts}${filenames.devPathIncluded}`
       : `${dist.fonts}${filenames.prodPathIncluded}`,
-    ignore: filenames.ignore,
+    globOptions: {
+      ignore: filenames.ignore,
+    },
   });
 }
 
@@ -83,7 +85,9 @@ if (useVideosDirectory) {
     to: isDev
       ? `${dist.videos}${filenames.devPathIncluded}`
       : `${dist.videos}${filenames.prodPathIncluded}`,
-    ignore: filenames.ignore,
+    globOptions: {
+      ignore: filenames.ignore,
+    },
   });
 }
 

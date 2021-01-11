@@ -1,18 +1,16 @@
 <div class="cookie-notification hide | js-cookie-notification">
   <div class="cookie-notification__content">
-    <p class="cookie-notification__title">Privacy instellingen</p>
     <p>
-      Om u beter en persoonlijker te helpen, gebruiken wij cookies op onze website.
-      Hiermee volgen wij en derde partijen uw internetgedrag op onze website en kunnen
-      we uw ervaring verbeteren.
+      Wij gebruiken cookies om je gebruikservaring op onze website zo optimaal mogelijk te maken.<br/>
+      <a href="cookies.html">Meer informatie</a>
     </p>
 
-    <div class="cookie-notification__actions">
+    <div class="button-group button-group--align-center">
       <button type="button" class="button | js-cookie-all">
-        Accepteer alle cookies &nbsp; 🚀
+        Accepteren &nbsp; 🚀
       </button>
 
-      <a href="#" class="js-toggle-cookie-form">Stel je voorkeuren in &#62;</a>
+      <a href="#" class="js-toggle-cookie-form">Mijn voorkeuren instellen</a>
     </div>
 
     <div class="cookie-notication__form" style="display: none;">
@@ -22,9 +20,8 @@
             id="cookie__essential" value="1" checked disabled />
           <label for="cookie__essential" tabindex="0">Noodzakelijke cookies</label>
           <span class="checkbox__description">
-            Deze noodzakelijke cookies zorgen dat alle onderdelen van de website goed werken.
-            Deze cookies mogen wij plaatsen zonder toestemming.
-            Door verder te surfen op onze websites ga je akkoord met het gebruik van de noodzakelijke cookies.
+            Deze cookies zijn noodzakelijk om de website of het platform te laten functioneren en vergemakkelijken het navigeren.
+            Door verder te surfen, ga je akkoord met het gebruik van noodzakelijke cookies.
           </span>
         </div>
       </div>
@@ -35,9 +32,8 @@
             id="cookie__analytics" value="1" />
           <label for="cookie__analytics" tabindex="0">Analytische cookies</label>
           <span class="checkbox__description">
-            Deze cookies verzamelen informatie
-            over de technische gegevens van de uitwisseling of over het gebruik van de websites
-            (bezochte pagina’s, gemiddelde duur van het bezoek,…), dit om de werking van de site te verbeteren.
+            Met deze cookies kunnen we bezoeken en traffic anoniem bijhouden,
+            zodat we de prestaties van ons platform of onze website kunnen meten en verbeteren.
           </span>
         </div>
       </div>
@@ -48,14 +44,13 @@
             id="cookie__marketing" value="1" required />
           <label for="cookie__marketing" tabindex="0">Marketing cookies</label>
           <span class="checkbox__description">
-            Deze cookies gebruiken we voor marketingdoeleinden.
-            Ze zorgen ervoor dat we advertenties kunnen optimaliseren op basis
-            van uw surfgedrag.
+            Deze cookies gebruiken we voor marketingdoeleinden. Ze zorgen ervoor dat we advertenties kunnen
+            optimaliseren op basis van jouw surfgedrag en de relatie met websitebezoekers continu verbeteren.
           </span>
         </div>
       </div>
 
-      <div class="cookie-notification__actions">
+      <div class="button-group">
         <button type="button" class="button button--secondary | js-cookie-custom">
           Bewaar mijn keuze &nbsp; 🍪
         </button>

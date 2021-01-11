@@ -248,34 +248,35 @@ $breadcrumbs = [
     <hr>
     @endforeach
 
-    <hr />
     <h2>Device helpers</h2>
 
-    <h3>Visibility</h3>
-    <ul>
-      <li>.show</li>
-      <li>.hide</li>
-      <li>.breakpoint + --show</li>
-      <li>.breakpoint + --hide</li>
-    </ul>
+    <div class="rte">
+      <h3>Visibility</h3>
+      <ul>
+        <li>.show</li>
+        <li>.hide</li>
+        <li>.breakpoint + --show</li>
+        <li>.breakpoint + --hide</li>
+      </ul>
 
-    <h3>Text alignment</h3>
-    <ul>
-      <li>.text-left</li>
-      <li>.text-center</li>
-      <li>.text-right</li>
-      <li>.breakpoint + --text-left</li>
-      <li>.breakpoint + --text-center</li>
-      <li>.breakpoint + --text-right</li>
-    </ul>
+      <h3>Text alignment</h3>
+      <ul>
+        <li>.text-left</li>
+        <li>.text-center</li>
+        <li>.text-right</li>
+        <li>.breakpoint + --text-left</li>
+        <li>.breakpoint + --text-center</li>
+        <li>.breakpoint + --text-right</li>
+      </ul>
 
-    <h3>Floats</h3>
-    <ul>
-      <li>.left</li>
-      <li>.right</li>
-      <li>.breakpoint + --left</li>
-      <li>.breakpoint + --right</li>
-    </ul>
+      <h3>Floats</h3>
+      <ul>
+        <li>.left</li>
+        <li>.right</li>
+        <li>.breakpoint + --left</li>
+        <li>.breakpoint + --right</li>
+      </ul>
+    </div>
 
     <hr />
 
@@ -306,32 +307,6 @@ $breadcrumbs = [
       <cite>The author of the quote</cite>
     </blockquote>
 
-    <ul>
-      <li>
-        Unordered list item 1
-
-        <ul>
-          <li>Unordered list item 1.1</li>
-          <li>Unordered list item 1.2</li>
-          <li>Unordered list item 1.3</li>
-        </ul>
-      </li>
-      <li>Unordered list item 2</li>
-      <li>Unordered list item 3</li>
-    </ul>
-
-    <ol>
-      <li>Ordered list item 1</li>
-      <li>Ordered list item 2</li>
-      <li>Ordered list item 3</li>
-    </ol>
-
-    <ul class="unstyled">
-      <li>Unstyled list item 1</li>
-      <li>Unstyled list item 2</li>
-      <li>Unstyled list item 3</li>
-    </ul>
-
     <ul class="lined-list">
       <li>List item 1</li>
       <li>List item 2</li>
@@ -344,6 +319,50 @@ $breadcrumbs = [
       <dt>Dt item 2</dt>
       <dd>Dd item 2</dd>
     </dl>
+
+    <h3>Rich text</h3>
+
+    <div class="rte">
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+
+      <p>
+        The <strong>Pythagorean theorem</strong> is often expressed as the following equation:<br />
+        <var>a<sup>2</sup></var> + <var>b<sup>2</sup></var> = <var>c<sup>2</sup></var>
+      </p>
+
+      <h3>Heading 3</h3>
+
+      <p>Almost every developer's favorite <em>molecule</em> is C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>,
+        also
+        known as "caffeine".</p>
+
+      <p><a href="#">Normal link</a> - <a href="#" class="tdn">Not underlined link</a></p>
+
+      <ul>
+        <li>
+          Unordered list item 1
+
+          <ul>
+            <li>Unordered list item 1.1</li>
+            <li>Unordered list item 1.2</li>
+            <li>Unordered list item 1.3</li>
+          </ul>
+        </li>
+        <li>Unordered list item 2</li>
+        <li>Unordered list item 3</li>
+      </ul>
+
+      <ol>
+        <li>Ordered list item 1</li>
+        <li>Ordered list item 2</li>
+        <li>Ordered list item 3</li>
+      </ol>
+    </div>
+
+    <hr />
+
+    <h2>Social items</h2>
 
     <ul class="social-icons">
       <li class="social-icons__item">
@@ -371,6 +390,10 @@ $breadcrumbs = [
         </a>
       </li>
     </ul>
+
+    <hr />
+
+    <h2>Tables</h2>
 
     <table>
       <thead>

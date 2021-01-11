@@ -1,14 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable prefer-spread */
-/* eslint-disable no-multi-assign */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable func-names */
-/* eslint-disable no-plusplus */
-/* eslint-disable prefer-rest-params */
-/* eslint-disable no-unused-vars */
 import Cookies from 'js-cookie';
 
 export default class CookieNotification {
@@ -94,7 +83,7 @@ export default class CookieNotification {
 
   externalTriggers() {
     [...this.cookieNotificationTriggers].forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
+      trigger.addEventListener('click', e => {
         e.preventDefault();
         this.showCookieNotification();
       });

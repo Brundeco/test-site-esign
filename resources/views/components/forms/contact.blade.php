@@ -2,6 +2,8 @@
   @include('components.forms.error')
   @include('components.forms.success')
 
+  <div class="result"></div>
+
   <div class="input-group">
     <label for="name">Naam <span class="required">*</span></label>
     <input type="text" name="name" id="name" required />
@@ -31,26 +33,26 @@
     <legend>Kies een optie <span class="required">*</span></legend>
     <div class="input-group input-group--horizontal">
       <div class="radio">
-        <input type="radio" id="radio-1" name="radio" value="1" required/>
+        <input type="radio" id="radio-1" name="radio" value="radio 1" required/>
         <label for="radio-1">Optie 1</label>
       </div>
       <div class="radio">
-        <input type="radio" id="radio-2" name="radio" value="1" required/>
+        <input type="radio" id="radio-2" name="radio" value="radio 2" required/>
         <label for="radio-2">Optie 2</label>
       </div>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>Kies een optie</legend>
+    <legend>Kies opties</legend>
     <div class="input-group">
-      <div class="radio">
-        <input type="radio" id="radio-1" name="radio" value="1" required/>
-        <label for="radio-1">Optie 1</label>
+      <div class="checkbox">
+        <input type="checkbox" id="checkbox-1" name="checkbox[]" value="checkbox 1" required/>
+        <label for="checkbox-1">Optie 1</label>
       </div>
-      <div class="radio">
-        <input type="radio" id="radio-2" name="radio" value="1" required/>
-        <label for="radio-2">Optie 2</label>
+      <div class="checkbox">
+        <input type="checkbox" id="checkbox-2" name="checkbox[]" value="checkbox 2" required/>
+        <label for="checkbox-2">Optie 2</label>
       </div>
     </div>
   </fieldset>

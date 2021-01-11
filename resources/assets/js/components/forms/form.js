@@ -3,8 +3,7 @@
  * Date: 16/06/2020
  * Time: 17:08
  */
-import formDataEntries from 'form-data-entries';
-
+const serialize = require('form-serialize');
 const EventEmitter = require('events');
 
 let recaptchaOnLoadCallbackExposed = false;
@@ -190,7 +189,15 @@ class Form extends EventEmitter {
 
   async executeXhr() {
     const response = await this.sendXhr();
-    const json = await response.json();
+
+    let json;
+    try {
+      json = await response.json();
+    } catch (e) {
+      this.handleFailure(response.status);
+      this.setState(false);
+      return;
+    }
 
     this.setState(false);
 
@@ -236,7 +243,7 @@ class Form extends EventEmitter {
   }
 
   handleFailure(status, data) {
-    if (status === 422) {
+    if (status === 422 && data) {
       // Validation error
       this.showValidationErrors(data);
     } else {
@@ -284,12 +291,7 @@ class Form extends EventEmitter {
   }
 
   data() {
-    const data = {};
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [key, value] of formDataEntries(this.form)) {
-      data[key] = value;
-    }
-    return data;
+    return serialize(this.form, { hash: true });
   }
 
   xhrBody() {

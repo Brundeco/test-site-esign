@@ -14,7 +14,7 @@ import Cookies from 'js-cookie';
 export default class CookieNotification {
   constructor() {
     this.cookieNotification = document.querySelector('.js-cookie-notification');
-    this.cookieNotificationTriggers = document.querySelectorAll('.js-cookie-notification__trigger');
+    this.cookieNotificationTriggers = document.querySelectorAll('.js-cookie-notification-trigger');
     this.buttonCookieAll = document.querySelector('.js-cookie-all');
     this.buttonCookieCustom = document.querySelector('.js-cookie-custom');
     this.checkboxAnalytics = document.querySelector('.js-cookie__analytics');
@@ -94,7 +94,8 @@ export default class CookieNotification {
 
   externalTriggers() {
     [...this.cookieNotificationTriggers].forEach(trigger => {
-      trigger.addEventListener('click', () => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
         this.showCookieNotification();
       });
     });

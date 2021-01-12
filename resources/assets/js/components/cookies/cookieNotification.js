@@ -39,6 +39,10 @@ export default class CookieNotification {
     this.updateStates();
 
     this.cookieNotification.classList.remove('hide');
+    setTimeout(() => {
+      this.cookieNotification.classList.add('active');
+    }, 100);
+
     this.clickEvents();
   }
 
@@ -72,7 +76,11 @@ export default class CookieNotification {
   }
 
   hideCookieNotification() {
-    this.cookieNotification.classList.add('hide');
+    this.cookieNotification.classList.remove('active');
+
+    setTimeout(() => {
+      this.cookieNotification.classList.add('hide');
+    }, 400);
   }
 
   updatePreferences() {

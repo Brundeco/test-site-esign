@@ -4,6 +4,12 @@
   left: $gutter;
   right: $gutter;
   z-index: layer("cookie");
+  opacity: 0;
+  transition: 0.4s $easeOut;
+
+  &.active {
+    opacity: 1;
+  }
 
   @media #{$medium} {
     width: 520px;

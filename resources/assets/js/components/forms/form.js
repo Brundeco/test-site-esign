@@ -162,7 +162,14 @@ class Form extends EventEmitter {
         // Use window.grecaptcha as recaptcha is async loaded
         window.grecaptcha.reset(this.recaptchaWidgetId);
       }
-      window.grecaptcha.execute(this.recaptchaWidgetId);
+
+      window.grecaptcha.execute(this.recaptchaWidgetId)
+        .catch(() => {
+          // Recaptcha failed to execute, check your keys
+          this.showGeneralError();
+          this.setState(false);
+          return false;
+        });
       return this;
     }
 

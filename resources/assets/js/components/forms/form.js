@@ -163,13 +163,12 @@ class Form extends EventEmitter {
         window.grecaptcha.reset(this.recaptchaWidgetId);
       }
 
-      window.grecaptcha.execute(this.recaptchaWidgetId)
-        .catch(() => {
-          // Recaptcha failed to execute, check your keys
-          this.showGeneralError();
-          this.setState(false);
-          return false;
-        });
+      window.grecaptcha.execute(this.recaptchaWidgetId).catch(() => {
+        // Recaptcha failed to execute, check your keys
+        this.showGeneralError();
+        this.setState(false);
+        return false;
+      });
       return this;
     }
 

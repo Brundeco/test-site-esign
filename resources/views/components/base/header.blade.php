@@ -1,4 +1,4 @@
-<header class="page-header">
+<header class="page-header js-header">
 
   <div class="container">
     <div class="page-header__content">
@@ -20,3 +20,5 @@
   </div>
 
 </header>
+
+<div class="js-header-push" aria-hidden="true"></div>

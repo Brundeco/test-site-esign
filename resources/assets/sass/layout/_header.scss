@@ -1,6 +1,15 @@
 .page-header {
   @include clearfix;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: layer("header");
   padding: $gutter 0;
+}
+
+.page-header--fixed {
+  position: fixed;
 }
 
 .page-header--collapsed {
@@ -26,8 +35,8 @@
 
 .main-nav-trigger {
   display: block;
-  position: fixed;
-  top: 50px;
+  position: absolute;
+  top: 50%;
   right: $gutter;
   transform: translateY(-50%);
   transition: none;

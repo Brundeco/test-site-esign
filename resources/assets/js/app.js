@@ -4,6 +4,7 @@ import 'classlist-polyfill';
 
 import objectFitImages from 'object-fit-images';
 import responsiveVideos from './components/layout/responsiveVideos';
+import navigation from './components/layout/navigation';
 import validation from './components/forms/validation';
 import { form } from './components/forms/form';
 import CookieNotification from './components/cookies/CookieNotification';
@@ -22,6 +23,7 @@ window.modalManager = new ModalManager();
 
 // Layout setup
 responsiveVideos();
+navigation();
 window.cookieNotification = new CookieNotification();
 objectFitImages();
 

@@ -12,8 +12,6 @@ import ModalManager from './components/modals/ModalManager';
 import Contact from './pages/Contact';
 import Components from './pages/Components';
 
-require('./utils/nativeConsole');
-
 // Set js class
 const htmlClassList = document.documentElement.classList;
 htmlClassList.add('js');

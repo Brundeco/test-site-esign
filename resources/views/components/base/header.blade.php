@@ -21,4 +21,4 @@
 
 </header>
 
-<div class="js-header-push" aria-hidden="true"></div>
+<div class="header-push-element js-header-push" aria-hidden="true"></div>

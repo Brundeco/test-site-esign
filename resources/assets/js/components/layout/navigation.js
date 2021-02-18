@@ -8,15 +8,17 @@ export default function() {
   let stickySupport = true;
   let lastScroll = 0;
   let scrolled;
+  let pageHasLoaded = false;
   const offset = 120;
 
-  if (document.documentMode) {
-    stickySupport = false;
-  }
-
-  function calculateHeaderPush() {
+  const calculateHeaderPush = () => {
     headerPush.style.height = `${headerHeight}px`;
-  }
+
+    // Remove initial min-height of push element (which purpose was to prevent jumping effect when loading page)
+    if (headerPush.style.minHeight !== null && pageHasLoaded) {
+      headerPush.style.minHeight = '0';
+    }
+  };
 
   // Add js-header-compensation class to absolute / fixed / sticky elements to compensate top-positioning
   const compensateHeader = () => {
@@ -26,7 +28,7 @@ export default function() {
     });
   };
 
-  function checkScroll() {
+  const checkScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     // Make sure they scroll more than delta
@@ -42,42 +44,59 @@ export default function() {
     }
 
     lastScroll = scrollTop;
-  }
+  };
 
-  calculateHeaderPush();
-  checkScroll();
-
-  window.addEventListener('scroll', () => {
-    checkScroll();
-    if (stickySupport) {
-      compensateHeader();
+  const init = () => {
+    if (document.documentMode) {
+      stickySupport = false;
     }
-    scrolled = true;
-  });
 
-  setInterval(() => {
-    if (scrolled) {
+    // Only change height when page has loaded to prevent getting wrong height value
+    window.addEventListener('load', () => {
+      calculateHeaderPush();
+      if (stickySupport) {
+        compensateHeader();
+      }
       checkScroll();
-      scrolled = false;
-    }
-  }, 250);
+    });
 
-  window.addEventListener('resize', () => {
-    calculateHeaderPush();
-    if (stickySupport) {
-      compensateHeader();
-    }
-    checkScroll();
-  });
+    // Scroll event
+    window.addEventListener('scroll', () => {
+      checkScroll();
+      if (stickySupport) {
+        compensateHeader();
+      }
+      scrolled = true;
+    });
 
-  // Add resizeobserver for resizing header with inspect element a tive
-  const headerHeightObserver = new ResizeObserver(() => {
-    calculateHeaderPush();
-    if (stickySupport) {
-      compensateHeader();
-    }
-    checkScroll();
-  });
+    setInterval(() => {
+      if (scrolled) {
+        checkScroll();
+        scrolled = false;
+      }
+    }, 250);
 
-  headerHeightObserver.observe(header);
+    // Resize event
+    window.addEventListener('resize', () => {
+      pageHasLoaded = true;
+      calculateHeaderPush();
+      if (stickySupport) {
+        compensateHeader();
+      }
+      checkScroll();
+    });
+
+    // Add resizeobserver for resizing header with inspect element a tive
+    const headerHeightObserver = new ResizeObserver(() => {
+      calculateHeaderPush();
+      if (stickySupport) {
+        compensateHeader();
+      }
+      checkScroll();
+    });
+
+    headerHeightObserver.observe(header);
+  };
+
+  init();
 }

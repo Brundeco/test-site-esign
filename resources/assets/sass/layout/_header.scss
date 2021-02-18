@@ -162,3 +162,12 @@
     font-size: rem(20px);
   }
 }
+
+.js-header-push {
+  // Set initial min-height to prevent jumping of content height when loading page
+  min-height: 95px;
+
+  @media #{$medium} {
+    min-height: 112px;
+  }
+}

@@ -1,19 +1,15 @@
 .page-header {
   @include clearfix;
-  position: absolute;
+  position: sticky;
   width: 100%;
-  top: 0;
   left: 0;
   z-index: layer("header");
   padding: $gutter 0;
 }
 
-.page-header--fixed {
-  position: fixed;
-}
-
-.page-header--collapsed {
-  padding: 10px 0;
+.page-header--sticky {
+  position: sticky;
+  top: 0;
 }
 
 .page-header__content {
@@ -146,28 +142,12 @@
 }
 
 .skip-link {
-  left: -999px;
-  position: absolute;
-  top: auto;
-  overflow: hidden;
-  z-index: -999;
-  white-space: nowrap;
-
   &:focus {
     top: 0;
     left: 0;
     z-index: 999;
-    background-color: #fff;
+    background-color: $white;
     padding: 0.5em 1em;
     font-size: rem(20px);
-  }
-}
-
-.header-push-element {
-  // Set initial min-height to prevent jumping of content height when loading page
-  min-height: 95px;
-
-  @media #{$medium} {
-    min-height: 112px;
   }
 }

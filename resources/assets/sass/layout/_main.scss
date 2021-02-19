@@ -1,8 +1,4 @@
 .main {
-  padding: $gutter 0 0 0;
+  padding: 0;
   flex-grow: 1;
-
-  @media #{$medium} {
-    padding: $gutter * 2 0 0 0;
-  }
 }

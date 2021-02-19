@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Made by Esign -->
-  <!-- Esign is @ http://www.esign.eu/ -->
+  <!-- Esign is @ https://www.esign.eu/ -->
   <!-- Esign contact: info@esign.eu -->
 
   {{-- <meta property="fb:app_id" content=""> --}}
@@ -55,18 +55,24 @@
   {{-- <link rel="dns-prefetch" href="//ebugs.esign.eu"> --}}
 
   {{-- place typekit or google fonts css here --}}
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Poppins:500,600&display=swap"
+    rel="stylesheet">
 
   {{-- inline css: no flash --}}
   <style>
     .modal {
       visibility: hidden;
     }
+
+    .skip-link {
+      left: -999px;
+      position: absolute;
+      top: auto;
+      overflow: hidden;
+      z-index: -999;
+      white-space: nowrap;
+    }
   </style>
-  {{-- frontend template font, remove when you don't need it --}}
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Poppins:500,600&display=swap"
-    rel="stylesheet">
-  {{-- not needed for webpack setup: --}}
-  {{-- <link rel="stylesheet" href="../assets/css/style.css"> --}}
 
   {{-- Google Tag Manager --}}
   @if ($googleTagManagerCode)

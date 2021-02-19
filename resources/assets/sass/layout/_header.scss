@@ -4,15 +4,11 @@
   left: 0;
   z-index: layer("header");
   padding: $gutter 0;
+  top: 0;
   position: relative;
-
   @supports (position: sticky) {
     position: sticky;
   }
-}
-
-.page-header--sticky {
-  top: 0;
 }
 
 .page-header__content {

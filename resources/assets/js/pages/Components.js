@@ -1,6 +1,6 @@
 import CustomModalAnimation from '../components/modals/CustomModalAnimation';
 import { form } from '../components/forms/form';
-import eventTracking from '../components/forms/eventTracking';
+import eventTracking from '../components/gtm/eventTracking';
 
 export default class Components {
   constructor() {

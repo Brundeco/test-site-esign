@@ -467,6 +467,11 @@ $breadcrumbs = [
           <a href="#" class="button" data-gtm-track download>Tracked Download</a>
         </div>
       </div>
+      <div class="grid__item">
+        <div class="button-group">
+          <a href="#" class="button" data-gtm-track data-gtm-title="Custom Title" data-gtm-label="Custom Label">Custom GTM title and label</a>
+        </div>
+      </div>
     </div>
 
     <hr />

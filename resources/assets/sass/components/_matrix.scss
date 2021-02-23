@@ -1,7 +1,3 @@
-.matrix {
-  @include clearfix;
-}
-
 .matrix__block {
   hr {
     margin: 20px 0;
@@ -109,7 +105,6 @@
 
 // Section block
 .matrix__block--section {
-  @include clearfix;
   margin-bottom: $gutter;
 
   @media #{$medium} {

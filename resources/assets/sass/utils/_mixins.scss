@@ -1,20 +1,3 @@
-// Micro clearfix hack for clearing floats - h5bp.com/q
-@mixin clearfix {
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    content: " ";
-  }
-  &:after {
-    clear: both;
-  }
-}
-
-.clearfix {
-  @include clearfix;
-}
-
 // Hide only visually, but have it available for screenreaders: h5bp.com/v
 .vh {
   border: 0;

@@ -10,10 +10,6 @@ $googleTagManagerCode = 'GTM-xxxxxxx'; // 'GTM-xxxxxxx' or null
 @include('layouts._partials.head')
 
 <body class="{{ $bodyClass }}">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSXBSK" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="page-wrap">

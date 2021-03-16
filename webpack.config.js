@@ -292,6 +292,7 @@ module.exports = {
     new ImageminWebpWebpackPlugin(),
     new ManifestPlugin({
       fileName: `${dist.revManifest}rev-manifest.json`,
+      map: file => ({ ...file, name: file.name.replace(/(\.[a-f0-9]{8})(\..*)$/, '$2') }),
     }),
     new SpriteLoaderPlugin({
       plainSprite: true,

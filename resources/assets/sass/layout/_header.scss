@@ -5,8 +5,9 @@
   padding: $gutter 0;
   top: 0;
   position: relative;
+  transition: all 0.2s;
   @supports (position: sticky) {
-    position: sticky;
+    position: fixed;
   }
 }
 

@@ -1,46 +1,33 @@
 <footer class="page-footer">
-  <div class="container">
-    <div class="grid">
-      <div class="grid__item medium--one-third">
-        <ul class="social-icons">
-          <li class="social-icons__item">
-            <a href="#" class="social-icons__link" target="_blank" rel="noopener noreferrer">
-              <svg class="icon icon-facebook">
-                <use xlink:href="#icon-facebook" />
-              </svg>
-              <span class="vh">Volg ons op Facebook</span>
-            </a>
-          </li>
-          <li class="social-icons__item">
-            <a href="#" class="social-icons__link" target="_blank" rel="noopener noreferrer">
-              <svg class="icon icon-twitter">
-                <use xlink:href="#icon-twitter" />
-              </svg>
-              <span class="vh">Volg ons op Twitter</span>
-            </a>
-          </li>
-          <li class="social-icons__item">
-            <a href="#" class="social-icons__link" target="_blank" rel="noopener noreferrer">
-              <svg class="icon icon-instagram">
-                <use xlink:href="#icon-instagram" />
-              </svg>
-              <span class="vh">Volg ons op Instagram</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="grid__item medium--one-third">
-        <ul>
-          <li><a href="privacy.html">Privacyverklaring</a></li>
-          <li><a href="cookies.html">Cookieverklaring</a></li>
-        </ul>
-      </div>
-      <div class="grid__item medium--one-third">
-        <p>
-          <a class="page-footer__signature" href="https://www.esign.eu" target="_blank"
-            title="Highly technical and tasteful websites, webshops, web applications and online marketing, tailored to your story."
-            rel="noopener">Site by Esign</a>
-        </p>
+  <div class="section">
+    <div class="container">
+      <div class="grid">
+  
+        <div class="grid__item medium--one-whole large--one-quarter">
+          <h4>View</h4>
+         </div>
+
+         <div class="grid__item medium--one-whole large--one-quarter">
+          <p>+2387823782</p>
+          <p>info@esign.eu</p>
+          <p>Onderstraat 21b, 9000 Gent</p>
+          <p>Showroom op afspraak</p>
+         </div>
+
+         <div class="grid__item medium--one-whole large--one-quarter">
+          <a href="ref">MINIMALISTISCHE RAMEN</a><a href="">INSPIRATIE</a><a href="REF">OVER ONS</a><a href="REF">Showroom</a>
+         </div>
+  
+        <div class="grid__item medium--one-whole large--one-quarter">
+         <div class="grid grid--gutter-0">
+          <div class="grid__item one-whole">
+            <h2>hello</h2>
+          </div>
+          <div class="grid__item one-whole">
+            <h2>hello</h2>
+          </div>
+         </div>
+        </div>
       </div>
     </div>
   </div>

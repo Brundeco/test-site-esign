@@ -3,11 +3,11 @@
   <li{!! $menuItem == 'home' ? ' class=active' : '' !!}>
     <a href="index.html" class="{{ $nav }}__link">Home</a>
   </li>
-  <li{!! $menuItem == 'components' ? ' class=active' : '' !!}>
-    <a href="components.html" class="{{ $nav }}__link">Components</a>
+  <li{!! $menuItem == 'minimalistic windows' ? ' class=active' : '' !!}>
+    <a href="minimalistic-windows.html" class="{{ $nav }}__link">Minimalistische ramen</a>
   </li>
-  <li{!! $menuItem == 'news' ? ' class=active' : '' !!}>
-    <a href="articles.html" class="{{ $nav }}__link">News</a>
+  <li{!! $menuItem == 'inspiration' ? ' class=active' : '' !!}>
+    <a href="inspiration.html" class="{{ $nav }}__link">Inspiratie</a>
   </li>
   <li{!! $menuItem == 'contact' ? ' class=active' : '' !!}>
     <a href="contact.html" class="{{ $nav }}__link">Contact</a>

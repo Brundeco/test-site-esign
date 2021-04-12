@@ -1,0 +1,38 @@
+.article {
+  position: relative;
+  // height: 300px;
+  overflow: hidden;
+
+  img {
+    transition: transform 0.5s ease;
+  }
+  &:hover img {
+    transform: scale(1.5);
+  }
+
+  a {
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.full-width {
+  padding: 0 !important;
+}
+
+h1.title-hero-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: auto;
+  text-align: center;
+  top: 50%;
+}

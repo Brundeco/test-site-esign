@@ -8,8 +8,6 @@ export default class Components {
     form('#form-contact');
     eventTracking();
 
-    console.log('hey');
-
     // Custom modal
     const customModal = window.modalManager.createModal(
       document.querySelector('.js-specific-modal-name'),

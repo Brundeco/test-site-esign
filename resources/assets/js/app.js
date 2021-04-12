@@ -7,6 +7,7 @@ import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import { form } from './components/forms/form';
 import CookieNotification from './components/cookies/CookieNotification';
+import HeaderAnimation from './components/layout/HeaderAnimation';
 import ModalManager from './components/modals/ModalManager';
 
 import Contact from './pages/Contact';
@@ -24,6 +25,7 @@ window.modalManager = new ModalManager();
 responsiveVideos();
 window.cookieNotification = new CookieNotification();
 objectFitImages();
+HeaderAnimation();
 
 // Forms
 validation();

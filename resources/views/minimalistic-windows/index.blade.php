@@ -7,7 +7,7 @@ $menuItem = 'minimalistic-window';
 // $bodyClass = 'body-class';
 @endphp
 
-@section('content')
+@section('content') 
 
 <div class="section">
   <div class="container">
@@ -16,11 +16,92 @@ $menuItem = 'minimalistic-window';
         <h2>Less frame more view</h2>
       </div>
       <div class="grid__item medium--one-half large--two-quarter">
-        {{-- <p>Met jarenlange ervaring en meer dan een paar 100 succesvolle projecten over heel België is VIEW uw ideale
-          partner voor minimalistische design ramen. Met een van de fijnste raamprofielen op de markt bieden wij
-          architecturale oplossingen voor uw renovatie- of nieuwbouwproject en zoeken we graag nieuwe grenzen voor uw
-          wooncomfort op. Wil u ook een ongehinderd buitenzicht?</p> --}}
         <a href="minimalistic-windows.html" class="button">Bekijk onze ramen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    
+    <div class="grid accordion">
+      <div class="grid__item one-whole">
+       <div class="accordion__parent">
+         <h4 class="h4">Elektrisch aangedreven schuiframen</h4>
+         <span class="button-state">+</span>
+       </div>
+       <div class="accordion__hide">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iure voluptates repellendus doloribus aliquam, veritatis dolorem, a quis facere deleniti nisi aperiam quae accusantium repudiandae. Vitae aliquam assumenda laboriosam incidunt?</p>
+         <ul>
+           <li>Lorem</li>
+           <li>Lorem</li>
+           <li>Some Lorem</li>
+           <li>More lorem</li>
+           <li>Lorem finito</li>
+         </ul>
+         <a href="http://" rel="noopener noreferrer">Test het uit in onze showroom</a>
+       </div>
+      </div>
+    </div>
+
+    <div class="grid accordion">
+      <div class="grid__item one-whole">
+       <div class="accordion__parent">
+         <h4 class="h4">Vliegenraam of muggenhor</h4>
+         <span class="button-state">+</span>
+       </div>
+       <div class="accordion__hide">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iure voluptates repellendus doloribus aliquam, veritatis dolorem, a quis facere deleniti nisi aperiam quae accusantium repudiandae. Vitae aliquam assumenda laboriosam incidunt?</p>
+         <ul>
+           <li>Lorem</li>
+           <li>Lorem</li>
+           <li>Some Lorem</li>
+           <li>More lorem</li>
+           <li>Lorem finito</li>
+         </ul>
+         <a href="http://" rel="noopener noreferrer">Test het uit in onze showroom</a>
+       </div>
+      </div>
+    </div>
+
+    <div class="grid accordion">
+      <div class="grid__item one-whole">
+       <div class="accordion__parent">
+         <h4 class="h4">Elektrisch slot</h4>
+         <span class="button-state">+</span>
+       </div>
+       <div class="accordion__hide">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iure voluptates repellendus doloribus aliquam, veritatis dolorem, a quis facere deleniti nisi aperiam quae accusantium repudiandae. Vitae aliquam assumenda laboriosam incidunt?</p>
+         <ul>
+           <li>Lorem</li>
+           <li>Lorem</li>
+           <li>Some Lorem</li>
+           <li>More lorem</li>
+           <li>Lorem finito</li>
+         </ul>
+         <a href="http://" rel="noopener noreferrer">Test het uit in onze showroom</a>
+       </div>
+      </div>
+    </div>
+
+    <div class="grid accordion">
+      <div class="grid__item one-whole">
+       <div class="accordion__parent">
+         <h4 class="h4">Een waaier aan kleuren</h4>
+         <span class="button-state">+</span>
+       </div>
+       <div class="accordion__hide">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iure voluptates repellendus doloribus aliquam, veritatis dolorem, a quis facere deleniti nisi aperiam quae accusantium repudiandae. Vitae aliquam assumenda laboriosam incidunt?</p>
+         <ul>
+           <li>Lorem</li>
+           <li>Lorem</li>
+           <li>Some Lorem</li>
+           <li>More lorem</li>
+           <li>Lorem finito</li>
+         </ul>
+         <a href="http://" rel="noopener noreferrer">Test het uit in onze showroom</a>
+       </div>
       </div>
     </div>
   </div>

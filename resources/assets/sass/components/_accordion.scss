@@ -1,0 +1,18 @@
+.accordion {
+  border-bottom: 1px solid rgb(214, 214, 214);
+  margin: 5vh 0;
+
+  .accordion__hide {
+    display: none;
+  }
+
+  .accordion__show {
+    display: block;
+  }
+
+  .accordion__parent {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+}

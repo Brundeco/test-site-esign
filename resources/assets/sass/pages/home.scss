@@ -3,6 +3,10 @@
   position: relative;
   margin-top: -10vh;
 
+  .hero__image {
+    filter: brightness(50%);
+  }
+
   .hero__content {
     position: absolute;
     top: 0;

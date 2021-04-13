@@ -26,6 +26,10 @@
   @media #{$nav} {
     width: auto;
   }
+
+  h3 {
+    color: $white;
+  }
 }
 
 .main-nav-trigger {
@@ -86,13 +90,13 @@
 }
 
 .main-nav__link {
-  color: $black;
+  color: $white;
   text-decoration: none;
 
   &:hover,
   &:focus,
   .active & {
-    color: $accent;
+    color: #f6b00d !important;
   }
 }
 

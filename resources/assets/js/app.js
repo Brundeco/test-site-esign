@@ -8,6 +8,7 @@ import validation from './components/forms/validation';
 import { form } from './components/forms/form';
 import CookieNotification from './components/cookies/CookieNotification';
 import HeaderAnimation from './components/layout/HeaderAnimation';
+import Accordion from './components/layout/Accordion';
 import ModalManager from './components/modals/ModalManager';
 
 import Contact from './pages/Contact';
@@ -26,6 +27,7 @@ responsiveVideos();
 window.cookieNotification = new CookieNotification();
 objectFitImages();
 HeaderAnimation();
+Accordion();
 
 // Forms
 validation();

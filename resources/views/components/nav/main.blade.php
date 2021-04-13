@@ -13,4 +13,3 @@
     <a href="contact.html" class="{{ $nav }}__link">Contact</a>
   </li>
 </ul>
-

@@ -57,11 +57,11 @@ select {
   appearance: none;
   padding: 0 15px;
   display: block;
-  background: $white;
+  background: gray(200);
   height: 45px;
   line-height: inherit;
   width: 100%;
-  border: 1px solid gray(400);
+  border: 0px solid gray(400);
 
   &:focus {
     outline: 0;

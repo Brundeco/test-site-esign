@@ -19,9 +19,8 @@ $menuItem = 'home';
     </div>
     <div class="hero__content">
       <h1 class="hero__title">Less frame more view</h1>
-      <h2 class="hero__subtitle">Subtitle</h2>
+      <h2 class="hero__subtitle">Maximale glasoppervlakte, minimale profilering</h2>
     </div>
-  
   </div>
 </div>
 
@@ -115,16 +114,28 @@ $menuItem = 'home';
 
 <div class="section">
   <div class="container">
-    <div class="hero-image">
-      <picture class="visual visual--2x1">
-        <source srcset="https://www.view.design/build/images/header.c9d03ca0.jpg" type="image/webp">
-        <img src="https://www.view.design/build/images/header.c9d03ca0.jpg" alt="Example Image">
-      </picture>
+    <div class="hero-var">
+      <div class="hero-var__image">
+        <picture class="visual visual--2x1">
+          <source srcset="https://www.view.design/build/images/header.c9d03ca0.jpg" type="image/webp">
+          <img src="https://www.view.design/build/images/header.c9d03ca0.jpg" alt="Example Image">
+        </picture>
+      </div>
+      <div class="hero-var__content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quasi autem corrupti perferendis? Nulla
+          cumque quos voluptatibus quas quod, repellat sint mollitia sunt blanditiis enim quo labore obcaecati fuga
+          iste? </p>
+        <h4>Poolhouse - Woning - Appartement</h4>
+        <div>
+          <button class="button">Vraag nu uw offerte aan</button>
+        </div>
+        <div>
+          <a href="">Download de brochure</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
 
 <div class="section">
   <div class="container">
@@ -155,8 +166,5 @@ $menuItem = 'home';
     </div>
   </div>
 </div>
-
-
-
 
 @endsection

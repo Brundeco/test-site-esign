@@ -13,15 +13,12 @@ $googleTagManagerCode = 'GTM-xxxxxxx'; // 'GTM-xxxxxxx' or null
   <a href="#main" class="skip-link">Skip to main content</a>
 
   <div class="page-wrap">
-
     @section('header')
     @include('components.base.header')
     @show
 
     <main id="main" class="main">
-
       @yield('content')
-
     </main>
 
     @section('footer')

@@ -1,8 +1,12 @@
 .page-footer {
   position: relative;
   padding: 10vh $gutter;
-  background: #737373;
+  background: #1e1e1e;
   margin-top: 15vh;
+
+  * {
+    color: $white !important;
+  }
 }
 
 .page-footer__signature {

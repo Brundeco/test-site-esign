@@ -6,6 +6,7 @@
   top: 0;
   position: relative;
   transition: all 0.2s;
+  background-color: white;
   @supports (position: sticky) {
     position: fixed;
   }
@@ -28,7 +29,7 @@
   }
 
   h3 {
-    color: $white;
+    color: $black;
   }
 }
 
@@ -90,7 +91,7 @@
 }
 
 .main-nav__link {
-  color: $white;
+  color: $black;
   text-decoration: none;
 
   &:hover,
@@ -152,5 +153,30 @@
     background-color: $white;
     padding: 0.5em 1em;
     font-size: rem(20px);
+  }
+}
+
+// .header--home {
+.header--light-no-bg {
+  background: rgba(0, 0, 0, 0);
+
+  .main-nav__link {
+    color: $white;
+  }
+
+  .page-header__logo h3 {
+    color: $white;
+  }
+}
+
+.header--light-bg {
+  background: $white;
+
+  .main-nav__link {
+    color: $black;
+  }
+
+  .page-header__logo h3 {
+    color: $black;
   }
 }

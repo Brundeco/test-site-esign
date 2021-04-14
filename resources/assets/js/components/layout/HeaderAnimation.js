@@ -1,34 +1,19 @@
 export default function() {
-  const replaceColor = '#fff';
-  const navElement = document.querySelector('.page-header');
-  const links = document.querySelectorAll('.main-nav__link');
-  const logo = document.querySelector('.page-header__logo');
+  const header = document.querySelector('.page-header');
+  const currentPage = document.body.classList.value;
 
   const myScrollFunc = () => {
     const y = window.scrollY;
     if (y >= 30) {
-      navElement.style.background = replaceColor;
-      navElement.style.height = '10vh';
-      logo.style.color = '#000';
-      links.forEach(element => {
-        element.style.color = '#000';
-      });
+      header.classList.add('header--light-bg');
+      header.classList.remove('header--light-no-bg');
     } else {
-      navElement.style.background = 'rgba(0, 0, 0, 0)';
-      navElement.style.height = '15vh';
-      logo.style.color = '#fff';
-      links.forEach(element => {
-        element.style.color = '#fff';
-      });
+      header.classList.add('header--light-no-bg');
+      header.classList.remove('header--light-bg');
     }
   };
-
-  if (window.location.href.indexOf('index') > -1) {
+  if (currentPage === 'home') {
+    header.classList.add('header--light-no-bg');
     window.addEventListener('scroll', myScrollFunc);
-  } else {
-    links.forEach(element => {
-      element.style.color = '#000';
-      logo.style.color = '#000';
-    });
   }
 }

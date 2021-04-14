@@ -3,7 +3,6 @@
   <div class="container">
     <div class="page-header__content">
       <a href="index.html" class="page-header__logo">
-        {{-- <img src="../../assets/images/logo.svg" alt="Logo" width="150" /> --}}
         <h3>VIEW</h3>
       </a>
 

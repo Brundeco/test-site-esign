@@ -3,26 +3,14 @@
 @php
 $title = 'Home';
 $menuItem = 'home';
-// $description = 'description';
-// $bodyClass = 'body-class';
+$description = 'description';
+$bodyClass = 'home';
 @endphp
 
 @section('content')
 
-<div class="section">
-  <div class="hero">
-    <div class="hero__image">
-      <picture class="visual visual--2x1">
-        <source srcset="https://www.view.design/build/images/header.c9d03ca0.jpg" type="image/webp">
-        <img src="https://www.view.design/build/images/header.c9d03ca0.jpg" alt="Example Image">
-      </picture>
-    </div>
-    <div class="hero__content">
-      <h1 class="hero__title">Less frame more view</h1>
-      <h2 class="hero__subtitle">Maximale glasoppervlakte, minimale profilering</h2>
-    </div>
-  </div>
-</div>
+@include('components.hero.hero')
+
 
 <div class="section">
   <div class="container">
@@ -44,8 +32,12 @@ $menuItem = 'home';
 
 <div class="section">
   <div class="container">
-    <div class="grid--justify-center">
-      <h2>Recente realisaties</h2>
+    <div class="grid">
+      <div class="grid__item one-whole grid__item--center">
+        <div class="text-center">
+          <h2>Recente realisaties</h2>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -130,7 +122,7 @@ $menuItem = 'home';
           <button class="button">Vraag nu uw offerte aan</button>
         </div>
         <div>
-          <a href="">Download de brochure</a>
+          <a target="_blank" rel="noopener">Download de brochure</a>
         </div>
       </div>
     </div>

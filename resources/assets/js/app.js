@@ -7,8 +7,8 @@ import responsiveVideos from './components/layout/responsiveVideos';
 import validation from './components/forms/validation';
 import { form } from './components/forms/form';
 import CookieNotification from './components/cookies/CookieNotification';
-import HeaderAnimation from './components/layout/HeaderAnimation';
-import Accordion from './components/layout/Accordion';
+import HeaderAnimation from './components/layout/headerAnimation';
+import Accordion from './components/accordion/accordion';
 import ModalManager from './components/modals/ModalManager';
 
 import Contact from './pages/Contact';
